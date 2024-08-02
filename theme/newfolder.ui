@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateFolder</class>
+ <widget class="QMainWindow" name="CreateFolder">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>490</width>
+    <height>86</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>490</width>
+    <height>86</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>490</width>
+    <height>86</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>New Category</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(237, 234, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+border:none;
+border-radius:5px;
+border: 1px solid #dddddd;
+	background-color: rgb(255, 255, 255);
+padding:5px;
+}
+QLineEdit:hover{
+border:none;
+border-radius:5px;
+border: 1px solid #dddddd;
+background-color: rgb(240, 255, 255);
+padding:5px;
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MesloLGMDZ Nerd Font</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(58, 89, 77);</string>
+    </property>
+    <property name="text">
+     <string>Tên Danh Mục</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>50</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MesloLGLDZ Nerd Font</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+QPushButton{
+border:none;
+border-radius:2px;
+color: rgb(255, 255, 255);
+border: 1px solid #ba89ff ;
+background-color: rgb(128, 44, 255);
+}
+QPushButton:hover{
+border:none;
+border-radius:3px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: rgb(160, 52, 255);
+}</string>
+    </property>
+    <property name="text">
+     <string>Tạo</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
