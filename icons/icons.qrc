@@ -1,7 +1,11 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-toggle-on-48.png</file>
+    <file>png/icons8-toggle-off-48.png</file>
     <file>png/icons8-horizontal-line-48.png</file>
     <file>png/icons8-menu-24.png</file>
+    <file>png/icons8-toggle-off-48.png</file>
+    <file>png/icons8-toggle-on-48.png</file>
     <file>png/icons8-maximize-96.png</file>
     <file>png/icons8-x-24_green.png</file>
     <file>png/icons8-x-24.png</file>
@@ -49,7 +53,5 @@
     <file>png/icons8-x-96.png</file>
     <file>png/maximize_icon.png</file>
     <file>png/cil-arrow-bottom.png</file>
-    <file>logo/icons.ico</file>
-    <file>logo/icons.png</file>
   </qresource>
 </RCC>
