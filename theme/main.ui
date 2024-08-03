@@ -164,8 +164,8 @@ border:none;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
-              <widget class="QFrame" name="frame_7">
+             <item alignment="Qt::AlignLeft">
+              <widget class="QFrame" name="frame_icons">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -174,7 +174,7 @@ border:none;
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>100</width>
+                 <width>300</width>
                  <height>0</height>
                 </size>
                </property>
@@ -185,7 +185,7 @@ border:none;
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">image: url(:/icons/logo/icons.png);</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -193,6 +193,81 @@ border:none;
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <widget class="QFrame" name="frame_67">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>50</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">image: url(:/icons/logo/icons.png);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_12">
+                <property name="geometry">
+                 <rect>
+                  <x>50</x>
+                  <y>1</y>
+                  <width>65</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(115, 115, 115);</string>
+                </property>
+                <property name="text">
+                 <string>BETALOGIN</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_11">
+                <property name="geometry">
+                 <rect>
+                  <x>120</x>
+                  <y>1</y>
+                  <width>81</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(115, 115, 115);</string>
+                </property>
+                <property name="text">
+                 <string>- 1.0 Preview</string>
+                </property>
+               </widget>
               </widget>
              </item>
              <item alignment="Qt::AlignRight">
@@ -4921,6 +4996,13 @@ color: rgb(105, 78, 191);
                              </property>
                              <item>
                               <widget class="QLabel" name="label_9">
+                               <property name="font">
+                                <font>
+                                 <family>MesloLGSDZ Nerd Font</family>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
                                <property name="styleSheet">
                                 <string notr="true">color: rgb(115, 115, 115);</string>
                                </property>

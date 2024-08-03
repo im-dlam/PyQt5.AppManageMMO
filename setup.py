@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-# pyrcc5 img.qrc -o icons.py
+# pyrcc5 icons.qrc -o icons.py
 setup(
     name='my_project',
     version='0.1',

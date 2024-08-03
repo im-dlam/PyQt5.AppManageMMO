@@ -29,6 +29,8 @@ class WindowInterface(QMainWindow):
         # ///////////////////////////////
                                                 # Hiển thị trong centralwidget của app
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
+
+        self.setWindowTitle("BetaLogin - Quản Lý Đa Nền Tảng Tài Khoản")
         # ///////////////////////////////////////
 
 
@@ -196,6 +198,7 @@ class WindowInterface(QMainWindow):
     # ///////////////////////////////////////////////
     # Xóa thanh tiêu đề và xử lý di chuyển
     def RemoveWindowFlags(self):
+        self.ResetOverLay()
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window  )
         self.setAttribute(Qt.WA_TranslucentBackground)
 
@@ -226,10 +229,25 @@ class WindowInterface(QMainWindow):
         self.menu.addAction(QAction("Sign out", self))
         self.menu.addAction(QAction("Settings", self))
         widgets.btn_profile.setMenu(self.menu)
+
+    
+    # /////////////////
+    # Làm mờ giao diện chính
+    def ShowOverLay(self):
+        self.filloverlay = Overlay(self)
+        self.filloverlay.show()
+    
+    def ResetOverLay(self):
+        try:
+            self.filloverlay.close()
+        except Exception as Keys:
+            print(Keys)
+
     # /////////////////////////////////////
     # GUI thêm dữ liệu
     def window_additem(self):
         # code sql/300
+        self.ShowOverLay()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
         # if Namecategory == "ALL":
@@ -256,6 +274,7 @@ class WindowInterface(QMainWindow):
         Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_add , QColor(0,0,10,60))
+        Functions.ShadowFrameConditional(self , window_widgets.centralwidget , QColor(0,0,10,60))
     
 
         # ///////////////////////////////////
@@ -436,8 +455,6 @@ class WindowInterface(QMainWindow):
     def paintEvent(self, event):
         painter = QPainter(self)
         path = QPainterPath()
-        path.setFillRule(Qt.WindingFill)
-
         if self.isMaximized():
             # ////////////////////////////////////
             # full màn và cạnh nhọn

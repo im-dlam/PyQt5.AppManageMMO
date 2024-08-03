@@ -51,7 +51,7 @@
     <item>
      <widget class="QFrame" name="frameMain">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(253, 247, 255);</string>
+       <string notr="true">background-color: rgb(78, 90, 121);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -78,13 +78,13 @@
                 font-weight: bold;
 				color: rgb(255, 255, 255);
                 border: 1px solid  rgb(225, 229, 255);
-				background-color: rgb(253, 247, 255);
+				background-color: rgb(78, 90, 121);
 				border-radius:3px;
-				border:none;
+border:none;
             }
  QTabBar::tab {
-				background-color: rgb(253, 247, 255);
-				color: rgb(107, 125, 179);
+				background-color: rgb(78, 90, 121);
+				color: rgb(255, 255, 255);
                 padding: 10px;
                 font-weight: bold;
                 border-bottom: none;
@@ -93,34 +93,33 @@
 
 QTabBar::tab:selected {
 				border:none;
-				background-color: rgb(253, 247, 255);
-				color: rgb(107, 125, 179);
+	  			background-color: rgb(78, 90, 121);
                 font-weight: bold;
 				border-bottom:2px  solid rgb(79, 181, 178);
+				color: rgb(255, 255, 255);
             }
 
 QTabBar::tab:hover {
-				background-color: rgb(253, 247, 255);
-				color: rgb(107, 125, 179);	
+				background-color: rgb(78, 90, 121);		
 				border-radius:3px;
+				color: rgb(255, 255, 255);
             }
 
 QComboBox {
-   background-color: rgb(253, 247, 255);
+    background-color: rgb(78, 90, 121);
     border: none;
-	color: rgb(90, 104, 139);
+    color: rgb(255, 255, 255);
 }
 
 QFrame#frame {
-    border: 1px solid #e6e2ff;
-	color: rgb(230, 226, 255);
+    border: 1px solid #6878a1;
     border-radius: 4px;
 }
 
 QFrame#frame:hover {
-    border: 1px solid #d3daff ;
+    border: 1px solid #8094c6;
     border-radius: 4px;
-	background-color: rgb(246, 239, 255);
+    background-color: rgb(245, 242, 255);
 }
 
 QComboBox::drop-down {
@@ -129,7 +128,7 @@ QComboBox::drop-down {
     width: 10px; 
     border-left-color: #788dca;
     border-left-style: solid;
-	color: rgb(85, 98, 131);
+    color: rgb(255, 255, 255);
     border-top-right-radius: 2px;
     border-bottom-right-radius: 3px;    
 	image: url(:/icons/png/cil-arrow-bottom.png);
@@ -140,17 +139,17 @@ QComboBox::drop-down {
 }
 
 QComboBox QAbstractItemView {
-   background-color: rgb(253, 247, 255);
-	color: rgb(85, 98, 131);
+	background-color: rgb(78, 90, 121);
+    color: rgb(255, 255, 255); /* White text color */
     border: none; /* No border */
-	 selection-background-color: #e0e3f7;
-    selection-color: rgb(85, 98, 131); /* Selected item text color */
+	 selection-background-color: rgb(135, 155, 208);
+    selection-color: rgb(255, 255, 255); /* Selected item text color */
     border-radius: 4px;
 }
 
 QComboBox::item {
     background-color: transparent; /* Ensure background is transparent */
-   color: rgb(85, 98, 131); /* White text color */
+    color: rgb(255, 255, 255); /* White text color */
     border-radius: 4px; /* Apply rounded borders */
 }
 
@@ -256,20 +255,20 @@ QComboBox::item:focus {
          </property>
          <property name="styleSheet">
           <string notr="true">QWidget{
-background-color: rgb(252, 242, 255);
+background-color: rgb(237, 234, 255);
 }
 QPlainTextEdit{
-background-color: rgb(253, 247, 255);
-color: rgb(98, 113, 152);
+background-color: rgb(78, 90, 121);
+color: rgb(255, 255, 255);
 border-radius:5px;
 padding:5px;
-border:1px solid  #e6e2ff;
+border:1px solid #6878a1;
 }
 QPlainTextEdit:hover{
-background-color: rgb(246, 239, 255);
-color: rgb(98, 113, 152);
+background-color: rgb(92, 107, 143);
+color: rgb(255, 255, 255);
 border-radius:5px;
-border:1px solid  #d3daff;
+border:1px solid #8094c6;
 }
 QFrame{
 border-radius:5px;
@@ -613,18 +612,18 @@ border-radius:5px;
              <property name="styleSheet">
               <string notr="true">
     QLabel {
-       color: rgb(87, 100, 134);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	   background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #ebe5ff;
+        border: 0.5px solid #5c6b8f;
     }
     QLabel:hover {
-        color: rgb(87, 100, 134);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
- 	   background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #c9caff;
+        border: 0.5px solid #8094c6;
     }</string>
              </property>
              <property name="text">
@@ -643,19 +642,19 @@ border-radius:5px;
              <property name="styleSheet">
               <string notr="true">
     QFrame#frame_3 {
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	  	 background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #ebe5ff;
+        border: 0.5px solid #5c6b8f;
     }
     QFrame#frame_3:hover {
         color: rgb(255, 255, 255);
         border-radius: 5px;
-		background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #c9caff;
-    }
-</string>
+        border: 0.5px solid #8094c6;
+    }</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -695,9 +694,8 @@ border-radius:5px;
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">
-color: rgb(87, 100, 156);
-background-color: rgb(253, 247, 255);</string>
+                 <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(78, 90, 121);</string>
                 </property>
                 <property name="text">
                  <string>ACCOUNT TYPE:</string>
@@ -736,9 +734,9 @@ background-color: rgb(253, 247, 255);</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QComboBox{
-color: rgb(87, 100, 156);
+color: rgb(255, 255, 255);
 border-radius:3px;
-background-color: rgb(253, 247, 255);
+background-color: rgb(78, 90, 121);
 padding:5px;
 }
 QComboBox::drop-down {
@@ -751,10 +749,7 @@ QComboBox::drop-down {
 	border-bottom-right-radius: 3px;	
 	background-position: center;
 	background-repeat: no-reperat;
- }
-
-
-</string>
+ }</string>
                  </property>
                  <item>
                   <property name="text">
@@ -788,18 +783,18 @@ QComboBox::drop-down {
              <property name="styleSheet">
               <string notr="true">
     QFrame#frame_5 {
-		color: rgb(87, 100, 173);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	   background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #ebe5ff;
+        border: 0.5px solid #5c6b8f;
     }
     QFrame#frame_5:hover {
         color: rgb(255, 255, 255);
         border-radius: 5px;
-        background-color:  rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #c9caff;
+        border: 0.5px solid #8094c6;
     }</string>
              </property>
              <property name="frameShape">
@@ -837,8 +832,8 @@ QComboBox::drop-down {
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">color: rgb(87, 100, 134);
-background-color: rgb(253, 247, 255);</string>
+               <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(78, 90, 121);</string>
               </property>
               <property name="text">
                <string>FOLDER: </string>
@@ -868,8 +863,9 @@ background-color: rgb(253, 247, 255);</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QComboBox{
-color: rgb(87, 100, 173);
+color: rgb(255, 255, 255);
 border-radius:3px;
+frame_5
 padding:5px;
 }
 QComboBox::drop-down {
@@ -914,18 +910,18 @@ QComboBox::drop-down {
              <property name="styleSheet">
               <string notr="true">
     QFrame#frame_8 {
-		color: rgb(87, 100, 173);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	   background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #ebe5ff;
+        border: 0.5px solid #5c6b8f;
     }
     QFrame#frame_8:hover {
         color: rgb(255, 255, 255);
         border-radius: 5px;
-        background-color:  rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #c9caff;
+        border: 0.5px solid #8094c6;
     }</string>
              </property>
              <property name="frameShape">
@@ -963,8 +959,8 @@ QComboBox::drop-down {
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">color: rgb(87, 100, 134);
-background-color: rgb(253, 247, 255);</string>
+               <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(78, 90, 121);</string>
               </property>
               <property name="text">
                <string>TYPE UA:</string>
@@ -994,8 +990,9 @@ background-color: rgb(253, 247, 255);</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QComboBox{
-color: rgb(87, 100, 173);
+color: rgb(255, 255, 255);
 border-radius:3px;
+	background-color: rgb(78, 90, 121);
 padding:5px;
 }
 QComboBox::drop-down {
@@ -1116,10 +1113,6 @@ color: rgb(255, 233, 253);
            <height>341</height>
           </rect>
          </property>
-         <property name="styleSheet">
-          <string notr="true">
-</string>
-         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -1143,23 +1136,20 @@ color: rgb(255, 233, 253);
           </property>
           <property name="styleSheet">
            <string notr="true">QWidget{
-background-color: rgb(252, 242, 255);
+background-color: rgb(237, 234, 255);
 }
 QPlainTextEdit{
-background-color: rgb(253, 247, 255);
-color: rgb(98, 113, 152);
+background-color: rgb(78, 90, 121);
+color: rgb(255, 255, 255);
 border-radius:5px;
 padding:5px;
-border:1px solid  #e6e2ff;
+border:1px solid #6878a1;
 }
 QPlainTextEdit:hover{
-background-color: rgb(246, 239, 255);
-color: rgb(98, 113, 152);
+background-color: rgb(92, 107, 143);
+color: rgb(255, 255, 255);
 border-radius:5px;
-border:1px solid  #d3daff;
-}
-QFrame{
-border-radius:5px;
+border:1px solid #8094c6;
 }
 </string>
           </property>
@@ -1206,18 +1196,18 @@ border-radius:5px;
           </property>
           <property name="styleSheet">
            <string notr="true">  QComboBox {
-       color: rgb(87, 101, 135);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	    background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #e2deff;
+        border: 0.5px solid #5c6b8f;
     }
     QComboBox:hover {
-       color: rgb(87, 101, 135);
+        color: rgb(255, 255, 255);
         border-radius: 5px;
-	    background-color: rgb(253, 247, 255);
+        background-color: rgb(78, 90, 121);
         padding: 5px;
-        border: 0.5px solid #d9d5f0;
+        border: 0.5px solid #8094c6;
     }
     QComboBox::drop-down {
         subcontrol-origin: padding;

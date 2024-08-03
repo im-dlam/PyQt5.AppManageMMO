@@ -2,14 +2,12 @@ central_script = """
                 #centralWidget {{
                 border-radius: {}px;
                 background-color: white;
-                border: 2px solid #4CAF50;
             }}
                 """
 central_script_menu = """
                 #centralWidget {
                 border-radius: 10px;
                 background-color: #e2fffc;
-                border: 2px solid #4CAF50;
             }
                 """
 

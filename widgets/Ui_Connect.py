@@ -15,6 +15,49 @@ class CustomWindow(QMainWindow):
         path.addRoundedRect(rectF, radius, radius)
         region = QRegion(path.toFillPolygon().toPolygon())
         return region
+    def paintEvent(self, event):
+        super().paintEvent(event)
+        painter = QPainter(self)
+        
+        # Create a path for the window's background
+        path = QPainterPath()
+        rect = QRectF(0, 0, self.width(), self.height())
+        path.addRoundedRect(rect, 10, 10)
+        
+        # Draw the window's background
+        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.setBrush(QBrush(QColor(255, 255, 255)))  # Background color
+        painter.drawPath(path)
+        
+        # Draw the border
+        border_color = QColor(177, 21, 74)  # Red color
+        border_width = 5  # Width of the border
+        
+        # Create a path for the border
+        border_path = QPainterPath()
+        border_rect = rect.adjusted(border_width // 2, border_width // 2, -border_width // 2, -border_width // 2)
+        border_path.addRoundedRect(border_rect, 10, 10)
+        
+        # Set up the pen for the border
+        border_pen = QPen(border_color, border_width)
+        painter.setPen(border_pen)
+        painter.setBrush(Qt.NoBrush)
+        
+        # Draw the border
+        painter.drawPath(border_path)
+class Overlay(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setAttribute(Qt.WA_TransparentForMouseEvents)
+        self.setAttribute(Qt.WA_NoSystemBackground)
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setGeometry(parent.rect())
+    
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.fillRect(self.rect(), QColor(153, 139, 255, 50))
+    
 class Ui_Connect(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -29,6 +72,10 @@ class Ui_Connect(QMainWindow):
         # Đặt các thuộc tính cho cửa sổ
         self.windows.setWindowFlags(Qt.FramelessWindowHint| Qt.WindowStaysOnTopHint)
         self.windows.setAttribute(Qt.WA_TranslucentBackground)
+
+        # /////////////
+        # tắt thao tác trên giao diện chính
+        self.windows.setWindowModality(Qt.ApplicationModal)
         self.widgets.centralwidget.setStyleSheet("border-radius:5px; background-color: white;")
         self.resize = Resize(self.windows)
         self.windows.mousePressEvent = self.mousePressEvent  # Override mousePressEvent

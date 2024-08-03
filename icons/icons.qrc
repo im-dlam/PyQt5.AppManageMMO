@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>png/icons8-toggle-on-48.png</file>
+    <file>logo/icons.png</file>
     <file>png/icons8-toggle-off-48.png</file>
     <file>png/icons8-horizontal-line-48.png</file>
     <file>png/icons8-menu-24.png</file>
