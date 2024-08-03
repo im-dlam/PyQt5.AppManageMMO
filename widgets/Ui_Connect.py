@@ -1,7 +1,7 @@
 from main import *
 from PyQt5.QtWidgets import QMainWindow
 import sys , io
-
+from models import *
 class CustomWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -82,6 +82,7 @@ class Ui_Connect(QMainWindow):
         self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
         self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
         self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 10))  # Call create_rounded_rect_mask
+
         self.windows.show()
         return self.widgets, self.windows
     def create_rounded_rect_mask(self, rect, radius):
@@ -89,10 +90,14 @@ class Ui_Connect(QMainWindow):
         path.addRoundedRect(rect, radius, radius)
         region = QRegion(path.toFillPolygon().toPolygon())
         return region
+    
+
     def paintEvent(self, event):
         painter = QPainter(self)
         path = QPainterPath()
         radius = 10  # Bán kính cạnh tròn
+        
+
         
         # Vẽ hình chữ nhật với bán kính cạnh tròn
         path.addRoundedRect(self.rect(), radius, radius)

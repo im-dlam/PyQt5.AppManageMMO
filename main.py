@@ -247,7 +247,7 @@ class WindowInterface(QMainWindow):
     # GUI thêm dữ liệu
     def window_additem(self):
         # code sql/300
-        self.ShowOverLay()
+        # self.ShowOverLay()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
         # if Namecategory == "ALL":
@@ -274,7 +274,6 @@ class WindowInterface(QMainWindow):
         Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_add , QColor(0,0,10,60))
-        Functions.ShadowFrameConditional(self , window_widgets.centralwidget , QColor(0,0,10,60))
     
 
         # ///////////////////////////////////

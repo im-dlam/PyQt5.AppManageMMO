@@ -1117,8 +1117,7 @@ color: rgb(255, 233, 253);
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">
-</string>
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
