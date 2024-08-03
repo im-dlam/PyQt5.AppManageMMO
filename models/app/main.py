@@ -840,60 +840,6 @@ class Ui_MainWindow(object):
         self.btn_user.setObjectName("btn_user")
         self.horizontalLayout_15.addWidget(self.btn_user)
         self.verticalLayout_3.addWidget(self.frame_15)
-        self.frame_16 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_16.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_16.setObjectName("frame_16")
-        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.frame_16)
-        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_16.setSpacing(0)
-        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        self.btn_action = QtWidgets.QPushButton(self.frame_16)
-        self.btn_action.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_action.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("MesloLGS Nerd Font")
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_action.setFont(font)
-        self.btn_action.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"text-align: left;\n"
-" padding-left:25px;\n"
-" text-align: left;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-" QPushButton::menu-indicator {\n"
-"           subcontrol-position: right center;\n"
-"             subcontrol-origin: padding;\n"
-"}")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/icons/png/icons8-bookmark-144.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon8.addPixmap(QtGui.QPixmap(":/icons/png/icons8-bookmark-144_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.btn_action.setIcon(icon8)
-        self.btn_action.setIconSize(QtCore.QSize(30, 25))
-        self.btn_action.setCheckable(True)
-        self.btn_action.setAutoExclusive(True)
-        self.btn_action.setObjectName("btn_action")
-        self.horizontalLayout_16.addWidget(self.btn_action)
-        self.verticalLayout_3.addWidget(self.frame_16)
         self.frame_17 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.frame_17.setMinimumSize(QtCore.QSize(0, 50))
         self.frame_17.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -938,16 +884,26 @@ class Ui_MainWindow(object):
 "           subcontrol-position: right center;\n"
 "             subcontrol-origin: padding;\n"
 "}")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/icons/png/icons8-history-64_dark.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon9.addPixmap(QtGui.QPixmap(":/icons/png/icons8-history-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.btn_history.setIcon(icon9)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/icons/png/icons8-history-64_dark.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(":/icons/png/icons8-history-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.btn_history.setIcon(icon8)
         self.btn_history.setIconSize(QtCore.QSize(30, 30))
         self.btn_history.setCheckable(True)
         self.btn_history.setAutoExclusive(True)
         self.btn_history.setObjectName("btn_history")
         self.horizontalLayout_17.addWidget(self.btn_history)
         self.verticalLayout_3.addWidget(self.frame_17)
+        self.frame_16 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.frame_16.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.frame_16)
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_16.setSpacing(0)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        self.verticalLayout_3.addWidget(self.frame_16)
         self.frame_18 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.frame_18.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -976,45 +932,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.btn_what_new = QtWidgets.QPushButton(self.frame_19)
-        self.btn_what_new.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_what_new.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.btn_what_new.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"text-align: left;\n"
-" padding-left:25px;\n"
-" text-align: left;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-" QPushButton::menu-indicator {\n"
-"           subcontrol-position: right center;\n"
-"             subcontrol-origin: padding;\n"
-"}")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/icons/png/icons8-laptop-alert-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon10.addPixmap(QtGui.QPixmap(":/icons/png/icons8-laptop-alert-96_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.btn_what_new.setIcon(icon10)
-        self.btn_what_new.setIconSize(QtCore.QSize(25, 25))
-        self.btn_what_new.setCheckable(True)
-        self.btn_what_new.setAutoExclusive(True)
-        self.btn_what_new.setObjectName("btn_what_new")
-        self.horizontalLayout_8.addWidget(self.btn_what_new, 0, QtCore.Qt.AlignBottom)
         self.verticalLayout.addWidget(self.frame_19, 0, QtCore.Qt.AlignBottom)
         self.frame_20 = QtWidgets.QFrame(self.frame_22)
         self.frame_20.setMinimumSize(QtCore.QSize(0, 50))
@@ -1026,45 +943,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_11.setSpacing(0)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.btn_license = QtWidgets.QPushButton(self.frame_20)
-        self.btn_license.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_license.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.btn_license.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"text-align: left;\n"
-" padding-left:25px;\n"
-" text-align: left;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-" QPushButton::menu-indicator {\n"
-"           subcontrol-position: right center;\n"
-"             subcontrol-origin: padding;\n"
-"}")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/icons/png/icons8-copyright-all-rights-reserved-96_DARK.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon11.addPixmap(QtGui.QPixmap(":/icons/png/icons8-copyright-all-rights-reserved-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.btn_license.setIcon(icon11)
-        self.btn_license.setIconSize(QtCore.QSize(25, 25))
-        self.btn_license.setCheckable(True)
-        self.btn_license.setAutoExclusive(True)
-        self.btn_license.setObjectName("btn_license")
-        self.horizontalLayout_11.addWidget(self.btn_license, 0, QtCore.Qt.AlignBottom)
         self.verticalLayout.addWidget(self.frame_20, 0, QtCore.Qt.AlignBottom)
         self.frame_21 = QtWidgets.QFrame(self.frame_22)
         self.frame_21.setMinimumSize(QtCore.QSize(0, 50))
@@ -1106,10 +984,10 @@ class Ui_MainWindow(object):
 "           subcontrol-position: right center;\n"
 "             subcontrol-origin: padding;\n"
 "}")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/icons/png/icons8-help-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon12.addPixmap(QtGui.QPixmap(":/icons/png/icons8-help-64_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.btn_help.setIcon(icon12)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/icons/png/icons8-help-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(":/icons/png/icons8-help-64_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.btn_help.setIcon(icon9)
         self.btn_help.setIconSize(QtCore.QSize(25, 25))
         self.btn_help.setCheckable(True)
         self.btn_help.setAutoExclusive(True)
@@ -1677,52 +1555,6 @@ class Ui_MainWindow(object):
         self.btn_user_icons.setObjectName("btn_user_icons")
         self.horizontalLayout_49.addWidget(self.btn_user_icons)
         self.verticalLayout_16.addWidget(self.frame_58)
-        self.frame_59 = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
-        self.frame_59.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.frame_59.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_59.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_59.setObjectName("frame_59")
-        self.horizontalLayout_50 = QtWidgets.QHBoxLayout(self.frame_59)
-        self.horizontalLayout_50.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_50.setSpacing(0)
-        self.horizontalLayout_50.setObjectName("horizontalLayout_50")
-        self.btn_action_icons = QtWidgets.QPushButton(self.frame_59)
-        self.btn_action_icons.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_action_icons.setMaximumSize(QtCore.QSize(50, 40))
-        font = QtGui.QFont()
-        font.setFamily("MesloLGS Nerd Font")
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_action_icons.setFont(font)
-        self.btn_action_icons.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"    background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-"")
-        self.btn_action_icons.setText("")
-        self.btn_action_icons.setIcon(icon8)
-        self.btn_action_icons.setIconSize(QtCore.QSize(30, 25))
-        self.btn_action_icons.setCheckable(True)
-        self.btn_action_icons.setAutoExclusive(True)
-        self.btn_action_icons.setObjectName("btn_action_icons")
-        self.horizontalLayout_50.addWidget(self.btn_action_icons)
-        self.verticalLayout_16.addWidget(self.frame_59)
         self.frame_60 = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
         self.frame_60.setMinimumSize(QtCore.QSize(0, 50))
         self.frame_60.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -1762,13 +1594,23 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.btn_history_icons.setText("")
-        self.btn_history_icons.setIcon(icon9)
+        self.btn_history_icons.setIcon(icon8)
         self.btn_history_icons.setIconSize(QtCore.QSize(30, 30))
         self.btn_history_icons.setCheckable(True)
         self.btn_history_icons.setAutoExclusive(True)
         self.btn_history_icons.setObjectName("btn_history_icons")
         self.horizontalLayout_51.addWidget(self.btn_history_icons)
         self.verticalLayout_16.addWidget(self.frame_60)
+        self.frame_59 = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
+        self.frame_59.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.frame_59.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_59.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_59.setObjectName("frame_59")
+        self.horizontalLayout_50 = QtWidgets.QHBoxLayout(self.frame_59)
+        self.horizontalLayout_50.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_50.setSpacing(0)
+        self.horizontalLayout_50.setObjectName("horizontalLayout_50")
+        self.verticalLayout_16.addWidget(self.frame_59)
         self.frame_61 = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
         self.frame_61.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_61.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -1797,37 +1639,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_52.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_52.setSpacing(0)
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
-        self.btn_what_new_icons = QtWidgets.QPushButton(self.frame_64)
-        self.btn_what_new_icons.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_what_new_icons.setMaximumSize(QtCore.QSize(50, 40))
-        self.btn_what_new_icons.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"    background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-"")
-        self.btn_what_new_icons.setText("")
-        self.btn_what_new_icons.setIcon(icon10)
-        self.btn_what_new_icons.setIconSize(QtCore.QSize(25, 25))
-        self.btn_what_new_icons.setCheckable(True)
-        self.btn_what_new_icons.setAutoExclusive(True)
-        self.btn_what_new_icons.setObjectName("btn_what_new_icons")
-        self.horizontalLayout_52.addWidget(self.btn_what_new_icons, 0, QtCore.Qt.AlignBottom)
         self.verticalLayout_18.addWidget(self.frame_64, 0, QtCore.Qt.AlignBottom)
         self.frame_65 = QtWidgets.QFrame(self.frame_63)
         self.frame_65.setMinimumSize(QtCore.QSize(0, 50))
@@ -1839,37 +1650,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_53.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_53.setSpacing(0)
         self.horizontalLayout_53.setObjectName("horizontalLayout_53")
-        self.btn_license_icons = QtWidgets.QPushButton(self.frame_65)
-        self.btn_license_icons.setMinimumSize(QtCore.QSize(0, 40))
-        self.btn_license_icons.setMaximumSize(QtCore.QSize(50, 40))
-        self.btn_license_icons.setStyleSheet("\n"
-"QPushButton:hover{\n"
-"background-color:  rgb(224, 238, 233);\n"
-"color:#4ba08a;;\n"
-"border:none;\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton{\n"
-"border:none;\n"
-"background-color: rgb(255, 255, 255);\n"
-"color: rgb(126, 126, 126);\n"
-"border-radius:10px;\n"
-"}\n"
-"QPushButton:checked{\n"
-"border:none;\n"
-"    background-color:#dcf6ea;\n"
-"color: #0da471;\n"
-"border-radius:10px;\n"
-"\n"
-"}\n"
-"")
-        self.btn_license_icons.setText("")
-        self.btn_license_icons.setIcon(icon11)
-        self.btn_license_icons.setIconSize(QtCore.QSize(25, 25))
-        self.btn_license_icons.setCheckable(True)
-        self.btn_license_icons.setAutoExclusive(True)
-        self.btn_license_icons.setObjectName("btn_license_icons")
-        self.horizontalLayout_53.addWidget(self.btn_license_icons, 0, QtCore.Qt.AlignBottom)
         self.verticalLayout_18.addWidget(self.frame_65, 0, QtCore.Qt.AlignBottom)
         self.frame_66 = QtWidgets.QFrame(self.frame_63)
         self.frame_66.setMinimumSize(QtCore.QSize(0, 50))
@@ -1906,7 +1686,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.btn_help_icons.setText("")
-        self.btn_help_icons.setIcon(icon12)
+        self.btn_help_icons.setIcon(icon9)
         self.btn_help_icons.setIconSize(QtCore.QSize(25, 25))
         self.btn_help_icons.setCheckable(True)
         self.btn_help_icons.setAutoExclusive(True)
@@ -2002,7 +1782,6 @@ class Ui_MainWindow(object):
         self.frame_manage_tool.setStyleSheet("QFrame{\n"
 "border:none;\n"
 "border-radius:8px;\n"
-"background-color: rgb(255, 255, 255);\n"
 "}")
         self.frame_manage_tool.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_manage_tool.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -2049,9 +1828,9 @@ class Ui_MainWindow(object):
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(108, 213, 194);\n"
 "}")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/icons/png/icons8-refresh-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_refresh.setIcon(icon13)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/icons/png/icons8-refresh-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_refresh.setIcon(icon10)
         self.btn_refresh.setCheckable(True)
         self.btn_refresh.setAutoExclusive(True)
         self.btn_refresh.setObjectName("btn_refresh")
@@ -2096,9 +1875,9 @@ class Ui_MainWindow(object):
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(255, 94, 164);\n"
 "}")
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(":/icons/png/icons8-add-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_add.setIcon(icon14)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/icons/png/icons8-add-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_add.setIcon(icon11)
         self.btn_add.setCheckable(True)
         self.btn_add.setAutoExclusive(True)
         self.btn_add.setObjectName("btn_add")
@@ -2122,6 +1901,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.btn_proxy.setFont(font)
         self.btn_proxy.setStyleSheet("QPushButton{\n"
+"color: rgb(87, 87, 179);\n"
 "border:none;\n"
 "border-radius:5px;\n"
 "border: 1px gray #6bd4c1 ;\n"
@@ -2129,19 +1909,21 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{\n"
 "border:none;\n"
+"color: rgb(87, 87, 179);\n"
 "border-radius:5px;\n"
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(222, 222, 222);\n"
 "}\n"
 "QPushButton:checked{\n"
 "border:none;\n"
+"color: rgb(87, 87, 179);\n"
 "border-radius:5px;\n"
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(222, 222, 222);\n"
 "}")
-        icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(":/icons/png/icons8-low-connection-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_proxy.setIcon(icon15)
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/icons/png/icons8-low-connection-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_proxy.setIcon(icon12)
         self.btn_proxy.setIconSize(QtCore.QSize(17, 17))
         self.btn_proxy.setCheckable(True)
         self.btn_proxy.setAutoExclusive(True)
@@ -2187,9 +1969,9 @@ class Ui_MainWindow(object):
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(126, 113, 230);\n"
 "}")
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(":/icons/png/icons8-realtime-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_plan_tool.setIcon(icon16)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/icons/png/icons8-realtime-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_plan_tool.setIcon(icon13)
         self.btn_plan_tool.setCheckable(True)
         self.btn_plan_tool.setAutoExclusive(True)
         self.btn_plan_tool.setObjectName("btn_plan_tool")
@@ -2232,9 +2014,9 @@ class Ui_MainWindow(object):
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(240, 126, 141);\n"
 "}")
-        icon17 = QtGui.QIcon()
-        icon17.addPixmap(QtGui.QPixmap(":/icons/png/icons8-x-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_delete.setIcon(icon17)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/icons/png/icons8-x-96.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_delete.setIcon(icon14)
         self.btn_delete.setCheckable(True)
         self.btn_delete.setAutoExclusive(True)
         self.btn_delete.setObjectName("btn_delete")
@@ -2275,9 +2057,9 @@ class Ui_MainWindow(object):
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(195, 238, 125);\n"
 "}")
-        icon18 = QtGui.QIcon()
-        icon18.addPixmap(QtGui.QPixmap(":/icons/png/icons8-delete-24.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_bin.setIcon(icon18)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/icons/png/icons8-delete-24.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_bin.setIcon(icon15)
         self.btn_bin.setCheckable(True)
         self.btn_bin.setAutoExclusive(True)
         self.btn_bin.setObjectName("btn_bin")
@@ -2285,19 +2067,33 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21.addWidget(self.frame_31, 0, QtCore.Qt.AlignLeft)
         self.horizontalLayout_31.addWidget(self.frame_manage_tool, 0, QtCore.Qt.AlignLeft)
         self.frame_status_manage = QtWidgets.QFrame(self.frame_manage_main)
-        self.frame_status_manage.setMinimumSize(QtCore.QSize(300, 0))
+        self.frame_status_manage.setMinimumSize(QtCore.QSize(250, 0))
+        self.frame_status_manage.setMaximumSize(QtCore.QSize(16777215, 200))
         self.frame_status_manage.setStyleSheet("QFrame{\n"
 "border:none;\n"
 "border-radius:8px;\n"
-"    background-color: rgb(255, 255, 255);\n"
 "}")
         self.frame_status_manage.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_status_manage.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_status_manage.setObjectName("frame_status_manage")
         self.horizontalLayout_32 = QtWidgets.QHBoxLayout(self.frame_status_manage)
-        self.horizontalLayout_32.setContentsMargins(20, 0, 10, 0)
-        self.horizontalLayout_32.setSpacing(10)
+        self.horizontalLayout_32.setContentsMargins(0, 5, 0, 0)
+        self.horizontalLayout_32.setSpacing(5)
         self.horizontalLayout_32.setObjectName("horizontalLayout_32")
+        self.frame_36 = QtWidgets.QFrame(self.frame_status_manage)
+        self.frame_36.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_36.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_36.setObjectName("frame_36")
+        self.horizontalLayout_34 = QtWidgets.QHBoxLayout(self.frame_36)
+        self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_34.setSpacing(0)
+        self.horizontalLayout_34.setObjectName("horizontalLayout_34")
+        self.frame_37 = QtWidgets.QFrame(self.frame_36)
+        self.frame_37.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_37.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_37.setObjectName("frame_37")
+        self.horizontalLayout_34.addWidget(self.frame_37)
+        self.horizontalLayout_32.addWidget(self.frame_36)
         self.frame_35 = QtWidgets.QFrame(self.frame_status_manage)
         self.frame_35.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_35.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -2307,9 +2103,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33.setSpacing(0)
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.frame_39 = QtWidgets.QFrame(self.frame_35)
-        self.frame_39.setMinimumSize(QtCore.QSize(25, 25))
-        self.frame_39.setMaximumSize(QtCore.QSize(25, 25))
-        self.frame_39.setStyleSheet("border-image: url(:/icons/png/icons8-facebook-240.png);")
+        self.frame_39.setMinimumSize(QtCore.QSize(15, 15))
+        self.frame_39.setMaximumSize(QtCore.QSize(15, 15))
+        self.frame_39.setStyleSheet("border-image: url(:/icons/png/icons8-total-sales-30.png);")
         self.frame_39.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_39.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_39.setObjectName("frame_39")
@@ -2345,49 +2141,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.label_total)
         self.horizontalLayout_33.addWidget(self.frame_38)
         self.horizontalLayout_32.addWidget(self.frame_35)
-        self.frame_36 = QtWidgets.QFrame(self.frame_status_manage)
-        self.frame_36.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_36.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_36.setObjectName("frame_36")
-        self.horizontalLayout_34 = QtWidgets.QHBoxLayout(self.frame_36)
-        self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_34.setSpacing(0)
-        self.horizontalLayout_34.setObjectName("horizontalLayout_34")
-        self.frame_41 = QtWidgets.QFrame(self.frame_36)
-        self.frame_41.setMinimumSize(QtCore.QSize(25, 25))
-        self.frame_41.setMaximumSize(QtCore.QSize(25, 25))
-        self.frame_41.setStyleSheet("border-image: url(:/icons/png/icons8-table-96.png);")
-        self.frame_41.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_41.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_41.setObjectName("frame_41")
-        self.horizontalLayout_34.addWidget(self.frame_41)
-        self.frame_40 = QtWidgets.QFrame(self.frame_36)
-        self.frame_40.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_40.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_40.setObjectName("frame_40")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_40)
-        self.verticalLayout_10.setContentsMargins(5, 0, 0, 0)
-        self.verticalLayout_10.setSpacing(0)
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.label_5 = QtWidgets.QLabel(self.frame_40)
-        font = QtGui.QFont()
-        font.setFamily("MesloLGMDZ Nerd Font")
-        self.label_5.setFont(font)
-        self.label_5.setStyleSheet("color: rgb(115, 115, 115);")
-        self.label_5.setObjectName("label_5")
-        self.verticalLayout_10.addWidget(self.label_5)
-        self.label_checked = QtWidgets.QLabel(self.frame_40)
-        font = QtGui.QFont()
-        font.setFamily("MesloLGS Nerd Font")
-        font.setBold(True)
-        font.setItalic(True)
-        font.setWeight(75)
-        self.label_checked.setFont(font)
-        self.label_checked.setStyleSheet("color: rgb(98, 73, 177);")
-        self.label_checked.setObjectName("label_checked")
-        self.verticalLayout_10.addWidget(self.label_checked)
-        self.horizontalLayout_34.addWidget(self.frame_40)
-        self.horizontalLayout_32.addWidget(self.frame_36)
         self.frame_42 = QtWidgets.QFrame(self.frame_status_manage)
         self.frame_42.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_42.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -2397,8 +2150,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.setSpacing(0)
         self.horizontalLayout_35.setObjectName("horizontalLayout_35")
         self.frame_43 = QtWidgets.QFrame(self.frame_42)
-        self.frame_43.setMinimumSize(QtCore.QSize(25, 25))
-        self.frame_43.setMaximumSize(QtCore.QSize(25, 25))
+        self.frame_43.setMinimumSize(QtCore.QSize(15, 15))
+        self.frame_43.setMaximumSize(QtCore.QSize(15, 15))
         self.frame_43.setStyleSheet("border-image: url(:/icons/png/icons8-lightning-100.png);")
         self.frame_43.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_43.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -2439,8 +2192,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_36.setSpacing(0)
         self.horizontalLayout_36.setObjectName("horizontalLayout_36")
         self.frame_46 = QtWidgets.QFrame(self.frame_45)
-        self.frame_46.setMinimumSize(QtCore.QSize(25, 25))
-        self.frame_46.setMaximumSize(QtCore.QSize(30, 30))
+        self.frame_46.setMinimumSize(QtCore.QSize(15, 15))
+        self.frame_46.setMaximumSize(QtCore.QSize(15, 15))
         self.frame_46.setSizeIncrement(QtCore.QSize(0, 0))
         self.frame_46.setStyleSheet("border-image: url(:/icons/png/icons8-checked-24.png);")
         self.frame_46.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -2476,11 +2229,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.label_live_num)
         self.horizontalLayout_36.addWidget(self.frame_47)
         self.horizontalLayout_32.addWidget(self.frame_45)
-        self.frame_37 = QtWidgets.QFrame(self.frame_status_manage)
-        self.frame_37.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_37.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_37.setObjectName("frame_37")
-        self.horizontalLayout_32.addWidget(self.frame_37)
         self.horizontalLayout_31.addWidget(self.frame_status_manage, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_8.addWidget(self.frame_manage_main)
         self.frame_tool_two = QtWidgets.QFrame(self.HomePage)
@@ -2706,40 +2454,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_42.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_42.setSpacing(0)
         self.horizontalLayout_42.setObjectName("horizontalLayout_42")
-        self.btn_start = QtWidgets.QPushButton(self.frame_50)
-        self.btn_start.setMinimumSize(QtCore.QSize(80, 25))
-        self.btn_start.setMaximumSize(QtCore.QSize(80, 20))
-        font = QtGui.QFont()
-        font.setFamily("MesloLGSDZ Nerd Font")
-        font.setBold(True)
-        font.setWeight(75)
-        self.btn_start.setFont(font)
-        self.btn_start.setStyleSheet("QPushButton{\n"
-"border:none;\n"
-"border-radius:5px;\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px gray #6bd4c1 ;\n"
-"background-color: rgb(101, 200, 182);\n"
-"}\n"
-"QPushButton:hover{\n"
-"border:none;\n"
-"border-radius:5px;\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px gray #6bd4c1 ;\n"
-"background-color: rgb(108, 213, 194);\n"
-"border: 1px solid #6bd4c1 ;\n"
-"}QPushButton:checked{\n"
-"border:none;\n"
-"border-radius:5px;\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px gray #6bd4c1 ;\n"
-"}")
-        icon19 = QtGui.QIcon()
-        icon19.addPixmap(QtGui.QPixmap(":/icons/png/icons8-play-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_start.setIcon(icon19)
-        self.btn_start.setIconSize(QtCore.QSize(20, 20))
-        self.btn_start.setObjectName("btn_start")
-        self.horizontalLayout_42.addWidget(self.btn_start, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_39.addWidget(self.frame_50, 0, QtCore.Qt.AlignRight)
         self.frame_51 = QtWidgets.QFrame(self.frame_tool_right)
         self.frame_51.setMinimumSize(QtCore.QSize(50, 0))
@@ -2755,27 +2469,28 @@ class Ui_MainWindow(object):
         self.btn_setting.setMaximumSize(QtCore.QSize(40, 16777215))
         self.btn_setting.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:5px;\n"
+"border-radius:10px;\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px gray #6bd4c1 ;\n"
 "}\n"
 "QPushButton:hover{\n"
 "border:none;\n"
-"border-radius:5px;\n"
+"border-radius:10px;\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px gray #6bd4c1 ;\n"
 "    background-color: rgb(229, 255, 251);\n"
-"}QPushButton:checked{\n"
+"}\n"
+"QPushButton:checked{\n"
 "border:none;\n"
-"border-radius:5px;\n"
+"border-radius:10px;\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px gray #6bd4c1 ;\n"
 "background-color: rgb(108, 213, 194);\n"
 "}")
         self.btn_setting.setText("")
-        icon20 = QtGui.QIcon()
-        icon20.addPixmap(QtGui.QPixmap(":/icons/png/icons8-setting-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_setting.setIcon(icon20)
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/icons/png/icons8-setting-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_setting.setIcon(icon16)
         self.btn_setting.setIconSize(QtCore.QSize(20, 20))
         self.btn_setting.setObjectName("btn_setting")
         self.horizontalLayout_41.addWidget(self.btn_setting)
@@ -2797,14 +2512,14 @@ class Ui_MainWindow(object):
         self.line_search.setStyleSheet("QLineEdit{\n"
 "border:none;\n"
 "border-radius:5px;\n"
-"border: 1px solid #dddddd;\n"
+"border: 1px solid #d4d7ff;\n"
 "padding:5px;\n"
 "}\n"
 "QLineEdit:hover{\n"
 "border:none;\n"
 "border-radius:5px;\n"
-"border: 1px solid #dddddd;\n"
-"    background-color: rgb(240, 255, 255);\n"
+"    background-color: rgb(242, 255, 251);\n"
+"border: 1px solid #dacbff;\n"
 "padding:5px;\n"
 "}")
         self.line_search.setObjectName("line_search")
@@ -2957,19 +2672,13 @@ class Ui_MainWindow(object):
         self.btn_booking.toggled['bool'].connect(self.btn_booking_icons.setChecked) # type: ignore
         self.btn_file_custom.toggled['bool'].connect(self.btn_file_custom_icons.setChecked) # type: ignore
         self.btn_user.toggled['bool'].connect(self.btn_user_icons.setChecked) # type: ignore
-        self.btn_action.toggled['bool'].connect(self.btn_action_icons.setChecked) # type: ignore
         self.btn_history.toggled['bool'].connect(self.btn_history_icons.setChecked) # type: ignore
-        self.btn_what_new.toggled['bool'].connect(self.btn_what_new_icons.setChecked) # type: ignore
-        self.btn_license.toggled['bool'].connect(self.btn_license_icons.setChecked) # type: ignore
         self.btn_help.toggled['bool'].connect(self.btn_help_icons.setChecked) # type: ignore
         self.btn_hide_icons.toggled['bool'].connect(self.btn_hide.setChecked) # type: ignore
         self.btn_banking_icons.toggled['bool'].connect(self.btn_banking.setChecked) # type: ignore
         self.btn_file_custom_icons.toggled['bool'].connect(self.btn_file_custom.setChecked) # type: ignore
         self.btn_user_icons.toggled['bool'].connect(self.btn_user.setChecked) # type: ignore
-        self.btn_action_icons.toggled['bool'].connect(self.btn_action.setChecked) # type: ignore
         self.btn_history_icons.toggled['bool'].connect(self.btn_history.setChecked) # type: ignore
-        self.btn_what_new_icons.toggled['bool'].connect(self.btn_what_new.setChecked) # type: ignore
-        self.btn_license_icons.toggled['bool'].connect(self.btn_license.setChecked) # type: ignore
         self.btn_help_icons.toggled['bool'].connect(self.btn_help.setChecked) # type: ignore
         self.btn_booking_icons.toggled['bool'].connect(self.btn_booking.setChecked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -2986,10 +2695,7 @@ class Ui_MainWindow(object):
         self.btn_file_custom.setText(_translate("MainWindow", "      TỆP TIN"))
         self.label_2.setText(_translate("MainWindow", "MANAGE"))
         self.btn_user.setText(_translate("MainWindow", "      TÀI KHOẢN"))
-        self.btn_action.setText(_translate("MainWindow", "      KỊCH BẢN"))
         self.btn_history.setText(_translate("MainWindow", "      LỊCH SỬ"))
-        self.btn_what_new.setText(_translate("MainWindow", "                What\'s New"))
-        self.btn_license.setText(_translate("MainWindow", "                License"))
         self.btn_help.setText(_translate("MainWindow", "                Help"))
         self.label_8.setText(_translate("MainWindow", "OVERVIEW"))
         self.label_10.setText(_translate("MainWindow", "MANAGE"))
@@ -3001,8 +2707,6 @@ class Ui_MainWindow(object):
         self.btn_bin.setText(_translate("MainWindow", "THÙNG RÁC"))
         self.label_3.setText(_translate("MainWindow", "Tổng"))
         self.label_total.setText(_translate("MainWindow", "None"))
-        self.label_5.setText(_translate("MainWindow", "Đã chọn"))
-        self.label_checked.setText(_translate("MainWindow", "None"))
         self.label_7.setText(_translate("MainWindow", "Đang chạy"))
         self.label_runned.setText(_translate("MainWindow", "None"))
         self.label_9.setText(_translate("MainWindow", "Live"))
@@ -3011,7 +2715,6 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Account Type"))
         self.ComboBoxTypeAccount.setItemText(0, _translate("MainWindow", "Facebook"))
         self.ComboBoxTypeAccount.setItemText(1, _translate("MainWindow", "Instagram"))
-        self.btn_start.setText(_translate("MainWindow", "RUN"))
         self.line_search.setPlaceholderText(_translate("MainWindow", "Tìm kiếm"))
 import icons
 

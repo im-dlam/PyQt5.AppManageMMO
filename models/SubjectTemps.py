@@ -8,10 +8,9 @@ class ObjectTemp(WindowInterface):
     # danh sách các nút text ở menu
     def TempsButtonTextWidgets(self , widgets):
         return [
-            widgets.btn_action , widgets.btn_banking , widgets.btn_booking ,
-            widgets.btn_file_custom , widgets.btn_help , widgets.btn_hide  , 
-            widgets.btn_license  , widgets.btn_history,
-            widgets.btn_what_new , widgets.btn_user,
+             widgets.btn_banking , widgets.btn_booking ,
+            widgets.btn_file_custom , widgets.btn_help , widgets.btn_hide , widgets.btn_history,
+             widgets.btn_user,
             # ///////////////////////////////////////
             # button_icons
             ]
@@ -26,10 +25,10 @@ class ObjectTemp(WindowInterface):
     # ////////////////////////////////////
     # danh sách các nút icon menu 
     def TempsButtonIconsWidgets(self , widgets):
-        return [widgets.btn_action_icons , widgets.btn_banking_icons , widgets.btn_booking_icons ,
+        return [widgets.btn_banking_icons , widgets.btn_booking_icons ,
             widgets.btn_file_custom_icons , widgets.btn_help_icons  , widgets.btn_hide_icons,
-            widgets.btn_license_icons  , widgets.btn_history_icons,
-            widgets.btn_what_new_icons , widgets.btn_user_icons]
+            widgets.btn_history_icons,
+             widgets.btn_user_icons]
     
     def TempsComboBoxAddItems(self,window_widgets):
         return [window_widgets.combox_1 , window_widgets.combox_2 , window_widgets.combox_3,

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-total-sales-30.png</file>
     <file>png/icons8-toggle-on-48.png</file>
     <file>logo/icons.png</file>
     <file>png/icons8-toggle-off-48.png</file>
@@ -29,7 +30,6 @@
     <file>png/icons8-delete-24.png</file>
     <file>png/icons8-delete-96.png</file>
     <file>png/icons8-drag-list-down-24.png</file>
-    <file>png/icons8-facebook-240.png</file>
     <file>png/icons8-file-256.png</file>
     <file>png/icons8-file-256_dark.png</file>
     <file>png/icons8-help-64.png</file>
@@ -45,7 +45,6 @@
     <file>png/icons8-refresh-96.png</file>
     <file>png/icons8-search-64.png</file>
     <file>png/icons8-setting-100.png</file>
-    <file>png/icons8-table-96.png</file>
     <file>png/icons8-task-64.png</file>
     <file>png/icons8-task-64_dark.png</file>
     <file>png/icons8-user-96.png</file>

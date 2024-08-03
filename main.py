@@ -247,7 +247,7 @@ class WindowInterface(QMainWindow):
     # GUI thêm dữ liệu
     def window_additem(self):
         # code sql/300
-        # self.ShowOverLay()
+        self.ShowOverLay()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
         # if Namecategory == "ALL":
