@@ -2641,7 +2641,7 @@ class Ui_MainWindow(object):
         self.TableManage.setRowCount(0)
         self.TableManage.setColumnCount(0)
         self.TableManage.setObjectName("TableManage")
-        self.TableManage.horizontalHeader().setVisible(True)
+        self.TableManage.horizontalHeader().setVisible(False)
         self.TableManage.horizontalHeader().setCascadingSectionResizes(False)
         self.TableManage.horizontalHeader().setHighlightSections(True)
         self.TableManage.horizontalHeader().setMinimumSectionSize(50)
@@ -2659,6 +2659,329 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.HomePage)
         self.PlanPage = QtWidgets.QWidget()
         self.PlanPage.setObjectName("PlanPage")
+        self.horizontalLayout_56 = QtWidgets.QHBoxLayout(self.PlanPage)
+        self.horizontalLayout_56.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_56.setSpacing(0)
+        self.horizontalLayout_56.setObjectName("horizontalLayout_56")
+        self.frame_7 = QtWidgets.QFrame(self.PlanPage)
+        self.frame_7.setStyleSheet("background-color: rgb(249, 242, 250);")
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_7)
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.frame_41 = QtWidgets.QFrame(self.frame_7)
+        self.frame_41.setMinimumSize(QtCore.QSize(0, 20))
+        self.frame_41.setStyleSheet("QFrame#frame_41{\n"
+"padding:5px;\n"
+"}\n"
+"QPushButton{\n"
+"border:none;\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"background-color: rgb(219, 255, 243);\n"
+"border-radius:5px;\n"
+"}")
+        self.frame_41.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_41.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_41.setObjectName("frame_41")
+        self.horizontalLayout_62 = QtWidgets.QHBoxLayout(self.frame_41)
+        self.horizontalLayout_62.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_62.setSpacing(0)
+        self.horizontalLayout_62.setObjectName("horizontalLayout_62")
+        self.frame_68 = QtWidgets.QFrame(self.frame_41)
+        self.frame_68.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_68.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_68.setObjectName("frame_68")
+        self.horizontalLayout_58 = QtWidgets.QHBoxLayout(self.frame_68)
+        self.horizontalLayout_58.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_58.setSpacing(0)
+        self.horizontalLayout_58.setObjectName("horizontalLayout_58")
+        self.frame_72 = QtWidgets.QFrame(self.frame_68)
+        self.frame_72.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_72.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_72.setObjectName("frame_72")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.frame_72)
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_20.setSpacing(0)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.btn_back = QtWidgets.QPushButton(self.frame_72)
+        self.btn_back.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"background-color: rgb(219, 255, 243);\n"
+"border-radius:5px;\n"
+"}")
+        self.btn_back.setText("")
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/icons/png/icons8-left-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_back.setIcon(icon17)
+        self.btn_back.setIconSize(QtCore.QSize(30, 20))
+        self.btn_back.setObjectName("btn_back")
+        self.verticalLayout_20.addWidget(self.btn_back)
+        self.horizontalLayout_58.addWidget(self.frame_72, 0, QtCore.Qt.AlignLeft)
+        self.label_5 = QtWidgets.QLabel(self.frame_68)
+        font = QtGui.QFont()
+        font.setFamily("MesloLGSDZ Nerd Font")
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("color: rgb(126, 126, 126);")
+        self.label_5.setText("")
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_58.addWidget(self.label_5)
+        self.horizontalLayout_62.addWidget(self.frame_68)
+        self.frame_69 = QtWidgets.QFrame(self.frame_41)
+        self.frame_69.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_69.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_69.setObjectName("frame_69")
+        self.horizontalLayout_61 = QtWidgets.QHBoxLayout(self.frame_69)
+        self.horizontalLayout_61.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_61.setSpacing(0)
+        self.horizontalLayout_61.setObjectName("horizontalLayout_61")
+        self.frame_73 = QtWidgets.QFrame(self.frame_69)
+        self.frame_73.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_73.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_73.setObjectName("frame_73")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.frame_73)
+        self.verticalLayout_21.setContentsMargins(0, 0, 25, 0)
+        self.verticalLayout_21.setSpacing(0)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.pushButton = QtWidgets.QPushButton(self.frame_73)
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"background-color: rgb(219, 255, 243);\n"
+"border-radius:5px;\n"
+"}")
+        self.pushButton.setText("")
+        self.pushButton.setIcon(icon16)
+        self.pushButton.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_21.addWidget(self.pushButton)
+        self.horizontalLayout_61.addWidget(self.frame_73, 0, QtCore.Qt.AlignRight)
+        self.horizontalLayout_62.addWidget(self.frame_69)
+        self.verticalLayout_10.addWidget(self.frame_41)
+        self.frame_40 = QtWidgets.QFrame(self.frame_7)
+        self.frame_40.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_40.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_40.setObjectName("frame_40")
+        self.horizontalLayout_57 = QtWidgets.QHBoxLayout(self.frame_40)
+        self.horizontalLayout_57.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_57.setSpacing(0)
+        self.horizontalLayout_57.setObjectName("horizontalLayout_57")
+        self.scrollArea_3 = QtWidgets.QScrollArea(self.frame_40)
+        self.scrollArea_3.setStyleSheet("background-color: rgb(249, 242, 250);")
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollArea_3.setObjectName("scrollArea_3")
+        self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 1118, 635))
+        self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.frame_74 = QtWidgets.QFrame(self.scrollAreaWidgetContents_3)
+        self.frame_74.setStyleSheet("")
+        self.frame_74.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_74.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_74.setObjectName("frame_74")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.frame_74)
+        self.verticalLayout_22.setContentsMargins(10, 0, 10, 0)
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.tabWidget = QtWidgets.QTabWidget(self.frame_74)
+        self.tabWidget.setStyleSheet(" QTabWidget::pane {\n"
+"                font-weight: bold;\n"
+"                color: rgb(255, 255, 255);\n"
+"                border: 1px solid  rgb(225, 229, 255);\n"
+"                background-color: rgb(253, 247, 255);\n"
+"                border-radius:3px;\n"
+"                border:none;\n"
+"            }\n"
+" QTabBar::tab {\n"
+"                background-color: rgb(253, 247, 255);\n"
+"                color: rgb(107, 125, 179);\n"
+"                padding: 10px;\n"
+"                font-weight: bold;\n"
+"                border-bottom: none;\n"
+"                min-width: 100px;\n"
+"            }\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"                border:none;\n"
+"                background-color: rgb(253, 247, 255);\n"
+"                color: rgb(107, 125, 179);\n"
+"                font-weight: bold;\n"
+"                border-bottom:2px  solid rgb(79, 181, 178);\n"
+"            }\n"
+"\n"
+"QTabBar::tab:hover {\n"
+"                background-color: rgb(253, 247, 255);\n"
+"                color: rgb(107, 125, 179);    \n"
+"                border-radius:3px;\n"
+"            }\n"
+"\n"
+"QComboBox {\n"
+"   background-color: rgb(253, 247, 255);\n"
+"    border: none;\n"
+"    color: rgb(90, 104, 139);\n"
+"}\n"
+"\n"
+"QFrame#frame {\n"
+"    border: 1px solid #e6e2ff;\n"
+"    color: rgb(230, 226, 255);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QFrame#frame:hover {\n"
+"    border: 1px solid #d3daff ;\n"
+"    border-radius: 4px;\n"
+"    background-color: rgb(246, 239, 255);\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 10px; \n"
+"    border-left-color: #788dca;\n"
+"    border-left-style: solid;\n"
+"    color: rgb(85, 98, 131);\n"
+"    border-top-right-radius: 2px;\n"
+"    border-bottom-right-radius: 3px;    \n"
+"    image: url(:/icons/png/cil-arrow-bottom.png);\n"
+"    background-position: center;\n"
+"    background-repeat: no-repeat;\n"
+"    border-radius: 4px;\n"
+"   margin-left: -4px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"   background-color: rgb(253, 247, 255);\n"
+"    color: rgb(85, 98, 131);\n"
+"    border: none; /* No border */\n"
+"     selection-background-color: #e0e3f7;\n"
+"    selection-color: rgb(85, 98, 131); /* Selected item text color */\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::item {\n"
+"    background-color: transparent; /* Ensure background is transparent */\n"
+"   color: rgb(85, 98, 131); /* White text color */\n"
+"    border-radius: 4px; /* Apply rounded borders */\n"
+"}\n"
+"\n"
+"QComboBox::item:selected {\n"
+"    background-color: rgb(190, 190, 190); /* Light background on selection */\n"
+"    color: rgb(255, 255, 255); /* Maintain text color */\n"
+"    border-radius: 4px; /* Ensure rounded borders are applied */\n"
+"}\n"
+"\n"
+"QComboBox::item:focus {\n"
+"    outline: none; /* Remove focus outline */\n"
+"}\n"
+"\n"
+"\n"
+" QScrollBar:horizontal {\n"
+"                border: none;\n"
+"               background-color: rgb(150, 173, 232);\n"
+"                height: 5px;\n"
+"                margin: 0px 0px 0 0px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar:horizontal {\n"
+"                border: none;\n"
+"            background-color: rgb(150, 173, 232);\n"
+"\n"
+"                height: 3px;\n"
+"                margin: 0px 0px 0 0px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::handle:horizontal {\n"
+"                 background-color: rgb(105, 122, 163);\n"
+"               \n"
+"                min-width: 2px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::add-line:horizontal {\n"
+"                border: none;\n"
+"                width: 0px;\n"
+"                background-color: none;\n"
+"            }\n"
+"            QScrollBar::sub-line:horizontal {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                width: 0px;\n"
+"            }\n"
+"            QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar:vertical {\n"
+"                border: none;\n"
+"                background-color: rgb(105, 122, 163);\n"
+"\n"
+"                width: 3px;\n"
+"                margin: 0px 0 0px 0;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::handle:vertical {\n"
+"                background-color: rgb(150, 173, 232);\n"
+"                min-height: 5px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::add-line:vertical {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                height: 0px;\n"
+"            }\n"
+"            QScrollBar::sub-line:vertical {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                height: 0px;\n"
+"            }\n"
+"            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"                background: none;\n"
+"            }")
+        self.tabWidget.setObjectName("tabWidget")
+        self.TabFacebook = QtWidgets.QWidget()
+        self.TabFacebook.setObjectName("TabFacebook")
+        self.horizontalLayout_59 = QtWidgets.QHBoxLayout(self.TabFacebook)
+        self.horizontalLayout_59.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_59.setSpacing(0)
+        self.horizontalLayout_59.setObjectName("horizontalLayout_59")
+        self.WidgetFacebook = QtWidgets.QListWidget(self.TabFacebook)
+        self.WidgetFacebook.setObjectName("WidgetFacebook")
+        self.horizontalLayout_59.addWidget(self.WidgetFacebook)
+        self.tabWidget.addTab(self.TabFacebook, "")
+        self.TabIG = QtWidgets.QWidget()
+        self.TabIG.setObjectName("TabIG")
+        self.horizontalLayout_60 = QtWidgets.QHBoxLayout(self.TabIG)
+        self.horizontalLayout_60.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_60.setSpacing(0)
+        self.horizontalLayout_60.setObjectName("horizontalLayout_60")
+        self.WidgetIG = QtWidgets.QListWidget(self.TabIG)
+        self.WidgetIG.setObjectName("WidgetIG")
+        self.horizontalLayout_60.addWidget(self.WidgetIG)
+        self.tabWidget.addTab(self.TabIG, "")
+        self.verticalLayout_22.addWidget(self.tabWidget)
+        self.verticalLayout_23.addWidget(self.frame_74)
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+        self.horizontalLayout_57.addWidget(self.scrollArea_3)
+        self.verticalLayout_10.addWidget(self.frame_40)
+        self.horizontalLayout_56.addWidget(self.frame_7)
         self.stackedWidget.addWidget(self.PlanPage)
         self.verticalLayout_7.addWidget(self.stackedWidget)
         self.horizontalLayout_6.addWidget(self.main_screen)
@@ -2667,6 +2990,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
         self.btn_hide.toggled['bool'].connect(self.btn_hide_icons.setChecked) # type: ignore
         self.btn_banking.toggled['bool'].connect(self.btn_banking_icons.setChecked) # type: ignore
         self.btn_booking.toggled['bool'].connect(self.btn_booking_icons.setChecked) # type: ignore
@@ -2716,6 +3041,8 @@ class Ui_MainWindow(object):
         self.ComboBoxTypeAccount.setItemText(0, _translate("MainWindow", "Facebook"))
         self.ComboBoxTypeAccount.setItemText(1, _translate("MainWindow", "Instagram"))
         self.line_search.setPlaceholderText(_translate("MainWindow", "Tìm kiếm"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabFacebook), _translate("MainWindow", "FACEBOOK"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabIG), _translate("MainWindow", "INSTAGRAM"))
 import icons
 
 

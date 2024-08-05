@@ -321,7 +321,8 @@ class CustomMenu(QMenu):
     def showEvent(self, event):
         super().showEvent(event)
         self.setStyleSheet(QMenuRighClickTable)
-# Tạo button trong horizontal
+
+
 class CustomHeaderHorizontal(QHeaderView):
     def __init__(self, parent=None):
         super(CustomHeaderHorizontal, self).__init__(Qt.Horizontal, parent)

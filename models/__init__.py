@@ -11,10 +11,12 @@ from . Ui_Functions import *
 from . SubjectTools import *
 from . SubjectNotifications import *
 from . SubjectQtables import *
+from . QListWidget import *
 
 from . SubjectTemps import *
 from . SubjectTime import *
 from . SubjectScrips import *
+
 
 from . sql import *
 from . SubjectFileName import *

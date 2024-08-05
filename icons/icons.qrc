@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-dot-24_live.png</file>
+    <file>png/icons8-dot-24_red.png</file>
+    <file>png/icons8-facebook-48.png</file>
+    <file>png/icons8-left-48.png</file>
     <file>png/icons8-total-sales-30.png</file>
     <file>png/icons8-toggle-on-48.png</file>
     <file>logo/icons.png</file>

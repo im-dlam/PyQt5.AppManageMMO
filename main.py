@@ -36,7 +36,7 @@ class WindowInterface(QMainWindow):
 
         # //////////////////////////////////////
         # Tự động dịch chuyển thanh thông báo phù hợp khi phóng to , thu nhỏ ứng dụng
-        self.resizeEvent = self._on_resize
+        self.resizeEvent_ = self._on_resize
         # /////////////////////////////////////////////////////////////
         # button list array
 
@@ -193,8 +193,20 @@ class WindowInterface(QMainWindow):
         # load lại dữ liệu
         widgets.btn_refresh.clicked.connect(self.ComboboxFileActivedConnect)
 
+        # //////////////
+        # cài dặt kịch bản
+        
+        widgets.btn_plan_tool.clicked.connect(self.WidgetFrameScheme)
 
+        widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
+    def SwapWidgetFrameHome(self):
+        widgets.stackedWidget.setCurrentWidget(widgets.HomePage)
+    
 
+    def WidgetFrameScheme(self):
+        widgets.stackedWidget.setCurrentWidget(widgets.PlanPage)
+
+        SubjectQList.ShowCardItems(self , widgets)
     # ///////////////////////////////////////////////
     # Xóa thanh tiêu đề và xử lý di chuyển
     def RemoveWindowFlags(self):
@@ -435,6 +447,7 @@ class WindowInterface(QMainWindow):
     def resizeEvent(self, event):
         super().resizeEvent(event)
         rect = widgets.centralwidget.rect()
+        SubjectQList.ShowCardItems(self , widgets)
         grip_width = 7  # Độ rộng của EdgeGrip
         self.left_grip.setGeometry(0, 0, grip_width, rect.height())
         self.right_grip.setGeometry(rect.width() - grip_width, 0, grip_width, rect.height())
