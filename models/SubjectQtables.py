@@ -85,7 +85,7 @@ class QTableTools(WindowInterface):
         # màu của chữ
         item.setForeground(color) 
         # ////////////////////////////
-        item.setBackground(QColor(255, 255, 255, 255))
+        item.setBackground(QColor(38, 49, 98))
         item.setTextAlignment(Qt.AlignCenter | Qt.AlignLeft | Qt.AlignVCenter)
         return item
     
@@ -218,7 +218,7 @@ class HeaderCheckboxWidget(QWidget):
         # chỉnh màu cho cùng với màu của các header
         # phần còn lại các cột khác ở trong css TableManage
         self.setStyleSheet("""               
-            background-color: rgb(225, 224, 255);
+            background-color: rgb(38, 49, 98);
             border-radius:5px;
                            """)
         layout.addWidget(self.checkbox)

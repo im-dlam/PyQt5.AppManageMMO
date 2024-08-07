@@ -1,47 +1,43 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-task-48_dark.png</file>
+    <file>png/icons8-task-48.png</file>
+    <file>png/icons8-x-24_green.png</file>
+    <file>png/icons8-info-30_dark.png</file>
+    <file>png/icons8-info-30.png</file>
+    <file>png/icons8-cloud-clock-24_dark.png</file>
+    <file>png/icons8-cloud-clock-24.png</file>
+    <file>png/icons8-find-user-male-48_dark.png</file>
+    <file>png/icons8-find-user-male-48.png</file>
+    <file>png/icons8-code-file-48_dark.png</file>
+    <file>png/icons8-code-file-48.png</file>
+    <file>png/icons8-product-24 _dark.png</file>
+    <file>png/icons8-product-24.png</file>
+    <file>png/icons8-visa-48_dark.png</file>
     <file>png/icons8-dot-24_live.png</file>
     <file>png/icons8-dot-24_red.png</file>
+    <file>gif/icons8-todo-list.gif</file>
     <file>png/icons8-facebook-48.png</file>
     <file>png/icons8-left-48.png</file>
     <file>png/icons8-total-sales-30.png</file>
     <file>png/icons8-toggle-on-48.png</file>
     <file>logo/icons.png</file>
     <file>png/icons8-toggle-off-48.png</file>
-    <file>png/icons8-horizontal-line-48.png</file>
     <file>png/icons8-menu-24.png</file>
     <file>png/icons8-toggle-off-48.png</file>
     <file>png/icons8-toggle-on-48.png</file>
-    <file>png/icons8-maximize-96.png</file>
     <file>png/icons8-x-24_green.png</file>
-    <file>png/icons8-x-24.png</file>
     <file>png/307bf37h854go5dnvfc4nb4tbc.png</file>
-    <file>png/cancel_close_delete_icon.png</file>
     <file>png/e2537e3974afaef1f7be.jpg</file>
     <file>png/icons8-add-48.png</file>
     <file>png/icons8-bookmark-144.png</file>
     <file>png/icons8-bookmark-144_green.png</file>
-    <file>png/icons8-card-64.png</file>
-    <file>png/icons8-card-64_dark.png</file>
     <file>png/icons8-check-64.png</file>
     <file>png/icons8-checked-24.png</file>
-    <file>png/icons8-circled-menu-100.png</file>
-    <file>png/icons8-connect-150.png</file>
-    <file>png/icons8-connect-150_dark.png</file>
-    <file>png/icons8-connect-150_green.png</file>
-    <file>png/icons8-copyright-all-rights-reserved-96.png</file>
-    <file>png/icons8-copyright-all-rights-reserved-96_DARK.png</file>
+    <file>png/icons8-visa-48.png</file>
     <file>png/icons8-delete-24.png</file>
     <file>png/icons8-delete-96.png</file>
     <file>png/icons8-drag-list-down-24.png</file>
-    <file>png/icons8-file-256.png</file>
-    <file>png/icons8-file-256_dark.png</file>
-    <file>png/icons8-help-64.png</file>
-    <file>png/icons8-help-64_green.png</file>
-    <file>png/icons8-history-64.png</file>
-    <file>png/icons8-history-64_dark.png</file>
-    <file>png/icons8-laptop-alert-96.png</file>
-    <file>png/icons8-laptop-alert-96_green.png</file>
     <file>png/icons8-lightning-100.png</file>
     <file>png/icons8-low-connection-96.png</file>
     <file>png/icons8-play-48.png</file>
@@ -49,13 +45,10 @@
     <file>png/icons8-refresh-96.png</file>
     <file>png/icons8-search-64.png</file>
     <file>png/icons8-setting-100.png</file>
-    <file>png/icons8-task-64.png</file>
-    <file>png/icons8-task-64_dark.png</file>
-    <file>png/icons8-user-96.png</file>
-    <file>png/icons8-user-96_dark.png</file>
     <file>png/icons8-user-menu-female-24.png</file>
     <file>png/icons8-x-96.png</file>
-    <file>png/maximize_icon.png</file>
+    <file>png/icons8-minimize-24.png</file>
     <file>png/cil-arrow-bottom.png</file>
+    <file>png/icons8-maximize-24.png</file>
   </qresource>
 </RCC>

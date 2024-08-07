@@ -28,6 +28,7 @@ class WindowInterface(QMainWindow):
 
         # ///////////////////////////////
                                                 # Hiển thị trong centralwidget của app
+        self.setMinimumSize(QtCore.QSize(1270, 0))
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
 
         self.setWindowTitle("BetaLogin - Quản Lý Đa Nền Tảng Tài Khoản")
@@ -60,7 +61,7 @@ class WindowInterface(QMainWindow):
 
         # //////////////////////////////////////////////////////////////
         # Replace central widget with the custom one
-        widgets.centralwidget.setStyleSheet(central_script.format(10))
+        # widgets.centralwidget.setStyleSheet(central_script.format(10))
         
         # Subject connect các button
         self.SubjectConnectButton()
@@ -74,7 +75,6 @@ class WindowInterface(QMainWindow):
 
         # //////////////////////////////////////////////////////////
         # custom shadow frame
-        self.CustomShadowFrameApp()
 
         # ////////////////////////////////////////////////////////
 
@@ -477,8 +477,8 @@ class WindowInterface(QMainWindow):
             path.addRoundedRect(0, 0, self.width(), self.height(), 10, 10)
 
         painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.fillPath(path, QBrush(QColor(255, 255, 255)))
-        painter.setPen(QColor(177, 21, 74))
+        painter.fillPath(path, QBrush(QColor(38, 49, 98)))
+        painter.setPen(QColor(94,112,167))
         painter.drawPath(path)
     # ///////////////////////////////////////////////////////////////
 
@@ -535,7 +535,7 @@ class WindowInterface(QMainWindow):
 
                 # Thêm item số hàng vào cột thứ hai
                 item_count = QTableTools.SubjectItemsText(
-                    self, text=str(row_position + 1), color=QColor(20, 57, 39), size_font=8)
+                    self, text=str(row_position + 1), color=QColor(255,255,255), size_font=8)
                 widgets.TableManage.setItem(row_position, 1, item_count)
 
                 # Thiết lập chiều cao hàng
@@ -548,13 +548,11 @@ class WindowInterface(QMainWindow):
                         color = QColor(20, 57, 39)  # Màu mặc định
                         if temp_name == "message":
                             value = time_lastest(value)
-                            color = QColor(0, 163, 204)
+                            color = QColor(255,255,255)
                         elif temp_name == "c_user":
                             color = QColor(92, 0, 230)
-                        elif temp_name == "#":
-                            color =  QColor(0, 102, 204)
                         else:
-                            color =  QColor(31, 31, 122)
+                            color =  QColor(255,255,255)
                         # Tạo item với màu sắc và kích thước font đã chỉ định
                         if temp_name == "work":
                             value = json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"]
