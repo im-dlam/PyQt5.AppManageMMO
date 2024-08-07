@@ -14,84 +14,143 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FrameCard(object):
     def setupUi(self, FrameCard):
         FrameCard.setObjectName("FrameCard")
-        FrameCard.resize(354, 200)
+        FrameCard.resize(360, 200)
         self.centralwidget = QtWidgets.QWidget(FrameCard)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setMinimumSize(QtCore.QSize(320, 200))
+        self.frame.setMinimumSize(QtCore.QSize(360, 200))
         self.frame.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.frame.setStyleSheet("QFrame#frame{\n"
-"background-color: rgb(77, 70, 115,200);\n"
+"background-color: rgb(38, 49, 98);\n"
+"border-radius:10px; border: 0.5px solid #495b9e;\n"
 "}")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout.setContentsMargins(5, -1, 5, -1)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.frame_2 = QtWidgets.QFrame(self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(1, 10, 261, 31))
+        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 30))
         self.frame_2.setStyleSheet("QFrame#frame_2{\n"
-"background-color:rgba(78,72,116,255);\n"
+"background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
 "}")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_2)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 10, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_icons = QtWidgets.QFrame(self.frame_2)
-        self.frame_icons.setGeometry(QtCore.QRect(0, 0, 41, 31))
-        self.frame_icons.setStyleSheet("image: url(:/icons/png/icons8-facebook-48.png);")
+        self.frame_icons.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.frame_icons.setStyleSheet("background-color: rgb(38, 49, 98);\n"
+"image: url(:/icons/png/icons8-facebook-48.png);")
         self.frame_icons.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_icons.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_icons.setObjectName("frame_icons")
+        self.horizontalLayout_3.addWidget(self.frame_icons)
         self.label_title = QtWidgets.QLabel(self.frame_2)
-        self.label_title.setGeometry(QtCore.QRect(40, -1, 211, 31))
         font = QtGui.QFont()
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
         self.label_title.setFont(font)
-        self.label_title.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_title.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(38, 49, 98);")
         self.label_title.setObjectName("label_title")
-        self.label_tag = QtWidgets.QLabel(self.frame)
-        self.label_tag.setGeometry(QtCore.QRect(270, 15, 81, 21))
+        self.horizontalLayout_3.addWidget(self.label_title)
+        self.label_tag = QtWidgets.QLabel(self.frame_2)
+        self.label_tag.setMinimumSize(QtCore.QSize(100, 20))
+        self.label_tag.setMaximumSize(QtCore.QSize(100, 20))
         font = QtGui.QFont()
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
         self.label_tag.setFont(font)
-        self.label_tag.setStyleSheet("color: rgb(255, 255, 255);\n"
+        self.label_tag.setStyleSheet("color: rgb(103, 204, 187);\n"
 "border-radius:5px;\n"
-"background-color: rgb(128, 116, 255);")
+"background-color: rgb(55, 68, 119);")
         self.label_tag.setObjectName("label_tag")
+        self.horizontalLayout_3.addWidget(self.label_tag)
+        self.verticalLayout.addWidget(self.frame_2)
         self.frame_3 = QtWidgets.QFrame(self.frame)
-        self.frame_3.setGeometry(QtCore.QRect(1, 50, 350, 101))
-        self.frame_3.setStyleSheet("QFrame#frame_3{\n"
-"background-color:rgba(85,79,121,255);\n"
-"border-radius:5px;\n"
-"}")
+        self.frame_3.setStyleSheet("background-color: rgb(45, 59, 75);")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_3)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.labe_note = QtWidgets.QLabel(self.frame_3)
-        self.labe_note.setGeometry(QtCore.QRect(6, 2, 341, 81))
-        self.labe_note.setStyleSheet("color: rgb(255, 255, 255);")
-        self.labe_note.setText("")
+        font = QtGui.QFont()
+        font.setFamily("MesloLGL Nerd Font")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labe_note.setFont(font)
+        self.labe_note.setStyleSheet("color: rgb(244, 243, 230);\n"
+"background-color: rgb(38, 49, 98);\n"
+"padding:4px;")
         self.labe_note.setObjectName("labe_note")
-        self.checkBox = QtWidgets.QCheckBox(self.frame)
-        self.checkBox.setGeometry(QtCore.QRect(1, 160, 121, 31))
+        self.horizontalLayout_4.addWidget(self.labe_note)
+        self.verticalLayout.addWidget(self.frame_3)
+        self.frame_4 = QtWidgets.QFrame(self.frame)
+        self.frame_4.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.frame_4.setStyleSheet("background-color: rgb(45, 59, 75);\n"
+"border-top:1px solid  rgb(55, 68, 119);\n"
+";")
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_4)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.frame_6 = QtWidgets.QFrame(self.frame_4)
+        self.frame_6.setStyleSheet("background-color: rgb(38, 49, 98);")
+        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_6.setObjectName("frame_6")
+        self.horizontalLayout_2.addWidget(self.frame_6)
+        self.frame_5 = QtWidgets.QFrame(self.frame_4)
+        self.frame_5.setStyleSheet("background-color: rgb(38, 49, 98);")
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.btn_addPlan = QtWidgets.QPushButton(self.frame_5)
+        self.btn_addPlan.setGeometry(QtCore.QRect(90, 10, 75, 21))
         font = QtGui.QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
-        self.checkBox.setFont(font)
-        self.checkBox.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color:rgba(85,79,121,255);\n"
+        self.btn_addPlan.setFont(font)
+        self.btn_addPlan.setStyleSheet("QPushButton#btn_addPlan{\n"
+"color: rgb(103, 204, 187);\n"
 "border-radius:5px;\n"
-"padding:10px;")
-        self.checkBox.setObjectName("checkBox")
-        self.verticalLayout.addWidget(self.frame)
+"    background-color: rgb(57, 74, 148);\n"
+"}\n"
+"QPushButton#btn_addPlan:hover{\n"
+"border-radius:5px;\n"
+"background-color: rgb(75, 94, 163);\n"
+"}\n"
+"")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-dot-24_red.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-dot-24_live.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.btn_addPlan.setIcon(icon)
+        self.btn_addPlan.setIconSize(QtCore.QSize(20, 20))
+        self.btn_addPlan.setCheckable(True)
+        self.btn_addPlan.setObjectName("btn_addPlan")
+        self.horizontalLayout_2.addWidget(self.frame_5)
+        self.verticalLayout.addWidget(self.frame_4)
+        self.horizontalLayout.addWidget(self.frame)
         FrameCard.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(FrameCard)
@@ -102,7 +161,8 @@ class Ui_FrameCard(object):
         FrameCard.setWindowTitle(_translate("FrameCard", "MainWindow"))
         self.label_title.setText(_translate("FrameCard", "Login Facebook"))
         self.label_tag.setText(_translate("FrameCard", " Facebook"))
-        self.checkBox.setText(_translate("FrameCard", "Thêm"))
+        self.labe_note.setText(_translate("FrameCard", "Đăng nhập"))
+        self.btn_addPlan.setText(_translate("FrameCard", "OFF"))
 import icons
 
 

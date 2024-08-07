@@ -888,7 +888,7 @@ background-color: rgb(38,49,98);
                 <item>
                  <widget class="QScrollArea" name="scrollArea">
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">background-color: rgb(38, 49, 98);</string>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
@@ -1037,40 +1037,45 @@ border-radius:1px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      MENU</string>
+                          <string> MENU</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-task-64_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-task-64.png</normalon>:/icons/png/icons8-task-64_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-task-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-task-48_dark.png</normalon>:/icons/png/icons8-task-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>30</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -1142,35 +1147,41 @@ border-radius:10px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      THANH TOÁN</string>
+                          <string> THANH TOÁN</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-card-64_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-card-64.png</normalon>:/icons/png/icons8-card-64_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-visa-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-visa-48_dark.png</normalon>:/icons/png/icons8-visa-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1256,35 +1267,41 @@ border-radius:10px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      ĐẶT HÀNG</string>
+                          <string> ĐẶT HÀNG</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-connect-150_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-connect-150_green.png</normalon>:/icons/png/icons8-connect-150_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-product-24.png</normaloff>
+                           <normalon>:/icons/png/icons8-product-24 _dark.png</normalon>:/icons/png/icons8-product-24.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1355,35 +1372,41 @@ border-radius:10px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      TỆP TIN</string>
+                          <string> TỆP TIN</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-file-256_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-file-256.png</normalon>:/icons/png/icons8-file-256_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-code-file-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-code-file-48_dark.png</normalon>:/icons/png/icons8-code-file-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1523,41 +1546,46 @@ border-radius:10px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      TÀI KHOẢN</string>
+                          <string> TÀI KHOẢN</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-user-96_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-user-96.png</normalon>
-                           <disabledoff>:/icons/png/icons8-user-96.png</disabledoff>:/icons/png/icons8-user-96_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-find-user-male-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-find-user-male-48_dark.png</normalon>:/icons/png/icons8-find-user-male-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
-                           <width>20</width>
-                           <height>20</height>
+                           <width>30</width>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -1626,40 +1654,46 @@ border-radius:10px;
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
+                          <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string>      LỊCH SỬ</string>
+                          <string> LỊCH SỬ</string>
                          </property>
                          <property name="icon">
-                          <iconset>
-                           <normaloff>:/icons/png/icons8-history-64_dark.png</normaloff>
-                           <normalon>:/icons/png/icons8-history-64.png</normalon>:/icons/png/icons8-history-64_dark.png</iconset>
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-cloud-clock-24.png</normaloff>
+                           <normalon>:/icons/png/icons8-cloud-clock-24_dark.png</normalon>:/icons/png/icons8-cloud-clock-24.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>30</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -1879,39 +1913,45 @@ border-radius:10px;
                              </size>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">
-QPushButton:hover{
+                             <string notr="true">QPushButton:hover{
 background-color: #465ab4;
-color:#4ba08a;;
+color: rgb(118, 148, 255);
 border:none;
-border-radius:10px;
+border-radius:5px;
 }
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-	color: rgb(249, 234, 255);
-border-radius:10px;
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
 }
 QPushButton:checked{
 border:none;
 background-color:#415485;
-color: #0da471;
-border-radius:10px;
+color: rgb(239, 245, 255);
+border-radius:5px;
+border-left:2px solid  #7264ac;
 
 }
-</string>
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                             </property>
                             <property name="text">
-                             <string>                Help</string>
+                             <string>  Help</string>
                             </property>
                             <property name="icon">
-                             <iconset>
-                              <normaloff>:/icons/png/icons8-help-64.png</normaloff>
-                              <normalon>:/icons/png/icons8-help-64_green.png</normalon>:/icons/png/icons8-help-64.png</iconset>
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-info-30.png</normaloff>
+                              <normalon>:/icons/png/icons8-info-30_dark.png</normalon>:/icons/png/icons8-info-30.png</iconset>
                             </property>
                             <property name="iconSize">
                              <size>
-                              <width>25</width>
+                              <width>30</width>
                               <height>25</height>
                              </size>
                             </property>
@@ -2391,7 +2431,7 @@ border-radius:10px;
 QPushButton{
 border:none;
 background-color: rgb(38,49,98);
-color: rgb(126, 126, 126);
+
 border-radius:10px;
 }
 QPushButton:checked{
@@ -2399,7 +2439,6 @@ border:none;
 background-color:#415485;
 color: #0da471;
 border-radius:10px;
-
 }
 </string>
                          </property>
@@ -2414,7 +2453,7 @@ border-radius:10px;
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>30</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -2519,7 +2558,7 @@ border-radius:10px;
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>30</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -2899,7 +2938,7 @@ border-radius:10px;
                          </property>
                          <property name="iconSize">
                           <size>
-                           <width>20</width>
+                           <width>30</width>
                            <height>20</height>
                           </size>
                          </property>
@@ -3002,7 +3041,7 @@ border-radius:10px;
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>30</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
@@ -3254,7 +3293,7 @@ border-radius:10px;
                             </property>
                             <property name="iconSize">
                              <size>
-                              <width>25</width>
+                              <width>30</width>
                               <height>25</height>
                              </size>
                             </property>
@@ -5597,8 +5636,8 @@ border-radius:5px;
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>1118</width>
-                            <height>635</height>
+                            <width>139</width>
+                            <height>57</height>
                            </rect>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_23">

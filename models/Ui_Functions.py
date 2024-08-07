@@ -103,60 +103,12 @@ class Functions(WindowInterface):
     # màu chủ đâọ là xanh nhạt hihi
     def SwitchButtonCssChecked(self  , buttons):
         def toggle_buttons(clicked_button):
-            
             for button in buttons:
-                if button.objectName() in ["btn_hide","btn_history"]:
-                    pixel =  23
-                elif button.objectName() == "btn_user":
-                    pixel =  28
-                else:
-                    pixel = 25
                 if button == clicked_button:
                     button.setChecked(True)
 
-                    button.setStyleSheet(
-                        """
-                        QPushButton {
-                            border: none;
-                            background-color: #dcf6ea;
-                            color: #0da471;
-                            border-radius: 10px;
-                            padding-left:%spx;
-                            text-align: left;
-                        }
-                        QPushButton:hover {
-                            background-color: rgb(224, 238, 233);
-                            color: #4ba08a;
-                            border: none;
-                            border-radius: 10px;
-                            padding-left:%spx;
-                            text-align: left;
-                        }
-                        """%(pixel,pixel)
-                    )
-                    
                 else:
                     button.setChecked(False)
-                    button.setStyleSheet(
-                        """
-                        QPushButton {
-                            border: none;
-                            background-color: rgb(255, 255, 255);
-                            color: rgb(126, 126, 126);
-                            border-radius: 10px;
-                            padding-left:%spx;
-                            text-align: left;
-                        }
-                        QPushButton:hover {
-                            background-color: rgb(224, 238, 233);
-                            color: #4ba08a;
-                            border: none;
-                            border-radius: 10px;
-                            padding-left:%spx;
-                            text-align: left;
-                        }
-                        """%(pixel,pixel)
-                    )
         for button in buttons:
             button.setCheckable(True)
             button.clicked.connect(lambda checked, btn=button: toggle_buttons(btn))

@@ -22,17 +22,19 @@ class CardWidget(QWidget):
     def setText(self):
         self.label_title.setText(self.title)
         self.label_tag.setText(self.type)
+        self.label_tag.setAlignment(Qt.AlignCenter)
         self.labe_note.setText(self.note)
         f = QFont()
         f.setBold(True)
         self.labe_note.setFont(f)
         self.labe_note.setWordWrap(True)
-        self.btn_addPlan.setText("ON")
+        self.btn_addPlan.setText("OFF")
     def initUI(self, data):
         title, note , type  = data
         self.title = title
         self.note = note
         self.type = type
+
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -43,8 +45,8 @@ class CardWidget(QWidget):
         self.frame.setMinimumSize(QtCore.QSize(360, 200))
         self.frame.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.frame.setStyleSheet("QFrame#frame{\n"
-"background-color: #2d3b4b;\n"
-"border-radius:10px;\n"
+"background-color: rgb(38, 49, 98);\n"
+"border-radius:10px; border: 0.5px solid #495b9e;\n"
 "}")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -55,7 +57,7 @@ class CardWidget(QWidget):
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 30))
         self.frame_2.setStyleSheet("QFrame#frame_2{\n"
-"background-color:#2d3b4b;\n"
+"background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
 "}")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
@@ -67,7 +69,7 @@ class CardWidget(QWidget):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_icons = QFrame(self.frame_2)
         self.frame_icons.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.frame_icons.setStyleSheet("background-color: #2d3b4b;\n"
+        self.frame_icons.setStyleSheet("background-color: rgb(38, 49, 98);\n"
 "image: url(:/icons/png/icons8-facebook-48.png);")
         self.frame_icons.setFrameShape(QFrame.StyledPanel)
         self.frame_icons.setFrameShadow(QFrame.Raised)
@@ -80,7 +82,7 @@ class CardWidget(QWidget):
         font.setWeight(75)
         self.label_title.setFont(font)
         self.label_title.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color:#2d3b4b;")
+"background-color: rgb(38, 49, 98);")
         self.label_title.setObjectName("label_title")
         self.horizontalLayout_3.addWidget(self.label_title)
         self.label_tag = QLabel(self.frame_2)
@@ -91,9 +93,9 @@ class CardWidget(QWidget):
         font.setBold(True)
         font.setWeight(75)
         self.label_tag.setFont(font)
-        self.label_tag.setStyleSheet("color: #69bfa1;\n"
+        self.label_tag.setStyleSheet("color: rgb(103, 204, 187);\n"
 "border-radius:5px;\n"
-"background-color: #2a4c59;")
+"background-color: rgb(55, 68, 119);")
         self.label_tag.setObjectName("label_tag")
         self.horizontalLayout_3.addWidget(self.label_tag)
         self.verticalLayout.addWidget(self.frame_2)
@@ -107,8 +109,14 @@ class CardWidget(QWidget):
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.labe_note = QLabel(self.frame_3)
-        self.labe_note.setStyleSheet("color: rgb(75, 173, 161);\n"
-"background-color: rgb(45, 59, 75);\n"
+        font = QFont()
+        font.setFamily("MesloLGL Nerd Font")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labe_note.setFont(font)
+        self.labe_note.setStyleSheet("color: rgb(244, 243, 230);\n"
+"background-color: rgb(38, 49, 98);\n"
 "padding:4px;")
         self.labe_note.setObjectName("labe_note")
         self.horizontalLayout_4.addWidget(self.labe_note)
@@ -116,7 +124,7 @@ class CardWidget(QWidget):
         self.frame_4 = QFrame(self.frame)
         self.frame_4.setMaximumSize(QtCore.QSize(16777215, 35))
         self.frame_4.setStyleSheet("background-color: rgb(45, 59, 75);\n"
-"border-top:1px solid #626f77\n"
+"border-top:1px solid  rgb(55, 68, 119);\n"
 ";")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
@@ -126,13 +134,13 @@ class CardWidget(QWidget):
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_6 = QFrame(self.frame_4)
-        self.frame_6.setStyleSheet("background-color: rgb(45, 59, 75);")
+        self.frame_6.setStyleSheet("background-color: rgb(38, 49, 98);")
         self.frame_6.setFrameShape(QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
         self.horizontalLayout_2.addWidget(self.frame_6)
         self.frame_5 = QFrame(self.frame_4)
-        self.frame_5.setStyleSheet("background-color: rgb(45, 59, 75);")
+        self.frame_5.setStyleSheet("background-color: rgb(38, 49, 98);")
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
@@ -144,26 +152,25 @@ class CardWidget(QWidget):
         font.setWeight(75)
         self.btn_addPlan.setFont(font)
         self.btn_addPlan.setStyleSheet("QPushButton#btn_addPlan{\n"
-"color: rgb(214, 255, 99);\n"
+"color: rgb(103, 204, 187);\n"
 "border-radius:5px;\n"
-"background-color: rgb(74, 135, 157);\n"
+"    background-color: rgb(57, 74, 148);\n"
 "}\n"
 "QPushButton#btn_addPlan:hover{\n"
-"color: rgb(214, 255, 99);\n"
 "border-radius:5px;\n"
-"    background-color: rgb(84, 155, 179);\n"
+"background-color: rgb(75, 94, 163);\n"
 "}\n"
 "")
         icon = QIcon()
-        icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_live.png"), QIcon.Normal, QIcon.Off)
-        icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_red.png"), QIcon.Normal, QIcon.On)
+        icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_red.png"), QIcon.Normal, QIcon.Off)
+        icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_live.png"), QIcon.Normal, QIcon.On)
         self.btn_addPlan.setIcon(icon)
         self.btn_addPlan.setIconSize(QtCore.QSize(20, 20))
         self.btn_addPlan.setCheckable(True)
         self.btn_addPlan.setObjectName("btn_addPlan")
         self.horizontalLayout_2.addWidget(self.frame_5)
         self.verticalLayout.addWidget(self.frame_4)
-        self.horizontalLayout.addWidget(self.frame)    
+        self.horizontalLayout.addWidget(self.frame)
         
         
 
