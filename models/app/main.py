@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.frame_taskbar.setMinimumSize(QtCore.QSize(0, 25))
         self.frame_taskbar.setMaximumSize(QtCore.QSize(16777215, 25))
         self.frame_taskbar.setStyleSheet("QFrame#frame_taskbar{\n"
-"background-color:#263162;\n"
+"background-color: rgb(36, 47, 94);\n"
 "border:none;\n"
 "}")
         self.frame_taskbar.setFrameShape(QtWidgets.QFrame.StyledPanel)

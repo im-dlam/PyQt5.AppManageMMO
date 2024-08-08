@@ -111,7 +111,7 @@ background-color:#263162;
          </property>
          <property name="styleSheet">
           <string notr="true">QFrame#frame_taskbar{
-background-color:#263162;
+background-color: rgb(36, 47, 94);
 border:none;
 }</string>
          </property>

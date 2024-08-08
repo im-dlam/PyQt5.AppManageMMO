@@ -34,7 +34,6 @@ class QTableTools(WindowInterface):
 
 
 
-
     def SetColumnWidthTableWidget(self,widgets):
         widgets.TableManage.setColumnWidth(0, 30)  # -> vị trí CHECKBOX
         widgets.TableManage.setColumnWidth(1, 70)  # -> vị trí ID COUNT
@@ -213,6 +212,7 @@ class HeaderCheckboxWidget(QWidget):
         super().__init__(parent)
         layout = QHBoxLayout()
         self.checkbox = QCheckBox()
+        self.checkbox.stateChanged.connect(self.__all__checkbox)
         self.label = QLabel(label)
         # /////////////////////
         # chỉnh màu cho cùng với màu của các header
@@ -232,6 +232,9 @@ class HeaderCheckboxWidget(QWidget):
 
     def checkState(self):
         return self.checkbox.checkState()
+    
+    def __all__checkbox(self):
+        print("ok")
     
 
 

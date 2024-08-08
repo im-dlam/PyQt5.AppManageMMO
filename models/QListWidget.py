@@ -179,9 +179,14 @@ class CardWidget(QWidget):
         self.setFixedSize(360, 200)  # Kích thước cố định cho từng item
         self.setText()
 class SubjectQList:
+
+
+        
+
     def ShowCardItems(self , widgets):
         widgets.WidgetFacebook.clear()
         widgets.WidgetFacebook.setSelectionMode(QListWidget.NoSelection)  # Tắt chọn hàng
+        widgets.WidgetFacebook.setFocusPolicy(Qt.NoFocus)
         # Tạo các item WidgetFacebook và thêm vào QListWidget
         item = [
         ("Đăng Nhập Facebook","Tự động dăng nhập các tài khoản Facebook đã nhập ,dùng trình duyệt hỗ trợ antidetect bảo đảm an toàn khi login, tránh die tài khoản","Facebook"),

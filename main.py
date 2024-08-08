@@ -21,6 +21,8 @@ class WindowInterface(QMainWindow):
         # call item * 
         global widgets , DataProcessingFill , msg , index_name , DataFillProcess 
         # //////////////////////////////////
+
+        self.first_selected_item =  None 
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 1000 , 0
 
         # ///////////////////////////////////////
@@ -123,8 +125,45 @@ class WindowInterface(QMainWindow):
         widgets.ComboboxFile.activated.connect(self.ComboboxFileActivedConnect)
 
         widgets.TableManage.selectionModel().selectionChanged.connect(self.MouseClickCheckBox)
+
+        widgets.TableManage.cellClicked.connect(self.OnCellClickCheckBox)
         self.show()
 
+
+
+
+
+
+
+
+
+
+
+
+    # //////////////////////////
+    # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
+
+    def OnCellClickCheckBox(self, row, column):
+        if QApplication.keyboardModifiers() == Qt.ShiftModifier:
+            print(row , column)
+            if self.first_selected_item is not None:
+                first_row, first_col = self.first_selected_item
+                widgets.TableManage.clearSelection()
+                for r in range(min(first_row, row), max(first_row, row) + 1):
+                    for c in range(min(first_col, column), max(first_col, column) + 1):
+                        # ///////////////
+                        # r : rows 
+                        print("OK")
+                        item = widgets.TableManage.item(r, 0)
+                        # //////////////////
+                        # set Checked
+                        item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+                        item.setCheckState(Qt.Checked)
+        else:
+            self.first_selected_item = (row, column)
+
+    # ///////////////////////////////
+    # click frame auto set checked
     def MouseClickCheckBox(self , index):
 
         for obj in index.indexes():
@@ -199,14 +238,20 @@ class WindowInterface(QMainWindow):
         widgets.btn_plan_tool.clicked.connect(self.WidgetFrameScheme)
 
         widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
+
+    # //////////////////////
+    # chuyển đổi frame màn hình của stack widget
+    # Màn hình quản lý 
     def SwapWidgetFrameHome(self):
         widgets.stackedWidget.setCurrentWidget(widgets.HomePage)
     
-
+    # Màn hình kịch bản
     def WidgetFrameScheme(self):
         widgets.stackedWidget.setCurrentWidget(widgets.PlanPage)
 
         SubjectQList.ShowCardItems(self , widgets)
+
+
     # ///////////////////////////////////////////////
     # Xóa thanh tiêu đề và xử lý di chuyển
     def RemoveWindowFlags(self):
@@ -217,6 +262,9 @@ class WindowInterface(QMainWindow):
         # ///////////////////////////
         # xử lý di chuyển ứng dụng
         self.resize = Resize(self)
+
+
+
     # ///////////////////////////////////////
     # Tự đồng tạo danh mục mặc định và load item lên combobox danh mục
 
@@ -258,7 +306,20 @@ class WindowInterface(QMainWindow):
     # /////////////////////////////////////
     # GUI thêm dữ liệu
 
+    def center(self , widgets_ui):
+        # Lấy kích thước của màn hình chính
+        screen = QApplication.primaryScreen()
+        screen_geometry = screen.availableGeometry()
 
+        # Lấy kích thước của cửa sổ
+        window_geometry = widgets_ui.frameGeometry()
+
+        # Tính toán vị trí để cửa sổ ở giữa màn hình
+        x = (screen_geometry.width() - window_geometry.width() + 50) // 2
+        y = (screen_geometry.height() - window_geometry.height()) // 2
+
+        # Di chuyển cửa sổ đến vị trí tính toán
+        widgets_ui.move(x, y)
     def window_additem(self):
         # code sql/300
         self.ShowOverLay()
@@ -271,6 +332,9 @@ class WindowInterface(QMainWindow):
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
         window_widgets.tabWidget.setCurrentIndex(0)
 
+        # ///////////////
+        # căn giữa
+        self.center(windows_ui)
         # toggle frame, button to shadow
         Functions.ShadowFrameConditional(self , window_widgets.label , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_3 , QColor(0,0,10,40))
@@ -399,8 +463,10 @@ class WindowInterface(QMainWindow):
 
     def window_proxies(self):
         # ///////////////////////////////////
+        self.ShowOverLay()
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
         window_widgets.tabWidget.setCurrentIndex(1)
+        self.center(windows_ui)
         # window_widgets -> Object : sử dụng để gọi các frame , button ...
         # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
         # Call Functions Connect UI

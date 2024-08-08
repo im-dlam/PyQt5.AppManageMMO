@@ -46,11 +46,6 @@ class FrameRightClick(QFrame):
 
 
         self.NewActionQMenu(
-            dir=f"{your_dir}/icons8-select-30.png",
-            text="Chế độ chọn",
-            subject=self.ModelSelection
-            )
-        self.NewActionQMenu(
             dir=f"{your_dir}/icons8-do-not-touch-24.png",
             text="Hủy Chọn",
             subject=self.UnCheckbox
@@ -113,22 +108,8 @@ class FrameRightClick(QFrame):
         contextMenu.setMaximumWidth(250)
         contextMenu.exec_(widgets.TableManage.mapToGlobal(position))
 
-    def ModelSelection(self):
-        widgets.TableManage.setSelectionMode(QTableWidget.SingleSelection) 
-        widgets.TableManage.setSelectionBehavior(QTableWidget.SelectRows)
-        msg = Notification(widgets.centralwidget)
-        msg.SendMsg(("""SELECTION : ON""" , 1))
-        time = QTimer(self)
-        time.setSingleShot(True)
-        time.timeout.connect(self.on_timeout)
-        time.start(10000)
 
     
-    def on_timeout(self):
-        msg = Notification(widgets.centralwidget)
-        widgets.TableManage.setSelectionMode(QTableWidget.NoSelection) 
-        widgets.TableManage.setSelectionBehavior(QTableWidget.SelectRows)
-        msg.SendMsg(("SELCTION : OFF", 0))
     def UnCheckbox(self):
         for row in range(widgets.TableManage.rowCount()):
             widgets.TableManage.item(row, 0).setCheckState(False)
