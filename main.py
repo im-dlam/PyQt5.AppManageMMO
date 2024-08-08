@@ -257,28 +257,20 @@ class WindowInterface(QMainWindow):
 
     # /////////////////////////////////////
     # GUI thêm dữ liệu
+
+
     def window_additem(self):
         # code sql/300
         self.ShowOverLay()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
-        # if Namecategory == "ALL":
-        #     msg.SendMsg(
-        #         ("Vui lòng chọn danh mục khác !",    0)
-        #         )
-        #     return 0
-        # ///////////////////////////////////
+
         # Call Functions Connect UI
         # Chức năng hiển thị GUI thêm dữ liệu tài khoản
-
-        # //////////////////////////////////
         # Call Sub from Functions Show UI Clone
-
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
+        window_widgets.tabWidget.setCurrentIndex(0)
 
-        # window_widgets -> Object : sử dụng để gọi các frame , button ...
-        # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
-        # ///////////////////////////////////
         # toggle frame, button to shadow
         Functions.ShadowFrameConditional(self , window_widgets.label , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_3 , QColor(0,0,10,40))
@@ -286,11 +278,8 @@ class WindowInterface(QMainWindow):
         Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_add , QColor(0,0,10,60))
-    
 
-        # ///////////////////////////////////
         # data processing
-        # kết nốt tới dữ lý dữ liệu , dùng hàm lamda -> truyền Object tránh lỗi
         self.SubjectDataProcessingQThread = SubjectDataProcessing(window_widgets)
         self.SubjectDataProcessingQThread.signal.connect(self.signalSubjectDataProcessing)
         window_widgets.plain_item.textChanged.connect(self.startSubjectDataProcessing)
@@ -302,18 +291,19 @@ class WindowInterface(QMainWindow):
         window_widgets.plain_item.setPlainText("...")
         window_widgets.plain_item.clear()
 
-        # ///////////////////////
-        # add list folder 
-
-        items        = SubjectSQL.GetSQLTable(self)
+        # add list folder
+        items = SubjectSQL.GetSQLTable(self)
         items.remove("ALL")
         window_widgets.combo_danhmuc.addItems(items)
         window_widgets.combo_danhmuc.setCurrentText(Namecategory)
 
-        # /////////////////////////////////
         window_widgets.combo_account.setCurrentText(NameaccountType)
         window_widgets.combo_ua.setCurrentText("Windows")
 
+        # Apply blur effect before showing the window
+        windows_ui.show()
+
+        # Remove blur effect when window is closed
 
     # /////////////////////////////
     # chạy QThread xử lý định dạng dữ liệu và gán cho DataProcessingFill
@@ -409,37 +399,24 @@ class WindowInterface(QMainWindow):
 
     def window_proxies(self):
         # ///////////////////////////////////
-        window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_Proxies_code)
+        window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
+        window_widgets.tabWidget.setCurrentIndex(1)
         # window_widgets -> Object : sử dụng để gọi các frame , button ...
         # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
-        def scripts_(msg):
-            if msg == 'GET':
-                scripts = window_widgets.plainitem_script_get.toPlainText()
-            else:
-                scripts = window_widgets.plainitem_script_change.toPlainText()
-            scripts_msg = Functions_Scripts.scripts_run(scripts)
-            print(scripts_msg)
         # Call Functions Connect UI
 
 
         # //////////////////////////////////
         # Call Sub from Functions Show UI Clone PROXIES
-
+        # window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
+        window_widgets.item_closeProxy.clicked.connect(lambda : windows_ui.close())
+        window_widgets.item_closeProxy.clicked.connect(lambda: self.RemoveWindowFlags())
 
         # ///////////////////////////////////
         # toggle frame, button to shadow
-        Functions.ShadowFrameConditional(self , window_widgets.frame , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.frame_2 , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.proxyitem_confirm , QColor(0,0,1,80))
-        #.....................................
-        Functions.ShadowFrameConditional(self , window_widgets.proxyitem_check_get , QColor(0,0,1,60))
-        Functions.ShadowFrameConditional(self , window_widgets.proxyitem_check_change , QColor(0,0,1,60))
 
         # ///////////////////////////////////////////////
         # run , check script
-
-        window_widgets.proxyitem_check_get.clicked.connect(lambda check ,msg='GET': scripts_(msg))
-        window_widgets.proxyitem_check_get.clicked.connect(lambda check ,msg='CHANGE': scripts_(msg))
 
 
     # ///////////////////////////////////////////////////////////////
@@ -660,6 +637,7 @@ class WindowInterface(QMainWindow):
         header.setSectionResizeMode(QHeaderView.Interactive)
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     checkbox_style = CheckBoxStyle(app.style())
     app.setWindowIcon(QIcon("./icons/logo/icons.png"))
     window = WindowInterface()

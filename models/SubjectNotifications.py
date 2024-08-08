@@ -20,26 +20,21 @@ class Notification(QWidget):
     # set css
     def _notification_box(self , success):
         if success:
-            scrip = """
-            QLabel {
-                background-color: #79D5BF;
-                color: #E6EEEC;
-                padding: 10px;
-                border-radius: 5px;
-                font-weight: bold;
-            }
-            """
+            background_color = "#29baa8;"
         else:
-            scrip = """
+            background_color = "#ff3791;"
+        scrip = """
             QLabel {
-                background-color: #E2839B;
-                color: #E6EEEC;
+                background-color: %s
+                color: #eeebff;
                 padding: 10px;
                 border-radius: 5px;
                 font-weight: bold;
 
             }
-            """
+            """%background_color
+        pixmap = QPixmap(':/icons/png/icons8-info-30.png')
+        self.label.setPixmap(pixmap)
         self.label.setStyleSheet(scrip)
         font = QFont('MesloLGLDZ Nerd Font', 8)
         font.setBold(True)
@@ -48,9 +43,10 @@ class Notification(QWidget):
         
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(10)
-        shadow.setColor(QColor(0, 0, 0, 30))
+        shadow.setColor(QColor(0, 0, 0, -10))
         shadow.setOffset(4, 4)
         self.label.setGraphicsEffect(shadow)
+        
     # ///////////////////////////////
     # thêm tin nhắn vào thanh thông báo
 

@@ -1,34 +1,46 @@
+from PyQt5.QtWidgets import QApplication, QPushButton, QVBoxLayout, QWidget, QHBoxLayout, QLabel
+from PyQt5.QtCore import Qt
 import sys
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow
-from PyQt5.QtGui import QMovie, QIcon
-from PyQt5.QtCore import QSize
 
-class MainWindow(QMainWindow):
+class MyApp(QWidget):
     def __init__(self):
         super().__init__()
+        self.initUI()
 
-        self.setWindowTitle("GIF Icon Example")
-        self.setGeometry(100, 100, 300, 200)
+    def initUI(self):
+        vbox = QVBoxLayout()
 
-        self.button = QPushButton("Button with GIF Icon", self)
-        self.button.setGeometry(50, 50, 200, 100)
+        button = QPushButton('Button with Pink Stripe', self)
+        button.setStyleSheet("""
+            QPushButton {
+                background-color: #2D2E40;  /* Background color */
+                color: #FFF;  /* Text color */
+                border: none;  /* No border */
+                padding: 5px;  /* Padding for the button */
+                text-align: center;  /* Center the text */
+            }
+        """)
 
-        # Load the GIF file
-        self.movie = QMovie(r"D:\UI Python\GUI_PyQt5_My_App\icons\gif\icons8-todo-list.gif")
-        self.movie.start()
+        # Create a layout to overlay the stripe on the button
+        button_layout = QVBoxLayout(button)
+        button_layout.setContentsMargins(0, 0, 250, 0)
+        button_layout.setAlignment(Qt.AlignCenter)
+        
+        # Create the pink stripe
+        pink_stripe = QLabel()
+        pink_stripe.setFixedHeight(10)
+        pink_stripe.setStyleSheet("background-color: #FF69B4;border-radius:10px")
 
-        # Create an icon from the movie and set it to the button
-        self.update_icon()
-        self.movie.frameChanged.connect(self.update_icon)
+        button_layout.addWidget(pink_stripe)
 
-    def update_icon(self):
-        frame = self.movie.currentPixmap()
-        icon = QIcon(frame)
-        self.button.setIcon(icon)
-        self.button.setIconSize(QSize(64, 64))  # Adjust the size as needed
+        vbox.addWidget(button)
+        self.setLayout(vbox)
 
-if __name__ == "__main__":
+        self.setWindowTitle('Custom QPushButton')
+        self.setGeometry(300, 300, 300, 200)
+        self.show()
+
+if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-   
+    ex = MyApp()
+    sys.exit(app.exec_())

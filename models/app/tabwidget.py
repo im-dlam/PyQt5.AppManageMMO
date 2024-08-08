@@ -25,7 +25,7 @@ class Ui_TabWidget(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frameMain = QtWidgets.QFrame(self.centralwidget)
-        self.frameMain.setStyleSheet("background-color: rgb(253, 247, 255);")
+        self.frameMain.setStyleSheet("background-color: rgb(38, 49, 98);")
         self.frameMain.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frameMain.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frameMain.setObjectName("frameMain")
@@ -43,8 +43,8 @@ class Ui_TabWidget(object):
 "                border:none;\n"
 "            }\n"
 " QTabBar::tab {\n"
-"                background-color: rgb(253, 247, 255);\n"
-"                color: rgb(107, 125, 179);\n"
+"                background-color: #263162;\n"
+"                color: rgb(201, 223, 255);\n"
 "                padding: 10px;\n"
 "                font-weight: bold;\n"
 "                border-bottom: none;\n"
@@ -53,34 +53,29 @@ class Ui_TabWidget(object):
 "\n"
 "QTabBar::tab:selected {\n"
 "                border:none;\n"
-"                background-color: rgb(253, 247, 255);\n"
-"                color: rgb(107, 125, 179);\n"
+"                background-color:#263162;\n"
+"                 color: rgb(201, 223, 255);\n"
 "                font-weight: bold;\n"
 "                border-bottom:2px  solid rgb(79, 181, 178);\n"
 "            }\n"
 "\n"
 "QTabBar::tab:hover {\n"
-"                background-color: rgb(253, 247, 255);\n"
-"                color: rgb(107, 125, 179);    \n"
+"                background-color: #263162;\n"
+"                color: #748dc7;\n"
 "                border-radius:3px;\n"
 "            }\n"
 "\n"
-"QComboBox {\n"
-"   background-color: rgb(253, 247, 255);\n"
-"    border: none;\n"
-"    color: rgb(90, 104, 139);\n"
-"}\n"
 "\n"
 "QFrame#frame {\n"
-"    border: 1px solid #e6e2ff;\n"
-"    color: rgb(230, 226, 255);\n"
+"    border: 1px solid #5e70a7;\n"
+"    background-color: rgb(29, 52, 104);\n"
+"    color: rgb(255, 255, 255);\n"
 "    border-radius: 4px;\n"
 "}\n"
 "\n"
 "QFrame#frame:hover {\n"
-"    border: 1px solid #d3daff ;\n"
+"    border: 1px solid #415485 ;\n"
 "    border-radius: 4px;\n"
-"    background-color: rgb(246, 239, 255);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -98,6 +93,14 @@ class Ui_TabWidget(object):
 "    border-radius: 4px;\n"
 "   margin-left: -4px;\n"
 "}\n"
+"QComboBox{\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:3px;\n"
+"background-color: rgb(29, 52, 104);\n"
+"padding:5px;\n"
+"}\n"
+"\n"
+"\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
 "   background-color: rgb(253, 247, 255);\n"
@@ -200,21 +203,18 @@ class Ui_TabWidget(object):
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setPointSize(8)
         self.plain_item.setFont(font)
-        self.plain_item.setStyleSheet("QWidget{\n"
-"background-color: rgb(252, 242, 255);\n"
-"}\n"
+        self.plain_item.setStyleSheet("\n"
 "QPlainTextEdit{\n"
-"background-color: rgb(253, 247, 255);\n"
-"color: rgb(98, 113, 152);\n"
+"background-color:rgba(29,52,104,255);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:5px;\n"
 "padding:5px;\n"
-"border:1px solid  #e6e2ff;\n"
+"border:1px solid  #5e70a7;\n"
 "}\n"
 "QPlainTextEdit:hover{\n"
-"background-color: rgb(246, 239, 255);\n"
-"color: rgb(98, 113, 152);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:5px;\n"
-"border:1px solid  #d3daff;\n"
+"border:1px solid  #415485;\n"
 "}\n"
 "QFrame{\n"
 "border-radius:5px;\n"
@@ -228,7 +228,8 @@ class Ui_TabWidget(object):
         self.plain_item.setObjectName("plain_item")
         self.frame = QtWidgets.QFrame(self.TabAddItems)
         self.frame.setGeometry(QtCore.QRect(10, 210, 941, 91))
-        self.frame.setStyleSheet("")
+        self.frame.setStyleSheet("background-color: rgb(29, 52, 104);\n"
+"color: rgb(255, 255, 255);")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -391,18 +392,18 @@ class Ui_TabWidget(object):
         self.label.setFont(font)
         self.label.setStyleSheet("\n"
 "    QLabel {\n"
-"       color: rgb(87, 100, 134);\n"
+"      color: rgb(255, 255, 255);\n"
 "        border-radius: 5px;\n"
-"       background-color: rgb(253, 247, 255);\n"
+"       background-color: rgb(29, 52, 104);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #ebe5ff;\n"
+"        border: 0.5px solid #5e70a7;\n"
 "    }\n"
 "    QLabel:hover {\n"
-"        color: rgb(87, 100, 134);\n"
+"      color: rgb(255, 255, 255);\n"
 "        border-radius: 5px;\n"
-"        background-color: rgb(253, 247, 255);\n"
+"       background-color: rgb(29, 52, 104);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #c9caff;\n"
+"        border: 0.5px solid #415485;\n"
 "    }")
         self.label.setObjectName("label")
         self.frame_3 = QtWidgets.QFrame(self.frame_2)
@@ -410,16 +411,16 @@ class Ui_TabWidget(object):
         self.frame_3.setStyleSheet("\n"
 "    QFrame#frame_3 {\n"
 "        border-radius: 5px;\n"
-"           background-color: rgb(253, 247, 255);\n"
+"        background-color: rgb(29, 52, 104);  \n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #ebe5ff;\n"
+"        color: rgb(255, 255, 255);\n"
+"        border: 0.5px solid #5e70a7;\n"
 "    }\n"
 "    QFrame#frame_3:hover {\n"
 "        color: rgb(255, 255, 255);\n"
 "        border-radius: 5px;\n"
-"        background-color: rgb(253, 247, 255);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #c9caff;\n"
+"        border: 0.5px solid #415485;\n"
 "    }\n"
 "")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -436,9 +437,8 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_2.setFont(font)
-        self.label_2.setStyleSheet("\n"
-"color: rgb(87, 100, 156);\n"
-"background-color: rgb(253, 247, 255);")
+        self.label_2.setStyleSheet("background-color: rgb(29, 52, 104);\n"
+"")
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_3.addWidget(self.label_2)
         self.frame_6 = QtWidgets.QFrame(self.frame_3)
@@ -454,9 +454,9 @@ class Ui_TabWidget(object):
         font.setWeight(75)
         self.combo_account.setFont(font)
         self.combo_account.setStyleSheet("QComboBox{\n"
-"color: rgb(87, 100, 156);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
-"background-color: rgb(253, 247, 255);\n"
+"background-color: rgb(29, 52, 104);\n"
 "padding:5px;\n"
 "}\n"
 "QComboBox::drop-down {\n"
@@ -486,16 +486,15 @@ class Ui_TabWidget(object):
 "    QFrame#frame_5 {\n"
 "        color: rgb(87, 100, 173);\n"
 "        border-radius: 5px;\n"
-"       background-color: rgb(253, 247, 255);\n"
+"        background-color: rgb(29, 52, 104);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #ebe5ff;\n"
+"        border: 0.5px solid #5e70a7;\n"
 "    }\n"
 "    QFrame#frame_5:hover {\n"
 "        color: rgb(255, 255, 255);\n"
 "        border-radius: 5px;\n"
-"        background-color:  rgb(253, 247, 255);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #c9caff;\n"
+"        border: 0.5px solid #415485;\n"
 "    }")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -509,8 +508,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_3.setFont(font)
-        self.label_3.setStyleSheet("color: rgb(87, 100, 134);\n"
-"background-color: rgb(253, 247, 255);")
+        self.label_3.setStyleSheet("background-color: rgb(29, 52, 104);")
         self.label_3.setObjectName("label_3")
         self.combo_danhmuc = QtWidgets.QComboBox(self.frame_5)
         self.combo_danhmuc.setGeometry(QtCore.QRect(60, 3, 131, 20))
@@ -521,8 +519,9 @@ class Ui_TabWidget(object):
         font.setWeight(75)
         self.combo_danhmuc.setFont(font)
         self.combo_danhmuc.setStyleSheet("QComboBox{\n"
-"color: rgb(87, 100, 173);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
+"background-color: rgb(29, 52, 104);\n"
 "padding:5px;\n"
 "}\n"
 "QComboBox::drop-down {\n"
@@ -535,7 +534,10 @@ class Ui_TabWidget(object):
 "    border-bottom-right-radius: 3px;    \n"
 "    background-position: center;\n"
 "    background-repeat: no-reperat;\n"
-" }")
+" }\n"
+"\n"
+"\n"
+"")
         self.combo_danhmuc.setObjectName("combo_danhmuc")
         self.frame_9 = QtWidgets.QFrame(self.frame_2)
         self.frame_9.setGeometry(QtCore.QRect(480, 29, 41, 61))
@@ -548,16 +550,15 @@ class Ui_TabWidget(object):
 "    QFrame#frame_8 {\n"
 "        color: rgb(87, 100, 173);\n"
 "        border-radius: 5px;\n"
-"       background-color: rgb(253, 247, 255);\n"
+"        background-color: rgb(29, 52, 104);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #ebe5ff;\n"
+"        border: 0.5px solid #5e70a7;\n"
 "    }\n"
 "    QFrame#frame_8:hover {\n"
 "        color: rgb(255, 255, 255);\n"
 "        border-radius: 5px;\n"
-"        background-color:  rgb(253, 247, 255);\n"
 "        padding: 5px;\n"
-"        border: 0.5px solid #c9caff;\n"
+"        border: 0.5px solid #415485;\n"
 "    }")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -571,8 +572,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_4.setFont(font)
-        self.label_4.setStyleSheet("color: rgb(87, 100, 134);\n"
-"background-color: rgb(253, 247, 255);")
+        self.label_4.setStyleSheet("background-color: rgb(29, 52, 104);")
         self.label_4.setObjectName("label_4")
         self.combo_ua = QtWidgets.QComboBox(self.frame_8)
         self.combo_ua.setGeometry(QtCore.QRect(61, 1, 112, 21))
@@ -583,8 +583,9 @@ class Ui_TabWidget(object):
         font.setWeight(75)
         self.combo_ua.setFont(font)
         self.combo_ua.setStyleSheet("QComboBox{\n"
-"color: rgb(87, 100, 173);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
+"background-color: rgb(29, 52, 104);\n"
 "padding:5px;\n"
 "}\n"
 "QComboBox::drop-down {\n"
@@ -597,7 +598,10 @@ class Ui_TabWidget(object):
 "    border-bottom-right-radius: 3px;    \n"
 "    background-position: center;\n"
 "    background-repeat: no-reperat;\n"
-" }")
+" }\n"
+"\n"
+"\n"
+"")
         self.combo_ua.setObjectName("combo_ua")
         self.combo_ua.addItem("")
         self.combo_ua.addItem("")
@@ -636,14 +640,14 @@ class Ui_TabWidget(object):
 "QPushButton{\n"
 "border:none;\n"
 "border-radius:2px;\n"
-"background-color: rgb(113, 194, 194);\n"
+"background-color: #29b7a5;\n"
 "color: rgb(255, 233, 253);\n"
 "}\n"
 "QPushButton:hover{\n"
 "border:none;\n"
 "border-radius:3px;\n"
 "color: rgb(255, 233, 253);\n"
-"    background-color: rgb(120, 206, 206);\n"
+"background-color: #2bc2ae;\n"
 "}")
         self.item_add.setObjectName("item_add")
         self.tabWidget.addTab(self.TabAddItems, "")
@@ -651,8 +655,7 @@ class Ui_TabWidget(object):
         self.TabProxy.setObjectName("TabProxy")
         self.frame_11 = QtWidgets.QFrame(self.TabProxy)
         self.frame_11.setGeometry(QtCore.QRect(0, 0, 981, 341))
-        self.frame_11.setStyleSheet("\n"
-"")
+        self.frame_11.setStyleSheet("")
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_11.setObjectName("frame_11")
@@ -662,21 +665,18 @@ class Ui_TabWidget(object):
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setPointSize(8)
         self.plain_proxy.setFont(font)
-        self.plain_proxy.setStyleSheet("QWidget{\n"
-"background-color: rgb(252, 242, 255);\n"
-"}\n"
+        self.plain_proxy.setStyleSheet("\n"
 "QPlainTextEdit{\n"
-"background-color: rgb(253, 247, 255);\n"
-"color: rgb(98, 113, 152);\n"
+"background-color:rgba(29,52,104,255);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:5px;\n"
 "padding:5px;\n"
-"border:1px solid  #e6e2ff;\n"
+"border:1px solid  #5e70a7;\n"
 "}\n"
 "QPlainTextEdit:hover{\n"
-"background-color: rgb(246, 239, 255);\n"
-"color: rgb(98, 113, 152);\n"
+"color: rgb(255, 255, 255);\n"
 "border-radius:5px;\n"
-"border:1px solid  #d3daff;\n"
+"border:1px solid  #415485;\n"
 "}\n"
 "QFrame{\n"
 "border-radius:5px;\n"
@@ -696,44 +696,59 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.combo_proxy.setFont(font)
-        self.combo_proxy.setStyleSheet("  QComboBox {\n"
-"       color: rgb(87, 101, 135);\n"
-"        border-radius: 5px;\n"
-"        background-color: rgb(253, 247, 255);\n"
-"        padding: 5px;\n"
-"        border: 0.5px solid #e2deff;\n"
-"    }\n"
-"    QComboBox:hover {\n"
-"       color: rgb(87, 101, 135);\n"
-"        border-radius: 5px;\n"
-"        background-color: rgb(253, 247, 255);\n"
-"        padding: 5px;\n"
-"        border: 0.5px solid #d9d5f0;\n"
-"    }\n"
-"    QComboBox::drop-down {\n"
-"        subcontrol-origin: padding;\n"
-"        subcontrol-position: top right;\n"
-"        width: 30px; \n"
-"        border-left-color: #788dca;\n"
-"        border-left-style: solid;\n"
-"        border-top-right-radius: 2px;\n"
-"        border-bottom-right-radius: 3px;    \n"
-"        background-position: center;\n"
-"        background-repeat: no-repeat;\n"
-"    }")
+        self.combo_proxy.setStyleSheet("QComboBox{\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:3px;\n"
+"background-color: rgb(29, 52, 104);\n"
+"padding:5px;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 30px; \n"
+"    border-left-color: #788dca;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 2px;\n"
+"    border-bottom-right-radius: 3px;    \n"
+"    background-position: center;\n"
+"    background-repeat: no-reperat;\n"
+" }\n"
+"\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"background-color: rgb(29, 52, 104);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: none; /* No border */\n"
+"     selection-background-color: #e0e3f7;\n"
+"    selection-color: rgb(85, 98, 131); /* Selected item text color */\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::item {\n"
+"    background-color: transparent; /* Ensure background is transparent */\n"
+"   color: rgb(85, 98, 131); /* White text color */\n"
+"    border-radius: 4px; /* Apply rounded borders */\n"
+"}\n"
+"\n"
+"QComboBox::item:selected {\n"
+"    background-color: rgb(190, 190, 190); /* Light background on selection */\n"
+"    color: rgb(255, 255, 255); /* Maintain text color */\n"
+"    border-radius: 4px; /* Ensure rounded borders are applied */\n"
+"}")
         self.combo_proxy.setObjectName("combo_proxy")
         self.combo_proxy.addItem("")
         self.combo_proxy.addItem("")
         self.combo_proxy.addItem("")
         self.combo_proxy.addItem("")
-        self.item_close_2 = QtWidgets.QPushButton(self.TabProxy)
-        self.item_close_2.setGeometry(QtCore.QRect(790, 350, 61, 25))
+        self.item_closeProxy = QtWidgets.QPushButton(self.TabProxy)
+        self.item_closeProxy.setGeometry(QtCore.QRect(790, 350, 61, 25))
         font = QtGui.QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
-        self.item_close_2.setFont(font)
-        self.item_close_2.setStyleSheet("\n"
+        self.item_closeProxy.setFont(font)
+        self.item_closeProxy.setStyleSheet("\n"
 "QPushButton{\n"
 "border:none;\n"
 "border-radius:2px;\n"
@@ -746,29 +761,29 @@ class Ui_TabWidget(object):
 "    color: rgb(244, 255, 250);\n"
 "    background-color: rgb(127, 147, 197);\n"
 "}")
-        self.item_close_2.setObjectName("item_close_2")
-        self.item_add_2 = QtWidgets.QPushButton(self.TabProxy)
-        self.item_add_2.setGeometry(QtCore.QRect(870, 350, 61, 25))
+        self.item_closeProxy.setObjectName("item_closeProxy")
+        self.item_addProxy = QtWidgets.QPushButton(self.TabProxy)
+        self.item_addProxy.setGeometry(QtCore.QRect(870, 350, 61, 25))
         font = QtGui.QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
-        self.item_add_2.setFont(font)
-        self.item_add_2.setStyleSheet("\n"
+        self.item_addProxy.setFont(font)
+        self.item_addProxy.setStyleSheet("\n"
 "\n"
 "QPushButton{\n"
 "border:none;\n"
 "border-radius:2px;\n"
-"background-color: rgb(113, 194, 194);\n"
+"background-color: #29b7a5;\n"
 "color: rgb(255, 233, 253);\n"
 "}\n"
 "QPushButton:hover{\n"
 "border:none;\n"
 "border-radius:3px;\n"
 "color: rgb(255, 233, 253);\n"
-"    background-color: rgb(120, 206, 206);\n"
+"background-color: #2bc2ae;\n"
 "}")
-        self.item_add_2.setObjectName("item_add_2")
+        self.item_addProxy.setObjectName("item_addProxy")
         self.tabWidget.addTab(self.TabProxy, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -801,8 +816,8 @@ class Ui_TabWidget(object):
         self.combo_proxy.setItemText(1, _translate("TabWidget", "Socks 4 Proxy"))
         self.combo_proxy.setItemText(2, _translate("TabWidget", "Socks 5 Proxy"))
         self.combo_proxy.setItemText(3, _translate("TabWidget", "Free Proxy"))
-        self.item_close_2.setText(_translate("TabWidget", "Đóng"))
-        self.item_add_2.setText(_translate("TabWidget", "Tạo"))
+        self.item_closeProxy.setText(_translate("TabWidget", "Đóng"))
+        self.item_addProxy.setText(_translate("TabWidget", "Tạo"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabProxy), _translate("TabWidget", "Nhập Proxy"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("TabWidget", "Thư mục"))
 import icons

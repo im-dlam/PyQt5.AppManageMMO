@@ -7,7 +7,6 @@ class CustomWindow(QMainWindow):
         super().__init__()
         
         self.setMask(self.create_rounded_rect_mask(self.rect(), 10))
-        
 
     def create_rounded_rect_mask(self, rect, radius):
         path = QPainterPath()
@@ -56,7 +55,7 @@ class Overlay(QWidget):
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
-        painter.fillRect(self.rect(), QColor(153, 139, 255, 50))
+        painter.fillRect(self.rect(), QColor(27,165,148,20))
     
 class Ui_Connect(QMainWindow):
     def __init__(self):
@@ -68,6 +67,7 @@ class Ui_Connect(QMainWindow):
         self.windows = CustomWindow()
         self.widgets = Ui()
         self.widgets.setupUi(self.windows)
+
         
         # Đặt các thuộc tính cho cửa sổ
         self.windows.setWindowFlags(Qt.FramelessWindowHint| Qt.WindowStaysOnTopHint)
@@ -82,9 +82,11 @@ class Ui_Connect(QMainWindow):
         self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
         self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
         self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 10))  # Call create_rounded_rect_mask
-
         self.windows.show()
+
+
         return self.widgets, self.windows
+
     def create_rounded_rect_mask(self, rect, radius):
         path = QPainterPath()
         path.addRoundedRect(rect, radius, radius)

@@ -1053,12 +1053,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -1163,13 +1166,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -1283,13 +1288,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -1311,6 +1318,12 @@ border-left:2px solid  #7264ac;
                          </property>
                          <property name="checkable">
                           <bool>true</bool>
+                         </property>
+                         <property name="checked">
+                          <bool>false</bool>
+                         </property>
+                         <property name="autoRepeat">
+                          <bool>false</bool>
                          </property>
                          <property name="autoExclusive">
                           <bool>true</bool>
@@ -1388,13 +1401,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -1562,13 +1577,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -1670,17 +1687,17 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
+				background-size:20px 20px;
 
 }
- QPushButton::menu-indicator {
-           subcontrol-position: right center;
-             subcontrol-origin: padding;
-}</string>
+</string>
                          </property>
                          <property name="text">
                           <string> LỊCH SỬ</string>
@@ -1929,13 +1946,15 @@ text-align: left;
  text-align: left;
 }
 QPushButton:checked{
-border:none;
-background-color:#415485;
-color: rgb(239, 245, 255);
-border-radius:5px;
-border-left:2px solid  #7264ac;
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
 
 }
+
  QPushButton::menu-indicator {
            subcontrol-position: right center;
              subcontrol-origin: padding;
@@ -2939,7 +2958,7 @@ border-radius:10px;
                          <property name="iconSize">
                           <size>
                            <width>30</width>
-                           <height>20</height>
+                           <height>25</height>
                           </size>
                          </property>
                          <property name="checkable">
