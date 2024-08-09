@@ -21,7 +21,7 @@ class Search(QThread):
                         match = True
                         break
                 self.widgets.TableManage.setRowHidden(row, not match)
-            except KeyError:
+            except Exception as KeyError:
                 print(KeyError)
 
 class Functions(WindowInterface):

@@ -1,5 +1,16 @@
 {
-    "account.total":0,
-    "account.proxy":true,
-    "account.work":"Random"
+    "account.total": 0,
+    "account.proxy": true,
+    "account.work": {
+        "facebook": [
+            "đăng nhập facebook",
+            "đăng nhập facebook (cookie)",
+            "giải checkpoint 956",
+            "tương tác hàng ngày"
+        ],
+        "tiktok": [],
+        "x": [],
+        "telegram": [],
+        "instagram": []
+    }
 }

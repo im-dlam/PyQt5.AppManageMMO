@@ -5,45 +5,40 @@ from models import *
 class CustomWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        
-        self.setMask(self.create_rounded_rect_mask(self.rect(), 10))
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setMouseTracking(True)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        path = QPainterPath()
+        radius = 10  # Bán kính cạnh tròn
+
+        # Chuyển đổi QRect sang QRectF
+        rect = QRectF(0, 0, self.width(), self.height())
+        path.addRoundedRect(rect, radius, radius)
+
+        # Vẽ nền của cửa sổ
+        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.fillPath(path, QBrush(QColor(255, 255, 255)))  # Màu nền của cửa sổ
+
+        # Vẽ viền tròn quanh hình chữ nhật
+        pen = QPen()
+        pen.setColor(QColor(32,196,172))  # Màu viền
+        pen.setWidth(2)  # Độ dày của viền
+        painter.setPen(pen)
+
+        # Vẽ đường viền xung quanh path đã vẽ
+        painter.drawPath(path)
 
     def create_rounded_rect_mask(self, rect, radius):
         path = QPainterPath()
-        rectF = QRectF(rect)  # Convert QRect to QRectF
-        path.addRoundedRect(rectF, radius, radius)
+        rect_f = QRectF(rect)  # Chuyển đổi QRect sang QRectF
+        path.addRoundedRect(rect_f, radius, radius)
         region = QRegion(path.toFillPolygon().toPolygon())
         return region
-    def paintEvent(self, event):
-        super().paintEvent(event)
-        painter = QPainter(self)
-        
-        # Create a path for the window's background
-        path = QPainterPath()
-        rect = QRectF(0, 0, self.width(), self.height())
-        path.addRoundedRect(rect, 10, 10)
-        
-        # Draw the window's background
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.setBrush(QBrush(QColor(255, 255, 255)))  # Background color
-        painter.drawPath(path)
-        
-        # Draw the border
-        border_color = QColor(177, 21, 74)  # Red color
-        border_width = 5  # Width of the border
-        
-        # Create a path for the border
-        border_path = QPainterPath()
-        border_rect = rect.adjusted(border_width // 2, border_width // 2, -border_width // 2, -border_width // 2)
-        border_path.addRoundedRect(border_rect, 10, 10)
-        
-        # Set up the pen for the border
-        border_pen = QPen(border_color, border_width)
-        painter.setPen(border_pen)
-        painter.setBrush(Qt.NoBrush)
-        
-        # Draw the border
-        painter.drawPath(border_path)
+
+
 class Overlay(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -118,12 +113,6 @@ class Ui_Connect(QMainWindow):
         painter.drawPath(path)
     def resizeEvent(self, event):
         super().resizeEvent(event)
-        rect = widgets.centralwidget.rect()
-        grip_width = 7  # Độ rộng của EdgeGrip
-        self.left_grip.setGeometry(0, 0, grip_width, rect.height())
-        self.right_grip.setGeometry(rect.width() - grip_width, 0, grip_width, rect.height())
-        self.top_grip.setGeometry(0, 0, rect.width(), grip_width)
-        self.bottom_grip.setGeometry(0, rect.height() - grip_width, rect.width(), grip_width)
 
     def mousePressEvent(self, event):
         self.resize.mousePressEvent(event)

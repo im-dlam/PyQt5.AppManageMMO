@@ -1,4 +1,5 @@
 from main import *
+import json 
 # Tạo button trong horizontal
 class ListWidgetItem(QWidget):
     def __init__(self, widgets, spacing, items_per_row):
@@ -171,13 +172,39 @@ class CardWidget(QWidget):
         self.horizontalLayout_2.addWidget(self.frame_5)
         self.verticalLayout.addWidget(self.frame_4)
         self.horizontalLayout.addWidget(self.frame)
-        
-        
 
-
-
-        self.setFixedSize(360, 200)  # Kích thước cố định cho từng item
         self.setText()
+        fileread = json.loads(open('./models/json/config.json','r',encoding='utf-8').read())
+        if self.title.lower() in fileread["account.work"][self.type.lower()]:
+            self.btn_addPlan.setText("ON")
+            self.btn_addPlan.setChecked(True)
+        
+
+
+        self.btn_addPlan.clicked.connect(self.shows)
+        self.setFixedSize(360, 200)  # Kích thước cố định cho từng item
+    def shows(self):
+        self.fileread = json.loads(open('./models/json/config.json','r',encoding='utf-8').read())
+        if self.btn_addPlan.isChecked() == True:
+            self.btn_addPlan.setText("ON")
+            if self.title.lower() in self.fileread["account.work"][self.type.lower()]:
+                return
+            self.fileread["account.work"][self.type.lower()].append(self.title.lower())
+            self.logfile()
+        else:
+            self.btn_addPlan.setText("OFF")
+            if self.title.lower() in self.fileread["account.work"][self.type.lower()]:
+                self.fileread["account.work"][self.type.lower()].remove(self.title.lower())
+                self.logfile()
+    
+
+    def logfile(self):
+        with open('./models/json/config.json' , "w" , encoding="utf-8") as f:
+            json.dump(
+                self.fileread,
+                f,
+                ensure_ascii=0,
+                indent=4)
 class SubjectQList:
 
 

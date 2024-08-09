@@ -13,23 +13,23 @@ central_script_menu = """
 
 QMenuRighClick = """
 QMenu {
-    background-color: #ffffff; /* Màu nền cho menu */
-    border: 0.5px solid #f2f2f2; /* Đường viền cho menu */
+    background-color:rgba(28,39,85,140);
+    border: 0.5px solid rgb(65,84,133); /* Đường viền cho menu */
     border-radius: 4px; /* Làm tròn viền cho menu */
-    color: #0f2b4b;
+    color: #d0d4db;
 }
 
 QMenu::item {
     padding: 10px 24px; /* Đệm cho các mục menu */
     background-color: transparent; /* Màu nền trong suốt cho các mục menu */
-    color: #4b69a5; /* Màu chữ cho các mục menu */
+    color: #d0d4db; /* Màu chữ cho các mục menu */
     border-radius: 3px; /* Làm tròn viền cho các mục menu */
     height: 10px; /* Chiều cao của item */
 }
 
 QMenu::item:selected {
-    background-color: #f5edf6; /* Màu nền khi mục được chọn */
-    color: #6d43c4;
+    background-color: rgb(65,84,133); /* Màu nền khi mục được chọn */
+    color: #d0d4db;
     height: 10px; /* Chiều cao của item khi được chọn */
     border-radius: 2px; /* Làm tròn viền cho menu */
     padding: 10px 24px; /* Đệm cho các mục menu */
@@ -39,7 +39,7 @@ QAction#ActionOtherCopy {
         }
 QMenu::separator {
     height: 0.5px;
-    background: #e6e6e6;
+    background: #526296;
     margin: 2px 0px 2px 0px;
 }
 

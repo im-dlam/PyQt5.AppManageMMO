@@ -23,7 +23,7 @@ class WindowInterface(QMainWindow):
         # //////////////////////////////////
 
         self.first_selected_item =  None 
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 1000 , 0
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 500 , 0
 
         # ///////////////////////////////////////
 
@@ -145,7 +145,6 @@ class WindowInterface(QMainWindow):
 
     def OnCellClickCheckBox(self, row, column):
         if QApplication.keyboardModifiers() == Qt.ShiftModifier:
-            print(row , column)
             if self.first_selected_item is not None:
                 first_row, first_col = self.first_selected_item
                 widgets.TableManage.clearSelection()
@@ -153,7 +152,7 @@ class WindowInterface(QMainWindow):
                     for c in range(min(first_col, column), max(first_col, column) + 1):
                         # ///////////////
                         # r : rows 
-                        print("OK")
+                        print("SHIFT")
                         item = widgets.TableManage.item(r, 0)
                         # //////////////////
                         # set Checked
@@ -425,7 +424,7 @@ class WindowInterface(QMainWindow):
         # ///////////////////////////////
         # Config lại headerhorizontal 
         self.SubjectSetupTableManage()
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 1000 , 0
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 500 , 0
         if widgets.ComboboxFile.currentText() == "ALL":
             ListName = SubjectSQL.GetSQLTable(self)
         else:
@@ -598,7 +597,8 @@ class WindowInterface(QMainWindow):
                             color =  QColor(255,255,255)
                         # Tạo item với màu sắc và kích thước font đã chỉ định
                         if temp_name == "work":
-                            value = json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"]
+                            typeAccount = widgets.ComboBoxTypeAccount.currentText().lower()
+                            value = str(len(json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"][typeAccount])) + " Actions !"
                         elif temp_name == "proxy":
                             value = "Local IP"
                         item_category = QTableTools.SubjectItemsText(
