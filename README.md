@@ -1,4 +1,3 @@
-# <span style="color:green">dev . @im-dlam</span>
 ## <span style="color:red">PROJECT PROGRAM MANAGE ACCOUNT SOCIAL</span> 
 
 **status** : <span style="color:blue">coming soon</span>
