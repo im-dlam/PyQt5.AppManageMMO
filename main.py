@@ -79,8 +79,10 @@ class WindowInterface(QMainWindow):
         # custom shadow frame
 
         #######################################################################################
-
+        # Tạo HeaderHorizontal
         self.SubjectSetupTableManage()
+
+
         #######################################################################################
         # turn off focus
         QTableTools.remove_focus(self, widgets.TableManage)
@@ -105,30 +107,41 @@ class WindowInterface(QMainWindow):
         # phần này tạo button có hình đại diện , thêm hiệu ứng đăng xuất , thông tin profile tóm tắt
         self.MenuButtonProfileUser()
 
+
         #######################################################################################
         # thêm model cho table widget
         self.SubjectAutoLoadData()
+
+
         #######################################################################################
         # mô phỏng chế độ kéo dãn cho các cột
         self.InteractiveHeader()
+
+
         #######################################################################################
-        
         # Tạo icons hiển thị con trỏ kéo dãn màn hình
         self.EdgeGripShort()
         #######################################################################################
         # search
-
         widgets.line_search.textChanged.connect(self.search)
+
 
         #######################################################################################
         # Load dữ liệu
         self.ComboboxFileActivedConnect()
+
+
         #######################################################################################
         widgets.ComboboxFile.activated.connect(self.ComboboxFileActivedConnect)
 
         widgets.TableManage.selectionModel().selectionChanged.connect(self.MouseClickCheckBox)
 
         widgets.TableManage.cellClicked.connect(self.OnCellClickCheckBox)
+
+
+        #######################################################################################
+
+        widgets.TableManage.cellDoubleClicked.connect(lambda row , column,widgets=widgets:QTableTools.CopyColumnContentDoubleClick(self , widgets , row , column))
         self.show()
 
 
@@ -142,12 +155,9 @@ class WindowInterface(QMainWindow):
 
 
 
-
-
     #######################################################################################
     # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
-
-    def OnCellClickCheckBox(self, row, column):
+    def OnCellClickCheckBox(self, row, column ):
         if QApplication.keyboardModifiers() == Qt.ShiftModifier:
             if self.first_selected_item is not None:
                 first_row, first_col = self.first_selected_item
@@ -156,7 +166,6 @@ class WindowInterface(QMainWindow):
                     for c in range(min(first_col, column), max(first_col, column) + 1):
                         #######################################################################################
                         # r : rows 
-                        print("SHIFT")
                         item = widgets.TableManage.item(r, 0)
                         #######################################################################################
                         # set Checked
@@ -270,7 +279,7 @@ class WindowInterface(QMainWindow):
         self.ResetOverLay()
         #######################################################################################
 
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window  )
+        self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
         #######################################################################################
@@ -458,8 +467,6 @@ class WindowInterface(QMainWindow):
         else:
             ListName = [widgets.ComboboxFile.currentText()]
         DataFillProcess = SubjectProcessFile.GetDataFromTable(self , ListName)
-        DataFillProcess = []
-
         #########################################
         # Xử lý QThread , hiển thị 500 dữ liệu 
         #########################################
@@ -476,10 +483,19 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         # gán dữ liệu đã xử lý để gửi tới hàm thêm dữ liệu
         DataFillProcess = res
-        
-        self.SubjectOnProcessingDataFinished = SubjectOnProcessingDataFinished(widgets, self.NameCategory , DataFillProcess)
-        self.SubjectOnProcessingDataFinished.signal.connect(self.signalOnProcessingDataFinished)
+        self.maxTotal =  len(DataFillProcess)
+        Functions.UpdateLabelTotalAccount(self , widgets , len(DataFillProcess))
+        #######################################################################################
+        # insert dữ liệu vào table
+        self.SubjectOnProcessinginsertDataFinished = SubjectOnProcessingDataFinished(widgets, self.NameCategory , DataFillProcess)
         self.startOnProcessingDataFinished()
+        #######################################################################################
+        # lấy 500 dữ liệu đầu tiên và hiển thị , tránh lag gui
+        self._GetDataThread = GetDataThread(widgets, self.NameCategory , self.maxTotal)
+        self._GetDataThread.signal.connect(self.signalOnProcessingDataFinished)
+        self.starGetDataThread()
+
+        msg.SendMsg(("Load dữ liệu có thể mất chút thời gian !!!",1))
 
                                 #       , Ui_main , [{},{} ...]      , ["","" ...]
 
@@ -493,16 +509,22 @@ class WindowInterface(QMainWindow):
         self.ComboboxFileActivedConnect()
         #######################################################################################
         # cập nhật thông số tài khoản
-        msg.SendMsg(("Thêm thành công !",                1))
-        Functions.UpdateLabelTotalAccount(self , widgets , len(DataFillProcess))
+
+        if len(DataFillProcess) == self.maxTotal:
+            msg.SendMsg(("Thêm thành công !",                1))
+        else:
+            msg.SendMsg(("Đang load dữ liệu !",                1))
 
     #######################################################################################
     # QThread tránh lỗi isrunning
     #######################################################################################
-    def startOnProcessingDataFinished(self):
-        if not self.SubjectOnProcessingDataFinished.isRunning():
-            self.SubjectOnProcessingDataFinished.start()
+    def starGetDataThread(self):
+        if not self._GetDataThread.isRunning():
+            self._GetDataThread.start()
 
+    def startOnProcessingDataFinished(self):
+        if not self.SubjectOnProcessinginsertDataFinished.isRunning():
+            self.SubjectOnProcessinginsertDataFinished.start()
 
     #######################################################################################
     # Gui hiển thị dữ liệu nhập Proxy . dùng Tabwidget và chuyển đổi sang index : 1

@@ -19,37 +19,49 @@ class Ui_CreateFolder(object):
         CreateFolder.setMaximumSize(QtCore.QSize(490, 86))
         CreateFolder.setStyleSheet("background-color: rgb(237, 234, 255);")
         self.centralwidget = QtWidgets.QWidget(CreateFolder)
+        self.centralwidget.setStyleSheet("background-color: rgb(15, 47, 94);")
         self.centralwidget.setObjectName("centralwidget")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(40, 30, 201, 31))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 491, 86))
+        self.frame.setMinimumSize(QtCore.QSize(0, 86))
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 86))
+        self.frame.setStyleSheet("background-color: rgb(15, 47, 94);")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.lineEdit = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit.setGeometry(QtCore.QRect(50, 30, 201, 31))
         self.lineEdit.setStyleSheet("QLineEdit{\n"
 "border:none;\n"
 "border-radius:5px;\n"
-"border: 1px solid #dddddd;\n"
-"    background-color: rgb(255, 255, 255);\n"
+"border: 1px solid  rgb(54, 70, 141);\n"
+"color: #ffffff;\n"
+"background-color: rgba(82,98,150,100);\n"
 "padding:5px;\n"
 "}\n"
 "QLineEdit:hover{\n"
 "border:none;\n"
 "border-radius:5px;\n"
-"border: 1px solid #dddddd;\n"
-"background-color: rgb(240, 255, 255);\n"
+"border: 1px solid #465ab5;\n"
+"color: #ffffff;\n"
 "padding:5px;\n"
 "}")
         self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40, 10, 91, 21))
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(50, 10, 91, 21))
         font = QtGui.QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(False)
         font.setWeight(50)
         self.label.setFont(font)
-        self.label.setStyleSheet("color: rgb(58, 89, 77);")
+        self.label.setStyleSheet("color: rgb(255, 255, 255);")
         self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(370, 50, 75, 23))
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setGeometry(QtCore.QRect(340, 35, 75, 21))
         font = QtGui.QFont()
         font.setFamily("MesloLGLDZ Nerd Font")
+        font.setBold(False)
+        font.setWeight(50)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("\n"
 "\n"
@@ -68,6 +80,29 @@ class Ui_CreateFolder(object):
 "background-color: rgb(160, 52, 255);\n"
 "}")
         self.pushButton.setObjectName("pushButton")
+        self.btn_close = QtWidgets.QPushButton(self.frame)
+        self.btn_close.setGeometry(QtCore.QRect(460, 0, 31, 23))
+        font = QtGui.QFont()
+        font.setFamily("MesloLGLDZ Nerd Font")
+        self.btn_close.setFont(font)
+        self.btn_close.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
+"border:none;\n"
+"border-radius:2px;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"color: rgb(255, 255, 255);\n"
+"    background-color: rgb(255, 84, 135);\n"
+"}")
+        self.btn_close.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-x-24_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_close.setIcon(icon)
+        self.btn_close.setObjectName("btn_close")
         CreateFolder.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(CreateFolder)
@@ -78,6 +113,7 @@ class Ui_CreateFolder(object):
         CreateFolder.setWindowTitle(_translate("CreateFolder", "New Category"))
         self.label.setText(_translate("CreateFolder", "Tên Danh Mục"))
         self.pushButton.setText(_translate("CreateFolder", "Tạo"))
+import icons
 
 
 if __name__ == "__main__":

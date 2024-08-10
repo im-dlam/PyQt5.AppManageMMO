@@ -20,7 +20,39 @@ class Ui_DeleteFolder(object):
         DeleteFolder.setStyleSheet("background-color: rgb(237, 234, 255);")
         self.centralwidget = QtWidgets.QWidget(DeleteFolder)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 401, 91))
+        self.frame.setStyleSheet("background-color: rgb(15, 47, 94);")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(10, 30, 381, 23))
+        font = QtGui.QFont()
+        font.setFamily("MesloLGMDZ Nerd Font")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("QLabel{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"border: 1px solid  rgb(54, 70, 141);\n"
+"color: #ffffff;\n"
+"background-color: rgba(82,98,150,100);\n"
+"padding:5px;\n"
+"}\n"
+"QLabel:hover{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"border: 1px solid #465ab5;\n"
+"color: #ffffff;\n"
+"padding:5px;\n"
+"}")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.pushButton = QtWidgets.QPushButton(self.frame)
         self.pushButton.setGeometry(QtCore.QRect(160, 60, 75, 23))
         font = QtGui.QFont()
         font.setFamily("MesloLGLDZ Nerd Font")
@@ -42,18 +74,29 @@ class Ui_DeleteFolder(object):
 "background-color: rgb(160, 52, 255);\n"
 "}")
         self.pushButton.setObjectName("pushButton")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(20, 20, 361, 21))
+        self.btn_close = QtWidgets.QPushButton(self.frame)
+        self.btn_close.setGeometry(QtCore.QRect(370, 0, 31, 23))
         font = QtGui.QFont()
-        font.setFamily("MesloLGMDZ Nerd Font")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color: rgb(157, 0, 0);")
-        self.label.setText("")
-        self.label.setObjectName("label")
+        font.setFamily("MesloLGLDZ Nerd Font")
+        self.btn_close.setFont(font)
+        self.btn_close.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
+"border:none;\n"
+"border-radius:2px;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"color: rgb(255, 255, 255);\n"
+"    background-color: rgb(255, 84, 135);\n"
+"}")
+        self.btn_close.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-x-24_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_close.setIcon(icon)
+        self.btn_close.setObjectName("btn_close")
         DeleteFolder.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(DeleteFolder)
@@ -63,6 +106,7 @@ class Ui_DeleteFolder(object):
         _translate = QtCore.QCoreApplication.translate
         DeleteFolder.setWindowTitle(_translate("DeleteFolder", "Delete Category"))
         self.pushButton.setText(_translate("DeleteFolder", "Xác nhận"))
+import icons
 
 
 if __name__ == "__main__":

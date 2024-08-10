@@ -34,6 +34,4 @@ class SubjectProcessFile:
             process += SubjectSQL.ProcessGetDataTable(self , name)
         
         return process
-
-    
     

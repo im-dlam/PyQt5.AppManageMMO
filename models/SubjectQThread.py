@@ -50,6 +50,32 @@ class SubjectDataProcessing(QThread):
         return DataProcessingFill
     
 
+class GetDataThread(QThread):
+    signal = pyqtSignal(object)
+    def __init__(self, widgets, NameCategory, total):
+        super(GetDataThread, self).__init__()
+        self.widgets = widgets
+        self.NameCategory = [NameCategory]
+        self.total = total
+    def run(self):
+
+        
+        self.t = QTimer()
+        for _ in range(10):
+            self.t.moveToThread(self)  # Di chuyển QTimer vào luồng hiện tại
+            self.t.timeout.connect(self.GetDataFromTable)
+            self.t.start(1000)  # Bắt đầu timer, kiểm tra mỗi 2 giây
+            self.exec_()  # Bắt đầu vòng lặp sự kiện của QThread
+
+    def GetDataFromTable(self):
+        process = []
+        for name in self.NameCategory:
+            process += SubjectSQL.ProcessGetDataTable(self, name)
+        self.signal.emit(process)
+
+        if len(process) == self.total:
+            self.t.stop()
+            self.quit()
 class SubjectOnProcessingDataFinished(QThread):
     signal = pyqtSignal(object)
 
@@ -61,8 +87,6 @@ class SubjectOnProcessingDataFinished(QThread):
 
     def run(self):
         SubjectProcessFile.InsertDataInTabel(self, self.NameCategory, self.DataFillProcess, self.widgets)
-        DataFillProcess = SubjectProcessFile.GetDataFromTable(self, [self.widgets.ComboboxFile.currentText()])
-        self.signal.emit(DataFillProcess)
 # ////////////////////////
 # xử lý định dạng
 class ProcessingThread(QThread):

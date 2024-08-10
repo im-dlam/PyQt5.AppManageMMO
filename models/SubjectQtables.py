@@ -1,6 +1,6 @@
 from main import *
 from . SubjectScrips import *
-
+from . SubjectNotifications import *
 index_name = {"c_user":2,"status":3,"work":4,"proxy":5,"message":6,"password":7,"code":8,"cookie":9,"access_token":10,"email":11,"passemail":12,"user-agent":13}
 headers = ['','#', 'UID', 'Trạng thái', 'Kịch Bản', 'Proxy', 'Tin nhắn', 
                 'Mật Khẩu', '2FA', 'Cookie', 'FB.token', 'Mail', 'password.mail', 
@@ -20,9 +20,13 @@ class DataGenerator(QThread):
         self.data  = data
     def run(self):
         start_index = self.current_batch * self.batch_size
+
+        print("SATRT :",start_index)
         end_index = min(start_index + self.batch_size, self.total_items)
         data_batch = []
         for i in range(start_index, end_index):
+
+            if len(data_batch) == 500:break
             try:
                 data_batch.append(self.data[i])
             except:break
@@ -34,6 +38,19 @@ class QTableTools(WindowInterface):
 
 
 
+
+    def CopyColumnContentDoubleClick(self, widgets ,row , column):
+        if column == 2:
+            # Lấy nội dung của ô
+            item = widgets.TableManage.item(row, column)
+            if item:
+                text = item.text()
+                
+                # Sao chép nội dung vào clipboard
+                clipboard = QApplication.clipboard()
+                clipboard.setText(text)
+                msg = Notification(self)
+                msg.SendMsg(("Sao chép thành công !",1))
     def SetColumnWidthTableWidget(self,widgets):
         widgets.TableManage.setColumnWidth(0, 30)  # -> vị trí CHECKBOX
         widgets.TableManage.setColumnWidth(1, 70)  # -> vị trí ID COUNT

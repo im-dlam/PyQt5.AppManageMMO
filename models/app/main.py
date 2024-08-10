@@ -210,6 +210,8 @@ class Ui_MainWindow(object):
 "border-radius:1px;\n"
 " border-top-right-radius: 5px; /* Top-right corner */\n"
 " border-bottom-right-radius: 5px; /* Bottom-right corner */\n"
+" border-top-left-radius: 5px; /* Top-right corner */\n"
+" border-bottom-left-radius: 5px; /* Bottom-right corner */\n"
 "}\n"
 "QPushButton{\n"
 "border:none;\n"

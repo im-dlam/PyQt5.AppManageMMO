@@ -120,7 +120,8 @@ class FrameRightClick(QFrame):
         global window_widgets
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_CreateFolder)
         window_widgets.pushButton.clicked.connect(self.CreateFolder)
-        window_widgets.pushButton.clicked.connect(lambda: windows_ui.close())
+        window_widgets.pushButton.clicked.connect(lambda:windows_ui.close())
+        window_widgets.btn_close.clicked.connect(lambda:windows_ui.close())
 
     # ///////////////////////////
     # GUI xóa danh mục
@@ -131,6 +132,7 @@ class FrameRightClick(QFrame):
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_DeleteFolder)
         window_widgets.pushButton.clicked.connect(self.DeleteFolder)
         window_widgets.pushButton.clicked.connect(lambda: windows_ui.close())
+        window_widgets.btn_close.clicked.connect(lambda: windows_ui.close())
         window_widgets.label.setText(f"Bạn có muốn xóa thư mục ( {NameText} ) không ?")
     def DeleteFolder(self):
         global msg

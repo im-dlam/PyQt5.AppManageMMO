@@ -5,31 +5,25 @@ from models import *
 class CustomWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setMouseTracking(True)
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        path = QPainterPath()
-        radius = 10  # Bán kính cạnh tròn
+        painter.setRenderHint(QPainter.Antialiasing)
 
-        # Chuyển đổi QRect sang QRectF
-        rect = QRectF(0, 0, self.width(), self.height())
-        path.addRoundedRect(rect, radius, radius)
+        # Màu của bóng mờ
+        shadow_color = QColor(0, 0, 0, 160)
+        painter.setBrush(QBrush(shadow_color))
 
-        # Vẽ nền của cửa sổ
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.fillPath(path, QBrush(QColor(255, 255, 255)))  # Màu nền của cửa sổ
+        # Tạo một hình chữ nhật bao quanh cửa sổ với bóng mờ 1px
+        rect = self.rect().adjusted(1, 1, -1, -1)
+        painter.drawRoundedRect(rect, 10, 10)
 
-        # Vẽ viền tròn quanh hình chữ nhật
-        pen = QPen()
-        pen.setColor(QColor(32,196,172))  # Màu viền
-        pen.setWidth(2)  # Độ dày của viền
-        painter.setPen(pen)
+        # Vẽ một hình chữ nhật để kiểm tra mask
+        painter.setBrush(QBrush(Qt.red))  # Đặt màu nền tạm thời là đỏ
+        painter.drawRect(self.rect())
 
-        # Vẽ đường viền xung quanh path đã vẽ
-        painter.drawPath(path)
+        super().paintEvent(event)
 
     def create_rounded_rect_mask(self, rect, radius):
         path = QPainterPath()
@@ -63,54 +57,27 @@ class Ui_Connect(QMainWindow):
         self.widgets = Ui()
         self.widgets.setupUi(self.windows)
 
-        
         # Đặt các thuộc tính cho cửa sổ
-        self.windows.setWindowFlags(Qt.FramelessWindowHint| Qt.WindowStaysOnTopHint)
-        self.windows.setAttribute(Qt.WA_TranslucentBackground)
+
 
         # /////////////
         # tắt thao tác trên giao diện chính
         self.windows.setWindowModality(Qt.ApplicationModal)
-        self.widgets.centralwidget.setStyleSheet("border-radius:5px; background-color: white;")
         self.resize = Resize(self.windows)
         self.windows.mousePressEvent = self.mousePressEvent  # Override mousePressEvent
         self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
         self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
         self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 10))  # Call create_rounded_rect_mask
-        self.windows.show()
+        # Tạo ShadowWindow và thiết lập vị trí, kích thước
 
+        self.windows.show()
 
         return self.widgets, self.windows
 
-    def create_rounded_rect_mask(self, rect, radius):
-        path = QPainterPath()
-        path.addRoundedRect(rect, radius, radius)
-        region = QRegion(path.toFillPolygon().toPolygon())
-        return region
+
     
 
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        path = QPainterPath()
-        radius = 10  # Bán kính cạnh tròn
-        
-
-        
-        # Vẽ hình chữ nhật với bán kính cạnh tròn
-        path.addRoundedRect(self.rect(), radius, radius)
-        
-        # Vẽ nền của cửa sổ
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.fillPath(path, QBrush(QColor(255, 255, 255)))
-        
-        # Vẽ viền tròn quanh hình chữ nhật
-        pen = painter.pen()
-        pen.setColor(QColor(177, 21, 74))
-        pen.setWidth(2)  # Đặt độ dày của viền
-        painter.setPen(pen)
-        
-        # Vẽ đường viền xung quanh path đã vẽ
-        painter.drawPath(path)
+  
     def resizeEvent(self, event):
         super().resizeEvent(event)
 
