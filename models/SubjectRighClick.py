@@ -122,7 +122,7 @@ class FrameRightClick(QFrame):
         window_widgets.pushButton.clicked.connect(self.CreateFolder)
         window_widgets.pushButton.clicked.connect(lambda:windows_ui.close())
         window_widgets.btn_close.clicked.connect(lambda:windows_ui.close())
-
+        windows_ui.show()
     # ///////////////////////////
     # GUI xóa danh mục
     def SubjectDeleteFolder(self):
@@ -133,7 +133,10 @@ class FrameRightClick(QFrame):
         window_widgets.pushButton.clicked.connect(self.DeleteFolder)
         window_widgets.pushButton.clicked.connect(lambda: windows_ui.close())
         window_widgets.btn_close.clicked.connect(lambda: windows_ui.close())
+        windows_ui.setAttribute(Qt.WA_TranslucentBackground) 
         window_widgets.label.setText(f"Bạn có muốn xóa thư mục ( {NameText} ) không ?")
+        windows_ui.show()
+
     def DeleteFolder(self):
         global msg
         NameText = str(widgets.ComboboxFile.currentText())

@@ -7,23 +7,20 @@ class CustomWindow(QMainWindow):
         super().__init__()
         self.setAttribute(Qt.WA_TranslucentBackground)
 
+    # cần phải chỉnh centralwidget các layout horizon lùi về 1
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
+        path = QPainterPath()
 
-        # Màu của bóng mờ
-        shadow_color = QColor(0, 0, 0, 160)
-        painter.setBrush(QBrush(shadow_color))
 
-        # Tạo một hình chữ nhật bao quanh cửa sổ với bóng mờ 1px
-        rect = self.rect().adjusted(1, 1, -1, -1)
-        painter.drawRoundedRect(rect, 10, 10)
-
-        # Vẽ một hình chữ nhật để kiểm tra mask
-        painter.setBrush(QBrush(Qt.red))  # Đặt màu nền tạm thời là đỏ
-        painter.drawRect(self.rect())
-
-        super().paintEvent(event)
+        #######################################################################################
+        # hiển thị viền app
+        #######################################################################################
+        path.addRoundedRect(0, 0, self.width(), self.height(), 8, 8)
+        painter.setRenderHint(QPainter.Antialiasing, True)
+        painter.fillPath(path, QBrush(QColor(102, 102, 255,100)))
+        painter.setPen(QColor(102, 102, 255,200))
+        painter.drawPath(path)
 
     def create_rounded_rect_mask(self, rect, radius):
         path = QPainterPath()
@@ -33,18 +30,6 @@ class CustomWindow(QMainWindow):
         return region
 
 
-class Overlay(QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setAttribute(Qt.WA_TransparentForMouseEvents)
-        self.setAttribute(Qt.WA_NoSystemBackground)
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setGeometry(parent.rect())
-    
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.fillRect(self.rect(), QColor(27,165,148,20))
     
 class Ui_Connect(QMainWindow):
     def __init__(self):
@@ -60,14 +45,15 @@ class Ui_Connect(QMainWindow):
         # Đặt các thuộc tính cho cửa sổ
 
 
-        # /////////////
+        #############################################################
         # tắt thao tác trên giao diện chính
         self.windows.setWindowModality(Qt.ApplicationModal)
         self.resize = Resize(self.windows)
         self.windows.mousePressEvent = self.mousePressEvent  # Override mousePressEvent
         self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
         self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
-        self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 10))  # Call create_rounded_rect_mask
+        self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 5))  # Call create_rounded_rect_mask
+        #############################################################
         # Tạo ShadowWindow và thiết lập vị trí, kích thước
 
         self.windows.show()

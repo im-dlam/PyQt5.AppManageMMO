@@ -17,6 +17,9 @@ class WindowInterface(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.setAutoFillBackground(True)
+        # Apply the stylesheet
+        self.setWindowFlag(Qt.FramelessWindowHint)
         #######################################################################################
         # call item * 
         global widgets , DataProcessingFill , msg , index_name , DataFillProcess 
@@ -276,11 +279,9 @@ class WindowInterface(QMainWindow):
 
         #######################################################################################
         # màu nền của giao diện chính về ban đầu
-        self.ResetOverLay()
         #######################################################################################
 
-        self.setWindowFlags(Qt.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setAttribute(Qt.WA_TranslucentBackground) 
 
         #######################################################################################
         # xử lý di chuyển ứng dụng
@@ -314,16 +315,6 @@ class WindowInterface(QMainWindow):
 
     
     #######################################################################################
-    # Làm mờ giao diện chính , tạo màu khác cho giao diện chính khi được bật lên
-    def ShowOverLay(self):
-        self.filloverlay = Overlay(self)
-        self.filloverlay.show()
-    
-    def ResetOverLay(self):
-        try:
-            self.filloverlay.close()
-        except Exception as Keys:
-            print(Keys)
 
     ######################################################################################
     # Căn chỉnh màn hình phụ ở chính giữa giao diện APP
@@ -346,7 +337,7 @@ class WindowInterface(QMainWindow):
     # Màn Hình Thêm Dữ Liệu
     def window_additem(self):
         # code sql/300
-        self.ShowOverLay()
+        
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
 
@@ -367,6 +358,7 @@ class WindowInterface(QMainWindow):
         # chỉnh sửa làm bóng các frame
         Functions.ShadowFrameConditional(self , window_widgets.label , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_3 , QColor(0,0,10,40))
+        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(10,0,10,80))
         Functions.ShadowFrameConditional(self , window_widgets.frame_8 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
@@ -531,7 +523,7 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     def window_proxies(self):
         #######################################################################################
-        self.ShowOverLay()
+        
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
         window_widgets.tabWidget.setCurrentIndex(1)
         self.center(windows_ui)

@@ -29,44 +29,53 @@
    <string notr="true">background-color: rgb(237, 234, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>401</width>
-      <height>91</height>
-     </rect>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(15, 47, 94);</string>
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>381</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>MesloLGMDZ Nerd Font</family>
-       <pointsize>8</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel{
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(15, 47, 94);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>381</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MesloLGMDZ Nerd Font</family>
+         <pointsize>8</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
 border:none;
 border-radius:5px;
 border: 1px solid  rgb(54, 70, 141);
@@ -81,27 +90,27 @@ border: 1px solid #465ab5;
 color: #ffffff;
 padding:5px;
 }</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>MesloLGLDZ Nerd Font</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>60</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MesloLGLDZ Nerd Font</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
 
 QPushButton{
 border:none;
@@ -117,27 +126,27 @@ color: rgb(255, 255, 255);
 border: 1px gray #6bd4c1 ;
 background-color: rgb(160, 52, 255);
 }</string>
-     </property>
-     <property name="text">
-      <string>Xác nhận</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btn_close">
-     <property name="geometry">
-      <rect>
-       <x>370</x>
-       <y>0</y>
-       <width>31</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>MesloLGLDZ Nerd Font</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
+       </property>
+       <property name="text">
+        <string>Xác nhận</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn_close">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>0</y>
+         <width>31</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MesloLGLDZ Nerd Font</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
 
 QPushButton{
 border:none;
@@ -150,16 +159,18 @@ border-radius:3px;
 color: rgb(255, 255, 255);
 	background-color: rgb(255, 84, 135);
 }</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="../icons/icons.qrc">
-       <normaloff>:/icons/png/icons8-x-24_green.png</normaloff>:/icons/png/icons8-x-24_green.png</iconset>
-     </property>
-    </widget>
-   </widget>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../icons/icons.qrc">
+         <normaloff>:/icons/png/icons8-x-24_green.png</normaloff>:/icons/png/icons8-x-24_green.png</iconset>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>

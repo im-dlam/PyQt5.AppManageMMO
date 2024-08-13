@@ -34,34 +34,22 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QFrame" name="frameMain">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>985</width>
-        <height>443</height>
-       </size>
-      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(38, 49, 98);</string>
       </property>
