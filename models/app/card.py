@@ -163,7 +163,7 @@ class Ui_FrameCard(object):
         self.label_tag.setText(_translate("FrameCard", " Facebook"))
         self.labe_note.setText(_translate("FrameCard", "Đăng nhập"))
         self.btn_addPlan.setText(_translate("FrameCard", "OFF"))
-import icons
+import icons_rc
 
 
 if __name__ == "__main__":

@@ -2,9 +2,7 @@
     "account.total": 0,
     "account.proxy": true,
     "account.work": {
-        "facebook": [
-            "đăng nhập facebook"
-        ],
+        "facebook": [],
         "tiktok": [],
         "x": [],
         "telegram": [],

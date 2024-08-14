@@ -1,4 +1,4 @@
-from . icons import *
+from . icons_rc import *
 from . main import Ui_MainWindow
 from . proxyitem import Ui_Proxies_code
 from . newfolder import Ui_CreateFolder

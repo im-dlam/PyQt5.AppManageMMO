@@ -1,78 +1,78 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QLabel, QHBoxLayout, QPushButton
-from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QColor, QPainter
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFrame
+from PyQt5.QtCore import QPropertyAnimation, QRect, QEasingCurve
 
-class CustomTitleBar(QWidget):
+class ToggleSwitch(QPushButton):
     def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setAutoFillBackground(True)
-        self.setFixedHeight(30)
-        self.setStyleSheet("background-color: black; color: white;")
+        super(ToggleSwitch, self).__init__(parent)
+        self.setCheckable(True)
+        self.setMinimumWidth(60)
+        self.setMinimumHeight(30)
+        self.setStyleSheet(self._get_stylesheet())
 
-        self.layout = QHBoxLayout()
-        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.animation = QPropertyAnimation(self, b"geometry")
+        self.animation.setDuration(200)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuad)
 
-        self.title = QLabel("Custom Title Bar")
-        self.title.setStyleSheet("color: white;")
-        self.layout.addWidget(self.title)
+        self.clicked.connect(self.start_animation)
 
-        self.btnMinimize = QPushButton("-")
-        self.btnMinimize.setFixedSize(30, 30)
-        self.btnMinimize.clicked.connect(parent.showMinimized)
-        self.layout.addWidget(self.btnMinimize)
+    def _get_stylesheet(self):
+        return """
+        ToggleSwitch {
+            background-color: #555;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+        }
+        ToggleSwitch:checked {
+            background-color: #007BFF;
+        }
+        ToggleSwitch:checked::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 33px;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background-color: white;
+        }
+        ToggleSwitch::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            background-color: white;
+            transition: left 0.2s ease;
+        }
+        """
 
-        self.btnMaximize = QPushButton("[]")
-        self.btnMaximize.setFixedSize(30, 30)
-        self.btnMaximize.clicked.connect(self.toggleMaximize)
-        self.layout.addWidget(self.btnMaximize)
-
-        self.btnClose = QPushButton("X")
-        self.btnClose.setFixedSize(30, 30)
-        self.btnClose.clicked.connect(parent.close)
-        self.layout.addWidget(self.btnClose)
-
-        self.setLayout(self.layout)
-
-    def toggleMaximize(self):
-        if self.window().isMaximized():
-            self.window().showNormal()
+    def start_animation(self):
+        if self.isChecked():
+            self.animation.setStartValue(QRect(3, 3, 24, 24))
+            self.animation.setEndValue(QRect(33, 3, 24, 24))
         else:
-            self.window().showMaximized()
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.oldPos = event.globalPos()
-    
-    def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos)
-        self.window().move(self.window().pos() + delta)
-        self.oldPos = event.globalPos()
+            self.animation.setStartValue(QRect(33, 3, 24, 24))
+            self.animation.setEndValue(QRect(3, 3, 24, 24))
+        self.animation.start()
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowFlags(Qt.FramelessWindowHint)
-        self.setStyleSheet("background-color: white;")
+        self.setWindowTitle("Toggle Switch Example")
+        self.setGeometry(100, 100, 200, 100)
 
-        self.titleBar = CustomTitleBar(self)
-        self.setMenuWidget(self.titleBar)
+        self.frame = QFrame(self)
+        self.frame.setGeometry(20, 20, 160, 60)
+        self.frame.setStyleSheet("background-color: #333; border-radius: 15px;")
 
-        self.mainWidget = QWidget()
-        self.setCentralWidget(self.mainWidget)
-
-        layout = QVBoxLayout(self.mainWidget)
-        label = QLabel("Main content area")
-        layout.addWidget(label)
-
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.setPen(Qt.NoPen)
-        painter.setBrush(QColor(0, 0, 0))
-        painter.drawRect(self.rect())
+        self.toggle = ToggleSwitch(self.frame)
+        self.toggle.setGeometry(50, 15, 60, 30)
 
 if __name__ == "__main__":
-    app = QApplication([])
+    app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
-    app.exec_()
+    sys.exit(app.exec_())

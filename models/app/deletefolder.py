@@ -110,7 +110,7 @@ class Ui_DeleteFolder(object):
         _translate = QtCore.QCoreApplication.translate
         DeleteFolder.setWindowTitle(_translate("DeleteFolder", "Delete Category"))
         self.pushButton.setText(_translate("DeleteFolder", "Xác nhận"))
-import icons
+import icons_rc
 
 
 if __name__ == "__main__":

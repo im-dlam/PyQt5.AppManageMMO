@@ -18,7 +18,6 @@ class SubjectDataProcessing(QThread):
         if ResultData == None:
             ResultData = (None , None)
         self.signal.emit(ResultData)
-
     def SubjectDataProcessing(self, window_widgets):
         global DataProcessingFill
         # Code cho SubjectDataProcessing của bạn
@@ -66,7 +65,7 @@ class GetDataThread(QThread):
             self.t.timeout.connect(self.GetDataFromTable)
             self.t.start(1000)  # Bắt đầu timer, kiểm tra mỗi 2 giây
             self.exec_()  # Bắt đầu vòng lặp sự kiện của QThread
-
+        self.terminate()
     def GetDataFromTable(self):
         process = []
         for name in self.NameCategory:

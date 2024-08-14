@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-cat-profile-96.png</file>
     <file>png/icons8-task-48_dark.png</file>
     <file>png/icons8-task-48.png</file>
     <file>png/icons8-x-24_green.png</file>

@@ -113,7 +113,7 @@ class Ui_CreateFolder(object):
         CreateFolder.setWindowTitle(_translate("CreateFolder", "New Category"))
         self.label.setText(_translate("CreateFolder", "Tên Danh Mục"))
         self.pushButton.setText(_translate("CreateFolder", "Tạo"))
-import icons
+import icons_rc
 
 
 if __name__ == "__main__":

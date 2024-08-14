@@ -20,6 +20,7 @@ class WindowInterface(QMainWindow):
         self.setAutoFillBackground(True)
         # Apply the stylesheet
         self.setWindowFlag(Qt.FramelessWindowHint)
+        self.resize(700, 699)
         #######################################################################################
         # call item * 
         global widgets , DataProcessingFill , msg , index_name , DataFillProcess 
@@ -126,6 +127,8 @@ class WindowInterface(QMainWindow):
         self.EdgeGripShort()
         #######################################################################################
         # search
+        self.lastSearchTime = QElapsedTimer()
+        self.lastSearchTime.start()  # Khởi động bộ đếm thời gian
         widgets.line_search.textChanged.connect(self.search)
 
 
@@ -250,11 +253,15 @@ class WindowInterface(QMainWindow):
 
         #######################################################################################
         # cài dặt kịch bản
-        
         widgets.btn_plan_tool.clicked.connect(self.WidgetFrameScheme)
 
-        widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
 
+        # cài đặt chung
+        widgets.btn_setting.clicked.connect(self.WidgetFrameSetting)
+
+        # chuyển đổi back giữa các frame
+        widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
+        widgets.btn_back_2.clicked.connect(self.SwapWidgetFrameHome)
     #######################################################################################
     # chuyển đổi frame màn hình của stack widget
     # Màn hình quản lý 
@@ -272,6 +279,14 @@ class WindowInterface(QMainWindow):
         SubjectQList.ShowCardItems(self , widgets)
 
 
+    #######################################################################################
+    # Màn hình cài đặt chung
+    def WidgetFrameSetting(self):
+        widgets.stackedWidget.setCurrentWidget(widgets.SettingPage)
+
+        FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
+                    widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,widgets.FrameID_Proxy1,widgets.FrameID_Proxy2]
+        Functions.AnimatedToggleButton(self , FrameID)
 
     #######################################################################################
     # Xóa thanh tiêu đề và xử lý di chuyển
@@ -414,7 +429,6 @@ class WindowInterface(QMainWindow):
         # code 200
         self.RemoveWindowFlags()
         self.NameCategory = window_widgets.combo_danhmuc.currentText()
-
         if window_widgets.plain_item.toPlainText() == "":
             msg.SendMsg(
                 ("Vui lòng nhập dữ liệu !",          0)
@@ -752,11 +766,17 @@ class WindowInterface(QMainWindow):
     # Bug : search quá nhanh sẽ đơ app và lỗi isrunning chưa xử lý gì thêm / code : 191
     #######################################################################################
     def search(self):
+         # Kiểm tra nếu thời gian từ lần tìm kiếm trước đó ít hơn 500ms
+        if self.lastSearchTime.elapsed() < 500:
+            print("time searh limit")
+            return  # Không thực hiện tìm kiếm nếu chưa đủ thời gian chờ
+        
         try:
             self.processingSearch = Search(widgets,widgets.line_search.text().lower())
             self.startprocessingSearch()
         except Exception as KeyError:
             print(KeyError)
+        self.lastSearchTime.restart() # reset lại time đếm
     
 
     #######################################################################################
@@ -824,7 +844,7 @@ class WindowInterface(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
+    app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running
     #######################################################################################
     # Làm nét HD cho các hình ảnh trong APP
     #######################################################################################

@@ -822,7 +822,7 @@ class Ui_TabWidget(object):
         self.item_addProxy.setText(_translate("TabWidget", "Tạo"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabProxy), _translate("TabWidget", "Nhập Proxy"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("TabWidget", "Thư mục"))
-import icons
+import icons_rc
 
 
 if __name__ == "__main__":

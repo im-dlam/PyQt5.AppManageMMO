@@ -12,6 +12,10 @@ class Search(QThread):
         self.widgets = widgets
         self.searchText = searchText
     def run(self  ):
+        self.search()
+
+        self.quit()
+    def search(self):
         for row in range(self.widgets.TableManage.rowCount()):
             match = False
             try:
@@ -23,12 +27,23 @@ class Search(QThread):
                 self.widgets.TableManage.setRowHidden(row, not match)
             except Exception as KeyError:
                 print(KeyError)
-
 class Functions(WindowInterface):
 
     # ////////////////////////////////
     # cập nhật thông số tài khoản hiển thị
+    def AnimatedToggleButton(self,FrameID):
 
+        for frame in FrameID:
+            button = AnimatedToggle(
+                    checked_color = "#6b7db3",
+                    pulse_checked_color="#4040bf"
+                )
+            button.setMinimumSize(50,30)
+
+            # thêm layout cho nút
+            layout_button = QVBoxLayout()
+            layout_button.addWidget(button)
+            frame.setLayout(layout_button)
     def UpdateLabelTotalAccount(self , widgets , total):
         widgets.label_total.setText(str(total))
 
