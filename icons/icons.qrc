@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-about-me-24.png</file>
+    <file>png/icons8-notification-24.png</file>
     <file>png/icons8-cat-profile-96.png</file>
     <file>png/icons8-task-48_dark.png</file>
     <file>png/icons8-task-48.png</file>

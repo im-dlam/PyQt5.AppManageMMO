@@ -34,7 +34,7 @@ class WindowInterface(QMainWindow):
 
         #######################################################################################
                                                 # Hiển thị trong centralwidget của app
-        self.setMinimumSize(QtCore.QSize(1270, 0))
+        self.setMinimumSize(QSize(1270, 0))
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
 
         self.setWindowTitle("BetaLogin - Quản Lý Đa Nền Tảng Tài Khoản")
@@ -216,6 +216,8 @@ class WindowInterface(QMainWindow):
         # sound opening
         Functions.OpenSoundApp(self)
 
+        Functions.ShadowFrameConditional(self, widgets.frame_taskbar,QColor(0,10,10,100))
+
 
 
     def SubjectSetupTableManage(self):
@@ -260,6 +262,7 @@ class WindowInterface(QMainWindow):
         widgets.btn_setting.clicked.connect(self.WidgetFrameSetting)
 
         # chuyển đổi back giữa các frame
+        self.SwapWidgetFrameHome()
         widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
         widgets.btn_back_2.clicked.connect(self.SwapWidgetFrameHome)
     #######################################################################################
@@ -284,6 +287,8 @@ class WindowInterface(QMainWindow):
     def WidgetFrameSetting(self):
         widgets.stackedWidget.setCurrentWidget(widgets.SettingPage)
 
+        Functions.ShadowFrameConditional(self, widgets.SettingPage,QColor(0,10,10,100))
+        
         FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
                     widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,widgets.FrameID_Proxy1,widgets.FrameID_Proxy2]
         Functions.AnimatedToggleButton(self , FrameID)

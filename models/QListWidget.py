@@ -43,8 +43,8 @@ class CardWidget(QWidget):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame = QFrame(self.centralwidget)
-        self.frame.setMinimumSize(QtCore.QSize(360, 200))
-        self.frame.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.frame.setMinimumSize(QSize(360, 200))
+        self.frame.setMaximumSize(QSize(16777215, 16777215))
         self.frame.setStyleSheet("QFrame#frame{\n"
 "background-color: rgb(38, 49, 98);\n"
 "border-radius:10px; border: 0.5px solid #495b9e;\n"
@@ -56,7 +56,7 @@ class CardWidget(QWidget):
         self.verticalLayout.setContentsMargins(5, -1, 5, -1)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame_2 = QFrame(self.frame)
-        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.frame_2.setMaximumSize(QSize(16777215, 30))
         self.frame_2.setStyleSheet("QFrame#frame_2{\n"
 "background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
@@ -69,7 +69,7 @@ class CardWidget(QWidget):
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_icons = QFrame(self.frame_2)
-        self.frame_icons.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.frame_icons.setMaximumSize(QSize(40, 16777215))
         self.frame_icons.setStyleSheet("background-color: rgb(38, 49, 98);\n"
 "image: url(:/icons/png/icons8-facebook-48.png);")
         self.frame_icons.setFrameShape(QFrame.StyledPanel)
@@ -87,8 +87,8 @@ class CardWidget(QWidget):
         self.label_title.setObjectName("label_title")
         self.horizontalLayout_3.addWidget(self.label_title)
         self.label_tag = QLabel(self.frame_2)
-        self.label_tag.setMinimumSize(QtCore.QSize(100, 20))
-        self.label_tag.setMaximumSize(QtCore.QSize(100, 20))
+        self.label_tag.setMinimumSize(QSize(100, 20))
+        self.label_tag.setMaximumSize(QSize(100, 20))
         font = QFont()
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setBold(True)
@@ -123,7 +123,7 @@ class CardWidget(QWidget):
         self.horizontalLayout_4.addWidget(self.labe_note)
         self.verticalLayout.addWidget(self.frame_3)
         self.frame_4 = QFrame(self.frame)
-        self.frame_4.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.frame_4.setMaximumSize(QSize(16777215, 35))
         self.frame_4.setStyleSheet("background-color: rgb(45, 59, 75);\n"
 "border-top:1px solid  rgb(55, 68, 119);\n"
 ";")
@@ -146,7 +146,7 @@ class CardWidget(QWidget):
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
         self.btn_addPlan = QPushButton(self.frame_5)
-        self.btn_addPlan.setGeometry(QtCore.QRect(90, 10, 75, 21))
+        self.btn_addPlan.setGeometry(QRect(90, 10, 75, 21))
         font = QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(True)
@@ -166,7 +166,7 @@ class CardWidget(QWidget):
         icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_red.png"), QIcon.Normal, QIcon.Off)
         icon.addPixmap(QPixmap(":/icons/png/icons8-dot-24_live.png"), QIcon.Normal, QIcon.On)
         self.btn_addPlan.setIcon(icon)
-        self.btn_addPlan.setIconSize(QtCore.QSize(20, 20))
+        self.btn_addPlan.setIconSize(QSize(20, 20))
         self.btn_addPlan.setCheckable(True)
         self.btn_addPlan.setObjectName("btn_addPlan")
         self.horizontalLayout_2.addWidget(self.frame_5)
