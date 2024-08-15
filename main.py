@@ -290,7 +290,8 @@ class WindowInterface(QMainWindow):
         Functions.ShadowFrameConditional(self, widgets.SettingPage,QColor(0,10,10,100))
         
         FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
-                    widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,widgets.FrameID_Proxy1,widgets.FrameID_Proxy2]
+                    widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,
+                    widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt]
         Functions.AnimatedToggleButton(self , FrameID)
 
     #######################################################################################

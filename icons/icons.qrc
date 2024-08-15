@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-ophthalmology-30.png</file>
     <file>png/icons8-about-me-24.png</file>
     <file>png/icons8-notification-24.png</file>
     <file>png/icons8-cat-profile-96.png</file>
