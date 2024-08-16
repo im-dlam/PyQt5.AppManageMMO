@@ -9,8 +9,8 @@ class ObjectTemp(WindowInterface):
     def TempsButtonTextWidgets(self , widgets):
         return [
              widgets.btn_banking , widgets.btn_booking ,
-            widgets.btn_file_custom , widgets.btn_help , widgets.btn_hide , widgets.btn_history,
-             widgets.btn_user,
+            widgets.btn_file_custom , widgets.btn_help , widgets.btn_hide , widgets.btn_plan_tool,
+             widgets.btn_user,widgets.btn_bin,widgets.btn_setting
             # ///////////////////////////////////////
             # button_icons
             ]
@@ -27,7 +27,7 @@ class ObjectTemp(WindowInterface):
     def TempsButtonIconsWidgets(self , widgets):
         return [widgets.btn_banking_icons , widgets.btn_booking_icons ,
             widgets.btn_file_custom_icons , widgets.btn_help_icons  , widgets.btn_hide_icons,
-            widgets.btn_history_icons,
+            widgets.btn_plan_tool_icons,widgets.btn_bin_icons,widgets.btn_setting_icons,
              widgets.btn_user_icons]
     
     def TempsComboBoxAddItems(self,window_widgets):

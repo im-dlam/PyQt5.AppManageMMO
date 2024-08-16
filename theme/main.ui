@@ -280,6 +280,12 @@ border:none;
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="minimumSize">
+                <size>
+                 <width>150</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -318,15 +324,71 @@ border:none;
                     <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <property name="rightMargin">
-                    <number>30</number>
+                    <number>0</number>
                    </property>
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
-                   <item alignment="Qt::AlignRight">
+                   <item>
+                    <widget class="QPushButton" name="btn_notifications">
+                     <property name="minimumSize">
+                      <size>
+                       <width>25</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>25</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton:hover{
+border-radius:20px;
+background-color: rgb(55, 68, 119);
+}</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../icons/icons.qrc">
+                       <normaloff>:/icons/png/icons8-notification-24.png</normaloff>:/icons/png/icons8-notification-24.png</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_17">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_76">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
                     <widget class="QPushButton" name="btn_profile">
                      <property name="minimumSize">
                       <size>
@@ -336,8 +398,8 @@ border:none;
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>20</width>
-                       <height>20</height>
+                       <width>25</width>
+                       <height>25</height>
                       </size>
                      </property>
                      <property name="styleSheet">
@@ -912,6 +974,21 @@ border-radius:1px;
 }</string>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>5</number>
+                    </property>
                     <item>
                      <widget class="QFrame" name="frame_9">
                       <property name="maximumSize">
@@ -976,6 +1053,12 @@ border-radius:1px;
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_13">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>200</width>
@@ -1003,7 +1086,7 @@ border-radius:1px;
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>7</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1100,6 +1183,12 @@ QPushButton:checked{
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_10">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>200</width>
@@ -1116,8 +1205,11 @@ QPushButton:checked{
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_5">
-                       <property name="leftMargin">
+                       <property name="spacing">
                         <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>7</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1222,6 +1314,12 @@ QPushButton:checked{
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_14">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>200</width>
@@ -1239,7 +1337,7 @@ QPushButton:checked{
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>8</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1335,6 +1433,12 @@ QPushButton:checked{
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_12">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>200</width>
@@ -1352,7 +1456,7 @@ QPushButton:checked{
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>7</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1511,9 +1615,15 @@ QPushButton:checked{
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_15">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>200</width>
                         <height>50</height>
                        </size>
                       </property>
@@ -1528,7 +1638,7 @@ QPushButton:checked{
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>7</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1617,7 +1727,7 @@ QPushButton:checked{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_17">
+                     <widget class="QFrame" name="frame_172">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -1626,7 +1736,7 @@ QPushButton:checked{
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>200</width>
                         <height>50</height>
                        </size>
                       </property>
@@ -1636,9 +1746,12 @@ QPushButton:checked{
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_17">
-                       <property name="leftMargin">
+                      <layout class="QHBoxLayout" name="horizontalLayout_113">
+                       <property name="spacing">
                         <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>7</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1650,7 +1763,7 @@ QPushButton:checked{
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_history">
+                        <widget class="QPushButton" name="btn_plan_tool">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -1659,7 +1772,7 @@ QPushButton:checked{
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>200</width>
                            <height>40</height>
                           </size>
                          </property>
@@ -1700,12 +1813,12 @@ QPushButton:checked{
 </string>
                          </property>
                          <property name="text">
-                          <string> LỊCH SỬ</string>
+                          <string> KỊCH BẢN</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-cloud-clock-24.png</normaloff>
-                           <normalon>:/icons/png/icons8-cloud-clock-24_dark.png</normalon>:/icons/png/icons8-cloud-clock-24.png</iconset>
+                           <normaloff>:/icons/png/icons8-plan-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-plan-48_green.png</normalon>:/icons/png/icons8-plan-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1726,6 +1839,12 @@ QPushButton:checked{
                     </item>
                     <item>
                      <widget class="QFrame" name="frame_16">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -1743,7 +1862,7 @@ QPushButton:checked{
                         <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>8</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1754,6 +1873,78 @@ QPushButton:checked{
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
+                       <item>
+                        <widget class="QPushButton" name="btn_bin">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>MesloLGS Nerd Font</family>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton:hover{
+background-color: #465ab4;
+color: rgb(118, 148, 255);
+border:none;
+border-radius:5px;
+}
+QPushButton{
+border:none;
+background-color: rgb(38,49,98);
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
+}
+QPushButton:checked{
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
+				background-size:20px 20px;
+
+}
+</string>
+                         </property>
+                         <property name="text">
+                          <string> THÙNG RÁC</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-waste-separation-24.png</normaloff>
+                           <normalon>:/icons/png/icons8-waste-separation-24_green.png</normalon>:/icons/png/icons8-waste-separation-24.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>30</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                         <property name="autoExclusive">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -1860,12 +2051,12 @@ QPushButton:checked{
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_11">
+                         <layout class="QHBoxLayout" name="horizontalLayout_17">
                           <property name="spacing">
                            <number>0</number>
                           </property>
                           <property name="leftMargin">
-                           <number>0</number>
+                           <number>7</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
@@ -1876,6 +2067,78 @@ QPushButton:checked{
                           <property name="bottomMargin">
                            <number>0</number>
                           </property>
+                          <item>
+                           <widget class="QPushButton" name="btn_setting">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>200</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>MesloLGS Nerd Font</family>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton:hover{
+background-color: #465ab4;
+color: rgb(118, 148, 255);
+border:none;
+border-radius:5px;
+}
+QPushButton{
+border:none;
+background-color: rgb(38,49,98);
+color: rgb(249, 234, 255);
+border-radius:5px;
+text-align: left;
+ padding-left:25px;
+ text-align: left;
+}
+QPushButton:checked{
+                background-color: #415485;  /* Background color when checked */
+                color: rgb(239, 245, 255);  /* Text color */
+                border-radius: 5px;
+
+	            background-image: url(:/icons/png/icons8-vertical-48.png);
+				background-repeat: no-repeat;
+                background-position: left center;  /* Position image on the left center */
+				background-size:20px 20px;
+
+}
+</string>
+                            </property>
+                            <property name="text">
+                             <string> CÀI ĐẶT</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-setting-24.png</normaloff>
+                              <normalon>:/icons/png/icons8-setting-24_green.png</normalon>:/icons/png/icons8-setting-24.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>30</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>true</bool>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -1904,7 +2167,7 @@ QPushButton:checked{
                            <number>0</number>
                           </property>
                           <property name="leftMargin">
-                           <number>0</number>
+                           <number>7</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
@@ -2283,7 +2546,7 @@ background-color:rgb(38,49,98);
                  <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>5</number>
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
                  <number>0</number>
@@ -2301,7 +2564,7 @@ background-color:rgb(38,49,98);
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>95</width>
+                     <width>100</width>
                      <height>668</height>
                     </rect>
                    </property>
@@ -2315,6 +2578,21 @@ border-radius:1px;
 }</string>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_16">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>5</number>
+                    </property>
                     <item>
                      <widget class="QFrame" name="frame_33">
                       <property name="maximumSize">
@@ -2412,7 +2690,7 @@ border-radius:1px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>10</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
@@ -2517,7 +2795,7 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
@@ -2631,7 +2909,7 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
@@ -2730,7 +3008,7 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
@@ -2877,7 +3155,7 @@ border-radius:10px;
                      <widget class="QFrame" name="frame_58">
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>200</width>
                         <height>50</height>
                        </size>
                       </property>
@@ -2898,7 +3176,7 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
@@ -2973,7 +3251,7 @@ border-radius:10px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_60">
+                     <widget class="QFrame" name="frame_59">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -2982,7 +3260,7 @@ border-radius:10px;
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>200</width>
                         <height>50</height>
                        </size>
                       </property>
@@ -2992,7 +3270,10 @@ border-radius:10px;
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_51">
+                      <layout class="QHBoxLayout" name="horizontalLayout_50">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
                        <property name="leftMargin">
                         <number>0</number>
                        </property>
@@ -3000,13 +3281,13 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_history_icons">
+                        <widget class="QPushButton" name="btn_plan_tool_icons">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -3054,8 +3335,8 @@ border-radius:10px;
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-cloud-clock-24.png</normaloff>
-                           <normalon>:/icons/png/icons8-cloud-clock-24_dark.png</normalon>:/icons/png/icons8-cloud-clock-24.png</iconset>
+                           <normaloff>:/icons/png/icons8-plan-48.png</normaloff>
+                           <normalon>:/icons/png/icons8-plan-48_green.png</normalon>:/icons/png/icons8-plan-48.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -3075,10 +3356,16 @@ border-radius:10px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_59">
+                     <widget class="QFrame" name="frame_61">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
-                        <width>16777215</width>
+                        <width>200</width>
                         <height>50</height>
                        </size>
                       </property>
@@ -3088,7 +3375,7 @@ border-radius:10px;
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_50">
+                      <layout class="QHBoxLayout" name="horizontalLayout_51">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -3099,22 +3386,78 @@ border-radius:10px;
                         <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
+                       <item>
+                        <widget class="QPushButton" name="btn_bin_icons">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>MesloLGS Nerd Font</family>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">
+QPushButton:hover{
+background-color: #465ab4;
+color:#4ba08a;;
+border:none;
+border-radius:10px;
+}
+QPushButton{
+border:none;
+background-color: rgb(38,49,98);
+color: rgb(126, 126, 126);
+border-radius:10px;
+}
+QPushButton:checked{
+border:none;
+background-color:#415485;
+color: #0da471;
+border-radius:10px;
+
+}
+</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-waste-separation-24.png</normaloff>
+                           <normalon>:/icons/png/icons8-waste-separation-24_green.png</normalon>:/icons/png/icons8-waste-separation-24.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>30</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                         <property name="autoExclusive">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_61">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
                      </widget>
                     </item>
                     <item>
@@ -3200,7 +3543,7 @@ border-radius:10px;
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>200</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -3210,7 +3553,7 @@ border-radius:10px;
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_53">
+                         <layout class="QHBoxLayout" name="horizontalLayout_11">
                           <property name="spacing">
                            <number>0</number>
                           </property>
@@ -3221,11 +3564,77 @@ border-radius:10px;
                            <number>0</number>
                           </property>
                           <property name="rightMargin">
-                           <number>0</number>
+                           <number>11</number>
                           </property>
                           <property name="bottomMargin">
                            <number>0</number>
                           </property>
+                          <item>
+                           <widget class="QPushButton" name="btn_setting_icons">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>50</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>MesloLGS Nerd Font</family>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">
+QPushButton:hover{
+background-color: #465ab4;
+color:#4ba08a;;
+border:none;
+border-radius:10px;
+}
+QPushButton{
+border:none;
+background-color: rgb(38,49,98);
+color: rgb(126, 126, 126);
+border-radius:10px;
+}
+QPushButton:checked{
+border:none;
+background-color:#415485;
+color: #0da471;
+border-radius:10px;
+
+}
+</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-setting-24.png</normaloff>
+                              <normalon>:/icons/png/icons8-setting-24_green.png</normalon>:/icons/png/icons8-setting-24.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>30</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>true</bool>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -3239,7 +3648,7 @@ border-radius:10px;
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>200</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -3260,7 +3669,7 @@ border-radius:10px;
                            <number>0</number>
                           </property>
                           <property name="rightMargin">
-                           <number>0</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
                            <number>0</number>
@@ -3481,7 +3890,7 @@ background-color: rgb(38, 49, 98);
 </string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="SettingPage">
                 <property name="styleSheet">
@@ -3617,7 +4026,7 @@ color: rgb(255, 255, 255);
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>1157</width>
+                      <width>1055</width>
                       <height>1348</height>
                      </rect>
                     </property>
@@ -8061,59 +8470,29 @@ background-color: rgb(108, 213, 194);
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft">
-                        <widget class="QFrame" name="frame_27">
+                       <item>
+                        <widget class="QPushButton" name="btn_add">
                          <property name="minimumSize">
                           <size>
-                           <width>60</width>
-                           <height>0</height>
+                           <width>0</width>
+                           <height>25</height>
                           </size>
                          </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                         <property name="maximumSize">
+                          <size>
+                           <width>60</width>
+                           <height>16777215</height>
+                          </size>
                          </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
+                         <property name="font">
+                          <font>
+                           <family>MesloLGS Nerd Font</family>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_26">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QPushButton" name="btn_add">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>25</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>60</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>MesloLGS Nerd Font</family>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton{
 border:none;
 border-radius:5px;
 color: rgb(255, 255, 255);
@@ -8135,31 +8514,34 @@ color: rgb(255, 255, 255);
 border: 1px gray #6bd4c1 ;
 background-color: rgb(255, 94, 164);
 }</string>
-                            </property>
-                            <property name="text">
-                             <string>NHẬP</string>
-                            </property>
-                            <property name="icon">
-                             <iconset resource="../icons/icons.qrc">
-                              <normaloff>:/icons/png/icons8-add-48.png</normaloff>:/icons/png/icons8-add-48.png</iconset>
-                            </property>
-                            <property name="checkable">
-                             <bool>true</bool>
-                            </property>
-                            <property name="autoExclusive">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                         </property>
+                         <property name="text">
+                          <string>NHẬP</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-add-48.png</normaloff>:/icons/png/icons8-add-48.png</iconset>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                         <property name="autoExclusive">
+                          <bool>true</bool>
+                         </property>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft">
+                       <item>
                         <widget class="QFrame" name="frame_28">
                          <property name="minimumSize">
                           <size>
-                           <width>60</width>
+                           <width>65</width>
                            <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>65</width>
+                           <height>16777215</height>
                           </size>
                          </property>
                          <property name="frameShape">
@@ -8240,101 +8622,6 @@ background-color: rgb(222, 222, 222);
                               <width>17</width>
                               <height>17</height>
                              </size>
-                            </property>
-                            <property name="checkable">
-                             <bool>true</bool>
-                            </property>
-                            <property name="autoExclusive">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item alignment="Qt::AlignLeft">
-                        <widget class="QFrame" name="frame_29">
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_28">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QPushButton" name="btn_plan_tool">
-                            <property name="minimumSize">
-                             <size>
-                              <width>140</width>
-                              <height>25</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>140</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>MesloLGM Nerd Font</family>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
-border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px gray #6bd4c1 ;
-background-color: rgb(119, 106, 217);
-}
-QPushButton:hover{
-border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px gray #6bd4c1 ;
-background-color: rgb(126, 113, 230);
-}
-QPushButton:checked{
-border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px gray #6bd4c1 ;
-background-color: rgb(126, 113, 230);
-}</string>
-                            </property>
-                            <property name="text">
-                             <string>CÀI ĐẶT KỊCH BẢN</string>
-                            </property>
-                            <property name="icon">
-                             <iconset resource="../icons/icons.qrc">
-                              <normaloff>:/icons/png/icons8-realtime-96.png</normaloff>:/icons/png/icons8-realtime-96.png</iconset>
                             </property>
                             <property name="checkable">
                              <bool>true</bool>
@@ -8433,6 +8720,75 @@ background-color: rgb(240, 126, 141);
                          </layout>
                         </widget>
                        </item>
+                       <item>
+                        <widget class="QFrame" name="frame_27">
+                         <property name="minimumSize">
+                          <size>
+                           <width>60</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_26">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignLeft">
+                        <widget class="QFrame" name="frame_29">
+                         <property name="minimumSize">
+                          <size>
+                           <width>120</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_28">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                         </layout>
+                        </widget>
+                       </item>
                        <item alignment="Qt::AlignLeft">
                         <widget class="QFrame" name="frame_31">
                          <property name="minimumSize">
@@ -8463,62 +8819,6 @@ background-color: rgb(240, 126, 141);
                           <property name="bottomMargin">
                            <number>0</number>
                           </property>
-                          <item>
-                           <widget class="QPushButton" name="btn_bin">
-                            <property name="minimumSize">
-                             <size>
-                              <width>90</width>
-                              <height>25</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>90</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>MesloLGS Nerd Font</family>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
-border:none;
-border-radius:5px;
-border: 1px gray #6bd4c1 ;
-background-color: rgb(202, 234, 126);
-}
-QPushButton:checked{
-border:none;
-border-radius:5px;
-border: 1px gray #6bd4c1 ;
-background-color: rgb(195, 238, 125);
-}
-QPushButton:hover{
-border:none;
-border-radius:5px;
-border: 1px gray #6bd4c1 ;
-background-color: rgb(195, 238, 125);
-}</string>
-                            </property>
-                            <property name="text">
-                             <string>THÙNG RÁC</string>
-                            </property>
-                            <property name="icon">
-                             <iconset resource="../icons/icons.qrc">
-                              <normaloff>:/icons/png/icons8-delete-24.png</normaloff>:/icons/png/icons8-delete-24.png</iconset>
-                            </property>
-                            <property name="checkable">
-                             <bool>true</bool>
-                            </property>
-                            <property name="autoExclusive">
-                             <bool>true</bool>
-                            </property>
-                           </widget>
-                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -9073,7 +9373,7 @@ color:#fdfffd;
                             <property name="minimumSize">
                              <size>
                               <width>150</width>
-                              <height>35</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="font">
@@ -9198,7 +9498,7 @@ QComboBox{
                             <property name="minimumSize">
                              <size>
                               <width>120</width>
-                              <height>35</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -9394,18 +9694,73 @@ QComboBox{
                           <property name="bottomMargin">
                            <number>0</number>
                           </property>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignBottom">
+                        <widget class="QFrame" name="frame_search">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QFrame{
+color: rgb(255, 255, 255);
+border: 1px solid #35458a;
+
+border-radius:5px;
+}
+QLineEdit{
+color: rgb(255, 255, 255);
+}
+QFrame:hover{
+color: rgb(255, 255, 255);
+border: 1px solid #465ab5;
+border-radius:5px;
+}</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_40">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>2</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
                           <item>
-                           <widget class="QPushButton" name="btn_setting">
+                           <widget class="QPushButton" name="btn_search">
                             <property name="minimumSize">
                              <size>
                               <width>30</width>
-                              <height>30</height>
+                              <height>25</height>
                              </size>
                             </property>
                             <property name="maximumSize">
                              <size>
                               <width>40</width>
-                              <height>16777215</height>
+                              <height>40</height>
                              </size>
                             </property>
                             <property name="styleSheet">
@@ -9435,7 +9790,7 @@ background-color: rgb(108, 213, 194);
                             </property>
                             <property name="icon">
                              <iconset resource="../icons/icons.qrc">
-                              <normaloff>:/icons/png/icons8-setting-100.png</normaloff>:/icons/png/icons8-setting-100.png</iconset>
+                              <normaloff>:/icons/png/icons8-search-30.png</normaloff>:/icons/png/icons8-search-30.png</iconset>
                             </property>
                             <property name="iconSize">
                              <size>
@@ -9445,45 +9800,18 @@ background-color: rgb(108, 213, 194);
                             </property>
                            </widget>
                           </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="frame_52">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_40">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
                           <item alignment="Qt::AlignRight">
                            <widget class="QLineEdit" name="line_search">
                             <property name="minimumSize">
                              <size>
                               <width>170</width>
-                              <height>25</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="maximumSize">
                              <size>
                               <width>170</width>
-                              <height>16777215</height>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="font">
@@ -9492,21 +9820,7 @@ background-color: rgb(108, 213, 194);
                              </font>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">QLineEdit{
-border:none;
-border-radius:5px;
-border: 1px solid  rgb(54, 70, 141);
-color: #ffffff;
-background-color: rgba(82,98,150,100);
-padding:5px;
-}
-QLineEdit:hover{
-border:none;
-border-radius:5px;
-border: 1px solid #465ab5;
-color: #ffffff;
-padding:5px;
-}</string>
+                             <string notr="true"/>
                             </property>
                             <property name="placeholderText">
                              <string>Tìm kiếm</string>
@@ -9538,8 +9852,8 @@ padding:5px;
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>83</width>
-                      <height>36</height>
+                      <width>1160</width>
+                      <height>551</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -11179,22 +11493,6 @@ QComboBox::item:focus {
    </hints>
   </connection>
   <connection>
-   <sender>btn_history</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_history_icons</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>454</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>247</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btn_help</sender>
    <signal>toggled(bool)</signal>
    <receiver>btn_help_icons</receiver>
@@ -11221,8 +11519,8 @@ QComboBox::item:focus {
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
-     <x>148</x>
-     <y>127</y>
+     <x>144</x>
+     <y>117</y>
     </hint>
    </hints>
   </connection>
@@ -11275,22 +11573,6 @@ QComboBox::item:focus {
    </hints>
   </connection>
   <connection>
-   <sender>btn_history_icons</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_history</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>246</x>
-     <y>458</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>151</x>
-     <y>461</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btn_help_icons</sender>
    <signal>toggled(bool)</signal>
    <receiver>btn_help</receiver>
@@ -11319,6 +11601,102 @@ QComboBox::item:focus {
     <hint type="destinationlabel">
      <x>174</x>
      <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_plan_tool</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_plan_tool_icons</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>400</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_plan_tool_icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_plan_tool</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>240</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>150</x>
+     <y>417</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_setting</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_setting_icons</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>617</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>627</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_setting_icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_setting</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>605</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>612</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_bin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_bin_icons</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>459</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>229</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_bin_icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_bin</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>161</x>
+     <y>463</y>
     </hint>
    </hints>
   </connection>

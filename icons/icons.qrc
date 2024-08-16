@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="icons">
+    <file>png/icons8-plan-48_green.png</file>
+    <file>png/icons8-plan-48.png</file>
+    <file>png/icons8-setting-24_green.png</file>
+    <file>png/icons8-setting-24.png</file>
+    <file>png/icons8-waste-separation-24_green.png</file>
+    <file>png/icons8-waste-separation-24.png</file>
     <file>png/icons8-ophthalmology-30.png</file>
     <file>png/icons8-about-me-24.png</file>
     <file>png/icons8-notification-24.png</file>
@@ -41,17 +47,13 @@
     <file>png/icons8-check-64.png</file>
     <file>png/icons8-checked-24.png</file>
     <file>png/icons8-visa-48.png</file>
-    <file>png/icons8-delete-24.png</file>
-    <file>png/icons8-delete-96.png</file>
     <file>png/icons8-drag-list-down-24.png</file>
     <file>png/icons8-lightning-100.png</file>
     <file>png/icons8-low-connection-96.png</file>
     <file>png/icons8-play-48.png</file>
-    <file>png/icons8-realtime-96.png</file>
     <file>png/icons8-refresh-96.png</file>
-    <file>png/icons8-search-64.png</file>
-    <file>png/icons8-setting-100.png</file>
     <file>png/icons8-user-menu-female-24.png</file>
+    <file>png/icons8-search-30.png</file>
     <file>png/icons8-x-96.png</file>
     <file>png/icons8-minimize-24.png</file>
     <file>png/cil-arrow-bottom.png</file>

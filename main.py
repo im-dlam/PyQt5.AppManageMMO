@@ -256,10 +256,12 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         # cài dặt kịch bản
         widgets.btn_plan_tool.clicked.connect(self.WidgetFrameScheme)
+        widgets.btn_plan_tool_icons.clicked.connect(self.WidgetFrameScheme)
 
 
         # cài đặt chung
         widgets.btn_setting.clicked.connect(self.WidgetFrameSetting)
+        widgets.btn_setting_icons.clicked.connect(self.WidgetFrameSetting)
 
         # chuyển đổi back giữa các frame
         self.SwapWidgetFrameHome()
