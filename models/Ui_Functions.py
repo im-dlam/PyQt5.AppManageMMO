@@ -84,7 +84,6 @@ class Functions(WindowInterface):
             # //////////////////////////
             # maximum hoạt động phóng to màn hình app
             self.showMaximized()
-
             # /////////////////////////
             # tắt border viền trở về mặc định cạnh vuông
     

@@ -100,18 +100,18 @@ background-color:#263162;
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>25</height>
+           <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>25</height>
+           <height>30</height>
           </size>
          </property>
          <property name="styleSheet">
           <string notr="true">QFrame#frame_taskbar{
-background-color: rgb(36, 47, 94);
+background-color: rgb(36, 46, 93);
 border:none;
 }</string>
          </property>
@@ -347,10 +347,16 @@ border:none;
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton:hover{
-border-radius:20px;
-background-color: rgb(55, 68, 119);
-}</string>
+                      <string notr="true">QPushButton{
+                        border:none;
+                        border-radius:5px;
+                    }
+                    QPushButton:hover{
+                        border:none;
+                        border-radius:5px;
+                        border:10px solid #263162;
+                    }
+                    QPushButton::menu-indicator { image: none; }</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -358,6 +364,12 @@ background-color: rgb(55, 68, 119);
                      <property name="icon">
                       <iconset resource="../icons/icons.qrc">
                        <normaloff>:/icons/png/icons8-notification-24.png</normaloff>:/icons/png/icons8-notification-24.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
                      </property>
                     </widget>
                    </item>
@@ -403,15 +415,28 @@ background-color: rgb(55, 68, 119);
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">QPushButton{
+                        border:none;
+                        border-radius:5px;
+                    }
+                    QPushButton:hover{
+                        border:none;
+                        border-radius:5px;
+                        border:10px solid #263162;
+                    }
+                    QPushButton::menu-indicator { image: none; }</string>
                      </property>
                      <property name="text">
                       <string/>
                      </property>
+                     <property name="icon">
+                      <iconset resource="../icons/icons.qrc">
+                       <normaloff>:/icons/png/icons8-test-account-24.png</normaloff>:/icons/png/icons8-test-account-24.png</iconset>
+                     </property>
                      <property name="iconSize">
                       <size>
-                       <width>20</width>
-                       <height>20</height>
+                       <width>25</width>
+                       <height>25</height>
                       </size>
                      </property>
                      <property name="checkable">
@@ -673,7 +698,7 @@ border:none;
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: rgb(36, 46, 93);</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -713,217 +738,103 @@ border:none;
                </property>
                <property name="styleSheet">
                 <string notr="true">
+QTableWidget {
+                border-radius: 13px;
+                border: 0.5px solid  rgb(45, 59, 118);
+                padding: 5px;
+	            background-color: rgb(38, 49, 98);
+                margin: px; /* Adjust thebackground-color: rgb(225, 224, 255);  margin if necessary */
+            }
+ QHeaderView::section {
+                border: 0.5px solid gray;
+	            background-color: rgb(38, 49, 98);
+				border:none;	
+				font-weight: bold;
+	            color: rgb(255, 255, 255);
 
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+    QToolButton {
+                background-color: transparent;
+                border: none;
+            }
+            QToolButton::menu-indicator {
+                image: none;
+            }
+ QTableWidget::selected {
+                padding: 5px;
+				border: 5px;
+            }
+ QTableWidget::item :selec{
+                padding: 5px;
+				border: 5px;
+            }
 
-SET APP STYLESHEET - FULL STYLES HERE
-DARK THEME - DRACULA COLOR BASED
+  QScrollBar:horizontal {
+                border: none;
+               background-color: rgb(150, 173, 232);
+                height: 5px;
+                margin: 0px 0px 0 0px;
+                border-radius: 5px;
+            }
+            QScrollBar:horizontal {
+                border: none;
+			background-color: rgb(150, 173, 232);
 
-///////////////////////////////////////////////////////////////////////////////////////////////// */
+                height: 3px;
+                margin: 0px 0px 0 0px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:horizontal {
+				 background-color: rgb(105, 122, 163);
+			   
+                min-width: 2px;
+                border-radius: 5px;
+            }
+            QScrollBar::add-line:horizontal {
+                border: none;
+                width: 0px;
+                background-color: none;
+            }
+            QScrollBar::sub-line:horizontal {
+                border: none;
+                background: none;
+                width: 0px;
+            }
+            QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
+                background: none;
+            }
+            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+                background: none;
+            }
+            QScrollBar:vertical {
+                border: none;
+				background-color: rgb(105, 122, 163);
 
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Tooltip */
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-ScrollBars */
-QScrollBar:horizontal {
-    border: none;
-    background: rgba(255,255,255,255);
-    height: 20px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
-QScrollBar::handle:horizontal {
-    background: rgb(189, 219, 214);
-    min-width: 25px;
-	border-radius: 4px
-}
-QScrollBar::add-line:horizontal {
-    border: none;
-    background: rgb(170, 183, 184);
-    width: 20px;
-	border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    subcontrol-position: right;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:horizontal {
-    border: none;
-    background: rgb(170, 183, 184);
-    width: 20px;
-	border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    subcontrol-position: left;
-    subcontrol-origin: margin;
-}
-QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
-{
-     background: none;
-}
-QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
-{
-     background: none;
-}
- QScrollBar:vertical {
-	border: none;
-    background: rgba(255,255,255,255);
-    width: 5px;
-    margin: 15px 0 15px 0;
-	border-radius: 0px;
- }
- QScrollBar::handle:vertical {	
-	background: rgb(173, 206, 200);
-    min-height: 25px;
-	border-radius: 2px
- }
- QScrollBar::add-line:vertical {
-     border: none;
-    background: rgb(170, 183, 184);
-     height: 15px;
-	border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
- QScrollBar::sub-line:vertical {
-	border: none;
-    background: rgb(170, 183, 184);
-     height: 15px;
-	border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     background: none;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-ComboBox */
-QComboBox{
-	background-color: rgb(107, 125, 179);
-	border-radius: 4px;
-	border: 1px solid #ffffff;
-	padding: 1px;
-	padding-left: 3px;
-	color:rgb(255, 255, 255);
-}
-QComboBox:hover{
-	border: 1px solid #ffffff;
-}
-QComboBox::drop-down {
-	subcontrol-origin: padding;
-	subcontrol-position: top right;
-	width: 25px; 
-	border-left-width: 3px;
-	border-left-color: #788dca;
-	border-left-style: solid;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
-	background-image: url(icons/cil-arrow-bottom.png);
-	background-position: center;
-	background-repeat: no-reperat;
- }
-QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
-	background-color: rgb(107, 125, 179);
-	padding: 10px;
-    border-radius:4px;
-	selection-background-color: #788dca;
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Sliders */
-QSlider::groove:horizontal {
-    border-radius: 5px;
-    height: 10px;
-	margin: 0px;
-	background-color: rgb(52, 59, 72);
-}
-QSlider::groove:horizontal:hover {
-	background-color: rgb(55, 62, 76);
-}
-QSlider::handle:horizontal {
-    background-color: rgb(189, 147, 249);
-    border: none;
-    height: 10px;
-    width: 10px;
-    margin: 0px;
-	border-radius: 5px;
-}
-QSlider::handle:horizontal:hover {
-    background-color: rgb(195, 155, 255);
-}
-QSlider::handle:horizontal:pressed {
-    background-color: rgb(255, 121, 198);
-}
-
-QSlider::groove:vertical {
-    border-radius: 5px;
-    width: 10px;
-    margin: 0px;
-	background-color: rgb(52, 59, 72);
-}
-QSlider::groove:vertical:hover {
-	background-color: rgb(55, 62, 76);
-}
-QSlider::handle:vertical {
-    background-color: rgb(189, 147, 249);
-	border: none;
-    height: 10px;
-    width: 10px;
-    margin: 0px;
-	border-radius: 5px;
-}
-QSlider::handle:vertical:hover {
-    background-color: rgb(195, 155, 255);
-}
-QSlider::handle:vertical:pressed {
-    background-color: rgb(255, 121, 198);
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-CommandLinkButton */
-QCommandLinkButton {	
-	color: rgb(255, 121, 198);
-	border-radius: 5px;
-	padding: 5px;
-}
-QCommandLinkButton:hover {	
-	color: rgb(255, 170, 255);
-	background-color: rgb(44, 49, 60);
-}
-QCommandLinkButton:pressed {	
-	color: rgb(189, 147, 249);
-	background-color: rgb(52, 58, 71);
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Button */
-#pagesContainer QPushButton {
-	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
-	background-color: rgb(52, 59, 72);
-}
-#pagesContainer QPushButton:hover {
-	background-color: rgb(57, 65, 80);
-	border: 2px solid rgb(61, 70, 86);
-}
-#pagesContainer QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}
-QScrollArea{
- border: none;
-}
-QFrame{
-background-color: rgb(38,49,98);
-}
-</string>
+                width: 3px;
+                margin: 0px 0 0px 0;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background-color: rgb(150, 173, 232);
+                min-height: 5px;
+                border-radius: 5px;
+            }
+            QScrollBar::add-line:vertical {
+                border: none;
+                background: none;
+                height: 0px;
+            }
+            QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+                height: 0px;
+            }
+            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+                background: none;
+            }
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none;
+            }</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -939,7 +850,7 @@ background-color: rgb(38,49,98);
                  <number>0</number>
                 </property>
                 <property name="topMargin">
-                 <number>0</number>
+                 <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>0</number>
@@ -950,7 +861,8 @@ background-color: rgb(38,49,98);
                 <item>
                  <widget class="QScrollArea" name="scrollArea">
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(38, 49, 98);</string>
+                   <string notr="true">background-color: rgb(36, 46, 93);
+</string>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
@@ -961,7 +873,7 @@ background-color: rgb(38,49,98);
                      <x>0</x>
                      <y>0</y>
                      <width>200</width>
-                     <height>668</height>
+                     <height>658</height>
                     </rect>
                    </property>
                    <property name="styleSheet">
@@ -1035,16 +947,17 @@ border-radius:1px;
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGSDZ Nerd Font</family>
+                           <family>Microsoft JhengHei UI</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: rgb(255, 255, 255);</string>
+                          <string notr="true"> color: rgb(255, 255, 255);
+</string>
                          </property>
                          <property name="text">
-                          <string>OVERVIEW</string>
+                          <string>Tổng Quan</string>
                          </property>
                         </widget>
                        </item>
@@ -1068,7 +981,7 @@ border-radius:1px;
                       <property name="styleSheet">
                        <string notr="true">QPushButton:checked{
 border:none;
-	background-color: rgb(189, 233, 215);
+background-color:#242e5d;
 color: rgb(126, 126, 126);
 border-radius:1px;
 
@@ -1098,7 +1011,7 @@ border-radius:1px;
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_hide">
+                        <widget class="QPushButton" name="btn_all">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -1113,7 +1026,7 @@ border-radius:1px;
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGS Nerd Font</family>
+                           <pointsize>8</pointsize>
                            <weight>75</weight>
                            <italic>false</italic>
                            <bold>true</bold>
@@ -1128,7 +1041,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1151,12 +1064,12 @@ QPushButton:checked{
 }</string>
                          </property>
                          <property name="text">
-                          <string> MENU</string>
+                          <string>    Quản lý tài khoản</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-task-48.png</normaloff>
-                           <normalon>:/icons/png/icons8-task-48_dark.png</normalon>:/icons/png/icons8-task-48.png</iconset>
+                           <normaloff>:/icons/png/icons8-home-30.png</normaloff>
+                           <normalon>:/icons/png/icons8-home-30_green.png</normalon>:/icons/png/icons8-home-30.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1236,7 +1149,7 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGSDZ Nerd Font</family>
+                           <pointsize>8</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1250,7 +1163,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1273,7 +1186,7 @@ QPushButton:checked{
 }</string>
                          </property>
                          <property name="text">
-                          <string> THANH TOÁN</string>
+                          <string>    Thanh toán</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
@@ -1364,7 +1277,6 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGS Nerd Font</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1378,7 +1290,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1401,7 +1313,7 @@ QPushButton:checked{
 }</string>
                          </property>
                          <property name="text">
-                          <string> ĐẶT HÀNG</string>
+                          <string>    Đặt Hàng</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
@@ -1483,7 +1395,6 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGS Nerd Font</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1497,7 +1408,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1520,7 +1431,7 @@ QPushButton:checked{
 }</string>
                          </property>
                          <property name="text">
-                          <string> TỆP TIN</string>
+                          <string>    Quản lý tệp</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
@@ -1529,7 +1440,7 @@ QPushButton:checked{
                          </property>
                          <property name="iconSize">
                           <size>
-                           <width>30</width>
+                           <width>25</width>
                            <height>25</height>
                           </size>
                          </property>
@@ -1597,7 +1508,7 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGM Nerd Font</family>
+                           <family>Microsoft JhengHei UI</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1606,120 +1517,7 @@ QPushButton:checked{
                           <string notr="true">color: rgb(255, 255, 255);</string>
                          </property>
                          <property name="text">
-                          <string>MANAGE</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_15">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>50</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>50</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_15">
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>7</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <widget class="QPushButton" name="btn_user">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>MesloLGS Nerd Font</family>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPushButton:hover{
-background-color: #465ab4;
-color: rgb(118, 148, 255);
-border:none;
-border-radius:5px;
-}
-QPushButton{
-border:none;
-background-color: rgb(38,49,98);
-color: rgb(249, 234, 255);
-border-radius:5px;
-text-align: left;
- padding-left:25px;
- text-align: left;
-}
-QPushButton:checked{
-                background-color: #415485;  /* Background color when checked */
-                color: rgb(239, 245, 255);  /* Text color */
-                border-radius: 5px;
-	            background-image: url(:/icons/png/icons8-vertical-48.png);
-				background-repeat: no-repeat;
-                background-position: left center;  /* Position image on the left center */
-
-}
-
- QPushButton::menu-indicator {
-           subcontrol-position: right center;
-             subcontrol-origin: padding;
-}</string>
-                         </property>
-                         <property name="text">
-                          <string> TÀI KHOẢN</string>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-find-user-male-48.png</normaloff>
-                           <normalon>:/icons/png/icons8-find-user-male-48_dark.png</normalon>:/icons/png/icons8-find-user-male-48.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>30</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="autoExclusive">
-                          <bool>true</bool>
+                          <string>Quản Lý</string>
                          </property>
                         </widget>
                        </item>
@@ -1778,7 +1576,6 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGS Nerd Font</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1792,7 +1589,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1803,17 +1600,19 @@ QPushButton:checked{
                 background-color: #415485;  /* Background color when checked */
                 color: rgb(239, 245, 255);  /* Text color */
                 border-radius: 5px;
-
 	            background-image: url(:/icons/png/icons8-vertical-48.png);
 				background-repeat: no-repeat;
                 background-position: left center;  /* Position image on the left center */
-				background-size:20px 20px;
 
 }
-</string>
+
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string> KỊCH BẢN</string>
+                          <string>    Kịch bản</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
@@ -1889,7 +1688,6 @@ QPushButton:checked{
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGS Nerd Font</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -1903,7 +1701,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -1914,17 +1712,19 @@ QPushButton:checked{
                 background-color: #415485;  /* Background color when checked */
                 color: rgb(239, 245, 255);  /* Text color */
                 border-radius: 5px;
-
 	            background-image: url(:/icons/png/icons8-vertical-48.png);
 				background-repeat: no-repeat;
                 background-position: left center;  /* Position image on the left center */
-				background-size:20px 20px;
 
 }
-</string>
+
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                          </property>
                          <property name="text">
-                          <string> THÙNG RÁC</string>
+                          <string>    Thùng rác</string>
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
@@ -1949,16 +1749,6 @@ QPushButton:checked{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_18">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QFrame" name="frame">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -1966,6 +1756,103 @@ QPushButton:checked{
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_53">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QFrame" name="frame_15">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>25</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_114">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="btn_hide">
+                            <property name="minimumSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton{
+                        border:none;
+                        border-radius:5px;
+                    }
+                    QPushButton:hover{
+                        border:none;
+                        border-radius:5px;
+                        border:10px solid #242e5d;
+                    }
+                    QPushButton::menu-indicator { image: none; }</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-back-to-24.png</normaloff>:/icons/png/icons8-back-to-24.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>false</bool>
+                            </property>
+                            <property name="autoRepeat">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                     <item alignment="Qt::AlignBottom">
@@ -2083,7 +1970,6 @@ QPushButton:checked{
                             </property>
                             <property name="font">
                              <font>
-                              <family>MesloLGS Nerd Font</family>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -2097,7 +1983,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -2108,17 +1994,19 @@ QPushButton:checked{
                 background-color: #415485;  /* Background color when checked */
                 color: rgb(239, 245, 255);  /* Text color */
                 border-radius: 5px;
-
 	            background-image: url(:/icons/png/icons8-vertical-48.png);
 				background-repeat: no-repeat;
                 background-position: left center;  /* Position image on the left center */
-				background-size:20px 20px;
 
 }
-</string>
+
+ QPushButton::menu-indicator {
+           subcontrol-position: right center;
+             subcontrol-origin: padding;
+}</string>
                             </property>
                             <property name="text">
-                             <string> CÀI ĐẶT</string>
+                             <string>    Cài đặt</string>
                             </property>
                             <property name="icon">
                              <iconset resource="../icons/icons.qrc">
@@ -2192,6 +2080,13 @@ QPushButton:checked{
                               <height>40</height>
                              </size>
                             </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>8</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton:hover{
 background-color: #465ab4;
@@ -2201,7 +2096,7 @@ border-radius:5px;
 }
 QPushButton{
 border:none;
-background-color: rgb(38,49,98);
+background-color: #242e5d;
 color: rgb(249, 234, 255);
 border-radius:5px;
 text-align: left;
@@ -2224,7 +2119,7 @@ QPushButton:checked{
 }</string>
                             </property>
                             <property name="text">
-                             <string>  Help</string>
+                             <string>    Help</string>
                             </property>
                             <property name="icon">
                              <iconset resource="../icons/icons.qrc">
@@ -2276,9 +2171,7 @@ QPushButton:checked{
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QFrame{
-background-color: rgb(38,49,98);
-}</string>
+             <string notr="true">background-color: rgb(36, 46, 93);</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -2318,216 +2211,103 @@ background-color: rgb(38,49,98);
                </property>
                <property name="styleSheet">
                 <string notr="true">
+QTableWidget {
+                border-radius: 13px;
+                border: 0.5px solid  rgb(45, 59, 118);
+                padding: 5px;
+	            background-color: rgb(38, 49, 98);
+                margin: px; /* Adjust thebackground-color: rgb(225, 224, 255);  margin if necessary */
+            }
+ QHeaderView::section {
+                border: 0.5px solid gray;
+	            background-color: rgb(38, 49, 98);
+				border:none;	
+				font-weight: bold;
+	            color: rgb(255, 255, 255);
 
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+    QToolButton {
+                background-color: transparent;
+                border: none;
+            }
+            QToolButton::menu-indicator {
+                image: none;
+            }
+ QTableWidget::selected {
+                padding: 5px;
+				border: 5px;
+            }
+ QTableWidget::item :selec{
+                padding: 5px;
+				border: 5px;
+            }
 
-SET APP STYLESHEET - FULL STYLES HERE
-DARK THEME - DRACULA COLOR BASED
+  QScrollBar:horizontal {
+                border: none;
+               background-color: rgb(150, 173, 232);
+                height: 5px;
+                margin: 0px 0px 0 0px;
+                border-radius: 5px;
+            }
+            QScrollBar:horizontal {
+                border: none;
+			background-color: rgb(150, 173, 232);
 
-///////////////////////////////////////////////////////////////////////////////////////////////// */
+                height: 3px;
+                margin: 0px 0px 0 0px;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:horizontal {
+				 background-color: rgb(105, 122, 163);
+			   
+                min-width: 2px;
+                border-radius: 5px;
+            }
+            QScrollBar::add-line:horizontal {
+                border: none;
+                width: 0px;
+                background-color: none;
+            }
+            QScrollBar::sub-line:horizontal {
+                border: none;
+                background: none;
+                width: 0px;
+            }
+            QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
+                background: none;
+            }
+            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+                background: none;
+            }
+            QScrollBar:vertical {
+                border: none;
+				background-color: rgb(105, 122, 163);
 
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Tooltip */
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-ScrollBars */
-QScrollBar:horizontal {
-    border: none;
-    background: rgba(255,255,255,255);
-    height: 20px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
-QScrollBar::handle:horizontal {
-    background: rgb(189, 219, 214);
-    min-width: 25px;
-	border-radius: 4px
-}
-QScrollBar::add-line:horizontal {
-    border: none;
-    background: rgb(170, 183, 184);
-    width: 20px;
-	border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    subcontrol-position: right;
-    subcontrol-origin: margin;
-}
-QScrollBar::sub-line:horizontal {
-    border: none;
-    background: rgb(170, 183, 184);
-    width: 20px;
-	border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    subcontrol-position: left;
-    subcontrol-origin: margin;
-}
-QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
-{
-     background: none;
-}
-QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
-{
-     background: none;
-}
- QScrollBar:vertical {
-	border: none;
-    background: rgba(255,255,255,255);
-    width: 5px;
-    margin: 15px 0 15px 0;
-	border-radius: 0px;
- }
- QScrollBar::handle:vertical {	
-	background: rgb(173, 206, 200);
-    min-height: 25px;
-	border-radius: 2px
- }
- QScrollBar::add-line:vertical {
-     border: none;
-    background: rgb(170, 183, 184);
-     height: 15px;
-	border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
- QScrollBar::sub-line:vertical {
-	border: none;
-    background: rgb(170, 183, 184);
-     height: 15px;
-	border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     background: none;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-ComboBox */
-QComboBox{
-	background-color: rgb(107, 125, 179);
-	border-radius: 4px;
-	border: 1px solid #ffffff;
-	padding: 1px;
-	padding-left: 3px;
-	color:rgb(255, 255, 255);
-}
-QComboBox:hover{
-	border: 1px solid #ffffff;
-}
-QComboBox::drop-down {
-	subcontrol-origin: padding;
-	subcontrol-position: top right;
-	width: 25px; 
-	border-left-width: 3px;
-	border-left-color: #788dca;
-	border-left-style: solid;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
-	background-image: url(icons/cil-arrow-bottom.png);
-	background-position: center;
-	background-repeat: no-reperat;
- }
-QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);	
-	background-color: rgb(107, 125, 179);
-	padding: 10px;
-    border-radius:4px;
-	selection-background-color: #788dca;
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Sliders */
-QSlider::groove:horizontal {
-    border-radius: 5px;
-    height: 10px;
-	margin: 0px;
-	background-color: rgb(52, 59, 72);
-}
-QSlider::groove:horizontal:hover {
-	background-color: rgb(55, 62, 76);
-}
-QSlider::handle:horizontal {
-    background-color: rgb(189, 147, 249);
-    border: none;
-    height: 10px;
-    width: 10px;
-    margin: 0px;
-	border-radius: 5px;
-}
-QSlider::handle:horizontal:hover {
-    background-color: rgb(195, 155, 255);
-}
-QSlider::handle:horizontal:pressed {
-    background-color: rgb(255, 121, 198);
-}
-
-QSlider::groove:vertical {
-    border-radius: 5px;
-    width: 10px;
-    margin: 0px;
-	background-color: rgb(52, 59, 72);
-}
-QSlider::groove:vertical:hover {
-	background-color: rgb(55, 62, 76);
-}
-QSlider::handle:vertical {
-    background-color: rgb(189, 147, 249);
-	border: none;
-    height: 10px;
-    width: 10px;
-    margin: 0px;
-	border-radius: 5px;
-}
-QSlider::handle:vertical:hover {
-    background-color: rgb(195, 155, 255);
-}
-QSlider::handle:vertical:pressed {
-    background-color: rgb(255, 121, 198);
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-CommandLinkButton */
-QCommandLinkButton {	
-	color: rgb(255, 121, 198);
-	border-radius: 5px;
-	padding: 5px;
-}
-QCommandLinkButton:hover {	
-	color: rgb(255, 170, 255);
-	background-color: rgb(44, 49, 60);
-}
-QCommandLinkButton:pressed {	
-	color: rgb(189, 147, 249);
-	background-color: rgb(52, 58, 71);
-}
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Button */
-#pagesContainer QPushButton {
-	border: 2px solid rgb(52, 59, 72);
-	border-radius: 5px;	
-	background-color: rgb(52, 59, 72);
-}
-#pagesContainer QPushButton:hover {
-	background-color: rgb(57, 65, 80);
-	border: 2px solid rgb(61, 70, 86);
-}
-#pagesContainer QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}
-QScrollArea{
- border: none;
-}
-QFrame{
-background-color:rgb(38,49,98);
-}</string>
+                width: 3px;
+                margin: 0px 0 0px 0;
+                border-radius: 5px;
+            }
+            QScrollBar::handle:vertical {
+                background-color: rgb(150, 173, 232);
+                min-height: 5px;
+                border-radius: 5px;
+            }
+            QScrollBar::add-line:vertical {
+                border: none;
+                background: none;
+                height: 0px;
+            }
+            QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+                height: 0px;
+            }
+            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+                background: none;
+            }
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none;
+            }</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -2543,7 +2323,7 @@ background-color:rgb(38,49,98);
                  <number>0</number>
                 </property>
                 <property name="topMargin">
-                 <number>0</number>
+                 <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>0</number>
@@ -2554,7 +2334,8 @@ background-color:rgb(38,49,98);
                 <item>
                  <widget class="QScrollArea" name="scrollArea_Menu">
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(38,49,98);</string>
+                   <string notr="true">background-color: rgb(36, 46, 93);
+</string>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
@@ -2565,7 +2346,7 @@ background-color:rgb(38,49,98);
                      <x>0</x>
                      <y>0</y>
                      <width>100</width>
-                     <height>668</height>
+                     <height>658</height>
                     </rect>
                    </property>
                    <property name="styleSheet">
@@ -2639,7 +2420,7 @@ border-radius:1px;
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGSDZ Nerd Font</family>
+                           <family>Microsoft JhengHei UI</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -2648,7 +2429,7 @@ border-radius:1px;
                           <string notr="true">color: rgb(255, 255, 255);</string>
                          </property>
                          <property name="text">
-                          <string>OVERVIEW</string>
+                          <string>Tổng Quan</string>
                          </property>
                         </widget>
                        </item>
@@ -2696,7 +2477,7 @@ border-radius:1px;
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="btn_hide_icons">
+                        <widget class="QPushButton" name="btn_all_icons">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -2744,8 +2525,8 @@ border-radius:10px;
                          </property>
                          <property name="icon">
                           <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-task-48.png</normaloff>
-                           <normalon>:/icons/png/icons8-task-48_dark.png</normalon>:/icons/png/icons8-task-48.png</iconset>
+                           <normaloff>:/icons/png/icons8-home-30.png</normaloff>
+                           <normalon>:/icons/png/icons8-home-30_green.png</normalon>:/icons/png/icons8-home-30.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -3135,115 +2916,21 @@ border-radius:10px;
                          </property>
                          <property name="font">
                           <font>
-                           <family>MesloLGM Nerd Font</family>
+                           <family>Microsoft JhengHei UI</family>
                            <weight>75</weight>
+                           <italic>false</italic>
                            <bold>true</bold>
+                           <underline>false</underline>
+                           <strikeout>false</strikeout>
+                           <stylestrategy>PreferDefault</stylestrategy>
+                           <kerning>true</kerning>
                           </font>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">color: rgb(255, 255, 255);</string>
                          </property>
                          <property name="text">
-                          <string>MANAGE</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_58">
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>50</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_49">
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>9</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <widget class="QPushButton" name="btn_user_icons">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>50</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>MesloLGS Nerd Font</family>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">
-QPushButton:hover{
-background-color: #465ab4;
-color:#4ba08a;;
-border:none;
-border-radius:10px;
-}
-QPushButton{
-border:none;
-background-color: rgb(38,49,98);
-color: rgb(126, 126, 126);
-border-radius:10px;
-}
-QPushButton:checked{
-border:none;
-background-color:#415485;
-color: #0da471;
-border-radius:10px;
-
-}
-</string>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="../icons/icons.qrc">
-                           <normaloff>:/icons/png/icons8-find-user-male-48.png</normaloff>
-                           <normalon>:/icons/png/icons8-find-user-male-48_dark.png</normalon>:/icons/png/icons8-find-user-male-48.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>30</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="autoExclusive">
-                          <bool>true</bool>
+                          <string>Quản Lý</string>
                          </property>
                         </widget>
                        </item>
@@ -3468,6 +3155,110 @@ border-radius:10px;
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_49">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QFrame" name="frame_52">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>25</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_15">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>5</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="btn_hide_icons">
+                            <property name="minimumSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton{
+                        border:none;
+                        border-radius:5px;
+                    }
+                    QPushButton:hover{
+                        border:none;
+                        border-radius:5px;
+                        border:10px solid #263162;
+                    }
+                    QPushButton::menu-indicator { image: none; }</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-next-page-24.png</normaloff>
+                              <normalon>:/icons/png/icons8-next-page-24.png</normalon>:/icons/png/icons8-next-page-24.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>false</bool>
+                            </property>
+                            <property name="autoRepeat">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                     <item alignment="Qt::AlignBottom">
@@ -8981,7 +8772,7 @@ border-radius:8px;
                               <widget class="QLabel" name="label_3">
                                <property name="font">
                                 <font>
-                                 <family>MesloLGLDZ Nerd Font</family>
+                                 <family>MesloLGMDZ Nerd Font</family>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -9097,7 +8888,7 @@ color:#fdfffd;
                               <widget class="QLabel" name="label_7">
                                <property name="font">
                                 <font>
-                                 <family>MesloLGSDZ Nerd Font</family>
+                                 <family>MesloLGMDZ Nerd Font</family>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -9216,7 +9007,7 @@ color:#fdfffd;
                               <widget class="QLabel" name="label_9">
                                <property name="font">
                                 <font>
-                                 <family>MesloLGSDZ Nerd Font</family>
+                                 <family>MesloLGLDZ Nerd Font</family>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -9853,7 +9644,7 @@ background-color: rgb(108, 213, 194);
                       <x>0</x>
                       <y>0</y>
                       <width>1160</width>
-                      <height>551</height>
+                      <height>546</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -11413,18 +11204,18 @@ QComboBox::item:focus {
  </resources>
  <connections>
   <connection>
-   <sender>btn_hide</sender>
+   <sender>btn_all</sender>
    <signal>toggled(bool)</signal>
-   <receiver>btn_hide_icons</receiver>
+   <receiver>btn_all_icons</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>113</y>
+     <x>149</x>
+     <y>162</y>
     </hint>
     <hint type="destinationlabel">
-     <x>234</x>
-     <y>105</y>
+     <x>272</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -11435,12 +11226,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>132</x>
-     <y>155</y>
+     <x>142</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>162</y>
+     <x>272</x>
+     <y>212</y>
     </hint>
    </hints>
   </connection>
@@ -11451,12 +11242,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>152</x>
-     <y>202</y>
+     <x>163</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
-     <x>229</x>
-     <y>201</y>
+     <x>272</x>
+     <y>262</y>
     </hint>
    </hints>
   </connection>
@@ -11467,28 +11258,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>137</x>
-     <y>249</y>
+     <x>147</x>
+     <y>312</y>
     </hint>
     <hint type="destinationlabel">
-     <x>233</x>
-     <y>251</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_user</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_user_icons</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>143</x>
-     <y>352</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>246</x>
-     <y>352</y>
+     <x>272</x>
+     <y>312</y>
     </hint>
    </hints>
   </connection>
@@ -11509,18 +11284,18 @@ QComboBox::item:focus {
    </hints>
   </connection>
   <connection>
-   <sender>btn_hide_icons</sender>
+   <sender>btn_all_icons</sender>
    <signal>toggled(bool)</signal>
-   <receiver>btn_hide</receiver>
+   <receiver>btn_all</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>116</y>
+     <x>272</x>
+     <y>162</y>
     </hint>
     <hint type="destinationlabel">
-     <x>144</x>
-     <y>117</y>
+     <x>154</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
@@ -11531,12 +11306,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>254</x>
-     <y>167</y>
+     <x>272</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>171</y>
+     <x>167</x>
+     <y>212</y>
     </hint>
    </hints>
   </connection>
@@ -11547,28 +11322,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>262</y>
+     <x>272</x>
+     <y>312</y>
     </hint>
     <hint type="destinationlabel">
-     <x>172</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_user_icons</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_user</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>250</x>
-     <y>361</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>155</x>
-     <y>354</y>
+     <x>182</x>
+     <y>312</y>
     </hint>
    </hints>
   </connection>
@@ -11595,12 +11354,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>237</x>
-     <y>217</y>
+     <x>272</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
-     <x>174</x>
-     <y>216</y>
+     <x>185</x>
+     <y>262</y>
     </hint>
    </hints>
   </connection>
@@ -11627,12 +11386,12 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>240</x>
-     <y>415</y>
+     <x>272</x>
+     <y>412</y>
     </hint>
     <hint type="destinationlabel">
-     <x>150</x>
-     <y>417</y>
+     <x>160</x>
+     <y>412</y>
     </hint>
    </hints>
   </connection>
@@ -11691,12 +11450,44 @@ QComboBox::item:focus {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>228</x>
-     <y>465</y>
+     <x>272</x>
+     <y>462</y>
     </hint>
     <hint type="destinationlabel">
-     <x>161</x>
-     <y>463</y>
+     <x>172</x>
+     <y>462</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_hide</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_hide_icons</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_hide_icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_hide</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>56</y>
     </hint>
    </hints>
   </connection>

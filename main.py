@@ -25,7 +25,7 @@ class WindowInterface(QMainWindow):
         # call item * 
         global widgets , DataProcessingFill , msg , index_name , DataFillProcess 
         #######################################################################################
-
+        self.is_left_mouse_pressed = False
         self.first_selected_item =  None 
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 500 , 0
 
@@ -76,7 +76,6 @@ class WindowInterface(QMainWindow):
         # Load các lệnh về Ui_Functions
 
         self.SubjectFunctions()
-
 
 
         #######################################################################################
@@ -259,6 +258,10 @@ class WindowInterface(QMainWindow):
         widgets.btn_plan_tool_icons.clicked.connect(self.WidgetFrameScheme)
 
 
+        widgets.btn_all.clicked.connect(self.SwapWidgetFrameHome)
+        widgets.btn_all_icons.clicked.connect(self.SwapWidgetFrameHome)
+
+
         # cài đặt chung
         widgets.btn_setting.clicked.connect(self.WidgetFrameSetting)
         widgets.btn_setting_icons.clicked.connect(self.WidgetFrameSetting)
@@ -330,7 +333,7 @@ class WindowInterface(QMainWindow):
     # phần này tạo button có hình đại diện , thêm hiệu ứng đăng xuất , thông tin profile tóm tắt
 
     def MenuButtonProfileUser(self):
-        Functions.set_icons(self , widgets)
+        # Functions.set_icons(self , widgets)
         self.menu = QMenu()
         self.menu.addAction(QAction("Sign out", self))
         self.menu.addAction(QAction("Settings", self))
@@ -583,14 +586,21 @@ class WindowInterface(QMainWindow):
     # phần điều kiện chuột tự di chuyển
     def mousePressEvent(self, event):
         self.resize.mousePressEvent(event)
-
+        if event.button() == Qt.LeftButton:
+            self.is_left_mouse_pressed = True
     def mouseReleaseEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.is_left_mouse_pressed = False
         self.resize.mouseReleaseEvent(event)
 
     def mouseMoveEvent(self, event):
+        if self.is_left_mouse_pressed and self.isMaximized():
+            self.is_left_mouse_pressed = False
+            self.showNormal()
         self.resize.mouseMoveEvent(event)
-    #######################################################################################
 
+
+    #######################################################################################
     # hiệu ứng làm tròn viền
     def paintEvent(self, event):
         painter = QPainter(self)
