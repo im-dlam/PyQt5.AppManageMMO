@@ -1,4 +1,4 @@
-from . SubjectScrips import QMenuRighClick
+from . SubjectScrips import QMenuRighClick , QMenuProfile
 from main import *
 from models import *
 from models.sql.SQLModules import *
@@ -6,6 +6,16 @@ import os
 widgets , window_widgets , msg = None , None , None
 contextMenu = None
 class CustomMenu(QMenu):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        # Tắt bóng của QMenu
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.setStyleSheet(QMenuProfile)
+
+class CustomMenuProfile(QMenu):
     def __init__(self, parent=None):
         super().__init__(parent)
         # Tắt bóng của QMenu

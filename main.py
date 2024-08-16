@@ -296,7 +296,8 @@ class WindowInterface(QMainWindow):
         
         FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
                     widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,
-                    widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt]
+                    widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt,
+                    widgets.FrameID_ChromeHeadless]
         Functions.AnimatedToggleButton(self , FrameID)
 
     #######################################################################################
@@ -334,10 +335,29 @@ class WindowInterface(QMainWindow):
 
     def MenuButtonProfileUser(self):
         # Functions.set_icons(self , widgets)
-        self.menu = QMenu()
-        self.menu.addAction(QAction("Sign out", self))
-        self.menu.addAction(QAction("Settings", self))
-        widgets.btn_profile.setMenu(self.menu)
+        start_date = QDateTime.currentDateTime()
+        menubar = self.menuBar()
+        end_date = start_date.addDays(7)  # Example: 7 days from now
+        contextMenu = CustomMenuProfile(self)
+        
+        account_widget = AccountMenu(start_date, end_date, self)
+        action = QWidgetAction(self)
+        action.setDefaultWidget(account_widget)
+        contextMenu.addAction(action)
+        
+        # Add additional menu items
+        manage_action = QAction('Manage account and devices', self)
+        payment_action = QAction('Payment methods', self)
+        redeem_action = QAction('Redeem code or gift cards', self)
+        settings_action = QAction('Settings', self)
+        
+        contextMenu.addAction(manage_action)
+        contextMenu.addAction(payment_action)
+        contextMenu.addAction(redeem_action)
+        contextMenu.addAction(settings_action)
+        
+        menubar.addMenu(contextMenu)
+        widgets.btn_profile.setMenu(contextMenu)
 
     
     #######################################################################################

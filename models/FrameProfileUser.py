@@ -1,7 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLayout, QMenu, QAction, QMainWindow, QWidgetAction
-from PyQt5.QtGui import QPixmap, QFont
-from PyQt5.QtCore import Qt, QTimer, QDateTime
-
+from main import *
 
 
 class AccountMenu(QWidget):
@@ -33,11 +30,11 @@ class AccountMenu(QWidget):
 
         name = QLabel("Lâm Lê Đình", self)
         name.setFont(QFont("Arial", 12, QFont.Bold))
-
+        name.setStyleSheet("color: rgb(235, 235, 235);")
         # Add blue checkmark next to the name (using a placeholder image for the checkmark)
         checkmark = QLabel(self)
-        checkmark_pixmap = QPixmap(r'D:\UI Python\GUI_PyQt5_My_App\icons\png\icons8-check-64.png')  # Replace with the correct path to your checkmark image
-        checkmark.setPixmap(checkmark_pixmap.scaled(15, 15, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        checkmark_pixmap = QPixmap(r'D:\UI Python\GUI_PyQt5_My_App\icons\png\tick_name')  # Replace with the correct path to your checkmark image
+        checkmark.setPixmap(checkmark_pixmap.scaled(20, 20, Qt.KeepAspectRatio, Qt.SmoothTransformation))
 
         # Add name and checkmark to the name layout
         name_layout.addWidget(name)
@@ -45,7 +42,7 @@ class AccountMenu(QWidget):
 
         email = QLabel("ldl.booking@hotmail.com", self)
         email.setFont(QFont("Arial", 10))
-        email.setStyleSheet("color: gray;")
+        email.setStyleSheet("color: rgb(235, 235, 235);")
         email.setAlignment(Qt.AlignCenter)
         
         name_email_layout.addLayout(name_layout)
@@ -57,7 +54,7 @@ class AccountMenu(QWidget):
         # Add Sign out action
         sign_out = QLabel("<a href='#'>Sign out</a>", self)
         sign_out.setFont(QFont("Arial", 10))
-        sign_out.setStyleSheet("color: #FF0000;")
+        sign_out.setStyleSheet("color: rgb(235, 235, 235);")
         sign_out.setTextInteractionFlags(Qt.TextBrowserInteraction)
         sign_out.setOpenExternalLinks(False)
         sign_out.setAlignment(Qt.AlignCenter)
@@ -66,7 +63,7 @@ class AccountMenu(QWidget):
         # Countdown timer
         self.countdown_label = QLabel("", self)
         self.countdown_label.setFont(QFont("Arial", 10))
-        self.countdown_label.setStyleSheet("color: green;")
+        self.countdown_label.setStyleSheet("color: rgb(235, 235, 235);")
         self.countdown_label.setAlignment(Qt.AlignCenter)
 
         # Start the countdown timer
@@ -100,50 +97,3 @@ class AccountMenu(QWidget):
             countdown_text = "Time expired"
         
         self.countdown_label.setText(countdown_text)
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        
-        # Set start and end dates
-        start_date = QDateTime.currentDateTime()
-        end_date = start_date.addDays(7)  # Example: 7 days from now
-        
-        self.initUI(start_date, end_date)
-
-    def initUI(self, start_date, end_date):
-        # Create a menu bar
-        menubar = self.menuBar()
-        
-        # Create a menu
-        account_menu = QMenu("Account", self)
-        
-        # Add custom widget to menu
-        account_widget = AccountMenu(start_date, end_date, self)
-        action = QWidgetAction(self)
-        action.setDefaultWidget(account_widget)
-        account_menu.addAction(action)
-        
-        # Add additional menu items
-        manage_action = QAction('Manage account and devices', self)
-        payment_action = QAction('Payment methods', self)
-        redeem_action = QAction('Redeem code or gift cards', self)
-        settings_action = QAction('Settings', self)
-        
-        account_menu.addAction(manage_action)
-        account_menu.addAction(payment_action)
-        account_menu.addAction(redeem_action)
-        account_menu.addAction(settings_action)
-        
-        menubar.addMenu(account_menu)
-        
-        # Set main window properties
-        self.setGeometry(300, 300, 300, 200)
-        self.setWindowTitle('Custom Menu Example')
-        self.show()
-
-if __name__ == '__main__':
-    import sys
-    app = QApplication(sys.argv)
-    mainWindow = MainWindow()
-    sys.exit(app.exec_())

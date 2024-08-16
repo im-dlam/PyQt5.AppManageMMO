@@ -13,7 +13,7 @@ from . SubjectTools import *
 from . SubjectNotifications import *
 from . SubjectQtables import *
 from . QListWidget import *
-
+from . FrameProfileUser import *
 from . SubjectTemps import *
 from . SubjectTime import *
 from . SubjectScrips import *
