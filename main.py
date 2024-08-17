@@ -1,4 +1,4 @@
-import sys
+import sys , os
 
 #######################################################################################
 # functions 
@@ -339,11 +339,11 @@ class WindowInterface(QMainWindow):
         menubar = self.menuBar()
         end_date = start_date.addDays(7)  # Example: 7 days from now
         contextMenu = CustomMenuProfile(self)
-        
         account_widget = AccountMenu(start_date, end_date, self)
         action = QWidgetAction(self)
         action.setDefaultWidget(account_widget)
         contextMenu.addAction(action)
+        contextMenu.addSeparator()
         
         # Add additional menu items
         manage_action = QAction('Manage account and devices', self)
