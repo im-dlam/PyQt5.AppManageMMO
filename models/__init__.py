@@ -19,7 +19,7 @@ from PyQt5.QtWidgets import (
     QScrollBar , QHeaderView , QStyledItemDelegate , QStyleOptionViewItem , QMenu ,
     QLabel , QApplication , QVBoxLayout , QToolButton , QHBoxLayout , QTableWidgetItem,
     QWidgetAction, QListWidget , QPushButton , QListWidgetItem , QTableWidget,
-    QStyle , QSpacerItem
+    QStyle , QSpacerItem , QSizePolicy ,
     
 )
 from PyQt5.QtMultimedia import (

@@ -232,6 +232,14 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     # Subject connect các button
     def SubjectConnectButton(self):
+
+        Functions.ShadowFrameConditional(self,widgets.SettingPage,QColor(0,10,10,100))
+        
+        FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
+                    widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,
+                    widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt,
+                    widgets.FrameID_ChromeHeadless]
+        Functions.AnimatedToggleButton(self , FrameID)
         #######################################################################################
         widgets.btn_hide.clicked.connect(lambda: Functions.AnimationSwitchMenu(self, widgets))
         widgets.btn_hide_icons.clicked.connect(lambda: Functions.AnimationSwitchMenu(self, widgets))
@@ -270,6 +278,11 @@ class WindowInterface(QMainWindow):
         self.SwapWidgetFrameHome()
         widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
         widgets.btn_back_2.clicked.connect(self.SwapWidgetFrameHome)
+
+        #######################################################################################
+        # lưu cài đặt và hiển yhij thông báo thành công
+        widgets.btn_settingSave.clicked.connect(self.ProcessConfigSetting)
+
     #######################################################################################
     # chuyển đổi frame màn hình của stack widget
     # Màn hình quản lý 
@@ -287,18 +300,13 @@ class WindowInterface(QMainWindow):
         SubjectQList.ShowCardItems(self , widgets)
 
 
+
     #######################################################################################
     # Màn hình cài đặt chung
     def WidgetFrameSetting(self):
         widgets.stackedWidget.setCurrentWidget(widgets.SettingPage)
 
-        Functions.ShadowFrameConditional(self, widgets.SettingPage,QColor(0,10,10,100))
-        
-        FrameID =  [widgets.FrameID_ProfileLog , widgets.FrameID_AutoSortSize,
-                    widgets.FrameID_Backup,widgets.FrameID_BrowserOptimization,
-                    widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt,
-                    widgets.FrameID_ChromeHeadless]
-        Functions.AnimatedToggleButton(self , FrameID)
+
 
     #######################################################################################
     # Xóa thanh tiêu đề và xử lý di chuyển
@@ -605,13 +613,15 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     # phần điều kiện chuột tự di chuyển
     def mousePressEvent(self, event):
-        self.resize.mousePressEvent(event)
-        if event.button() == Qt.LeftButton:
+        # Check if the mouse press is within the frameID widget
+        if event.button() == Qt.LeftButton and widgets.frame_taskbar.geometry().contains(event.pos()):
             self.is_left_mouse_pressed = True
+            self.resize.mousePressEvent(event)
+
     def mouseReleaseEvent(self, event):
-        if event.button() == Qt.LeftButton:
+        if event.button() == Qt.LeftButton :
             self.is_left_mouse_pressed = False
-        self.resize.mouseReleaseEvent(event)
+            self.resize.mouseReleaseEvent(event)
 
     def mouseMoveEvent(self, event):
         if self.is_left_mouse_pressed and self.isMaximized():
@@ -619,7 +629,7 @@ class WindowInterface(QMainWindow):
             self.showNormal()
         self.resize.mouseMoveEvent(event)
 
-
+    
     #######################################################################################
     # hiệu ứng làm tròn viền
     def paintEvent(self, event):
@@ -666,6 +676,13 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         # thông báo hiển thị
 
+    def ProcessConfigSetting(self):
+
+        processConfig = ConfigUser(widgets)
+        if processConfig:
+            msg.SendMsg(("Cập nhật thành công !",1))
+        else:
+            msg.SendMsg(("Không thể cập nhật !",0))
     #######################################################################################
     # thêm dữ liệu từ mảng vào bảng
     # [{}...]

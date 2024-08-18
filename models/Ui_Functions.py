@@ -1,6 +1,7 @@
 from main import *
 from PyQt5.QtMultimedia import QSound 
 from . SubjectTools import *
+import json , pathlib
 _combox_item = ["","c_user","password","code","cookie","access_token","email","passemail","user-agent","proxy","mailkp","passmailkp","phone","birthday"]
 
 # /////////////////////////////
@@ -31,19 +32,53 @@ class Functions(WindowInterface):
 
     # ////////////////////////////////
     # cập nhật thông số tài khoản hiển thị
-    def AnimatedToggleButton(self,FrameID):
 
+    def AnimatedToggleButton(self,FrameID):
+        self.your_dir  = pathlib.Path.cwd().joinpath("models/json/config.json")
+        def ButtonConectUpdate(button):
+            with open(self.your_dir,"r",encoding="utf-8") as r:
+                filedumps = json.loads(r.read())
+                r.close()
+            btn_list  = {
+                "FrameID_ProfileLog":"id.Profile",
+                "FrameID_Backup":"id.Backup",
+                "FrameID_Proxy1":"id.Proxy",
+                "FrameID_Proxy2":"id.Proxyauto",
+                "FrameID_AutoSortSize":"id.BrowserAuto",
+                "FrameID_BrowserOptimization":"id.BrowserOptimize",
+                "FrameID_ContentChatGpt":"id.chatgpt",
+                "FrameID_ChromeHeadless":"id.BrowserHeadless"
+            }
+            filedumps['config'].update(
+                {
+                    btn_list[button.objectName()] : button.isChecked() 
+                    }
+                )
+        
+            with open(self.your_dir,"w",encoding="utf-8") as r:
+                json.dump(
+                    filedumps,
+                    r,
+                    indent=4,
+                    ensure_ascii=0
+                )
+                r.close()
         for frame in FrameID:
             button = AnimatedToggle(
                     checked_color = "#6b7db3",
                     pulse_checked_color="#4040bf"
                 )
             button.setMinimumSize(50,30)
+            # thêm objectname
+            button.setObjectName(frame.objectName())
+
 
             # thêm layout cho nút
             layout_button = QVBoxLayout()
             layout_button.addWidget(button)
             frame.setLayout(layout_button)
+            button.clicked.connect(lambda checked, btn=button: ButtonConectUpdate(btn))
+
     def UpdateLabelTotalAccount(self , widgets , total):
         widgets.label_total.setText(str(total))
 

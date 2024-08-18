@@ -109,6 +109,9 @@ background-color:#263162;
            <height>30</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">QFrame#frame_taskbar{
 background-color: rgb(36, 46, 93);
@@ -139,6 +142,9 @@ border:none;
           </property>
           <item>
            <widget class="QFrame" name="frame_6">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">QFrame{
 border:none;
@@ -346,6 +352,9 @@ border:none;
                        <height>16777215</height>
                       </size>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{
                         border:none;
@@ -413,6 +422,9 @@ border:none;
                        <width>25</width>
                        <height>25</height>
                       </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton{
@@ -1032,6 +1044,9 @@ border-radius:1px;
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
 background-color: #465ab4;
@@ -1153,6 +1168,9 @@ QPushButton:checked{
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
@@ -1281,6 +1299,9 @@ QPushButton:checked{
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
 background-color: #465ab4;
@@ -1398,6 +1419,9 @@ QPushButton:checked{
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
@@ -1580,6 +1604,9 @@ QPushButton:checked{
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
 background-color: #465ab4;
@@ -1691,6 +1718,9 @@ QPushButton:checked{
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton:hover{
@@ -1815,6 +1845,9 @@ QPushButton:checked{
                               <width>25</width>
                               <height>25</height>
                              </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
@@ -1974,6 +2007,9 @@ QPushButton:checked{
                               <bold>true</bold>
                              </font>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton:hover{
 background-color: #465ab4;
@@ -2086,6 +2122,9 @@ QPushButton:checked{
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton:hover{
@@ -2498,6 +2537,9 @@ border-radius:1px;
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -2601,6 +2643,9 @@ border-radius:10px;
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -2716,6 +2761,9 @@ border-radius:10px;
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -2814,6 +2862,9 @@ border-radius:10px;
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -2994,6 +3045,9 @@ border-radius:10px;
                            <bold>true</bold>
                           </font>
                          </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">
 QPushButton:hover{
@@ -3098,6 +3152,9 @@ border-radius:10px;
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
@@ -3220,6 +3277,9 @@ border-radius:10px;
                               <width>25</width>
                               <height>25</height>
                              </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
@@ -3381,6 +3441,9 @@ border-radius:10px;
                               <bold>true</bold>
                              </font>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QPushButton:hover{
@@ -3478,6 +3541,9 @@ border-radius:10px;
                               <width>50</width>
                               <height>40</height>
                              </size>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">
@@ -3681,13 +3747,13 @@ background-color: rgb(38, 49, 98);
 </string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="SettingPage">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(38, 49, 98);</string>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_69">
+                <layout class="QVBoxLayout" name="verticalLayout_24">
                  <property name="spacing">
                   <number>0</number>
                  </property>
@@ -3705,6 +3771,12 @@ background-color: rgb(38, 49, 98);
                  </property>
                  <item>
                   <widget class="QScrollArea" name="scrollArea_4">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">
 QTableWidget {
@@ -3824,7 +3896,7 @@ color: rgb(255, 255, 255);
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_34">
+                    <layout class="QVBoxLayout" name="verticalLayout_19">
                      <item>
                       <widget class="QFrame" name="frameMenuTitleSetting">
                        <property name="maximumSize">
@@ -3882,6 +3954,9 @@ border-radius:5px;
                              <width>34</width>
                              <height>20</height>
                             </rect>
+                           </property>
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
                            </property>
                            <property name="styleSheet">
                             <string notr="true">QPushButton{
@@ -5635,7 +5710,7 @@ padding:5px;
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_54">
                                  <item>
-                                  <widget class="QLineEdit" name="CommentPercent">
+                                  <widget class="QLineEdit" name="ReadCommentPercent">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
@@ -5959,7 +6034,7 @@ padding:5px;
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_56">
                                  <item>
-                                  <widget class="QLineEdit" name="SharePercent_2">
+                                  <widget class="QLineEdit" name="CommentPercent">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
@@ -7262,7 +7337,7 @@ padding:5px;
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_69">
                                  <item>
-                                  <widget class="QLineEdit" name="ViewNotificationsPercent_3">
+                                  <widget class="QLineEdit" name="StoryPostsPercent">
                                    <property name="minimumSize">
                                     <size>
                                      <width>0</width>
@@ -7489,7 +7564,7 @@ padding:5px;
                                <number>0</number>
                               </property>
                               <item alignment="Qt::AlignRight">
-                               <widget class="QLineEdit" name="lineEdit">
+                               <widget class="QLineEdit" name="ApiSheet">
                                 <property name="minimumSize">
                                  <size>
                                   <width>400</width>
@@ -7673,7 +7748,7 @@ padding-bottom:4px;
                                <number>0</number>
                               </property>
                               <item alignment="Qt::AlignRight">
-                               <widget class="QPlainTextEdit" name="plainTextEdit">
+                               <widget class="QPlainTextEdit" name="plainID">
                                 <property name="minimumSize">
                                  <size>
                                   <width>400</width>
@@ -7846,7 +7921,7 @@ padding-bottom:4px;
                                <number>0</number>
                               </property>
                               <item alignment="Qt::AlignRight">
-                               <widget class="QPlainTextEdit" name="plainTextEdit_2">
+                               <widget class="QPlainTextEdit" name="plainGroup">
                                 <property name="minimumSize">
                                  <size>
                                   <width>400</width>
@@ -8013,7 +8088,7 @@ padding-bottom:4px;
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPlainTextEdit" name="plainTextEdit_3">
+                               <widget class="QPlainTextEdit" name="plainText">
                                 <property name="minimumSize">
                                  <size>
                                   <width>400</width>
@@ -8132,6 +8207,216 @@ padding-bottom:4px;
                      </item>
                     </layout>
                    </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frameSaveConfig">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_64">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="frame_60">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_58">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_65">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="frame_70">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QFrame" name="frame_71">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_66">
+                          <property name="spacing">
+                           <number>20</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>50</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="btn_settingDefault">
+                            <property name="minimumSize">
+                             <size>
+                              <width>70</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>70</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                              <weight>50</weight>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color:#324081;
+}
+QPushButton:hover{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color:#344387;
+}QPushButton:checked{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: rgb(108, 213, 194);
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>Mặc định</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btn_settingSave">
+                            <property name="minimumSize">
+                             <size>
+                              <width>70</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>70</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Microsoft YaHei UI</family>
+                              <pointsize>10</pointsize>
+                              <weight>50</weight>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px solid #27b8a5  ;
+background-color: #29BAA8;
+}
+QPushButton:hover{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: #2ac3af;
+}QPushButton:checked{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: rgb(108, 213, 194);
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>Save</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -8305,6 +8590,9 @@ border-radius:8px;
                               <bold>true</bold>
                              </font>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
 border:none;
@@ -8365,6 +8653,9 @@ background-color: rgb(108, 213, 194);
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton{
@@ -8462,6 +8753,9 @@ background-color: rgb(255, 94, 164);
                               <bold>true</bold>
                              </font>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
 color: rgb(87, 87, 179);
@@ -8553,6 +8847,9 @@ background-color: rgb(222, 222, 222);
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
@@ -9258,6 +9555,9 @@ color:#fdfffd;
                               <bold>true</bold>
                              </font>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">
 QComboBox{
@@ -9388,6 +9688,9 @@ QComboBox{
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true">
@@ -9638,6 +9941,9 @@ border-radius:5px;
                               <height>40</height>
                              </size>
                             </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
 border:none;
@@ -9693,6 +9999,9 @@ background-color: rgb(108, 213, 194);
                              <font>
                               <family>MesloLGSDZ Nerd Font</family>
                              </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
                             </property>
                             <property name="styleSheet">
                              <string notr="true"/>
@@ -9752,6 +10061,9 @@ background-color: rgb(108, 213, 194);
                      </property>
                      <item>
                       <widget class="QTableWidget" name="TableManage">
+                       <property name="cursor" stdset="0">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">
 QTableWidget {
@@ -10239,7 +10551,7 @@ border-radius:5px;
                             <x>0</x>
                             <y>0</y>
                             <width>1160</width>
-                            <height>630</height>
+                            <height>1253</height>
                            </rect>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_23">

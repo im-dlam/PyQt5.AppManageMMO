@@ -7,8 +7,9 @@ class ConfigUser:
         self.your_dir  = pathlib.Path.cwd().joinpath("models/json/config.json")
         self.filedumps = None
         self.widgets   =  widgets
-        self.setconfig()
 
+        self.setconfig()
+        self.logfile()
 
     def fileConfig(self):
         
@@ -24,14 +25,14 @@ class ConfigUser:
             "id.Loop":              int(self.widgets.LoopAct.text()),
 
             ########################################################################################
-            "id.Profile": False,
-            "id.Backup": True,
-            "id.Proxy": False,
-            "id.Proxyauto": False,
-            "id.BrowserAuto":True,
-            "id.BrowserOptimize":True,
-            "id.chatgpt":True,
-            "id.BrowserHeadless":False,
+            # "id.Profile": False,        #
+            # "id.Backup": True,          #
+            # "id.Proxy": False,          #
+            # "id.Proxyauto": False,      #   => Phần này chuyển qua Ui_functions.py tự động cập nhật file json khi người dùng chuyển đổi
+            # "id.BrowserAuto":True,      #
+            # "id.BrowserOptimize":True,  #
+            # "id.chatgpt":True,          #
+            # "id.BrowserHeadless":False, #
             ########################################################################################
             "id.PercentLike": int(self.widgets.likePercent.text()),
             "id.PercentReadComment": int(self.widgets.ReadCommentPercent.text()),
@@ -50,7 +51,7 @@ class ConfigUser:
 
             ########################################################################################
 
-            "id.SheetApi": self.widgets.StoryPostsPercent.text() if self.widgets.StoryPostsPercent.text()  != "" else "147SpHvtiMrbMt2RCvPh80G4eWpHusSsxmFRyPrA7h8Y",
+            "id.SheetApi": self.widgets.ApiSheet.text() if self.widgets.StoryPostsPercent.text()  != "" else "147SpHvtiMrbMt2RCvPh80G4eWpHusSsxmFRyPrA7h8Y",
 
             ########################################################################################
             "id.IDUser": [value.strip("\n") for value in self.widgets.plainID.toPlainText().split("\n")],

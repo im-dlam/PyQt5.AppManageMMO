@@ -47,6 +47,7 @@ class Ui_MainWindow(object):
         self.frame_taskbar.setSizePolicy(sizePolicy)
         self.frame_taskbar.setMinimumSize(QtCore.QSize(0, 30))
         self.frame_taskbar.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.frame_taskbar.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.frame_taskbar.setStyleSheet("QFrame#frame_taskbar{\n"
 "background-color: rgb(36, 46, 93);\n"
 "border:none;\n"
@@ -59,6 +60,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_6 = QtWidgets.QFrame(self.frame_taskbar)
+        self.frame_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.frame_6.setStyleSheet("QFrame{\n"
 "border:none;\n"
 "}")
@@ -131,6 +133,7 @@ class Ui_MainWindow(object):
         self.btn_notifications = QtWidgets.QPushButton(self.frame_25)
         self.btn_notifications.setMinimumSize(QtCore.QSize(25, 25))
         self.btn_notifications.setMaximumSize(QtCore.QSize(25, 16777215))
+        self.btn_notifications.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_notifications.setStyleSheet("QPushButton{\n"
 "                        border:none;\n"
 "                        border-radius:5px;\n"
@@ -160,6 +163,7 @@ class Ui_MainWindow(object):
         self.btn_profile = QtWidgets.QPushButton(self.frame_17)
         self.btn_profile.setMinimumSize(QtCore.QSize(20, 20))
         self.btn_profile.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_profile.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_profile.setStyleSheet("QPushButton{\n"
 "                        border:none;\n"
 "                        border-radius:5px;\n"
@@ -470,6 +474,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(75)
         self.btn_all.setFont(font)
+        self.btn_all.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_all.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -530,6 +535,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_banking.setFont(font)
+        self.btn_banking.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_banking.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -591,6 +597,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_booking.setFont(font)
+        self.btn_booking.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_booking.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -649,6 +656,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_file_custom.setFont(font)
+        self.btn_file_custom.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_file_custom.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -731,6 +739,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_plan_tool.setFont(font)
+        self.btn_plan_tool.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_plan_tool.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -787,6 +796,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_bin.setFont(font)
+        self.btn_bin.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_bin.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -846,6 +856,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_114.setObjectName("horizontalLayout_114")
         self.btn_hide = QtWidgets.QPushButton(self.frame_15)
         self.btn_hide.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_hide.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_hide.setStyleSheet("QPushButton{\n"
 "                        border:none;\n"
 "                        border-radius:5px;\n"
@@ -903,6 +914,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_setting.setFont(font)
+        self.btn_setting.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_setting.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -960,6 +972,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_help.setFont(font)
+        self.btn_help.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_help.setStyleSheet("QPushButton:hover{\n"
 "background-color: #465ab4;\n"
 "color: rgb(118, 148, 255);\n"
@@ -1189,6 +1202,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(75)
         self.btn_all_icons.setFont(font)
+        self.btn_all_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_all_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1236,6 +1250,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_banking_icons.setFont(font)
+        self.btn_banking_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_banking_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1287,6 +1302,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_booking_icons.setFont(font)
+        self.btn_booking_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_booking_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1333,6 +1349,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_file_custom_icons.setFont(font)
+        self.btn_file_custom_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_file_custom_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1411,6 +1428,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_plan_tool_icons.setFont(font)
+        self.btn_plan_tool_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_plan_tool_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1458,6 +1476,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_bin_icons.setFont(font)
+        self.btn_bin_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_bin_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1512,6 +1531,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.btn_hide_icons = QtWidgets.QPushButton(self.frame_52)
         self.btn_hide_icons.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_hide_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_hide_icons.setStyleSheet("QPushButton{\n"
 "                        border:none;\n"
 "                        border-radius:5px;\n"
@@ -1571,6 +1591,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_setting_icons.setFont(font)
+        self.btn_setting_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_setting_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1613,6 +1634,7 @@ class Ui_MainWindow(object):
         self.btn_help_icons = QtWidgets.QPushButton(self.frame_66)
         self.btn_help_icons.setMinimumSize(QtCore.QSize(0, 40))
         self.btn_help_icons.setMaximumSize(QtCore.QSize(50, 40))
+        self.btn_help_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_help_icons.setStyleSheet("\n"
 "QPushButton:hover{\n"
 "background-color: #465ab4;\n"
@@ -1703,11 +1725,12 @@ class Ui_MainWindow(object):
         self.SettingPage = QtWidgets.QWidget()
         self.SettingPage.setStyleSheet("background-color: rgb(38, 49, 98);")
         self.SettingPage.setObjectName("SettingPage")
-        self.horizontalLayout_69 = QtWidgets.QHBoxLayout(self.SettingPage)
-        self.horizontalLayout_69.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_69.setSpacing(0)
-        self.horizontalLayout_69.setObjectName("horizontalLayout_69")
+        self.verticalLayout_24 = QtWidgets.QVBoxLayout(self.SettingPage)
+        self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_24.setSpacing(0)
+        self.verticalLayout_24.setObjectName("verticalLayout_24")
         self.scrollArea_4 = QtWidgets.QScrollArea(self.SettingPage)
+        self.scrollArea_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.scrollArea_4.setStyleSheet("\n"
 "QTableWidget {\n"
 "                border-radius: 13px;\n"
@@ -1816,8 +1839,8 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 1157, 1348))
         self.scrollAreaWidgetContents_5.setStyleSheet("")
         self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
-        self.verticalLayout_34 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_5)
-        self.verticalLayout_34.setObjectName("verticalLayout_34")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_5)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.frameMenuTitleSetting = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
         self.frameMenuTitleSetting.setMaximumSize(QtCore.QSize(16777215, 30))
         self.frameMenuTitleSetting.setStyleSheet("QFrame#frameMenuTitleSetting{\n"
@@ -1837,6 +1860,7 @@ class Ui_MainWindow(object):
         self.frame_160.setObjectName("frame_160")
         self.btn_back_2 = QtWidgets.QPushButton(self.frame_160)
         self.btn_back_2.setGeometry(QtCore.QRect(0, 0, 34, 20))
+        self.btn_back_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_back_2.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "}\n"
@@ -1887,7 +1911,7 @@ class Ui_MainWindow(object):
         self.label_51.setObjectName("label_51")
         self.horizontalLayout_95.addWidget(self.label_51, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_104.addWidget(self.frame_161, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_34.addWidget(self.frameMenuTitleSetting)
+        self.verticalLayout_19.addWidget(self.frameMenuTitleSetting)
         self.frameFullMode = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
         self.frameFullMode.setStyleSheet("QFrame#frameFullMode{\n"
 "border-radius:10px;\n"
@@ -2539,15 +2563,15 @@ class Ui_MainWindow(object):
         self.frame_132.setObjectName("frame_132")
         self.verticalLayout_54 = QtWidgets.QVBoxLayout(self.frame_132)
         self.verticalLayout_54.setObjectName("verticalLayout_54")
-        self.CommentPercent = QtWidgets.QLineEdit(self.frame_132)
-        self.CommentPercent.setMinimumSize(QtCore.QSize(0, 30))
-        self.CommentPercent.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.ReadCommentPercent = QtWidgets.QLineEdit(self.frame_132)
+        self.ReadCommentPercent.setMinimumSize(QtCore.QSize(0, 30))
+        self.ReadCommentPercent.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
-        self.CommentPercent.setFont(font)
-        self.CommentPercent.setStyleSheet("QLineEdit{\n"
+        self.ReadCommentPercent.setFont(font)
+        self.ReadCommentPercent.setStyleSheet("QLineEdit{\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
@@ -2562,8 +2586,8 @@ class Ui_MainWindow(object):
 "padding:5px;\n"
 "}\n"
 "")
-        self.CommentPercent.setObjectName("CommentPercent")
-        self.verticalLayout_54.addWidget(self.CommentPercent)
+        self.ReadCommentPercent.setObjectName("ReadCommentPercent")
+        self.verticalLayout_54.addWidget(self.ReadCommentPercent)
         self.horizontalLayout_81.addWidget(self.frame_132, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_73.addWidget(self.frame_110)
         self.verticalLayout_51.addWidget(self.frame_100)
@@ -2680,16 +2704,16 @@ class Ui_MainWindow(object):
         self.FrameID_Backup_4.setObjectName("FrameID_Backup_4")
         self.verticalLayout_56 = QtWidgets.QVBoxLayout(self.FrameID_Backup_4)
         self.verticalLayout_56.setObjectName("verticalLayout_56")
-        self.SharePercent_2 = QtWidgets.QLineEdit(self.FrameID_Backup_4)
-        self.SharePercent_2.setMinimumSize(QtCore.QSize(0, 30))
-        self.SharePercent_2.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.CommentPercent = QtWidgets.QLineEdit(self.FrameID_Backup_4)
+        self.CommentPercent.setMinimumSize(QtCore.QSize(0, 30))
+        self.CommentPercent.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setFamily("MesloLGLDZ Nerd Font")
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
-        self.SharePercent_2.setFont(font)
-        self.SharePercent_2.setStyleSheet("QLineEdit{\n"
+        self.CommentPercent.setFont(font)
+        self.CommentPercent.setStyleSheet("QLineEdit{\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
@@ -2704,8 +2728,8 @@ class Ui_MainWindow(object):
 "padding:5px;\n"
 "}\n"
 "")
-        self.SharePercent_2.setObjectName("SharePercent_2")
-        self.verticalLayout_56.addWidget(self.SharePercent_2)
+        self.CommentPercent.setObjectName("CommentPercent")
+        self.verticalLayout_56.addWidget(self.CommentPercent)
         self.horizontalLayout_84.addWidget(self.FrameID_Backup_4, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_82.addWidget(self.frame_115)
         self.verticalLayout_51.addWidget(self.frame_112)
@@ -3246,16 +3270,16 @@ class Ui_MainWindow(object):
         self.frame_152.setObjectName("frame_152")
         self.verticalLayout_69 = QtWidgets.QVBoxLayout(self.frame_152)
         self.verticalLayout_69.setObjectName("verticalLayout_69")
-        self.ViewNotificationsPercent_3 = QtWidgets.QLineEdit(self.frame_152)
-        self.ViewNotificationsPercent_3.setMinimumSize(QtCore.QSize(0, 30))
-        self.ViewNotificationsPercent_3.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.StoryPostsPercent = QtWidgets.QLineEdit(self.frame_152)
+        self.StoryPostsPercent.setMinimumSize(QtCore.QSize(0, 30))
+        self.StoryPostsPercent.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setFamily("MesloLGLDZ Nerd Font")
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
-        self.ViewNotificationsPercent_3.setFont(font)
-        self.ViewNotificationsPercent_3.setStyleSheet("QLineEdit{\n"
+        self.StoryPostsPercent.setFont(font)
+        self.StoryPostsPercent.setStyleSheet("QLineEdit{\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(38, 49, 98);\n"
 "border-radius:5px;\n"
@@ -3270,8 +3294,8 @@ class Ui_MainWindow(object):
 "padding:5px;\n"
 "}\n"
 "")
-        self.ViewNotificationsPercent_3.setObjectName("ViewNotificationsPercent_3")
-        self.verticalLayout_69.addWidget(self.ViewNotificationsPercent_3)
+        self.StoryPostsPercent.setObjectName("StoryPostsPercent")
+        self.verticalLayout_69.addWidget(self.StoryPostsPercent)
         self.horizontalLayout_100.addWidget(self.frame_152, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_98.addWidget(self.frame_139)
         self.verticalLayout_51.addWidget(self.frame_133)
@@ -3349,17 +3373,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_97.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_97.setSpacing(10)
         self.horizontalLayout_97.setObjectName("horizontalLayout_97")
-        self.lineEdit = QtWidgets.QLineEdit(self.frame_134)
-        self.lineEdit.setMinimumSize(QtCore.QSize(400, 40))
+        self.ApiSheet = QtWidgets.QLineEdit(self.frame_134)
+        self.ApiSheet.setMinimumSize(QtCore.QSize(400, 40))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setStyleSheet("QLineEdit:hover{\n"
+        self.ApiSheet.setFont(font)
+        self.ApiSheet.setStyleSheet("QLineEdit:hover{\n"
 "border-radius:10px;\n"
 "background-color: rgb(42, 54, 109);\n"
 "}")
-        self.lineEdit.setObjectName("lineEdit")
-        self.horizontalLayout_97.addWidget(self.lineEdit, 0, QtCore.Qt.AlignRight)
+        self.ApiSheet.setObjectName("ApiSheet")
+        self.horizontalLayout_97.addWidget(self.ApiSheet, 0, QtCore.Qt.AlignRight)
         self.pushButton = QtWidgets.QPushButton(self.frame_134)
         self.pushButton.setMinimumSize(QtCore.QSize(50, 40))
         self.pushButton.setMaximumSize(QtCore.QSize(50, 16777215))
@@ -3421,9 +3445,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_106.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_106.setSpacing(10)
         self.horizontalLayout_106.setObjectName("horizontalLayout_106")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.frame_136)
-        self.plainTextEdit.setMinimumSize(QtCore.QSize(400, 60))
-        self.plainTextEdit.setStyleSheet("\n"
+        self.plainID = QtWidgets.QPlainTextEdit(self.frame_136)
+        self.plainID.setMinimumSize(QtCore.QSize(400, 60))
+        self.plainID.setStyleSheet("\n"
 "QPlainTextEdit{\n"
 "color: rgb(110, 118, 150);\n"
 "background-color: rgb(38, 49, 98);\n"
@@ -3438,9 +3462,9 @@ class Ui_MainWindow(object):
 "border:1px solid #3a4a95;\n"
 "padding:5px;\n"
 "}")
-        self.plainTextEdit.setPlaceholderText("")
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.horizontalLayout_106.addWidget(self.plainTextEdit, 0, QtCore.Qt.AlignRight)
+        self.plainID.setPlaceholderText("")
+        self.plainID.setObjectName("plainID")
+        self.horizontalLayout_106.addWidget(self.plainID, 0, QtCore.Qt.AlignRight)
         self.frame_137 = QtWidgets.QFrame(self.frame_136)
         self.frame_137.setMaximumSize(QtCore.QSize(50, 40))
         self.frame_137.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -3491,9 +3515,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_108.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_108.setSpacing(10)
         self.horizontalLayout_108.setObjectName("horizontalLayout_108")
-        self.plainTextEdit_2 = QtWidgets.QPlainTextEdit(self.frame_163)
-        self.plainTextEdit_2.setMinimumSize(QtCore.QSize(400, 60))
-        self.plainTextEdit_2.setStyleSheet("\n"
+        self.plainGroup = QtWidgets.QPlainTextEdit(self.frame_163)
+        self.plainGroup.setMinimumSize(QtCore.QSize(400, 60))
+        self.plainGroup.setStyleSheet("\n"
 "QPlainTextEdit{\n"
 "color: rgb(110, 118, 150);\n"
 "background-color: rgb(38, 49, 98);\n"
@@ -3508,9 +3532,9 @@ class Ui_MainWindow(object):
 "border:1px solid #3a4a95;\n"
 "padding:5px;\n"
 "}")
-        self.plainTextEdit_2.setPlaceholderText("")
-        self.plainTextEdit_2.setObjectName("plainTextEdit_2")
-        self.horizontalLayout_108.addWidget(self.plainTextEdit_2, 0, QtCore.Qt.AlignRight)
+        self.plainGroup.setPlaceholderText("")
+        self.plainGroup.setObjectName("plainGroup")
+        self.horizontalLayout_108.addWidget(self.plainGroup, 0, QtCore.Qt.AlignRight)
         self.frame_164 = QtWidgets.QFrame(self.frame_163)
         self.frame_164.setMaximumSize(QtCore.QSize(50, 40))
         self.frame_164.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -3560,9 +3584,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_110.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_110.setSpacing(10)
         self.horizontalLayout_110.setObjectName("horizontalLayout_110")
-        self.plainTextEdit_3 = QtWidgets.QPlainTextEdit(self.frame_166)
-        self.plainTextEdit_3.setMinimumSize(QtCore.QSize(400, 60))
-        self.plainTextEdit_3.setStyleSheet("\n"
+        self.plainText = QtWidgets.QPlainTextEdit(self.frame_166)
+        self.plainText.setMinimumSize(QtCore.QSize(400, 60))
+        self.plainText.setStyleSheet("\n"
 "QPlainTextEdit{\n"
 "color: rgb(110, 118, 150);\n"
 "background-color: rgb(38, 49, 98);\n"
@@ -3577,9 +3601,9 @@ class Ui_MainWindow(object):
 "border:1px solid #3a4a95;\n"
 "padding:5px;\n"
 "}")
-        self.plainTextEdit_3.setPlaceholderText("")
-        self.plainTextEdit_3.setObjectName("plainTextEdit_3")
-        self.horizontalLayout_110.addWidget(self.plainTextEdit_3)
+        self.plainText.setPlaceholderText("")
+        self.plainText.setObjectName("plainText")
+        self.horizontalLayout_110.addWidget(self.plainText)
         self.frame_167 = QtWidgets.QFrame(self.frame_166)
         self.frame_167.setMinimumSize(QtCore.QSize(50, 40))
         self.frame_167.setMaximumSize(QtCore.QSize(50, 40))
@@ -3617,9 +3641,110 @@ class Ui_MainWindow(object):
         self.frame_140.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_140.setObjectName("frame_140")
         self.verticalLayout_51.addWidget(self.frame_140)
-        self.verticalLayout_34.addWidget(self.frameFullMode)
+        self.verticalLayout_19.addWidget(self.frameFullMode)
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_5)
-        self.horizontalLayout_69.addWidget(self.scrollArea_4)
+        self.verticalLayout_24.addWidget(self.scrollArea_4)
+        self.frameSaveConfig = QtWidgets.QFrame(self.SettingPage)
+        self.frameSaveConfig.setMinimumSize(QtCore.QSize(0, 40))
+        self.frameSaveConfig.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frameSaveConfig.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frameSaveConfig.setObjectName("frameSaveConfig")
+        self.horizontalLayout_64 = QtWidgets.QHBoxLayout(self.frameSaveConfig)
+        self.horizontalLayout_64.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_64.setSpacing(0)
+        self.horizontalLayout_64.setObjectName("horizontalLayout_64")
+        self.frame_60 = QtWidgets.QFrame(self.frameSaveConfig)
+        self.frame_60.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_60.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_60.setObjectName("frame_60")
+        self.horizontalLayout_64.addWidget(self.frame_60)
+        self.frame_58 = QtWidgets.QFrame(self.frameSaveConfig)
+        self.frame_58.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_58.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_58.setObjectName("frame_58")
+        self.horizontalLayout_65 = QtWidgets.QHBoxLayout(self.frame_58)
+        self.horizontalLayout_65.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_65.setSpacing(0)
+        self.horizontalLayout_65.setObjectName("horizontalLayout_65")
+        self.frame_70 = QtWidgets.QFrame(self.frame_58)
+        self.frame_70.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_70.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_70.setObjectName("frame_70")
+        self.horizontalLayout_65.addWidget(self.frame_70)
+        self.frame_71 = QtWidgets.QFrame(self.frame_58)
+        self.frame_71.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_71.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_71.setObjectName("frame_71")
+        self.horizontalLayout_66 = QtWidgets.QHBoxLayout(self.frame_71)
+        self.horizontalLayout_66.setContentsMargins(0, 0, 50, 0)
+        self.horizontalLayout_66.setSpacing(20)
+        self.horizontalLayout_66.setObjectName("horizontalLayout_66")
+        self.btn_settingDefault = QtWidgets.QPushButton(self.frame_71)
+        self.btn_settingDefault.setMinimumSize(QtCore.QSize(70, 25))
+        self.btn_settingDefault.setMaximumSize(QtCore.QSize(70, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_settingDefault.setFont(font)
+        self.btn_settingDefault.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_settingDefault.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px gray #6bd4c1 ;\n"
+"background-color:#324081;\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px gray #6bd4c1 ;\n"
+"background-color:#344387;\n"
+"}QPushButton:checked{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px gray #6bd4c1 ;\n"
+"background-color: rgb(108, 213, 194);\n"
+"}")
+        self.btn_settingDefault.setObjectName("btn_settingDefault")
+        self.horizontalLayout_66.addWidget(self.btn_settingDefault)
+        self.btn_settingSave = QtWidgets.QPushButton(self.frame_71)
+        self.btn_settingSave.setMinimumSize(QtCore.QSize(70, 25))
+        self.btn_settingSave.setMaximumSize(QtCore.QSize(70, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_settingSave.setFont(font)
+        self.btn_settingSave.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_settingSave.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid #27b8a5  ;\n"
+"background-color: #29BAA8;\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px gray #6bd4c1 ;\n"
+"background-color: #2ac3af;\n"
+"}QPushButton:checked{\n"
+"border:none;\n"
+"border-radius:5px;\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px gray #6bd4c1 ;\n"
+"background-color: rgb(108, 213, 194);\n"
+"}")
+        self.btn_settingSave.setObjectName("btn_settingSave")
+        self.horizontalLayout_66.addWidget(self.btn_settingSave)
+        self.horizontalLayout_65.addWidget(self.frame_71, 0, QtCore.Qt.AlignRight)
+        self.horizontalLayout_64.addWidget(self.frame_58)
+        self.verticalLayout_24.addWidget(self.frameSaveConfig)
         self.stackedWidget.addWidget(self.SettingPage)
         self.Bankpage = QtWidgets.QWidget()
         self.Bankpage.setStyleSheet("background-color: rgb(38, 49, 98);")
@@ -3685,6 +3810,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_refresh.setFont(font)
+        self.btn_refresh.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_refresh.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "border-radius:5px;\n"
@@ -3721,6 +3847,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_add.setFont(font)
+        self.btn_add.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_add.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "border-radius:5px;\n"
@@ -3768,6 +3895,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_proxy.setFont(font)
+        self.btn_proxy.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_proxy.setStyleSheet("QPushButton{\n"
 "color: rgb(87, 87, 179);\n"
 "border:none;\n"
@@ -3814,6 +3942,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.btn_delete.setFont(font)
+        self.btn_delete.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_delete.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "border-radius:5px;\n"
@@ -4089,6 +4218,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.ComboboxFile.setFont(font)
+        self.ComboboxFile.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ComboboxFile.setStyleSheet("\n"
 "QComboBox{\n"
 "        background-color: rgb(55, 68, 119);\n"
@@ -4171,6 +4301,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.ComboBoxTypeAccount.setFont(font)
+        self.ComboBoxTypeAccount.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ComboBoxTypeAccount.setStyleSheet("\n"
 "QComboBox{\n"
 "        background-color: rgb(55, 68, 119);\n"
@@ -4295,6 +4426,7 @@ class Ui_MainWindow(object):
         self.btn_search = QtWidgets.QPushButton(self.frame_search)
         self.btn_search.setMinimumSize(QtCore.QSize(30, 25))
         self.btn_search.setMaximumSize(QtCore.QSize(40, 40))
+        self.btn_search.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_search.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "border-radius:10px;\n"
@@ -4328,6 +4460,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setFamily("MesloLGSDZ Nerd Font")
         self.line_search.setFont(font)
+        self.line_search.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.line_search.setStyleSheet("")
         self.line_search.setObjectName("line_search")
         self.horizontalLayout_40.addWidget(self.line_search, 0, QtCore.Qt.AlignRight)
@@ -4348,6 +4481,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.setSpacing(5)
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.TableManage = QtWidgets.QTableWidget(self.scrollAreaWidgetContents_manage)
+        self.TableManage.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.TableManage.setStyleSheet("\n"
 "QTableWidget {\n"
 "                border-radius: 13px;\n"
@@ -4606,7 +4740,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 1160, 630))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 1160, 1253))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_23 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
@@ -4813,7 +4947,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
         self.btn_all.toggled['bool'].connect(self.btn_all_icons.setChecked) # type: ignore
         self.btn_banking.toggled['bool'].connect(self.btn_banking_icons.setChecked) # type: ignore
@@ -4887,16 +5021,16 @@ class Ui_MainWindow(object):
         self.likePercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_31.setText(_translate("MainWindow", "Tỉ Lệ (Đọc Comment , Tương Tác Comment )"))
         self.label_32.setText(_translate("MainWindow", "Sẽ tự động React comment , xem comment ở mọi mạng xã hội"))
-        self.CommentPercent.setText(_translate("MainWindow", "60"))
-        self.CommentPercent.setPlaceholderText(_translate("MainWindow", "0->100"))
+        self.ReadCommentPercent.setText(_translate("MainWindow", "60"))
+        self.ReadCommentPercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_33.setText(_translate("MainWindow", "Tỉ Lệ (Share Posts)"))
         self.label_34.setText(_translate("MainWindow", "Tự động Share bài viết ở mọi mạng xã hội"))
         self.SharePercent.setText(_translate("MainWindow", "10"))
         self.SharePercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_35.setText(_translate("MainWindow", "Tỉ Lệ (Comment Posts)"))
         self.label_36.setText(_translate("MainWindow", "Tự động Comment  bài viết ở mọi mạng xã hội"))
-        self.SharePercent_2.setText(_translate("MainWindow", "10"))
-        self.SharePercent_2.setPlaceholderText(_translate("MainWindow", "0->100"))
+        self.CommentPercent.setText(_translate("MainWindow", "10"))
+        self.CommentPercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_37.setText(_translate("MainWindow", "Tỉ lệ (Join Group)"))
         self.label_38.setText(_translate("MainWindow", "Tự động Join Group đề xuất"))
         self.JoinGroupPercent.setText(_translate("MainWindow", "5"))
@@ -4927,27 +5061,29 @@ class Ui_MainWindow(object):
         self.AddFriendsPercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_57.setText(_translate("MainWindow", "Tỉ Lệ (Post Story)"))
         self.label_58.setText(_translate("MainWindow", "Tự động Đăng tải Story "))
-        self.ViewNotificationsPercent_3.setText(_translate("MainWindow", "10"))
-        self.ViewNotificationsPercent_3.setPlaceholderText(_translate("MainWindow", "0->100"))
+        self.StoryPostsPercent.setText(_translate("MainWindow", "10"))
+        self.StoryPostsPercent.setPlaceholderText(_translate("MainWindow", "0->100"))
         self.label_65.setText(_translate("MainWindow", "Dữ liệu vào"))
         self.label_66.setText(_translate("MainWindow", "GoogleSheet API Key"))
         self.label_67.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#ffffff;\">Nhập API Lấy ở URL Sheet của bạn vào đây để backup, nhấn vào biểu tượng con mắt để xem hướng dẫn cài đặt .</span></p></body></html>"))
-        self.lineEdit.setPlaceholderText(_translate("MainWindow", "1FAXNO8jM7texHZ3lNvFf7uEbDbOiYh3SzBpXXk9DMyM"))
+        self.ApiSheet.setPlaceholderText(_translate("MainWindow", "1FAXNO8jM7texHZ3lNvFf7uEbDbOiYh3SzBpXXk9DMyM"))
         self.label_68.setText(_translate("MainWindow", "Danh Sách UID Người Dùng"))
         self.label_69.setText(_translate("MainWindow", "<html><head/><body><p>Nhập danh sách UID các tài khoản cá nhân cần chạy tương tác . Mỗi UID 1 dòng</p></body></html>"))
-        self.plainTextEdit.setPlainText(_translate("MainWindow", "Null\n"
+        self.plainID.setPlainText(_translate("MainWindow", "Null\n"
 "Null\n"
 "Null"))
         self.label_70.setText(_translate("MainWindow", "Danh Sách UID Group"))
         self.label_71.setText(_translate("MainWindow", "<html><head/><body><p>Nhập danh sách UID các Group  cần chạy tương tác . Mỗi UID 1 dòng</p></body></html>"))
-        self.plainTextEdit_2.setPlainText(_translate("MainWindow", "Null\n"
+        self.plainGroup.setPlainText(_translate("MainWindow", "Null\n"
 "Null\n"
 "Null"))
         self.label_72.setText(_translate("MainWindow", "Danh Sách Nội Dung"))
         self.label_73.setText(_translate("MainWindow", "<html><head/><body><p>Nhập nội dung đã soạn sẵn để chạy đăng bài (Comment , story ... sẽ lấy nội dung từ ChatGPT)</p></body></html>"))
-        self.plainTextEdit_3.setPlainText(_translate("MainWindow", "Liên Hệ Admin : 0...xxxx để cho 1 cái kẹo nha hihi🐧\n"
+        self.plainText.setPlainText(_translate("MainWindow", "Liên Hệ Admin : 0...xxxx để cho 1 cái kẹo nha hihi🐧\n"
 "... \n"
 "Nói đùa đó , tiền đâu mà mua kẹo 🥲"))
+        self.btn_settingDefault.setText(_translate("MainWindow", "Mặc định"))
+        self.btn_settingSave.setText(_translate("MainWindow", "Save"))
         self.btn_refresh.setText(_translate("MainWindow", "TẢI LẠI"))
         self.btn_add.setText(_translate("MainWindow", "NHẬP"))
         self.btn_proxy.setText(_translate("MainWindow", "PROXY"))
