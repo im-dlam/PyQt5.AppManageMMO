@@ -21,8 +21,8 @@ class Ui_TabWidget(object):
         self.centralwidget.setMaximumSize(QtCore.QSize(16777215, 443))
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout.setSpacing(1)
+        self.horizontalLayout.setContentsMargins(3, 3, 3, 3)
+        self.horizontalLayout.setSpacing(3)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frameMain = QtWidgets.QFrame(self.centralwidget)
         self.frameMain.setMinimumSize(QtCore.QSize(0, 0))
@@ -36,6 +36,7 @@ class Ui_TabWidget(object):
         font = QtGui.QFont()
         font.setFamily("MesloLGLDZ Nerd Font")
         self.tabWidget.setFont(font)
+        self.tabWidget.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.tabWidget.setStyleSheet(" QTabWidget::pane {\n"
 "                font-weight: bold;\n"
 "                color: rgb(255, 255, 255);\n"
@@ -392,6 +393,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
+        self.label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label.setStyleSheet("\n"
 "    QLabel {\n"
 "      color: rgb(255, 255, 255);\n"
@@ -455,6 +457,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.combo_account.setFont(font)
+        self.combo_account.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.combo_account.setStyleSheet("QComboBox{\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
@@ -520,6 +523,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.combo_danhmuc.setFont(font)
+        self.combo_danhmuc.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.combo_danhmuc.setStyleSheet("QComboBox{\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
@@ -584,6 +588,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.combo_ua.setFont(font)
+        self.combo_ua.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.combo_ua.setStyleSheet("QComboBox{\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
@@ -616,6 +621,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.item_close.setFont(font)
+        self.item_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.item_close.setStyleSheet("\n"
 "QPushButton{\n"
 "border:none;\n"
@@ -637,6 +643,7 @@ class Ui_TabWidget(object):
         font.setBold(True)
         font.setWeight(75)
         self.item_add.setFont(font)
+        self.item_add.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.item_add.setStyleSheet("\n"
 "\n"
 "QPushButton{\n"
@@ -661,48 +668,21 @@ class Ui_TabWidget(object):
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_11.setObjectName("frame_11")
-        self.plain_proxy = QtWidgets.QPlainTextEdit(self.frame_11)
-        self.plain_proxy.setGeometry(QtCore.QRect(0, 50, 311, 91))
-        font = QtGui.QFont()
-        font.setFamily("MesloLGSDZ Nerd Font")
-        font.setPointSize(8)
-        self.plain_proxy.setFont(font)
-        self.plain_proxy.setStyleSheet("\n"
-"QPlainTextEdit{\n"
-"background-color:rgba(29,52,104,255);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius:5px;\n"
-"padding:5px;\n"
-"border:1px solid  #5e70a7;\n"
-"}\n"
-"QPlainTextEdit:hover{\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius:5px;\n"
-"border:1px solid  #415485;\n"
-"}\n"
-"QFrame{\n"
-"border-radius:5px;\n"
-"}\n"
-"")
-        self.plain_proxy.setTabChangesFocus(True)
-        self.plain_proxy.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
-        self.plain_proxy.setPlainText("")
-        self.plain_proxy.setBackgroundVisible(False)
-        self.plain_proxy.setCenterOnScroll(True)
-        self.plain_proxy.setObjectName("plain_proxy")
         self.combo_proxy = QtWidgets.QComboBox(self.frame_11)
-        self.combo_proxy.setGeometry(QtCore.QRect(0, 10, 311, 23))
+        self.combo_proxy.setGeometry(QtCore.QRect(0, 20, 311, 23))
         self.combo_proxy.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setFamily("MesloLGSDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
         self.combo_proxy.setFont(font)
+        self.combo_proxy.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.combo_proxy.setStyleSheet("QComboBox{\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:3px;\n"
 "background-color: rgb(29, 52, 104);\n"
 "padding:5px;\n"
+"border:1px solid #354781;\n"
 "}\n"
 "QComboBox::drop-down {\n"
 "    subcontrol-origin: padding;\n"
@@ -743,13 +723,200 @@ class Ui_TabWidget(object):
         self.combo_proxy.addItem("")
         self.combo_proxy.addItem("")
         self.combo_proxy.addItem("")
+        self.item_import = QtWidgets.QPushButton(self.frame_11)
+        self.item_import.setGeometry(QtCore.QRect(330, 20, 81, 25))
+        font = QtGui.QFont()
+        font.setFamily("MesloLGMDZ Nerd Font")
+        font.setBold(True)
+        font.setWeight(75)
+        self.item_import.setFont(font)
+        self.item_import.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.item_import.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
+"border:none;\n"
+"border-radius:2px;\n"
+"background-color: #29b7a5;\n"
+"color: rgb(255, 233, 253);\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"color: rgb(255, 233, 253);\n"
+"background-color: #2bc2ae;\n"
+"}")
+        self.item_import.setObjectName("item_import")
+        self.item_ClearProxy = QtWidgets.QPushButton(self.frame_11)
+        self.item_ClearProxy.setGeometry(QtCore.QRect(890, 20, 61, 25))
+        font = QtGui.QFont()
+        font.setFamily("MesloLGMDZ Nerd Font")
+        font.setBold(True)
+        font.setWeight(75)
+        self.item_ClearProxy.setFont(font)
+        self.item_ClearProxy.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.item_ClearProxy.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
+"border:none;\n"
+"border-radius:2px;\n"
+"background-color:#cb497d;\n"
+"color: rgb(255, 233, 253);\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"color: rgb(255, 233, 253);\n"
+"background-color: #d34c82;\n"
+"}")
+        self.item_ClearProxy.setObjectName("item_ClearProxy")
+        self.item_CheckProxy = QtWidgets.QPushButton(self.frame_11)
+        self.item_CheckProxy.setGeometry(QtCore.QRect(440, 20, 101, 25))
+        font = QtGui.QFont()
+        font.setFamily("MesloLGMDZ Nerd Font")
+        font.setBold(True)
+        font.setWeight(75)
+        self.item_CheckProxy.setFont(font)
+        self.item_CheckProxy.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.item_CheckProxy.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
+"border:none;\n"
+"border-radius:2px;\n"
+"background-color: rgb(103, 119, 159);\n"
+"color: rgb(255, 233, 253);\n"
+"}\n"
+"QPushButton:hover{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"color: rgb(255, 233, 253);\n"
+"background-color:#6c7ea7;\n"
+"}")
+        self.item_CheckProxy.setObjectName("item_CheckProxy")
+        self.tableWidget = QtWidgets.QTableWidget(self.frame_11)
+        self.tableWidget.setGeometry(QtCore.QRect(0, 60, 951, 281))
+        self.tableWidget.setStyleSheet("\n"
+"QTableWidget {\n"
+"                border-radius: 13px;\n"
+"                border: 0.5px solid  #354781;\n"
+"                padding: 5px;\n"
+"                background-color: rgb(38, 49, 98);\n"
+"                margin: px; /* Adjust thebackground-color: rgb(225, 224, 255);  margin if necessary */\n"
+"                \n"
+"                color: rgb(255, 255, 255);\n"
+"            }\n"
+" QHeaderView::section {\n"
+"                border: 0.5px solid gray;\n"
+"                background-color: rgb(38, 49, 98);\n"
+"                border:none;    \n"
+"                font-weight: bold;\n"
+"                color: rgb(255, 255, 255);\n"
+"\n"
+"            }\n"
+"    QToolButton {\n"
+"                background-color: transparent;\n"
+"                border: none;\n"
+"            }\n"
+"            QToolButton::menu-indicator {\n"
+"                image: none;\n"
+"            }\n"
+" QTableWidget::selected {\n"
+"                padding: 5px;\n"
+"                border: 5px;\n"
+"            }\n"
+" QTableWidget::item :selec{\n"
+"                padding: 5px;\n"
+"                border: 5px;\n"
+"            }\n"
+"\n"
+"  QScrollBar:horizontal {\n"
+"                border: none;\n"
+"               background-color: rgb(150, 173, 232);\n"
+"                height: 5px;\n"
+"                margin: 0px 0px 0 0px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar:horizontal {\n"
+"                border: none;\n"
+"            background-color: rgb(150, 173, 232);\n"
+"\n"
+"                height: 3px;\n"
+"                margin: 0px 0px 0 0px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::handle:horizontal {\n"
+"                 background-color: rgb(105, 122, 163);\n"
+"               \n"
+"                min-width: 2px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::add-line:horizontal {\n"
+"                border: none;\n"
+"                width: 0px;\n"
+"                background-color: none;\n"
+"            }\n"
+"            QScrollBar::sub-line:horizontal {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                width: 0px;\n"
+"            }\n"
+"            QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar:vertical {\n"
+"                border: none;\n"
+"                background-color: rgb(105, 122, 163);\n"
+"\n"
+"                width: 3px;\n"
+"                margin: 0px 0 0px 0;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::handle:vertical {\n"
+"                background-color: rgb(150, 173, 232);\n"
+"                min-height: 5px;\n"
+"                border-radius: 5px;\n"
+"            }\n"
+"            QScrollBar::add-line:vertical {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                height: 0px;\n"
+"            }\n"
+"            QScrollBar::sub-line:vertical {\n"
+"                border: none;\n"
+"                background: none;\n"
+"                height: 0px;\n"
+"            }\n"
+"            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"                background: none;\n"
+"            }\n"
+"            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"                background: none;\n"
+"            }")
+        self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(3)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
+        self.tableWidget.horizontalHeader().setSortIndicatorShown(True)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
         self.item_closeProxy = QtWidgets.QPushButton(self.TabProxy)
-        self.item_closeProxy.setGeometry(QtCore.QRect(790, 350, 61, 25))
+        self.item_closeProxy.setGeometry(QtCore.QRect(880, 350, 61, 25))
         font = QtGui.QFont()
         font.setFamily("MesloLGMDZ Nerd Font")
         font.setBold(True)
         font.setWeight(75)
         self.item_closeProxy.setFont(font)
+        self.item_closeProxy.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.item_closeProxy.setStyleSheet("\n"
 "QPushButton{\n"
 "border:none;\n"
@@ -764,37 +931,12 @@ class Ui_TabWidget(object):
 "    background-color: rgb(127, 147, 197);\n"
 "}")
         self.item_closeProxy.setObjectName("item_closeProxy")
-        self.item_addProxy = QtWidgets.QPushButton(self.TabProxy)
-        self.item_addProxy.setGeometry(QtCore.QRect(870, 350, 61, 25))
-        font = QtGui.QFont()
-        font.setFamily("MesloLGMDZ Nerd Font")
-        font.setBold(True)
-        font.setWeight(75)
-        self.item_addProxy.setFont(font)
-        self.item_addProxy.setStyleSheet("\n"
-"\n"
-"QPushButton{\n"
-"border:none;\n"
-"border-radius:2px;\n"
-"background-color: #29b7a5;\n"
-"color: rgb(255, 233, 253);\n"
-"}\n"
-"QPushButton:hover{\n"
-"border:none;\n"
-"border-radius:3px;\n"
-"color: rgb(255, 233, 253);\n"
-"background-color: #2bc2ae;\n"
-"}")
-        self.item_addProxy.setObjectName("item_addProxy")
         self.tabWidget.addTab(self.TabProxy, "")
-        self.tab = QtWidgets.QWidget()
-        self.tab.setObjectName("tab")
-        self.tabWidget.addTab(self.tab, "")
         self.horizontalLayout.addWidget(self.frameMain)
         TabWidget.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(TabWidget)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(TabWidget)
 
     def retranslateUi(self, TabWidget):
@@ -813,15 +955,21 @@ class Ui_TabWidget(object):
         self.item_close.setText(_translate("TabWidget", "Đóng"))
         self.item_add.setText(_translate("TabWidget", "Tạo"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabAddItems), _translate("TabWidget", "Nhập tài khoản"))
-        self.plain_proxy.setPlaceholderText(_translate("TabWidget", "Nhập Proxy"))
         self.combo_proxy.setItemText(0, _translate("TabWidget", "HTTP Proxy"))
         self.combo_proxy.setItemText(1, _translate("TabWidget", "Socks 4 Proxy"))
         self.combo_proxy.setItemText(2, _translate("TabWidget", "Socks 5 Proxy"))
         self.combo_proxy.setItemText(3, _translate("TabWidget", "Free Proxy"))
+        self.item_import.setText(_translate("TabWidget", "import"))
+        self.item_ClearProxy.setText(_translate("TabWidget", "clear"))
+        self.item_CheckProxy.setText(_translate("TabWidget", "Check Proxy"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("TabWidget", "#"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("TabWidget", "Proxy"))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("TabWidget", "Type"))
         self.item_closeProxy.setText(_translate("TabWidget", "Đóng"))
-        self.item_addProxy.setText(_translate("TabWidget", "Tạo"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.TabProxy), _translate("TabWidget", "Nhập Proxy"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("TabWidget", "Thư mục"))
 import icons_rc
 
 

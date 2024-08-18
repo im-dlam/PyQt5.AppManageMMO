@@ -590,7 +590,6 @@ class WindowInterface(QMainWindow):
         # window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
         window_widgets.item_closeProxy.clicked.connect(lambda : windows_ui.close())
         window_widgets.item_closeProxy.clicked.connect(lambda: self.RemoveWindowFlags())
-
         #######################################################################################
         # toggle frame, button to shadow
 
@@ -614,7 +613,7 @@ class WindowInterface(QMainWindow):
     # phần điều kiện chuột tự di chuyển
     def mousePressEvent(self, event):
         # Check if the mouse press is within the frameID widget
-        if event.button() == Qt.LeftButton and widgets.frame_taskbar.geometry().contains(event.pos()):
+        if event.button() == Qt.LeftButton and not widgets.main_screen.geometry().contains(event.pos()) or (event.button() == Qt.LeftButton and  widgets.frame_taskbar.geometry().contains(event.pos())):
             self.is_left_mouse_pressed = True
             self.resize.mousePressEvent(event)
 

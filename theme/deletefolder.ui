@@ -26,24 +26,24 @@
    <string>Delete Category</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(237, 234, 255);</string>
+   <string notr="true">background-color: rgb(15, 47, 94);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="leftMargin">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="topMargin">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="rightMargin">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="bottomMargin">
-     <number>0</number>
+     <number>3</number>
     </property>
     <item>
      <widget class="QFrame" name="frame">
@@ -134,7 +134,7 @@ background-color: rgb(160, 52, 255);
       <widget class="QPushButton" name="btn_close">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>360</x>
          <y>0</y>
          <width>31</width>
          <height>23</height>
