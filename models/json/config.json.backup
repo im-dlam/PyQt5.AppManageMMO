@@ -1,0 +1,41 @@
+{
+    "account.total": 0,
+    "account.proxy": true,
+    "account.work": {
+        "facebook": [],
+        "tiktok": [],
+        "x": [],
+        "telegram": [],
+        "instagram": []
+    },
+    "config":{
+        "id.TimeWorking": 5,
+        "id.Loop": 1,
+        "id.Profile": false,
+        "id.Backup": true,
+        "id.Proxy": false,
+        "id.Proxyauto": false,
+        "id.BrowserAuto":true,
+        "id.BrowserOptimize":true,
+        "id.chatgpt":true,
+        "id.BrowserHeadless":false,
+        "id.PercentLike": 50,
+        "id.PercentReadComment": 30,
+        "id.PercentShare": 10,
+        "id.PercentComment":10,
+        "id.PercentJoinGroup":5,
+        "id.PercentViewStory":10,
+        "id.PercentViewReel":40,
+        "id.PercentViewCommentReel":60,
+        "id.PercentViewNotications":60,
+        "id.PercentViewFeedAdmin":30,
+        "id.PercentAddFriendNew":2,
+        "id.PercentPostsStory":10,
+        "id.SheetApi":"147SpHvtiMrbMt2RCvPh80G4eWpHusSsxmFRyPrA7h8Y",
+        "id.IDUser":[],
+        "id.IDGroup":[],
+        "id.Text":[]
+        
+    }
+    
+}

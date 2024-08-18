@@ -793,6 +793,7 @@ class WindowInterface(QMainWindow):
 
     #######################################################################################/
     # check cuộn xuống 100 dòng sẽ load thêm
+    
     def SubjectAutoLoadData(self):
         scrollbar = widgets.TableManage.verticalScrollBar()
         scrollbar.valueChanged.connect(lambda :QTableTools.HandleScroll(self,scrollbar,DataFillProcess))
