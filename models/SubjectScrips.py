@@ -154,3 +154,34 @@ QMenu::icon {
     margin-left: 15px;  
 }
 """
+
+
+scripProxyImport = """
+QPushButton{
+border:none;
+border-radius:2px;
+background-color:#6065c7;
+color: rgb(255, 233, 253);
+}
+QPushButton:hover{
+border:none;
+border-radius:3px;
+color: rgb(255, 233, 253);
+background-color:#6369ce;
+}
+"""
+
+scripProxyAdd = """
+QPushButton{
+border:none;
+border-radius:2px;
+background-color: #29b7a5;
+color: rgb(255, 233, 253);
+}
+QPushButton:hover{
+border:none;
+border-radius:3px;
+color: rgb(255, 233, 253);
+background-color: #2bc2ae;
+}
+"""

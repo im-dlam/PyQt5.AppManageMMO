@@ -37,7 +37,7 @@ class WindowInterface(QMainWindow):
         self.setMinimumSize(QSize(1270, 0))
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
 
-        self.setWindowTitle("BetaLogin - Quản Lý Đa Nền Tảng Tài Khoản")
+        self.setWindowTitle("BeSyn - Quản Lý Đa Nền Tảng Tài Khoản")
         #######################################################################################
 
 
@@ -141,8 +141,9 @@ class WindowInterface(QMainWindow):
 
         widgets.TableManage.selectionModel().selectionChanged.connect(self.MouseClickCheckBox)
 
-        widgets.TableManage.cellClicked.connect(self.OnCellClickCheckBox)
+        widgets.TableManage.cellClicked.connect(self.ShiftAutoCheckbox)
 
+        widgets.TableManage.cellClicked.connect(self.CheckBoxCount)
 
         #######################################################################################
 
@@ -159,10 +160,24 @@ class WindowInterface(QMainWindow):
 
 
 
-
+    def CheckBoxCount(self,row, column ):
+        total = 0
+        for i in range(widgets.TableManage.rowCount()):
+            checkbox = widgets.TableManage.item(i, 0)
+            if checkbox.checkState() == 2:
+                total += 1
+        
+        if total == 0:
+            widgets.btn_run.hide()
+        else:
+            widgets.btn_run.show()
+            widgets.btn_run.setText("RUN ({})".format(str(total)))
+        
+        widgets.label_running.setText(f"{total}")
+        widgets.label_select.setText(str(total))
     #######################################################################################
     # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
-    def OnCellClickCheckBox(self, row, column ):
+    def ShiftAutoCheckbox(self, row, column ):
         if QApplication.keyboardModifiers() == Qt.ShiftModifier:
             if self.first_selected_item is not None:
                 first_row, first_col = self.first_selected_item
@@ -218,7 +233,12 @@ class WindowInterface(QMainWindow):
         Functions.ShadowFrameConditional(self, widgets.frame_taskbar,QColor(0,10,10,100))
 
 
-
+    def SubjectUpdateProxy(self):
+        filedumps = json.loads(open(your_dir_config,"r",encoding="utf-8").read())
+        onProxy = filedumps['config']['id.Proxy']
+        onAutoProxy =  filedumps['config']['id.Proxyauto']
+        proxyList = filedumps['proxy']['list']
+        
     def SubjectSetupTableManage(self):
         QTableTools.SubjectNewHorizontalHeader(self , widgets)
 
@@ -232,6 +252,10 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     # Subject connect các button
     def SubjectConnectButton(self):
+
+        # ẩn nút start
+        
+        widgets.btn_run.hide()
 
         Functions.ShadowFrameConditional(self,widgets.SettingPage,QColor(0,10,10,100))
         
@@ -304,6 +328,7 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     # Màn hình cài đặt chung
     def WidgetFrameSetting(self):
+        ShowConfig().Config(widgets)
         widgets.stackedWidget.setCurrentWidget(widgets.SettingPage)
 
 
@@ -401,6 +426,7 @@ class WindowInterface(QMainWindow):
         # Chức năng hiển thị GUI thêm dữ liệu tài khoản
         # Call Sub from Functions Show UI Clone
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
+        window_widgets.tabWidget.tabBar().setTabEnabled(1, False)
         window_widgets.tabWidget.setCurrentIndex(0)
 
         #######################################################################################
@@ -578,24 +604,65 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
+        window_widgets.tabWidget.tabBar().setTabEnabled(0, False)
         window_widgets.tabWidget.setCurrentIndex(1)
         self.center(windows_ui)
+
+
+        # widgets.tabWidget.widget(0).hide()
         # window_widgets -> Object : sử dụng để gọi các frame , button ...
         # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
         # Call Functions Connect UI
-
-
+        self.item_CheckProxy_Change  =  False 
         #######################################################################################
         # Call Sub from Functions Show UI Clone PROXIES
         # window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
         window_widgets.item_closeProxy.clicked.connect(lambda : windows_ui.close())
         window_widgets.item_closeProxy.clicked.connect(lambda: self.RemoveWindowFlags())
         #######################################################################################
-        # toggle frame, button to shadow
+        # hiện holder
 
+        window_widgets.plain_Proxy.setPlaceholderText("Nhập Proxy ...")
+        window_widgets.plain_Proxy.setPlainText("...")
+        window_widgets.plain_Proxy.clear()
+
+
+        # cập nhật proxy và thêm
+        window_widgets.item_import.clicked.connect(lambda:self.ProxyAdd(windows_ui))
+
+        window_widgets.plain_Proxy.textChanged.connect(lambda: self.ProxyPlainCount(window_widgets))
+        window_widgets.item_ClearProxy.clicked.connect(lambda: self.ProxyClear(window_widgets))
+
+        proxy_list = json.loads(open(your_dir_config,"r",encoding="utf-8").read())["proxy"]["list"]
+        proxy_text = "\n".join(proxy_list) if isinstance(proxy_list, list) else proxy_list
+        window_widgets.plain_Proxy.setPlainText(proxy_text)
         #######################################################################################
         # run , check script
 
+    def ProxyClear(self , window_widgets):
+        window_widgets.label_5.setText(str())
+        window_widgets.plain_Proxy.clear()
+
+        # Cập nhật và Xóa Proxy
+        ConfigProxy().ProxyClear()
+        
+
+
+    def ProxyPlainCount(self, window_widgets):
+        self.proxyPlainText = [prx.strip("\n") for prx in window_widgets.plain_Proxy.toPlainText().split("\n")]
+
+        window_widgets.label_5.setText("Tổng : {}".format(len(self.proxyPlainText)))
+    def ProxyAdd(self , windows_ui):
+
+
+        # Cập nhật và lưu Proxy mới
+        ConfigProxy().ProxyAdd(self.proxyPlainText)
+        
+
+        windows_ui.close()
+        self.RemoveWindowFlags()
+        if self.proxyPlainText != "":
+            msg.SendMsg(("Thêm Proxy Thành Công !",1))
 
     #######################################################################################
     # phần này xử lý di chuyển chuột và kéo dãn màn hình ứng dụng , hiện tại chưa xử lý thêm
@@ -853,6 +920,10 @@ class WindowInterface(QMainWindow):
         event.accept()
     #######################################################################################
 
+
+    
+
+    #######################################################################################
 
 
     #######################################################################################

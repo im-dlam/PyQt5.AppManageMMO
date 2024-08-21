@@ -2,6 +2,60 @@ from main import *
 from models import *
 import pathlib
 import os , json
+
+
+your_dir_config  = pathlib.Path.cwd().joinpath("models/json/config.json")
+
+
+class ShowConfig:
+    def Config(self , widgets):
+        filedumps = json.loads(open(your_dir_config,"r",encoding="utf-8").read())
+        config = filedumps["config"]
+        #######################################################################################
+        # xử lý tỉ lệ
+        widgets.TimeRun.setText(str(config["id.TimeWorking"])) # Time running
+        widgets.LoopAct.setText(str(config["id.Loop"])) #  Loop
+        widgets.likePercent.setText(str(config["id.PercentLike"])) #  Like feed
+        widgets.ReadCommentPercent.setText(str(config["id.PercentReadComment"])) #  Read comment
+        widgets.SharePercent.setText(str(config["id.PercentShare"])) # share 
+        widgets.CommentPercent.setText(str(config["id.PercentComment"])) # commet 
+        widgets.JoinGroupPercent.setText(str(config["id.PercentJoinGroup"])) # join group
+        widgets.StoryPercent.setText(str(config["id.PercentViewStory"])) # vew story
+        widgets.ReelPercent.setText(str(config["id.PercentViewReel"])) # view reel
+        widgets.ReadReelCommentPercent.setText(str(config["id.PercentViewCommentReel"])) # read comment reel
+        widgets.ViewNotificationsPercent.setText(str(config["id.PercentViewNotications"])) # read notifi
+        widgets.ViewFeedAdminPostPercent.setText(str(config["id.PercentViewFeedAdmin"])) # view feed admin post
+        widgets.AddFriendsPercent.setText(str(config["id.PercentAddFriendNew"])) # add friends
+        widgets.StoryPostsPercent.setText(str(config["id.PercentPostsStory"])) # post story
+
+        idText = "\n".join(config["id.IDUser"]) if isinstance(config["id.IDUser"], list) else config["id.IDUser"]
+        GroupText = "\n".join(config["id.IDGroup"]) if isinstance(config["id.IDGroup"], list) else config["id.IDUser"]
+        CommentText = "\n".join(config["id.Text"]) if isinstance(config["id.Text"], list) else config["id.IDUser"]
+
+        widgets.plainID.setPlainText(idText)
+        widgets.plainGroup.setPlainText(GroupText)
+        widgets.plainText.setPlainText(CommentText)
+        widgets.ApiSheet.setText(config["id.SheetApi"])
+class ConfigProxy:
+    def ProxyClear(self):
+        filedumps =  json.loads(open(your_dir_config,"r",encoding="utf-8").read())
+        filedumps["proxy"]["list"] =  []
+        with open(your_dir_config , "w" , encoding="utf-8") as log_:
+            json.dump(
+                filedumps,
+                log_,
+                ensure_ascii=0,
+                indent=4)
+    
+    def ProxyAdd(self, proxyPlainText : str):
+        filedumps =  json.loads(open(your_dir_config,"r",encoding="utf-8").read())
+        filedumps["proxy"]["list"] =  proxyPlainText
+        with open(your_dir_config , "w" , encoding="utf-8") as log_:
+            json.dump(
+                filedumps,
+                log_,
+                ensure_ascii=0,
+                indent=4)
 class ConfigUser:
     def __init__(self , widgets) :
         self.your_dir  = pathlib.Path.cwd().joinpath("models/json/config.json")

@@ -35,11 +35,8 @@ class Functions(WindowInterface):
 
     def AnimatedToggleButton(self,FrameID):
         self.your_dir  = pathlib.Path.cwd().joinpath("models/json/config.json")
-        def ButtonConectUpdate(button):
-            with open(self.your_dir,"r",encoding="utf-8") as r:
-                filedumps = json.loads(r.read())
-                r.close()
-            btn_list  = {
+        filedumps = json.loads(open(self.your_dir,"r",encoding="utf-8").read())
+        btn_list  = {
                 "FrameID_ProfileLog":"id.Profile",
                 "FrameID_Backup":"id.Backup",
                 "FrameID_Proxy1":"id.Proxy",
@@ -49,6 +46,12 @@ class Functions(WindowInterface):
                 "FrameID_ContentChatGpt":"id.chatgpt",
                 "FrameID_ChromeHeadless":"id.BrowserHeadless"
             }
+        def ButtonConectUpdate(button):
+
+            with open(self.your_dir,"r",encoding="utf-8") as r:
+                filedumps = json.loads(r.read())
+                r.close()
+
             filedumps['config'].update(
                 {
                     btn_list[button.objectName()] : button.isChecked() 
@@ -77,6 +80,7 @@ class Functions(WindowInterface):
             layout_button = QVBoxLayout()
             layout_button.addWidget(button)
             frame.setLayout(layout_button)
+            button.setChecked(filedumps["config"][btn_list[frame.objectName()]])
             button.clicked.connect(lambda checked, btn=button: ButtonConectUpdate(btn))
 
     def UpdateLabelTotalAccount(self , widgets , total):
