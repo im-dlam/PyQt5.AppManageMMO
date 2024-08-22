@@ -1,9 +1,38 @@
+from PyQt5.QtCore import QObject
 from main import *
 from . SubjectTools import *
 from . Ui_Functions import *
 from . SubjectFileName import *
 # ///////////////////
 # xử lý lọc form nhập ở gui
+
+
+
+class ProxySQL(QThread):
+    def __init__(self):
+        super(ProxySQL,self).__init__()
+
+    def  run(self):
+        filedumps = json.loads(open(your_dir_config,"r",encoding="utf-8").read())
+        onProxy = filedumps['config']['id.Proxy']
+        onAutoProxy =  filedumps['config']['id.Proxyauto']
+        proxyList = filedumps['proxy']['list']
+
+        listSQL = SubjectSQL.GetSQLTable(self) # name sql []
+        index = 0
+        for name in listSQL:
+            data_from_name = SubjectSQL.ProcessGetDataTable(self , name)
+            for idx , getstr in enumerate(data_from_name):
+
+                if onAutoProxy and onProxy:
+                    if index == len(listSQL):index = 0
+                    send = {'key':'proxy','content':proxyList[index],'id':getstr['c_user']}
+                    index += 1
+                else:
+                    if len(proxyList) == idx:
+                        return
+                    send = {'key':'proxy','content':proxyList[idx],'id':getstr['c_user']}
+                SQL(name).SQLUpdateDataFromKey(send)
 class SubjectDataProcessing(QThread):
     signal = pyqtSignal(tuple)
     def __init__(self, window_widgets):
@@ -24,7 +53,7 @@ class SubjectDataProcessing(QThread):
         textOut = window_widgets.plain_item.toPlainText()
         line_ = textOut.split("\n")
         DataProcessingFill =  convert_data(textOut) , textOut
-        if DataProcessingFill[0] != [] and DataProcessingFill[0][0]["c_user"]  :
+        if DataProcessingFill[0] != [] and DataProcessingFill[0][0]["c_user"] :
             
             # ////////////////////////////
             # tìm kiếm chuỗi dữ liệu đầy đủ nhất
@@ -38,8 +67,11 @@ class SubjectDataProcessing(QThread):
             # //////////////////////////////
             data = convert_data(line_[index-1].strip("\n"))[0]
             # ///////////////////////////////
-
+            # show item lên table
             Functions.ComboboxProcessItem(self , window_widgets  , line_[index-1].strip("\n") , data)
+        elif line_ != "":
+            Functions.ComboboxProcessItem(self , window_widgets  , "" , [])
+
 
         # ///////////////////////////
         # set total account
@@ -61,20 +93,20 @@ class GetDataThread(QThread):
         
         self.t = QTimer()
         for _ in range(10):
-            self.t.moveToThread(self)  # Di chuyển QTimer vào luồng hiện tại
-            self.t.timeout.connect(self.GetDataFromTable)
-            self.t.start(1000)  # Bắt đầu timer, kiểm tra mỗi 2 giây
-            self.exec_()  # Bắt đầu vòng lặp sự kiện của QThread
-        self.terminate()
+            try:
+                self.t.moveToThread(self)  # Di chuyển QTimer vào luồng hiện tại
+                self.t.timeout.connect(self.GetDataFromTable)
+                self.t.start(1000)  # Bắt đầu timer, kiểm tra mỗi 2 giây
+                self.exec_()  # Bắt đầu vòng lặp sự kiện của QThread
+            except:
+                self.terminate()
+                self.quit()
     def GetDataFromTable(self):
         process = []
         for name in self.NameCategory:
             process += SubjectSQL.ProcessGetDataTable(self, name)
         self.signal.emit(process)
 
-        if len(process) == self.total:
-            self.t.stop()
-            self.quit()
 class SubjectOnProcessingDataFinished(QThread):
     signal = pyqtSignal(object)
 

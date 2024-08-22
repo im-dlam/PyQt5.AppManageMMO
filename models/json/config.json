@@ -5,7 +5,8 @@
         "facebook": [
             "đăng bài ngẫu nhiên",
             "đăng nhập facebook",
-            "xem video"
+            "xem video",
+            "giải checkpoint 956"
         ],
         "tiktok": [],
         "x": [],
@@ -16,11 +17,11 @@
         "id.TimeWorking": 5,
         "id.Loop": 1,
         "id.Profile": true,
-        "id.Backup": false,
-        "id.Proxy": false,
+        "id.Backup": true,
+        "id.Proxy": true,
         "id.Proxyauto": true,
         "id.BrowserAuto": true,
-        "id.BrowserOptimize": false,
+        "id.BrowserOptimize": true,
         "id.chatgpt": true,
         "id.BrowserHeadless": true,
         "id.PercentLike": 50,
@@ -36,8 +37,12 @@
         "id.PercentAddFriendNew": 2,
         "id.PercentPostsStory": 10,
         "id.SheetApi": "",
-        "id.IDUser": [],
-        "id.IDGroup": [],
+        "id.IDUser": [
+            ""
+        ],
+        "id.IDGroup": [
+            ""
+        ],
         "id.Text": [
             "Liên Hệ Admin : 0...xxxx để cho 1 cái kẹo nha hihi🐧",
             "... ",

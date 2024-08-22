@@ -1,4 +1,6 @@
-import sys , os
+import sys , os , ctypes
+
+from PyQt5.QtCore import QObject
 
 #######################################################################################
 # functions 
@@ -7,7 +9,7 @@ from widgets import *
 widgets , resize  , processing_thread , msg  = None , None , None , None 
 
 DataProcessingFill  , DataFillProcess = (None , None) , None
-
+ThreadCheckbox = []
 version = object
 #######################################################################################
 # index theo thứ tự bảng table
@@ -23,11 +25,13 @@ class WindowInterface(QMainWindow):
         self.resize(700, 699)
         #######################################################################################
         # call item * 
-        global widgets , DataProcessingFill , msg , index_name , DataFillProcess 
+        global widgets , DataProcessingFill ,ThreadCheckbox, msg , index_name , DataFillProcess 
         #######################################################################################
         self.is_left_mouse_pressed = False
         self.first_selected_item =  None 
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 500 , 0
+        self.ProxyQThread , self.DataThreadLoad = None ,None
+        self.Thread = {}
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
 
         #######################################################################################
 
@@ -164,6 +168,7 @@ class WindowInterface(QMainWindow):
         total = 0
         for i in range(widgets.TableManage.rowCount()):
             checkbox = widgets.TableManage.item(i, 0)
+            c_user = widgets.TableManage.item(i, 1)
             if checkbox.checkState() == 2:
                 total += 1
         
@@ -173,7 +178,7 @@ class WindowInterface(QMainWindow):
             widgets.btn_run.show()
             widgets.btn_run.setText("RUN ({})".format(str(total)))
         
-        widgets.label_running.setText(f"{total}")
+        # widgets.label_running.setText(f"{total}")
         widgets.label_select.setText(str(total))
     #######################################################################################
     # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
@@ -234,11 +239,9 @@ class WindowInterface(QMainWindow):
 
 
     def SubjectUpdateProxy(self):
-        filedumps = json.loads(open(your_dir_config,"r",encoding="utf-8").read())
-        onProxy = filedumps['config']['id.Proxy']
-        onAutoProxy =  filedumps['config']['id.Proxyauto']
-        proxyList = filedumps['proxy']['list']
-        
+        self.ProxyQThread = ProxySQL()
+        self.ProxyQThread.start()
+    
     def SubjectSetupTableManage(self):
         QTableTools.SubjectNewHorizontalHeader(self , widgets)
 
@@ -306,11 +309,57 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         # lưu cài đặt và hiển yhij thông báo thành công
         widgets.btn_settingSave.clicked.connect(self.ProcessConfigSetting)
-
+        widgets.btn_settingSave.clicked.connect(self.SubjectUpdateProxy)
+        # chạy
+        widgets.btn_run.clicked.connect(self.startRun)
     #######################################################################################
+
+    def startRun(self):
+        self.timerStart = []  # Lưu trữ các timer
+
+        # Danh sách các UID đã chọn
+        for i in range(widgets.TableManage.rowCount()):
+            checkbox = widgets.TableManage.item(i, 0)
+            if checkbox.checkState() == 2:
+                ThreadCheckbox.append(widgets.TableManage.item(i, 2).text())
+
+        self.timerIndex = 0  # Khởi tạo chỉ số để theo dõi
+
+        # Nếu có item được chọn, bắt đầu chạy timer
+        if ThreadCheckbox:
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.runNextThread)
+            self.timer.start(1000)  # Chạy mỗi 1 giây
+
+    def runNextThread(self):
+        if self.timerIndex < len(ThreadCheckbox):
+            infoID = ThreadCheckbox[self.timerIndex]
+            self.RunBroswerThread(self.timerIndex, infoID)
+            self.timerIndex += 1
+        else:
+            self.timer.stop()  # Dừng timer khi đã chạy hết các hàm
+
+    def BrowserUpdate(self,obj):
+        pass
+    def RunBroswerThread(self,number,infoID):
+        # get wight , height 
+
+        user32 = ctypes.windll.user32
+        width = user32.GetSystemMetrics(0)  # Chiều rộng của màn hình
+        height = user32.GetSystemMetrics(1)  # Chiều cao của màn hình
+
+        max_wight =  int(width / 350)
+        max_height =  int(height / 400) - 1
+        
+        obj = {'number':number,'uid':infoID,'max_width':max_wight,'max_height':max_height}
+        self.Thread[infoID] = Browser(obj)
+        self.Thread[infoID].signal.connect(self.BrowserUpdate)
+        self.Thread[infoID].start()
     # chuyển đổi frame màn hình của stack widget
     # Màn hình quản lý 
     #######################################################################################
+
+
     def SwapWidgetFrameHome(self):
         widgets.stackedWidget.setCurrentWidget(widgets.HomePage)
     
@@ -358,7 +407,7 @@ class WindowInterface(QMainWindow):
         SubjectSQL.CreateTableNew(self, name= "ALL",widgets=widgets)
 
         #######################################################################################
-        SubjectProcessFile.LoadNameTabelSQL(self , widgets)
+        SubjectProcessFile.LoadNameTabelSQL(self , widgets)        
 
         #######################################################################################
     
@@ -532,7 +581,7 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         # Config lại headerhorizontal 
         self.SubjectSetupTableManage()
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 500 , 0
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
         if widgets.ComboboxFile.currentText() == "ALL":
             ListName = SubjectSQL.GetSQLTable(self)
         else:
@@ -562,9 +611,9 @@ class WindowInterface(QMainWindow):
         self.startOnProcessingDataFinished()
         #######################################################################################
         # lấy 500 dữ liệu đầu tiên và hiển thị , tránh lag gui
-        self._GetDataThread = GetDataThread(widgets, self.NameCategory , self.maxTotal)
-        self._GetDataThread.signal.connect(self.signalOnProcessingDataFinished)
-        self.starGetDataThread()
+        # self._GetDataThread = GetDataThread(widgets, self.NameCategory , self.maxTotal)
+        # self._GetDataThread.signal.connect(self.signalOnProcessingDataFinished)
+        # self.starGetDataThread()
 
         msg.SendMsg(("Load dữ liệu có thể mất chút thời gian !!!",1))
 
@@ -758,108 +807,11 @@ class WindowInterface(QMainWindow):
         # Vô hiệu hóa chế độ chọn và thiết lập chế độ chọn theo hàng
         # Tắt Selection các dòng trong Qtable
         #######################################################################################
-        widgets.TableManage.setSelectionMode(QTableWidget.NoSelection)
-        widgets.TableManage.setSelectionBehavior(QTableWidget.SelectRows)
         
-        # Xác định chỉ số cột cho 'message' và 'c_user'
-        message_column_index = index_name.get("message", -1)
-        c_user_column_index = index_name.get("c_user", -1)
+        self.DataThreadLoad = LoadNewData(widgets,data)
 
-        #######################################################################################
-        # Thiết lập delegate cho cột 'message' và 'c_user'
-        if message_column_index != -1:
-
-            widgets.TableManage.setItemDelegateForColumn(message_column_index, RoundedBorderDelegate(self,color=QColor(70, 200, 245), bold=1))
-
-        if c_user_column_index != -1:
-            widgets.TableManage.setItemDelegateForColumn(c_user_column_index, RoundedBorderDelegate(self,color=QColor(0, 204, 204), bold=1))
-
-        # END
-        #######################################################################################
-        # Thêm dữ liệu vào bảng
-
-        for row_data in data:
-            try:
-
-
-                #######################################################################################
-                # Lấy vị trí hàng hiện tại và chèn hàng mới
-                #######################################################################################
-                row_position = widgets.TableManage.rowCount()
-                widgets.TableManage.insertRow(row_position)
-
-
-                #######################################################################################
-                # Thêm item checkbox vào cột đầu tiên
-                #######################################################################################
-                widgets.TableManage.setItem(row_position, 0, QTableTools.CheckboxNew(self))
-
-                #######################################################################################
-                # Thêm item số hàng vào cột thứ hai
-                #######################################################################################
-                item_count = QTableTools.SubjectItemsText(
-                    self, text=str(row_position + 1), color=QColor(255,255,255), size_font=8)
-                widgets.TableManage.setItem(row_position, 1, item_count)
-
-
-                #######################################################################################
-                # Thiết lập chiều cao hàng
-                #######################################################################################
-                widgets.TableManage.setRowHeight(row_position, 40)
-
-
-                #######################################################################################
-                # Thêm các item dữ liệu vào các cột tương ứng
-                #######################################################################################
-                for temp_name, value in row_data.items():
-                    try:
-
-                        #######################################################################################
-                        # Xác định màu sắc dựa trên tên cột
-                        #######################################################################################
-                        color = QColor(20, 57, 39)  # Màu mặc định
-                        if temp_name == "message":
-                            value = time_lastest(value)
-                            color = QColor(255,255,255)
-                        elif temp_name == "c_user":
-                            color = QColor(92, 0, 230)
-                        else:
-                            color =  QColor(255,255,255)
-
-
-                        # END
-                        #######################################################################################
-
-                        #######################################################################################
-                        # Tạo item với màu sắc và kích thước font đã chỉ định
-                        #######################################################################################
-                        if temp_name == "work":
-                            typeAccount = widgets.ComboBoxTypeAccount.currentText().lower()
-                            value = str(len(json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"][typeAccount])) + " Actions !"
-                        elif temp_name == "proxy":
-                            value = "Local IP"
-                        item_category = QTableTools.SubjectItemsText(
-                            self, text=value, color=color, size_font=8)
-                        
-                        # Thêm item vào bảng ở vị trí hàng và cột tương ứng
-                        if temp_name == "status":
-                            if value == "Unknown":
-                                color =  QColor(64, 191, 128)
-                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24.png"))
-                            elif value == "LIVE":
-                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_live.png"))
-                                color =  QColor(64, 191, 128)
-                        elif temp_name == "work":
-                            item_category.setIcon(QIcon(r".\icons\png\icons8-thunder-24.png"))
-                        widgets.TableManage.setItem(row_position, index_name[temp_name], item_category)
-
-                    except KeyError:
-                        # Bỏ qua nếu không tìm thấy chỉ số cột
-                        continue
-
-            except Exception as e:
-                # In ra thông báo lỗi nếu có
-                print(f"Error adding row data: {e}")
+        if not self.DataThreadLoad.isRunning():
+            self.DataThreadLoad.start()
         #######################################################################################
         # Tăng giá trị biến đếm batch hiện tại
         # giá trị này tính số lượng số trang đã load 
@@ -967,7 +919,115 @@ class WindowInterface(QMainWindow):
         header = widgets.TableManage.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Interactive)
 
+class LoadNewData(QThread):
+    def __init__(self,widgets,data) :
+        super(LoadNewData,self).__init__()
+        self.widgets = widgets
+        self.data =  data
+    def run(self):
+        self.widgets.TableManage.setSelectionMode(QTableWidget.NoSelection)
+        widgets.TableManage.setSelectionBehavior(QTableWidget.SelectRows)
+        
+        # Xác định chỉ số cột cho 'message' và 'c_user'
+        message_column_index = index_name.get("message", -1)
+        c_user_column_index = index_name.get("c_user", -1)
 
+        #######################################################################################
+        # Thiết lập delegate cho cột 'message' và 'c_user'
+        if message_column_index != -1:
+
+            self.widgets.TableManage.setItemDelegateForColumn(message_column_index, RoundedBorderDelegate(self,color=QColor(70, 200, 245), bold=1))
+
+        if c_user_column_index != -1:
+            self.widgets.TableManage.setItemDelegateForColumn(c_user_column_index, RoundedBorderDelegate(self,color=QColor(0, 204, 204), bold=1))
+
+        # END
+        #######################################################################################
+        # Thêm dữ liệu vào bảng
+
+        for row_data in self.data:
+            try:
+
+
+                #######################################################################################
+                # Lấy vị trí hàng hiện tại và chèn hàng mới
+                #######################################################################################
+                row_position = self.widgets.TableManage.rowCount()
+                self.widgets.TableManage.insertRow(row_position)
+
+
+                #######################################################################################
+                # Thêm item checkbox vào cột đầu tiên
+                #######################################################################################
+                self.widgets.TableManage.setItem(row_position, 0, QTableTools.CheckboxNew(self))
+
+                #######################################################################################
+                # Thêm item số hàng vào cột thứ hai
+                #######################################################################################
+                item_count = QTableTools.SubjectItemsText(
+                    self, text=str(row_position + 1), color=QColor(255,255,255), size_font=8)
+                self.widgets.TableManage.setItem(row_position, 1, item_count)
+
+
+                #######################################################################################
+                # Thiết lập chiều cao hàng
+                #######################################################################################
+                self.widgets.TableManage.setRowHeight(row_position, 40)
+
+
+                #######################################################################################
+                # Thêm các item dữ liệu vào các cột tương ứng
+                #######################################################################################
+                for temp_name, value in row_data.items():
+                    try:
+
+                        #######################################################################################
+                        # Xác định màu sắc dựa trên tên cột
+                        #######################################################################################
+                        color = QColor(20, 57, 39)  # Màu mặc định
+                        if temp_name == "message":
+                            value = time_lastest(value)
+                            color = QColor(255,255,255)
+                        elif temp_name == "c_user":
+                            color = QColor(92, 0, 230)
+                        else:
+                            color =  QColor(255,255,255)
+
+
+                        # END
+                        #######################################################################################
+
+                        #######################################################################################
+                        # Tạo item với màu sắc và kích thước font đã chỉ định
+                        #######################################################################################
+                        if temp_name == "work":
+                            typeAccount = self.widgets.ComboBoxTypeAccount.currentText().lower()
+                            value = str(len(json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"][typeAccount])) + " Actions !"
+                        elif temp_name == "proxy":
+                            if ":" not in  value:
+                                value = "Local IP"
+                        item_category = QTableTools.SubjectItemsText(
+                            self, text=str(value), color=color, size_font=8)
+                        
+                        # Thêm item vào bảng ở vị trí hàng và cột tương ứng
+                        if temp_name == "status":
+                            if value == "Unknown":
+                                color =  QColor(64, 191, 128)
+                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24.png"))
+                            elif value == "LIVE":
+                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_live.png"))
+                                color =  QColor(64, 191, 128)
+                        elif temp_name == "work":
+                            item_category.setIcon(QIcon(r".\icons\png\icons8-thunder-24.png"))
+                        self.widgets.TableManage.setItem(row_position, index_name[temp_name], item_category)
+
+                    except KeyError:
+                        # Bỏ qua nếu không tìm thấy chỉ số cột
+                        continue
+
+            except Exception as e:
+                # In ra thông báo lỗi nếu có
+                print(f"Error adding row data: {e}")
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running

@@ -26,7 +26,7 @@ class DataGenerator(QThread):
         data_batch = []
         for i in range(start_index, end_index):
 
-            if len(data_batch) == 500:break
+            if len(data_batch) == 100:break
             try:
                 data_batch.append(self.data[i])
             except:break

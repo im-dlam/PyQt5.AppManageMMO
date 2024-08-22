@@ -101,7 +101,7 @@ class SQL:
         
               `~ {key}     : tên dữ liệu cần đổi `<br>
               `~ {content} : nội dung cần cập nhật của key`<br>
-              `~ {id}      : key số thứ tự dữ liệu để cập nhật theo chỉ định`<br>
+              `~ {id}      : key số user_id liệu để cập nhật theo chỉ định`<br>
         
          **Danh sách key**<br>: 
              ~ id
@@ -121,7 +121,7 @@ class SQL:
         key = temp_["key"]
         content_update = temp_["content"]
         id  = temp_["id"]
-        self.cursor.execute(f"update {self.name} set {key} = '{content_update}' where id = {id}")
+        self.cursor.execute(f"UPDATE {self.name} SET {key} = ? WHERE c_user = ?", (content_update, id))
         self._close()
     
     def SQLGetDataFromName(self):

@@ -265,76 +265,19 @@ class CustomScrollBar(QScrollBar):
         self.setStyleSheet(self.default_style())
 
     def default_style(self):
-        return """
-            QScrollBar:horizontal {
-                border: none;
-                background: rgba(255,255,255,255);
-                height: 5px;
-                margin: 0px 0px 0 0px;
-                border-radius: 5px;
-            }
-            QScrollBar::handle:horizontal {
-                background-color: #d4d9d9;
-                min-width: 10px;
-                border-radius: 5px;
-            }
-            QScrollBar::add-line:horizontal {
-                border: none;
-                width: 0px;
-                background-color: none;
-            }
-            QScrollBar::sub-line:horizontal {
-                border: none;
-                background: none;
-                width: 0px;
-            }
-            QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal {
-                background: none;
-            }
-            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
-                background: none;
-            }
-            QScrollBar:vertical {
-                border: none;
-                background: rgba(255,255,255,255);
-                width: 5px;
-                margin: 0px 0 0px 0;
-                border-radius: 5px;
-            }
-            QScrollBar::handle:vertical {
-                background-color: #c8c8c8;
-                min-height: 20px;
-                border-radius: 5px;
-            }
-            QScrollBar::add-line:vertical {
-                border: none;
-                background: none;
-                height: 0px;
-            }
-            QScrollBar::sub-line:vertical {
-                border: none;
-                background: none;
-                height: 0px;
-            }
-            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-                background: none;
-            }
-            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-                background: none;
-            }
+        return """     
         """
-
     def hover_style(self):
         return """
             QScrollBar:horizontal {
                 border: none;
-                background: #f3f3f3;
+                background: rgb(150, 173, 232);
                 height: 7px;
                 margin: 0px 0px 0 0px;
                 border-radius: 5px;
             }
             QScrollBar::handle:horizontal {
-                background-color: #c8c8c8;
+                background-color: rgb(105, 122, 163);
                 min-width: 10px;
                 border-radius: 5px;
             }
@@ -356,13 +299,13 @@ class CustomScrollBar(QScrollBar):
             }
             QScrollBar:vertical {
                 border: none;
-                background: #f3f3f3;
+                background: rgb(105, 122, 163);
                 width: 7px;
                 margin: 0px 0 0px 0;
                 border-radius: 5px;
             }
             QScrollBar::handle:vertical {
-                background-color: #c8c8c8;
+                background-color: rgb(150, 173, 232);
                 min-height: 20px;
                 border-radius: 5px;
             }

@@ -137,6 +137,8 @@ class FrameRightClick(QFrame):
         window_widgets.pushButton.clicked.connect(lambda:windows_ui.close())
         window_widgets.btn_close.clicked.connect(lambda:windows_ui.close())
         windows_ui.show()
+
+
     # ///////////////////////////
     # GUI xóa danh mục
     def SubjectDeleteFolder(self):
@@ -156,7 +158,16 @@ class FrameRightClick(QFrame):
         NameText = str(widgets.ComboboxFile.currentText())
         SubjectSQL.DeleteTableName(self , name=NameText,widgets=widgets)
         SubjectProcessFile.LoadNameTabelSQL(self , widgets)
+        widgets.TableManage.clear()
+        # tạo mới horizon
+        QTableTools.SubjectNewHorizontalHeader(self , widgets)
 
+
+        QTableTools.SubjectHiddenColumn(self , widgets)
+
+        #######################################################################################
+        # giới hạn chiều rộng của cột
+        QTableTools.SetColumnWidthTableWidget(self , widgets)
     def CreateFolder(self):
         global msg
         NameText = window_widgets.lineEdit.text()
@@ -170,6 +181,16 @@ class FrameRightClick(QFrame):
         # /////////////////////////////////////////////
         SubjectProcessFile.LoadNameTabelSQL(self , widgets)
         if success:
+            widgets.TableManage.clear()
+            # tạo mới horizon
+            QTableTools.SubjectNewHorizontalHeader(self , widgets)
+
+
+            QTableTools.SubjectHiddenColumn(self , widgets)
+
+            #######################################################################################
+            # giới hạn chiều rộng của cột
+            QTableTools.SetColumnWidthTableWidget(self , widgets)
             widgets.ComboboxFile.setCurrentText(NameText)
 
 

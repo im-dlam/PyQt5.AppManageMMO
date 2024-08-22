@@ -3747,7 +3747,7 @@ background-color: rgb(38, 49, 98);
 </string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="SettingPage">
                 <property name="styleSheet">
@@ -10260,10 +10260,13 @@ QTableWidget {
                         <bool>false</bool>
                        </attribute>
                        <attribute name="verticalHeaderDefaultSectionSize">
-                        <number>30</number>
+                        <number>50</number>
                        </attribute>
                        <attribute name="verticalHeaderHighlightSections">
                         <bool>true</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderMinimumSectionSize">
+                        <number>40</number>
                        </attribute>
                        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                         <bool>false</bool>
@@ -10606,8 +10609,8 @@ border-radius:5px;
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>1160</width>
-                            <height>630</height>
+                            <width>139</width>
+                            <height>57</height>
                            </rect>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_23">

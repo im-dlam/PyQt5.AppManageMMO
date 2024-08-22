@@ -65,6 +65,9 @@ def extract_user(line: str) -> str:
             return line.split("c_user=")[1].split(";")[0]
         elif "i_user" in line:
             return line.split("i_user=")[1].split(";")[0]
+        else:
+            # kiểm tra số nguyên
+            return line.split("|")[0] if line.split("|")[0].isdigit() else ""
     except KeyError:
         pass
     return ""
