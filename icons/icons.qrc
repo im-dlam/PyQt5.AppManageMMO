@@ -2,6 +2,7 @@
   <qresource prefix="icons">
     <file>png/icons8-dot-24_yellow.png</file>
     <file>png/icons8-home-30_green.png</file>
+    <file>png/icons8-power-48.png</file>
     <file>png/icons8-test-account-24.png</file>
     <file>png/icons8-low-connection-24.png</file>
     <file>png/icons8-home-30.png</file>

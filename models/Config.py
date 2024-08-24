@@ -5,7 +5,7 @@ import os , json
 
 
 your_dir_config  = pathlib.Path.cwd().joinpath("models/json/config.json")
-
+your_dir = pathlib.Path.cwd()
 
 class ShowConfig:
     def Config(self , widgets):

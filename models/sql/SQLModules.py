@@ -95,6 +95,8 @@ class SQL:
         self.cursor.execute(f"DROP TABLE IF EXISTS '{self.name}'")
         self._close()
     
+    def GetDataFromUID(self, uid):
+        return self.cursor.execute(f"SELECT * FROM {self.name} WHERE c_user = ?", (uid,)).fetchall()
     def SQLUpdateDataFromKey(self,temp_:hash):
         """ 
         **Nhập đầu vào là 1 hash**

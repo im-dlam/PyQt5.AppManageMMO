@@ -3889,7 +3889,7 @@ color: rgb(255, 255, 255);
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>1157</width>
+                      <width>1055</width>
                       <height>1348</height>
                      </rect>
                     </property>
@@ -8485,7 +8485,7 @@ background-color: rgb(38, 49, 98);
                     <property name="bottomMargin">
                      <number>5</number>
                     </property>
-                    <item alignment="Qt::AlignLeft">
+                    <item>
                      <widget class="QFrame" name="frame_manage_tool">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -8533,7 +8533,7 @@ border-radius:8px;
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
-                       <item alignment="Qt::AlignLeft">
+                       <item>
                         <widget class="QFrame" name="frame_26">
                          <property name="minimumSize">
                           <size>
@@ -8543,7 +8543,7 @@ border-radius:8px;
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>80</width>
                            <height>16777215</height>
                           </size>
                          </property>
@@ -8567,7 +8567,7 @@ border-radius:8px;
                            <number>0</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>0</number>
+                           <number>5</number>
                           </property>
                           <item>
                            <widget class="QPushButton" name="btn_refresh">
@@ -8706,7 +8706,7 @@ background-color: rgb(255, 94, 164);
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>65</width>
+                           <width>70</width>
                            <height>16777215</height>
                           </size>
                          </property>
@@ -8803,8 +8803,14 @@ background-color: rgb(222, 222, 222);
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft">
+                       <item>
                         <widget class="QFrame" name="frame_30">
+                         <property name="maximumSize">
+                          <size>
+                           <width>70</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -8881,6 +8887,12 @@ background-color: rgb(240, 126, 141);
                              <iconset resource="../icons/icons.qrc">
                               <normaloff>:/icons/png/icons8-x-96.png</normaloff>:/icons/png/icons8-x-96.png</iconset>
                             </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>14</width>
+                              <height>15</height>
+                             </size>
+                            </property>
                             <property name="checkable">
                              <bool>true</bool>
                             </property>
@@ -8893,39 +8905,6 @@ background-color: rgb(240, 126, 141);
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_27">
-                         <property name="minimumSize">
-                          <size>
-                           <width>60</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_26">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item alignment="Qt::AlignLeft">
                         <widget class="QFrame" name="frame_29">
                          <property name="minimumSize">
                           <size>
@@ -8961,7 +8940,7 @@ background-color: rgb(240, 126, 141);
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft">
+                       <item>
                         <widget class="QFrame" name="frame_31">
                          <property name="minimumSize">
                           <size>
@@ -9550,7 +9529,7 @@ color:#fdfffd;
                             <property name="minimumSize">
                              <size>
                               <width>150</width>
-                              <height>30</height>
+                              <height>26</height>
                              </size>
                             </property>
                             <property name="font">
@@ -9678,7 +9657,7 @@ QComboBox{
                             <property name="minimumSize">
                              <size>
                               <width>120</width>
-                              <height>30</height>
+                              <height>26</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -9774,13 +9753,16 @@ QComboBox{
                       </layout>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignRight">
+                    <item>
                      <widget class="QFrame" name="frame_50">
                       <property name="minimumSize">
                        <size>
                         <width>70</width>
                         <height>0</height>
                        </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -9845,22 +9827,6 @@ QComboBox{
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="frame_51">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_36">
                           <property name="spacing">
                            <number>0</number>
@@ -9869,10 +9835,10 @@ QComboBox{
                            <number>0</number>
                           </property>
                           <property name="topMargin">
-                           <number>12</number>
+                           <number>15</number>
                           </property>
                           <property name="rightMargin">
-                           <number>20</number>
+                           <number>0</number>
                           </property>
                           <property name="bottomMargin">
                            <number>0</number>
@@ -9904,27 +9870,78 @@ QComboBox{
                             <property name="styleSheet">
                              <string notr="true">QPushButton{
 border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px gray #6bd4c1 ;
-background-color: rgb(100, 198, 180);
+border-radius:4px;
+color: rgb(103, 204, 187);
+border: 1px solid  #67ccbb;
 }
 QPushButton:hover{
 border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px solid  rgb(211, 211, 211);
-background-color: rgb(93, 184, 166);
-}QPushButton:checked{
-border:none;
-border-radius:5px;
-color: rgb(255, 255, 255);
-border: 1px gray #6bd4c1 ;
-background-color: rgb(108, 213, 194);
+border-radius:4px;
+color: rgb(107, 212, 193);
+border: 1px solid  rgb(107, 212, 193);
 }</string>
                             </property>
                             <property name="text">
                              <string>RUN</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btn_stop">
+                            <property name="minimumSize">
+                             <size>
+                              <width>75</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>60</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>MesloLGS Nerd Font</family>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton{
+border:none;
+border-radius:5px;
+color: rgb(255, 84, 135);
+border: 1px solid  #dd407f;
+}
+QPushButton:hover{
+border:none;
+border-radius:5px;
+color: rgb(255, 84, 135);
+border: 1px solid  #ff5789;
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>STOP</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="../icons/icons.qrc">
+                              <normaloff>:/icons/png/icons8-power-48.png</normaloff>:/icons/png/icons8-power-48.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="checkable">
+                             <bool>true</bool>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>true</bool>
                             </property>
                            </widget>
                           </item>
@@ -10093,7 +10110,7 @@ background-color: rgb(108, 213, 194);
                       <x>0</x>
                       <y>0</y>
                       <width>1160</width>
-                      <height>546</height>
+                      <height>550</height>
                      </rect>
                     </property>
                     <property name="styleSheet">

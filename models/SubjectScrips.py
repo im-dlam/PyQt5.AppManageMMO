@@ -185,3 +185,49 @@ color: rgb(255, 233, 253);
 background-color: #2bc2ae;
 }
 """
+scriptButtonStop = """
+                    QPushButton{
+                    border:none;
+                    border-radius:5px;
+                    color: rgb(255, 255, 255);
+                    border: 1px gray #6bd4c1 ;
+                    background-color: rgb(255, 84, 135);
+                    }
+
+                    QPushButton:hover{
+                    border:none;
+                    border-radius:5px;
+                    color: rgb(255, 255, 255);
+                    border: 1px gray #6bd4c1 ;
+                    background-color: rgb(255, 94, 164);
+                    }
+                    QPushButton:checked{
+                    border:none;
+                    border-radius:5px;
+                    color: rgb(255, 255, 255);
+                    border: 1px gray #6bd4c1 ;
+                    background-color: rgb(255, 94, 164);
+                    }
+"""
+scriptButtonStart = """
+QPushButton{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: rgb(100, 198, 180);
+}
+QPushButton:hover{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px solid  rgb(211, 211, 211);
+background-color: rgb(93, 184, 166);
+}QPushButton:checked{
+border:none;
+border-radius:5px;
+color: rgb(255, 255, 255);
+border: 1px gray #6bd4c1 ;
+background-color: rgb(108, 213, 194);
+}
+"""

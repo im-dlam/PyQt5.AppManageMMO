@@ -1,5 +1,4 @@
-import sys , os , ctypes
-
+import sys , os , ctypes , threading
 from PyQt5.QtCore import QObject
 
 #######################################################################################
@@ -27,10 +26,10 @@ class WindowInterface(QMainWindow):
         # call item * 
         global widgets , DataProcessingFill ,ThreadCheckbox, msg , index_name , DataFillProcess 
         #######################################################################################
-        self.is_left_mouse_pressed = False
-        self.first_selected_item =  None 
+        self.is_left_mouse_pressed , self.first_selected_item = False , None
         self.ProxyQThread , self.DataThreadLoad = None ,None
-        self.Thread = {}
+        self.CheckButtonStart =  True
+        self.Thread ,self.ThreadKill = {} , None
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
 
         #######################################################################################
@@ -174,8 +173,10 @@ class WindowInterface(QMainWindow):
         
         if total == 0:
             widgets.btn_run.hide()
+            widgets.btn_stop.hide()
         else:
             widgets.btn_run.show()
+            widgets.btn_stop.show()
             widgets.btn_run.setText("RUN ({})".format(str(total)))
         
         # widgets.label_running.setText(f"{total}")
@@ -259,6 +260,7 @@ class WindowInterface(QMainWindow):
         # ẩn nút start
         
         widgets.btn_run.hide()
+        widgets.btn_stop.hide()
 
         Functions.ShadowFrameConditional(self,widgets.SettingPage,QColor(0,10,10,100))
         
@@ -312,10 +314,24 @@ class WindowInterface(QMainWindow):
         widgets.btn_settingSave.clicked.connect(self.SubjectUpdateProxy)
         # chạy
         widgets.btn_run.clicked.connect(self.startRun)
+        widgets.btn_stop.clicked.connect(self.stopRun)
     #######################################################################################
 
+    
+    def emitThreadStop(self,infoID):
+        ThreadCheckbox.remove(infoID)
+    def BrowserThreadStop(self):
+        self.ThreadKill = BrowserKill({'Thread':self.Thread,'ThreadCheckbox':ThreadCheckbox})
+        if not self.ThreadKill.isRunning():
+            self.ThreadKill.signal.connect(self.emitThreadStop)
+            self.ThreadKill.start()
+    def stopRun(self):
+        self.KillBrowserBeta()
+        self.BrowserThreadStop() # out Thread
     def startRun(self):
+        
         self.timerStart = []  # Lưu trữ các timer
+        self.width_sort , self.height_sort , self.y_position = 350 , 400 , 0
 
         # Danh sách các UID đã chọn
         for i in range(widgets.TableManage.rowCount()):
@@ -330,7 +346,8 @@ class WindowInterface(QMainWindow):
             self.timer = QTimer()
             self.timer.timeout.connect(self.runNextThread)
             self.timer.start(1000)  # Chạy mỗi 1 giây
-
+        
+        self.CheckButtonStart = False
     def runNextThread(self):
         if self.timerIndex < len(ThreadCheckbox):
             infoID = ThreadCheckbox[self.timerIndex]
@@ -340,18 +357,22 @@ class WindowInterface(QMainWindow):
             self.timer.stop()  # Dừng timer khi đã chạy hết các hàm
 
     def BrowserUpdate(self,obj):
-        pass
+        print(obj['msg'])
     def RunBroswerThread(self,number,infoID):
-        # get wight , height 
 
+        # get wight , height 
         user32 = ctypes.windll.user32
         width = user32.GetSystemMetrics(0)  # Chiều rộng của màn hình
         height = user32.GetSystemMetrics(1)  # Chiều cao của màn hình
 
-        max_wight =  int(width / 350)
+        max_width =  int(width / 350)
         max_height =  int(height / 400) - 1
         
-        obj = {'number':number,'uid':infoID,'max_width':max_wight,'max_height':max_height}
+        x_position = (number % max_width) * self.width_sort
+        if (number % max_width) == 0 and number != 0:
+            self.y_position += (self.height_sort + 10)
+        obj = {'number':number,'uid':infoID,'x_position':x_position,'y_position':self.y_position}
+
         self.Thread[infoID] = Browser(obj)
         self.Thread[infoID].signal.connect(self.BrowserUpdate)
         self.Thread[infoID].start()
@@ -899,9 +920,20 @@ class WindowInterface(QMainWindow):
     #######################################################################################
 
 
+    # Đóng Browser
 
-    
-    #######################################################################################
+    def threadKillBrowserBeta(self):
+        for proc in process_iter(['pid', 'name']):
+            try:
+                # Nếu tên tiến trình là 'chrome.exe' (Windows) hoặc 'chrome' (macOS/Linux)
+                if proc.info['name'] in ('Chrome.exe', 'chrome'):
+                    proc.terminate()  # Gửi tín hiệu kết thúc
+                    proc.wait()       # Chờ tiến trình kết thúc
+            except:
+                pass
+    def KillBrowserBeta(self):
+        threading.Thread(target=(self.threadKillBrowserBeta),args=()).start()
+    ###########################################################################################
     # phần này tạo icons khi di chuyển
     def EdgeGripShort(self):
         #######################################################################################
@@ -1028,6 +1060,22 @@ class LoadNewData(QThread):
             except Exception as e:
                 # In ra thông báo lỗi nếu có
                 print(f"Error adding row data: {e}")
+
+class BrowserKill(QThread):
+    signal = pyqtSignal(object)
+    def __init__(self, obj):
+        super(BrowserKill,self).__init__()
+
+        self.Thread = obj['Thread']
+        self.ThreadCheckbox =  obj['ThreadCheckbox']
+    
+    def close(self,infoID):
+        self.Thread[infoID].stop()
+        self.signal.emit(infoID)
+    def run(self):
+
+        for infoID in self.ThreadCheckbox:
+            threading.Thread(target=(self.close),args=(infoID,)).start()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running

@@ -125,6 +125,7 @@ class FrameRightClick(QFrame):
             widgets.TableManage.item(row, 0).setCheckState(False)
         
         widgets.btn_run.hide()
+        widgets.btn_stop.hide()
         widgets.label_select.setText("0")
         widgets.label_running.setText("0")
 
