@@ -84,7 +84,7 @@ class Functions(WindowInterface):
             button.clicked.connect(lambda checked, btn=button: ButtonConectUpdate(btn))
 
     def UpdateLabelTotalAccount(self , widgets , total):
-        widgets.label_total.setText(str(total))
+        widgets.label_total.setText(f"({str(total)})")
 
 
     def AnimationSwitchMenu(self , widgets):
@@ -335,8 +335,13 @@ class CustomScrollBar(QScrollBar):
         self.setStyleSheet(self.default_style())
         super().leaveEvent(event)
     # //////////////////////////////////////////////////
+# xóa focus qcombobox
 
-
+class NoFocusProxyStyle(QProxyStyle):
+    def drawPrimitive(self, element, option, painter, widget):
+        if element == QStyle.PE_FrameFocusRect:
+            return  # Bỏ qua việc vẽ focus rectangle
+        super().drawPrimitive(element, option, painter, widget)
 # ///////////////////////////////////////////
 # phần này tác dụng di chuyển ứng dụng , xóa các thanh status , menu mặc định
 # kéo dãn khi khi dùng chuột ở các mép

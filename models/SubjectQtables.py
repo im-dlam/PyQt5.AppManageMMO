@@ -1,6 +1,7 @@
 from main import *
 from . SubjectScrips import *
 from . SubjectNotifications import *
+from . sql import *
 index_name = {"c_user":2,"status":3,"work":4,"proxy":5,"message":6,"password":7,"code":8,"cookie":9,"access_token":10,"email":11,"passemail":12,"user-agent":13}
 headers = ['','#', 'UID', 'Trạng thái', 'Kịch Bản', 'Proxy', 'Tin nhắn', 
                 'Mật Khẩu', '2FA', 'Cookie', 'FB.token', 'Mail', 'password.mail', 
@@ -38,7 +39,16 @@ class QTableTools(WindowInterface):
 
 
 
+    def ChangeAccount(self , widgets , obj):
+        # Cập nhật trạng thái tài khoản
+        SQL(obj['SQL']).SQLUpdateDataFromKey({'key':'status','content':'DIE','id':obj['uid']})
+        color =  QColor(255, 84, 135) # color die
 
+        # cập nhật hiển thị trạng thái
+        item_category = QTableTools.SubjectItemsText(
+                self, text=str("DIE"), color=color, size_font=8)
+        item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_red.png"))
+        widgets.TableManage.setItem(obj['row'], 3, item_category)
     def CopyColumnContentDoubleClick(self, widgets ,row , column):
         if column == 2:
             # Lấy nội dung của ô
@@ -165,7 +175,7 @@ class QTableTools(WindowInterface):
         checkbox.setCheckState(Qt.Checked)
         checkbox.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
         checkbox.setCheckState(Qt.CheckState.Unchecked)
-    
+        checkbox.setForeground(QBrush(QColor("#00C2A8")))
         # # //////////////////////////
         # # hàm này căn chỉnh text ở giữa
         checkbox.setTextAlignment(Qt.AlignCenter)

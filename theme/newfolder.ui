@@ -26,7 +26,8 @@
    <string>New Category</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(237, 234, 255);</string>
+   <string notr="true">background-color: rgb(237, 234, 255);
+QStatusBar{background-color: rgb(9, 31, 62);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">

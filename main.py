@@ -172,15 +172,13 @@ class WindowInterface(QMainWindow):
                 total += 1
         
         if total == 0:
-            widgets.btn_run.hide()
-            widgets.btn_stop.hide()
+            self.ToolsHideButton()
         else:
-            widgets.btn_run.show()
-            widgets.btn_stop.show()
+            self.ToolsShowButton()
             widgets.btn_run.setText("RUN ({})".format(str(total)))
         
         # widgets.label_running.setText(f"{total}")
-        widgets.label_select.setText(str(total))
+        widgets.label_select.setText(f"({str(total)})")
     #######################################################################################
     # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
     def ShiftAutoCheckbox(self, row, column ):
@@ -226,7 +224,7 @@ class WindowInterface(QMainWindow):
         # các nút tools ở home
         Functions.SwitchButtonToolsCssChecked(self ,self.buttons_tools)
 
-        Functions.ButtonPlaySound(self , self.buttons_tools)
+        # Functions.ButtonPlaySound(self , self.buttons_tools)
         #######################################################################################
         # xử lý tự đổi trạng thái khi người dùng click vào ô frame chứa checkbox
         Functions.AutoSwitchCheckboxStatus(self , widgets)
@@ -253,14 +251,26 @@ class WindowInterface(QMainWindow):
         # giới hạn chiều rộng của cột
         QTableTools.SetColumnWidthTableWidget(self , widgets)
 
+
+    def ShowFrameSearch(self):
+        widgets.frame_search.setMaximumSize(250,35)
+        widgets.btn_search_icons.hide()
+    def HideFrameSearch(self):
+        widgets.line_search.clear()
+        widgets.frame_search.setMaximumSize(0,35)
+        widgets.btn_search_icons.show()
     #######################################################################################
     # Subject connect các button
     def SubjectConnectButton(self):
 
-        # ẩn nút start
-        
-        widgets.btn_run.hide()
-        widgets.btn_stop.hide()
+
+        widgets.btn_search_icons.clicked.connect(self.ShowFrameSearch)
+        widgets.btn_search_hide.clicked.connect(self.HideFrameSearch)
+
+        # ẩn các nút
+        self.ToolsHideButton()
+
+        widgets.ComboboxFile.setStyle(NoFocusProxyStyle(widgets.ComboboxFile.style()))
 
         Functions.ShadowFrameConditional(self,widgets.SettingPage,QColor(0,10,10,100))
         
@@ -319,7 +329,10 @@ class WindowInterface(QMainWindow):
 
     
     def emitThreadStop(self,infoID):
-        ThreadCheckbox.remove(infoID)
+        try:
+            ThreadCheckbox.remove(infoID)
+        finally:
+            return
     def BrowserThreadStop(self):
         self.ThreadKill = BrowserKill({'Thread':self.Thread,'ThreadCheckbox':ThreadCheckbox})
         if not self.ThreadKill.isRunning():
@@ -355,9 +368,29 @@ class WindowInterface(QMainWindow):
             self.timerIndex += 1
         else:
             self.timer.stop()  # Dừng timer khi đã chạy hết các hàm
+    
+
 
     def BrowserUpdate(self,obj):
-        print(obj['msg'])
+
+        infoID = obj['uid']
+        if obj['code'] != 99:
+            obj['msg'] = keys[obj['code']]
+
+        for row in range(widgets.TableManage.rowCount()):
+            if widgets.TableManage.item(row , 2).text() == infoID:
+                obj.update({'row':row})
+                # Cập nhật tình trạng tài khoản
+                if obj['code'] == 828281030927956:
+                    QTableTools.ChangeAccount(self , widgets , obj)
+
+
+                # hiển thị msg lên dữ liệu
+                color =  QColor(255,255,255)
+                item_category = QTableTools.SubjectItemsText(
+                            self, text=str(obj['msg']), color=color, size_font=8)
+                widgets.TableManage.setItem(row, 14, item_category)
+                return
     def RunBroswerThread(self,number,infoID):
 
         # get wight , height 
@@ -488,7 +521,8 @@ class WindowInterface(QMainWindow):
         # code sql/300
         
         Namecategory =  widgets.ComboboxFile.currentText()
-        NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
+        NameaccountType =  'Facebook'
+        # NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
 
 
         #######################################################################################
@@ -848,8 +882,17 @@ class WindowInterface(QMainWindow):
     
 
     #######################################################################################/
+    def ToolsHideButton(self):
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser]
+
+        for btn in listButton:
+            btn.hide()
+    def ToolsShowButton(self):
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser]
+
+        for btn in listButton:
+            btn.show()
     # check cuộn xuống 100 dòng sẽ load thêm
-    
     def SubjectAutoLoadData(self):
         scrollbar = widgets.TableManage.verticalScrollBar()
         scrollbar.valueChanged.connect(lambda :QTableTools.HandleScroll(self,scrollbar,DataFillProcess))
@@ -1033,22 +1076,31 @@ class LoadNewData(QThread):
                         # Tạo item với màu sắc và kích thước font đã chỉ định
                         #######################################################################################
                         if temp_name == "work":
-                            typeAccount = self.widgets.ComboBoxTypeAccount.currentText().lower()
+                            typeAccount = 'Facebook'.lower()
+                            # typeAccount = self.widgets.ComboBoxTypeAccount.currentText().lower()
                             value = str(len(json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"][typeAccount])) + " Actions !"
                         elif temp_name == "proxy":
                             if ":" not in  value:
                                 value = "Local IP"
+                        elif temp_name == "status":
+                            if value == "Unknown":
+                                color =  QColor(250,250,250)
+                            elif value == "LIVE":
+                                color =  QColor(64, 191, 128)
+                            else:
+                                color = QColor(255, 84, 135)
                         item_category = QTableTools.SubjectItemsText(
                             self, text=str(value), color=color, size_font=8)
                         
                         # Thêm item vào bảng ở vị trí hàng và cột tương ứng
                         if temp_name == "status":
                             if value == "Unknown":
-                                color =  QColor(64, 191, 128)
                                 item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24.png"))
                             elif value == "LIVE":
                                 item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_live.png"))
-                                color =  QColor(64, 191, 128)
+                            else:
+                                
+                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_red.png"))
                         elif temp_name == "work":
                             item_category.setIcon(QIcon(r".\icons\png\icons8-thunder-24.png"))
                         self.widgets.TableManage.setItem(row_position, index_name[temp_name], item_category)

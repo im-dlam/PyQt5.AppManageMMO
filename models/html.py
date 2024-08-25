@@ -37,4 +37,8 @@ html = {
     }
 
 }
-
+keys = {
+        256281040558: 'account no login ! error password .',
+        828281030927956 : 'checkpoint 956 !',
+        -1 : 'Khởi động trình duyệt .'
+    }

@@ -14,9 +14,7 @@ from models import *
 
 
 DEPOS_TEMP , QHD = () ,  0
-keys = {
-    256281040558: 'account no login ! error password .'
-}
+
 class Facebook:
     def __init__(self, driver: WebDriver):
         global DEPOS_TEMP , QHD
@@ -80,9 +78,11 @@ class Facebook:
             self.driver.implicitly_wait(3)
             elm_password.send_keys(Keys.ENTER)        
             self.driver.implicitly_wait(5)
-            print(self.driver.current_url)
             if "privacy_mutation" in self.driver.current_url:
                 return 256281040558 # Kết quả mật khẩu không khớp
+            elif "828281030927956" in self.driver.current_url:
+                return 828281030927956 # Tài khoản bị khóa 
+            
             
             
         
@@ -100,7 +100,6 @@ class Facebook:
     
     def WaitByID(self,value):
         try:
-            print("ok")
             WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.ID , value))))
             return 1
         except Exception as error:
@@ -127,7 +126,7 @@ class Browser(QThread):
         super(Browser,self).__init__()
         self.obj = objData
         self.driver = None
-        self.report = {'msg':'Không xác định .','code': 0 , 'uid': 0 , 'date': ''}
+        self.report = {'msg':'Không xác định .','code': -1 , 'uid': self.obj['uid'] , 'date': ''}
     def getDataFromSQL(self):
         global DEPOS_TEMP
 
@@ -135,7 +134,9 @@ class Browser(QThread):
         for name in nameSQL:
             if name == 'ALL':continue
             depos = SQL(name).GetDataFromUID(self.obj['uid'])
-            if depos != []: DEPOS_TEMP = depos[0]
+            if depos != []:
+                self.report.update({'SQL':name})
+                DEPOS_TEMP = depos[0]
 
     def randomCardName(self):
         listCard = ["ANGLE (NVIDIA GeForce RTX 4090 Direct3D12 vs_6_0 ps_6_0, D3D12)",
@@ -162,8 +163,8 @@ class Browser(QThread):
             print(error)
             self.driver.quit()
             self.stop()
-    
     def run(self):
+        self.signal.emit(self.report)
         if self.isRunning():
             profile = profiles.Windows() # or .Android
             profile['cdp'].update({
@@ -248,7 +249,9 @@ class Browser(QThread):
                 return
             self.getDataFromSQL()
             tools = Facebook(self.driver)
-            tools.Login()
+            keysMsg = tools.Login()
+            self.report.update({'code':keysMsg})
+            self.signal.emit(self.report)
             time.sleep(1000)
 
     
