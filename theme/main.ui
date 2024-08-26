@@ -10004,6 +10004,44 @@ border: 1px solid  rgb(107, 212, 193);
                          </property>
                         </widget>
                        </item>
+                       <item>
+                        <widget class="QPushButton" name="btn_unchecked">
+                         <property name="minimumSize">
+                          <size>
+                           <width>30</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton{
+color: rgb(203, 215, 255);
+padding-bottom:5px;
+}
+</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../icons/icons.qrc">
+                           <normaloff>:/icons/png/icons8-close-30.png</normaloff>:/icons/png/icons8-close-30.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>12</width>
+                           <height>12</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>

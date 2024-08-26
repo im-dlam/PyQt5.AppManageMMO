@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>png/icons8-checkbox-48.png</file>
+    <file>png/icons8-close-30.png</file>
     <file>png/icons8-refresh-24.png</file>
     <file>png/icons8-account-24.png</file>
     <file>png/icons8-ellipsis-48.png</file>

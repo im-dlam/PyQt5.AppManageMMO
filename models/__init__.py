@@ -47,7 +47,7 @@ from . SubjectRighClick import *
 
 from . html  import *
 from . SubjectQThread import *
-
+from . Pyotp import *
 
 # import selenium
 
@@ -60,3 +60,4 @@ from . SubjectAutoBrowser import *
 
 from psutil import process_iter 
 from functools import partial
+

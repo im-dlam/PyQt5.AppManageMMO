@@ -28,8 +28,8 @@ class WindowInterface(QMainWindow):
         #######################################################################################
         self.is_left_mouse_pressed , self.first_selected_item = False , None
         self.ProxyQThread , self.DataThreadLoad = None ,None
-        self.CheckButtonStart =  True
-        self.Thread ,self.ThreadKill = {} , None
+        
+        self.Thread ,self.ThreadKill , self.CheckButtonStart , self.checkmyaccount   = {} , None , True , None
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
 
         #######################################################################################
@@ -161,13 +161,20 @@ class WindowInterface(QMainWindow):
 
 
 
-
-
+    # lấy các uid đã checked
+    def GetAccountChecked(self):
+        obj = []
+        for i in range(widgets.TableManage.rowCount()):
+            checkbox = widgets.TableManage.item(i, 0)
+            if checkbox.checkState() == 2:
+                c_user = widgets.TableManage.item(i, 2).text()
+                obj.append(c_user)
+        
+        return obj
     def CheckBoxCount(self,row, column ):
         total = 0
         for i in range(widgets.TableManage.rowCount()):
             checkbox = widgets.TableManage.item(i, 0)
-            c_user = widgets.TableManage.item(i, 1)
             if checkbox.checkState() == 2:
                 total += 1
         
@@ -252,6 +259,7 @@ class WindowInterface(QMainWindow):
         QTableTools.SetColumnWidthTableWidget(self , widgets)
 
 
+    # ẩn icons search , hiện frame search
     def ShowFrameSearch(self):
         widgets.frame_search.setMaximumSize(250,35)
         widgets.btn_search_icons.hide()
@@ -259,10 +267,19 @@ class WindowInterface(QMainWindow):
         widgets.line_search.clear()
         widgets.frame_search.setMaximumSize(0,35)
         widgets.btn_search_icons.show()
+    # check tài khoản
+    def CheckAccount(self):
+        self.checkmyaccount = CheckFacebook(self.GetAccountChecked())
+        self.checkmyaccount.signal.connect(self.BrowserUpdate)
+        self.checkmyaccount.start()
     #######################################################################################
     # Subject connect các button
     def SubjectConnectButton(self):
 
+        widgets.btn_unchecked.clicked.connect(lambda:QTableTools.UnCheckbox(self , widgets))
+        widgets.btn_unchecked.clicked.connect(self.ToolsHideButton)
+
+        widgets.btn_CheckAccount.clicked.connect(self.CheckAccount)
 
         widgets.btn_search_icons.clicked.connect(self.ShowFrameSearch)
         widgets.btn_search_hide.clicked.connect(self.HideFrameSearch)
@@ -382,8 +399,12 @@ class WindowInterface(QMainWindow):
                 obj.update({'row':row})
                 # Cập nhật tình trạng tài khoản
                 if obj['code'] == 828281030927956:
-                    QTableTools.ChangeAccount(self , widgets , obj)
-
+                    QTableTools.ChangeAccount(self , widgets , obj , 0)
+                elif obj['code'] == 200:
+                    QTableTools.ChangeAccount(self , widgets , obj , 1)
+                elif obj['code'] == 300:
+                    QTableTools.ChangeAccount(self , widgets , obj , 0)
+            
 
                 # hiển thị msg lên dữ liệu
                 color =  QColor(255,255,255)
@@ -883,12 +904,12 @@ class WindowInterface(QMainWindow):
 
     #######################################################################################/
     def ToolsHideButton(self):
-        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser]
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser,widgets.btn_unchecked]
 
         for btn in listButton:
             btn.hide()
     def ToolsShowButton(self):
-        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser]
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser,widgets.btn_unchecked]
 
         for btn in listButton:
             btn.show()

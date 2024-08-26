@@ -40,5 +40,8 @@ html = {
 keys = {
         256281040558: 'account no login ! error password .',
         828281030927956 : 'checkpoint 956 !',
-        -1 : 'Khởi động trình duyệt .'
+        -1 : 'Khởi động trình duyệt .',
+        200 : 'Account LIVE',
+        300 : 'Account DIE',
+        7749: 'Authentication No Code !'
     }

@@ -1,4 +1,5 @@
 from main import *
+from . Pyotp import *
 from selenium import webdriver
 import random
 from selenium_profiles.webdriver import Chrome
@@ -56,9 +57,10 @@ class Facebook:
         self.message = message
 
     def TimeWriting(self):
-        sleep(float(random.randrange(1,10)/30))
+        sleep(float(random.randrange(1,10)/25))
 
-
+    def TimeWait(self):
+        sleep(float(random.randrange(4,10)/5))
 
     def Login(self):
         if self.WaitByID("email"):
@@ -75,17 +77,45 @@ class Facebook:
                 elm_password.send_keys(charPassword)
                 self.TimeWriting()
 
-            self.driver.implicitly_wait(3)
             elm_password.send_keys(Keys.ENTER)        
-            self.driver.implicitly_wait(5)
             if "privacy_mutation" in self.driver.current_url:
                 return 256281040558 # Kết quả mật khẩu không khớp
             elif "828281030927956" in self.driver.current_url:
                 return 828281030927956 # Tài khoản bị khóa 
             
-            
-            
-        
+            elif "two_step_verification" in self.driver.current_url:
+                # Next two_factor
+                self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[1]")
+                self.driver.implicitly_wait(3)
+                # Chọn xác minh 2FA
+
+                self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]')
+
+                self.arguments_scroll(2)
+                self.arguments_click('(//*[@dir="auto"])[2]') # click vào Text
+
+                self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án 2FA
+                # Xác nhận phương án
+                self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[5]")
+
+                self.WaitByXpath('//input[@dir="ltr"]')
+
+                current_otp = Authentication(self.code) if self.code != '' else ''
+                self.arguments_scroll(2)
+                for charOTP in current_otp:
+                    elm_auth = self.driver.find_element(By.XPATH,'//input[@dir="ltr"]')
+                    elm_auth.send_keys(charOTP)
+                    self.TimeWriting()
+                elm_auth.send_keys(Keys.ENTER)
+
+                self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Wait Load
+                self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án Trust Device
+
+                if current_otp == '': return 7749
+                elif "828281030927956" in self.driver.current_url:
+                    return 828281030927956 # Tài khoản bị khóa 
+            self.arguments_scroll(2)
+                
         return self.Login() # lặp lại nếu lỗi
 
         
@@ -97,8 +127,20 @@ class Facebook:
     # Kiểm tra và đợi các phần tử xuất hiện
     ############################################################################
 
-    
+    def arguments_scroll(self , number):
+        sleep(1)
+        for _ in range(number):
+            self.driver.execute_script("window.scrollBy(0, 100);")
+            self.TimeWriting()
+    def arguments_click(self, xpath_elm):
+        self.driver.implicitly_wait(random.randint(5,10))
+        self.TimeWait()
+        self.driver.execute_script(
+            "arguments[0].click();",
+            self.driver.find_element(By.XPATH,xpath_elm)) # click try Another
+
     def WaitByID(self,value):
+        self.driver.implicitly_wait(10)
         try:
             WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.ID , value))))
             return 1
@@ -106,6 +148,7 @@ class Facebook:
             print(error)
             return 
     def WaitByName(self,value):
+        self.driver.implicitly_wait(10)
         try:
             WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.NAME , value))))
             return 1
@@ -114,6 +157,7 @@ class Facebook:
             return
     
     def WaitByXpath(self,value):
+        self.driver.implicitly_wait(10)
         try:
             WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.XPATH , value))))
             return 1
@@ -182,6 +226,7 @@ class Browser(QThread):
                         'deviceScaleFactor':0.6
                 })
             options = webdriver.ChromeOptions()
+            options.add_argument(f'--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1{random.randint(20,27)}.0.0.0 Safari/537.36')
             options.add_argument('--disable-signin-scoped-device-id')
             options.add_argument('--mute-audio')
             options.add_argument('--disable-gpu-shader-disk-cache')

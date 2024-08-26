@@ -3,10 +3,36 @@ from main import *
 from . SubjectTools import *
 from . Ui_Functions import *
 from . SubjectFileName import *
+import requests
 # ///////////////////
 # xử lý lọc form nhập ở gui
 
 
+class CheckFacebook(QThread):
+    signal =  pyqtSignal(object)
+    def __init__(self, infoID):
+        super(CheckFacebook,self).__init__()
+        self.infoID = infoID
+    def getDataFromSQL(self,uid):
+
+        nameSQL =  SubjectSQL.GetSQLTable(self)    
+        for name in nameSQL:
+            if name == 'ALL':continue
+            depos = SQL(name).GetDataFromUID(uid)
+            if depos != []:
+                return name
+    def startCheck(self,UID):
+        name = self.getDataFromSQL(UID)
+        obj = {'SQL':name}
+        r =  requests.get(f'https://graph.facebook.com/{UID}/picture?redirect=0').json()
+        if r.get('data',{}).get('height',{}) == {}:
+            obj.update({'msg':f"{UID} DIE",'code':300,'uid':UID})
+        else:
+            obj.update({'msg':f"{UID} LIVE",'code':200,'uid':UID})
+        self.signal.emit(obj)
+    def run(self):
+        for uid in self.infoID:
+            threading.Thread(target=(self.startCheck),args=(uid,)).start()
 
 class ProxySQL(QThread):
     def __init__(self):

@@ -37,17 +37,32 @@ class DataGenerator(QThread):
 
 class QTableTools(WindowInterface):
 
+    # bỏ chọn
+    def UnCheckbox(self , widgets):
+        for row in range(widgets.TableManage.rowCount()):
+            widgets.TableManage.item(row, 0).setCheckState(False)
+        
+        widgets.label_select.setText("0")
+        widgets.label_running.setText("0")
 
-
-    def ChangeAccount(self , widgets , obj):
+    def ChangeAccount(self , widgets , obj , code):
         # Cập nhật trạng thái tài khoản
-        SQL(obj['SQL']).SQLUpdateDataFromKey({'key':'status','content':'DIE','id':obj['uid']})
-        color =  QColor(255, 84, 135) # color die
+        if code:
+            color =  QColor(64, 191, 128)
+            text =  "LIVE"
+            SQL(obj['SQL']).SQLUpdateDataFromKey({'key':'status','content':'LIVE','id':obj['uid']})
+        else:
+            text =  "DIE"
+            color =  QColor(255, 84, 135) # color die
+            SQL(obj['SQL']).SQLUpdateDataFromKey({'key':'status','content':'DIE','id':obj['uid']})
 
         # cập nhật hiển thị trạng thái
         item_category = QTableTools.SubjectItemsText(
-                self, text=str("DIE"), color=color, size_font=8)
-        item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_red.png"))
+                self, text=text, color=color, size_font=8)
+        if code:
+            item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_live.png"))
+        else:
+            item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_red.png"))
         widgets.TableManage.setItem(obj['row'], 3, item_category)
     def CopyColumnContentDoubleClick(self, widgets ,row , column):
         if column == 2:

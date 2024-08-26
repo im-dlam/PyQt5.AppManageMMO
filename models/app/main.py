@@ -4425,6 +4425,24 @@ class Ui_MainWindow(object):
 "}")
         self.btn_run.setObjectName("btn_run")
         self.horizontalLayout_26.addWidget(self.btn_run)
+        self.btn_unchecked = QtWidgets.QPushButton(self.frame_50)
+        self.btn_unchecked.setMinimumSize(QtCore.QSize(30, 25))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btn_unchecked.setFont(font)
+        self.btn_unchecked.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_unchecked.setStyleSheet("QPushButton{\n"
+"color: rgb(203, 215, 255);\n"
+"padding-bottom:5px;\n"
+"}\n"
+"")
+        self.btn_unchecked.setText("")
+        icon25 = QtGui.QIcon()
+        icon25.addPixmap(QtGui.QPixmap(":/icons/png/icons8-close-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_unchecked.setIcon(icon25)
+        self.btn_unchecked.setIconSize(QtCore.QSize(12, 12))
+        self.btn_unchecked.setObjectName("btn_unchecked")
+        self.horizontalLayout_26.addWidget(self.btn_unchecked)
         self.horizontalLayout_38.addWidget(self.frame_50)
         self.verticalLayout_8.addWidget(self.frame_tool_two)
         self.scrollArea_manage = QtWidgets.QScrollArea(self.HomePage)
