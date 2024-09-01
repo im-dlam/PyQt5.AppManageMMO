@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 from models import *
-
+import os , sys , shutil
 
 DEPOS_TEMP , QHD = () ,  0
 
@@ -56,13 +56,127 @@ class Facebook:
         self.work = work
         self.message = message
 
-    def TimeWriting(self):
+    @property
+    def config(self):
+        if not hasattr(self, '_config'):
+            self._config = json.loads(open(your_dir_config,'r',encoding='utf-8').read())
+        return self._config
+    
+    @staticmethod
+    def TimeWriting():
         sleep(float(random.randrange(1,10)/25))
 
-    def TimeWait(self):
+    @staticmethod
+    def TimeWait():
         sleep(float(random.randrange(4,10)/5))
 
+
+        
+    def verify_login(self):
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, "//*[@class='MAWOembedIframe']"))
+            )
+            return 1
+        except:
+            return 0
+
+    def Notifications(self):
+        try:
+            for _ in range(2):
+                self.driver.implicitly_wait(10)
+                element_nofi = self.driver.find_element(By.XPATH, "(//*[@aria-label='Notifications'])[1]")
+                if element_nofi.is_displayed():
+                    element_nofi.click()
+                    sleep(2)
+        except Exception as e:
+            print(e)
+    
+    def Messengers(self):
+        try:
+            for loop in range(2):
+                self.driver.implicitly_wait(10)
+                element_nofi = self.driver.find_element(By.XPATH,"(//*[@aria-label='Messenger'])[1]")
+                self.driver.execute_script('arguments[0].click();',element_nofi)
+                sleep(3)
+        except Exception as error:
+            print(error)
+    
+    def CommentRead(self):
+        try:
+            element_comment = self.driver.find_element(By.XPATH,'//span[text()="Comment"]')
+            self.driver.execute_script('arguments[0].click();',element_comment)
+
+            self.closeButtonElement()
+        except Exception as error:
+            print("CommentRead" , error)
+
+    
+    def closeButtonElement(self):
+        self.driver.implicitly_wait(10)
+        try:
+            element_commentButton = self.driver.find_element(By.XPATH,"//*[@aria-label='Close']")
+            self.driver.execute_script('arguments[0].click();',element_commentButton)
+        except Exception as error:
+            print("closeButtonElement",error)
+        
+    def ActionReactions(self):
+        keyID = {
+            0 : 'Like',
+            30: 'Love',
+            60: 'Haha',
+            90: 'Care'
+        }
+        idRandom = random.choice([0,30,60,90])
+        self.driver.implicitly_wait(10)
+
+        try:
+            element_textLike =  self.driver.find_element(By.XPATH,'//span[text()="Like"]')
+            ActionChains(self.driver).click_and_hold(element_textLike).perform() # giữ chuột
+            sleep(1)
+            ActionChains(self.driver).move_to_element_with_offset(element_textLike,idRandom,-30).click().perform()
+            return keyID[idRandom]
+        except Exception as error:
+            print("ActionReactions",error)
+    
+    def FeedisHome(self):
+        person , check , ifp = [4,8,12,16,18,22] , 0 , 4
+        timeWork =  datetime.now() + timedelta(minutes=self.config['config']['id.TimeWorking'])
+        x_position_scroll , loop_add = 0 , 0
+        while datetime.now() <= timeWork:
+            loop_add += 1
+
+            # ti le like
+            if check:
+                ifp = random.choice(person)
+                check  = 0
+
+            # thuc hien hanh dong
+            if loop_add % ifp == 0:
+                self.ActionReactions()
+                self.CommentRead()
+
+                try:
+                    random.choice([self.Messengers , self.Notifications * 4])()
+                except Exception as error:
+                    print(error)
+
+                self.closeButtonElement()
+                check = 1
+
+                sleep(random.randint(4,7))
+            
+            # keo cuon web
+            x_position_scroll += random.randint(110,200)
+            self.driver.execute_script(f"window.scrollTo(0, {x_position_scroll});")
+            self.TimeWriting()
+
+            continue
+
+    # Login với UID-PASSWORD
     def Login(self):
+        if self.verify_login(): return
+
         if self.WaitByID("email"):
             # nhập username
             for charUser in self.c_user:
@@ -100,7 +214,7 @@ class Facebook:
 
                 self.WaitByXpath('//input[@dir="ltr"]')
 
-                current_otp = Authentication(self.code) if self.code != '' else ''
+                current_otp = Authentication(self.code) if self.code != "" else ""
                 self.arguments_scroll(2)
                 for charOTP in current_otp:
                     elm_auth = self.driver.find_element(By.XPATH,'//input[@dir="ltr"]')
@@ -114,6 +228,9 @@ class Facebook:
                 if current_otp == '': return 7749
                 elif "828281030927956" in self.driver.current_url:
                     return 828281030927956 # Tài khoản bị khóa 
+                
+                self.verify_login()
+                return
             self.arguments_scroll(2)
                 
         return self.Login() # lặp lại nếu lỗi
@@ -142,7 +259,10 @@ class Facebook:
     def WaitByID(self,value):
         self.driver.implicitly_wait(10)
         try:
-            WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.ID , value))))
+            WebDriverWait(self.driver , 60).until(
+                EC.presence_of_all_elements_located((By.ID , value))
+                )
+                
             return 1
         except Exception as error:
             print(error)
@@ -150,7 +270,9 @@ class Facebook:
     def WaitByName(self,value):
         self.driver.implicitly_wait(10)
         try:
-            WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.NAME , value))))
+            WebDriverWait(self.driver , 60).until(
+                EC.presence_of_all_elements_located((By.NAME , value)))
+            
             return 1
         except Exception as error:
             print(error)
@@ -159,7 +281,9 @@ class Facebook:
     def WaitByXpath(self,value):
         self.driver.implicitly_wait(10)
         try:
-            WebDriverWait(self.driver , 60).until((EC.presence_of_all_elements_located((By.XPATH , value))))
+            WebDriverWait(self.driver , 60).until(
+                EC.presence_of_all_elements_located((By.XPATH , value))
+                )
             return 1
         except Exception as error:
             print(error)
@@ -171,6 +295,12 @@ class Browser(QThread):
         self.obj = objData
         self.driver = None
         self.report = {'msg':'Không xác định .','code': -1 , 'uid': self.obj['uid'] , 'date': ''}
+    @property
+    def config(self):
+        if not hasattr(self, '_config'):
+            self._config = json.loads(open(your_dir_config,'r',encoding='utf-8').read())
+        return self._config
+    
     def getDataFromSQL(self):
         global DEPOS_TEMP
 
@@ -194,7 +324,9 @@ class Browser(QThread):
             "ANGLE (AMD Radeon Pro W6800 Vulkan 1.2, VK)",
             "ANGLE (Intel Iris Xe Graphics Vulkan 1.2, VK)"]
         return random.choice(listCard)
+
     def sort_windows(self):
+
         try:
             x , y =  350 , 400
             x_position   =  self.obj['x_position']
@@ -207,8 +339,30 @@ class Browser(QThread):
             print(error)
             self.driver.quit()
             self.stop()
+    def ProfileProcess(self):
+        # Xóa thư mục Cache để giảm kích thước profile
+        try:
+            cache_dir = os.path.join(self.logging_dir, 'Default/Cache')
+            if os.path.exists(cache_dir):
+                shutil.rmtree(cache_dir)
+            
+            # Xóa các thư mục không cần thiết khác nếu có
+            other_dirs = ['Media Cache', 'IndexedDB', 'Local Storage', 'Application Cache']
+            for dir_name in other_dirs:
+                dir_path = os.path.join(self.logging_dir, f"Default/{dir_name}")
+                if os.path.exists(dir_path):
+                    shutil.rmtree(dir_path)
+        except Exception as error:
+            print("ProfileProcess" , error)
+
+
     def run(self):
+
         self.signal.emit(self.report)
+        
+        self.logging_dir  , _ = format(your_dir.joinpath('browser/profile/{}'.format(self.obj['uid']))) , self.ProfileProcess()
+        
+        
         if self.isRunning():
             profile = profiles.Windows() # or .Android
             profile['cdp'].update({
@@ -226,6 +380,8 @@ class Browser(QThread):
                         'deviceScaleFactor':0.6
                 })
             options = webdriver.ChromeOptions()
+            if self.config['config']['id.Profile']:
+                options.add_argument('--user-data-dir={}'.format(self.logging_dir))
             options.add_argument(f'--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1{random.randint(20,27)}.0.0.0 Safari/537.36')
             options.add_argument('--disable-signin-scoped-device-id')
             options.add_argument('--mute-audio')
@@ -286,8 +442,7 @@ class Browser(QThread):
                     uc_driver=False
                     )
                 self.sort_windows()
-                import time
-                time.sleep(2)
+                sleep(2)
                 self.driver.get("https://facebook.com")
             except Exception as error:
                 print(error)
@@ -295,9 +450,9 @@ class Browser(QThread):
             self.getDataFromSQL()
             tools = Facebook(self.driver)
             keysMsg = tools.Login()
+            tools.FeedisHome()
             self.report.update({'code':keysMsg})
             self.signal.emit(self.report)
-            time.sleep(1000)
 
     
     def stop(self):
@@ -305,9 +460,12 @@ class Browser(QThread):
             self.driver.quit()
         except Exception:
             print("error")
+
+        self.ProfileProcess()
         self.terminate()
         self.quit()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.driver.close()
         self.driver.quit()
+        self.ProfileProcess()

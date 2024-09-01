@@ -54,18 +54,7 @@ class FrameRightClick(QFrame):
         # //////////////////////////
         contextMenu.addSeparator()
         # //////////////////////////
-        # tạo thêm danh mục tài khoản
-        self.NewActionQMenu(
-            dir=f"{your_dir}/icons8-add-folder-30.png",
-            text="Tạo Danh Mục",
-            subject=self.SubjectNewFolder
-            )
-        self.NewActionQMenu(
-            dir=f"{your_dir}/icons8-delete-document-24.png",
-            text=f"Xóa Danh Mục",
-            subject=self.SubjectDeleteFolder
-            )
-        contextMenu.addSeparator()
+
         font = QFont("Montserrat",7)
         font.setBold(True)
         # //////////////////////////
@@ -127,33 +116,6 @@ class FrameRightClick(QFrame):
 
     # ///////////////////////////
     # GUI xóa danh mục
-    def SubjectDeleteFolder(self):
-        global window_widgets
-        NameText = str(widgets.ComboboxFile.currentText()).upper()
-        if NameText == "ALL":return
-        window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_DeleteFolder)
-        window_widgets.pushButton.clicked.connect(self.DeleteFolder)
-        window_widgets.pushButton.clicked.connect(lambda: windows_ui.close())
-        window_widgets.btn_close.clicked.connect(lambda: windows_ui.close())
-        windows_ui.setAttribute(Qt.WA_TranslucentBackground) 
-        window_widgets.label.setText(f"Bạn có muốn xóa thư mục ( {NameText} ) không ?")
-        windows_ui.show()
-
-    def DeleteFolder(self):
-        global msg
-        NameText = str(widgets.ComboboxFile.currentText())
-        SubjectSQL.DeleteTableName(self , name=NameText,widgets=widgets)
-        SubjectProcessFile.LoadNameTabelSQL(self , widgets)
-        widgets.TableManage.clear()
-        # tạo mới horizon
-        QTableTools.SubjectNewHorizontalHeader(self , widgets)
-
-
-        QTableTools.SubjectHiddenColumn(self , widgets)
-
-        #######################################################################################
-        # giới hạn chiều rộng của cột
-        QTableTools.SetColumnWidthTableWidget(self , widgets)
     def CreateFolder(self):
         global msg
         NameText = window_widgets.lineEdit.text()

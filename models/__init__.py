@@ -19,7 +19,7 @@ from PyQt5.QtWidgets import (
     QScrollBar , QHeaderView , QStyledItemDelegate , QStyleOptionViewItem , QMenu ,
     QLabel , QApplication , QVBoxLayout , QToolButton , QHBoxLayout , QTableWidgetItem,
     QWidgetAction, QListWidget , QPushButton , QListWidgetItem , QTableWidget,
-    QStyle , QSpacerItem , QSizePolicy ,
+    QStyle , QSpacerItem , QSizePolicy , QLineEdit
     
 )
 from PyQt5.QtMultimedia import (
@@ -57,6 +57,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 from . SubjectAutoBrowser import *
+from . FolderCustom import *
 
 from psutil import process_iter 
 from functools import partial

@@ -1,6 +1,6 @@
 import time as tg
 import random
-from datetime import datetime
+from datetime import datetime , timedelta
 
 def time():
     tg.sleep(1)

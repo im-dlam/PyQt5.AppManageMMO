@@ -36,7 +36,7 @@ class WindowInterface(QMainWindow):
 
 
         #######################################################################################
-                                                # Hiển thị trong centralwidget của app
+        # Hiển thị trong centralwidget của app
         self.setMinimumSize(QSize(1270, 0))
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
 
@@ -153,12 +153,20 @@ class WindowInterface(QMainWindow):
         widgets.TableManage.cellDoubleClicked.connect(lambda row , column,widgets=widgets:QTableTools.CopyColumnContentDoubleClick(self , widgets , row , column))
         self.show()
 
-
+        # cap nhat
+        widgets.btn_category.clicked.connect(self.CustomFile)
 
         #######################################################################################
         # END 
         #######################################################################################
 
+
+
+    def CustomFile(self):
+        menu = CustomMenuFolder(widgets)
+        widgets.btn_category.setMenu(menu)
+        widgets.btn_category.showMenu()
+        widgets.btn_category.setMenu(None)
 
 
     # lấy các uid đã checked
@@ -274,7 +282,12 @@ class WindowInterface(QMainWindow):
         self.checkmyaccount.start()
     #######################################################################################
     # Subject connect các button
+
     def SubjectConnectButton(self):
+        
+        # hiển thị danh sách folder khi nhấn 
+
+        
 
         widgets.btn_unchecked.clicked.connect(lambda:QTableTools.UnCheckbox(self , widgets))
         widgets.btn_unchecked.clicked.connect(self.ToolsHideButton)
@@ -344,13 +357,14 @@ class WindowInterface(QMainWindow):
         widgets.btn_stop.clicked.connect(self.stopRun)
     #######################################################################################
 
-    
+
     def emitThreadStop(self,infoID):
         try:
             ThreadCheckbox.remove(infoID)
         finally:
             return
     def BrowserThreadStop(self):
+
         self.ThreadKill = BrowserKill({'Thread':self.Thread,'ThreadCheckbox':ThreadCheckbox})
         if not self.ThreadKill.isRunning():
             self.ThreadKill.signal.connect(self.emitThreadStop)

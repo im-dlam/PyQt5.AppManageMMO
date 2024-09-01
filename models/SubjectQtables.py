@@ -42,8 +42,8 @@ class QTableTools(WindowInterface):
         for row in range(widgets.TableManage.rowCount()):
             widgets.TableManage.item(row, 0).setCheckState(False)
         
-        widgets.label_select.setText("0")
-        widgets.label_running.setText("0")
+        widgets.label_select.setText("(0)")
+        widgets.label_running.setText("(0)")
 
     def ChangeAccount(self , widgets , obj , code):
         # Cập nhật trạng thái tài khoản

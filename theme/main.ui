@@ -9624,7 +9624,10 @@ color: rgb(203, 215, 255);
 QPushButton:hover{
 background-color:#474d82;
 border-radius:5px;
-}</string>
+}
+QPushButton::menu-indicator {
+                image: none;  /* Hide the arrow icon */
+            }</string>
                          </property>
                          <property name="text">
                           <string/>

@@ -4240,7 +4240,10 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "background-color:#474d82;\n"
 "border-radius:5px;\n"
-"}")
+"}\n"
+"QPushButton::menu-indicator {\n"
+"                image: none;  /* Hide the arrow icon */\n"
+"            }")
         self.btn_category.setText("")
         icon20 = QtGui.QIcon()
         icon20.addPixmap(QtGui.QPixmap(":/icons/png/icons8-ellipsis-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
