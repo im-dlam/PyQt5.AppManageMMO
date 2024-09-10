@@ -19,4 +19,7 @@ def time_lastest(time_str):
     elif datetime_object.seconds >= 3600 and datetime_object.seconds < 86400 and datetime_object.days == 0:
         return f"{int(datetime_object.seconds /  3600)} hours ago"
     else:
+        if datetime_object.days >= 30:
+            return f"{datetime_object.days // 30} months ago"
+         
         return f"{datetime_object.days} days ago"

@@ -21,8 +21,9 @@ class WindowInterface(QMainWindow):
         self.setAutoFillBackground(True)
         # Apply the stylesheet
         self.setWindowFlag(Qt.FramelessWindowHint)
-        self.resize(700, 699)
         #######################################################################################
+
+        
         # call item * 
         global widgets , DataProcessingFill ,ThreadCheckbox, msg , index_name , DataFillProcess 
         #######################################################################################
@@ -37,9 +38,8 @@ class WindowInterface(QMainWindow):
 
         #######################################################################################
         # Hiển thị trong centralwidget của app
-        self.setMinimumSize(QSize(1270, 0))
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
-
+        Functions.ShadowFrameConditional(self, widgets.bgApp,QColor(200,200,200,250)) # bóng app
         self.setWindowTitle("BeSyn - Quản Lý Đa Nền Tảng Tài Khoản")
         #######################################################################################
 
@@ -74,7 +74,7 @@ class WindowInterface(QMainWindow):
         
         # Subject connect các button
         self.SubjectConnectButton()
-
+    
         #######################################################################################
         # Load các lệnh về Ui_Functions
 
@@ -577,7 +577,7 @@ class WindowInterface(QMainWindow):
         # chỉnh sửa làm bóng các frame
         Functions.ShadowFrameConditional(self , window_widgets.label , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_3 , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(10,0,10,80))
+        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(0,0,0,150))
         Functions.ShadowFrameConditional(self , window_widgets.frame_8 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
         Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
@@ -744,6 +744,7 @@ class WindowInterface(QMainWindow):
         
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
         window_widgets.tabWidget.tabBar().setTabEnabled(0, False)
+        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(0,0,0,150))
         window_widgets.tabWidget.setCurrentIndex(1)
         self.center(windows_ui)
 
@@ -838,18 +839,19 @@ class WindowInterface(QMainWindow):
     #######################################################################################
     # hiệu ứng làm tròn viền
     def paintEvent(self, event):
-        painter = QPainter(self)
+        painter = QPainter(widgets.frame_main)
         path = QPainterPath()
         if self.isMaximized():
             #######################################################################################
             # full màn và cạnh nhọn
             #######################################################################################
-            path.addRoundedRect(0, 0, self.width(), self.height(), 0, 0)
+            path.addRoundedRect(0,0, self.width() , self.height() , 0, 0)
+
         else:
             #######################################################################################
-            # full màn và cạnh tròn
+            # cạnh tròn
             #######################################################################################
-            path.addRoundedRect(0, 0, self.width(), self.height(), 10, 10)
+            path.addRoundedRect(0,0, self.width() , self.height(), 10, 10)
 
 
         #######################################################################################
@@ -918,12 +920,18 @@ class WindowInterface(QMainWindow):
 
     #######################################################################################/
     def ToolsHideButton(self):
-        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser,widgets.btn_unchecked]
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete ,\
+                        widgets.btn_CheckAccount,widgets.btn_export\
+                            ,widgets.btn_killBrowser,widgets.btn_unchecked,\
+                                widgets.btn_CheckProxy]
 
         for btn in listButton:
             btn.hide()
     def ToolsShowButton(self):
-        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete , widgets.btn_CheckAccount,widgets.btn_export,widgets.btn_killBrowser,widgets.btn_unchecked]
+        listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete ,\
+                        widgets.btn_CheckAccount,widgets.btn_export\
+                            ,widgets.btn_killBrowser,widgets.btn_unchecked\
+                            ,widgets.btn_CheckProxy]
 
         for btn in listButton:
             btn.show()
@@ -1163,6 +1171,9 @@ class BrowserKill(QThread):
 
         for infoID in self.ThreadCheckbox:
             threading.Thread(target=(self.close),args=(infoID,)).start()
+
+
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running
@@ -1179,6 +1190,7 @@ if __name__ == "__main__":
     #######################################################################################
     
     app.setWindowIcon(QIcon("./icons/logo/icons.png"))
+
     window = WindowInterface()
     sys.exit(app.exec_())
 

@@ -119,7 +119,27 @@ class Functions(WindowInterface):
         # nếu full màn hình -> chuyển về trạng thái cửa sổ size ban đầu
         if self.isMaximized():
             self.showNormal()
+            widgets.bgApp.setStyleSheet("""
+                                QFrame#bgApp{
+                                border-radius:7px;
+                                border:2px solid #29356a;
+                                }
+                                QFrame#frame_main{
+                                background-color:#263162;
+                                border-radius:7px;
+                                }
+                                """)
         else:
+            widgets.bgApp.setStyleSheet("""
+                                QFrame#bgApp{
+                                border-radius:0px;
+                                border:2px solid #29356a;
+                                }
+                                QFrame#frame_main{
+                                background-color:#263162;
+                                border-radius:0px;
+                                }
+                                """)
             # //////////////////////////
             # maximum hoạt động phóng to màn hình app
             self.showMaximized()
@@ -130,10 +150,12 @@ class Functions(WindowInterface):
     # //////////////////////////////////
     # ShadowFrameConditional : functions \ nhận tham số : Object , QColor để làm hiệu ứng bóng mờ , thêm sinh động cho ứng dụng
     def ShadowFrameConditional(self , widgest_value , color):
-        set_effect =  QGraphicsDropShadowEffect()
-        set_effect.setBlurRadius(20)
+        set_effect =  QGraphicsDropShadowEffect(self)
+        set_effect.setBlurRadius(17)
         set_effect.setOffset(0,0)
         set_effect.setColor(color)
+        set_effect.setXOffset(0)
+        set_effect.setYOffset(0)
         widgest_value.setGraphicsEffect(set_effect)
     
 

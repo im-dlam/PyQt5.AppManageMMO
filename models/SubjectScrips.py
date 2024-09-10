@@ -13,7 +13,7 @@ central_script_menu = """
 
 QMenuRighClick = """
 QMenu {
-    background-color:rgba(28,39,85,220);
+    background-color:rgb(28,39,85);
     border: 0.5px solid rgb(65,84,133); /* Đường viền cho menu */
     border-radius: 4px; /* Làm tròn viền cho menu */
     color: #d0d4db;
@@ -60,7 +60,7 @@ QMenu::icon {
        """
 QMenuRighClickTable = """
 QMenu {
-    background-color:rgba(28,39,85,200);
+    background-color:rgb(28,39,85);
     border: 0.5px solid rgb(65,84,133); /* Đường viền cho menu */
     border-radius: 4px; /* Làm tròn viền cho menu */
     color: #d0d4db;

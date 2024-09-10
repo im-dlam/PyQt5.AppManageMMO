@@ -97,16 +97,28 @@ class Facebook:
             for loop in range(2):
                 self.driver.implicitly_wait(10)
                 element_nofi = self.driver.find_element(By.XPATH,"(//*[@aria-label='Messenger'])[1]")
-                self.driver.execute_script('arguments[0].click();',element_nofi)
+
+                self.arguments_click(element_nofi)
                 sleep(3)
         except Exception as error:
             print(error)
     
+    def SeeMorePosts(self):
+        try:
+            element_show_more = self.driver.find_element(By.XPATH,'//div[text()="See more"]')
+
+            self.arguments_click(element_show_more)
+        except Exception as error:
+            print(error)
+
+
     def CommentRead(self):
         try:
             element_comment = self.driver.find_element(By.XPATH,'//span[text()="Comment"]')
-            self.driver.execute_script('arguments[0].click();',element_comment)
 
+            self.arguments_click(element_comment)
+
+            self.SeeMorePosts()
             self.closeButtonElement()
         except Exception as error:
             print("CommentRead" , error)
@@ -116,7 +128,10 @@ class Facebook:
         self.driver.implicitly_wait(10)
         try:
             element_commentButton = self.driver.find_element(By.XPATH,"//*[@aria-label='Close']")
-            self.driver.execute_script('arguments[0].click();',element_commentButton)
+            # self.driver.execute_script('arguments[0].click();',element_commentButton)
+
+        
+            self.arguments_click(element_commentButton)
         except Exception as error:
             print("closeButtonElement",error)
         
@@ -130,11 +145,17 @@ class Facebook:
         idRandom = random.choice([0,30,60,90])
         self.driver.implicitly_wait(10)
 
+
+
         try:
             element_textLike =  self.driver.find_element(By.XPATH,'//span[text()="Like"]')
+
             ActionChains(self.driver).click_and_hold(element_textLike).perform() # giữ chuột
+            
             sleep(1)
+
             ActionChains(self.driver).move_to_element_with_offset(element_textLike,idRandom,-30).click().perform()
+
             return keyID[idRandom]
         except Exception as error:
             print("ActionReactions",error)
@@ -146,7 +167,8 @@ class Facebook:
         while datetime.now() <= timeWork:
             loop_add += 1
 
-            # ti le like
+
+            # ti le likex
             if check:
                 ifp = random.choice(person)
                 check  = 0
@@ -157,9 +179,9 @@ class Facebook:
                 self.CommentRead()
 
                 try:
-                    random.choice([self.Messengers , self.Notifications * 4])()
+                    random.choice([self.Messengers , self.Notifications ] + [None] * 5)()
                 except Exception as error:
-                    print(error)
+                    print("FeedisHome" ,error)
 
                 self.closeButtonElement()
                 check = 1
@@ -175,7 +197,7 @@ class Facebook:
 
     # Login với UID-PASSWORD
     def Login(self):
-        if self.verify_login(): return
+        if self.verify_login(): return # đã login
 
         if self.WaitByID("email"):
             # nhập username
@@ -361,7 +383,7 @@ class Browser(QThread):
         self.signal.emit(self.report)
         
         self.logging_dir  , _ = format(your_dir.joinpath('browser/profile/{}'.format(self.obj['uid']))) , self.ProfileProcess()
-        
+
         
         if self.isRunning():
             profile = profiles.Windows() # or .Android
@@ -456,12 +478,16 @@ class Browser(QThread):
 
     
     def stop(self):
+
+        self.report.update({'code':99,'msg':'close...'})
         try:
             self.driver.quit()
         except Exception:
             print("error")
 
         self.ProfileProcess()
+
+        self.report.update({'code':99,'msg':''})
         self.terminate()
         self.quit()
 

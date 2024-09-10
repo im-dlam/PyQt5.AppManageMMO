@@ -4,7 +4,7 @@ from . SubjectNotifications import *
 from . sql import *
 index_name = {"c_user":2,"status":3,"work":4,"proxy":5,"message":6,"password":7,"code":8,"cookie":9,"access_token":10,"email":11,"passemail":12,"user-agent":13}
 headers = ['','#', 'UID', 'Trạng thái', 'Kịch Bản', 'Proxy', 'Tin nhắn', 
-                'Mật Khẩu', '2FA', 'Cookie', 'FB.token', 'Mail', 'password.mail', 
+                'Security key', 'QR Code', 'Cookie', 'API Key', 'Email', 'Key Email', 
                 'User Agent', 'Hoạt động']
 
 
@@ -385,9 +385,12 @@ class CustomHeaderHorizontal(QHeaderView):
         font = QFont("blood",8)
         font.setBold(True)
         contextMenu.setFont(font)
-        contextMenu.addAction("Đóng toàn bộ", self.option1)
+        types = contextMenu.addAction("Loại tài khoản", self.option1)
+        icon = QIcon()
+        icon.addPixmap(QPixmap(":/icons/png/icons8-low-connection-24.png"), QIcon.Normal, QIcon.Off)
+        types.setIcon(icon)
         contextMenu.addAction("Chỉnh sửa", self.option2)
-        contextMenu.setMinimumWidth(150)
+        contextMenu.setMinimumWidth(130)
         contextMenu.setMaximumWidth(150)
         self.menu_button.setMenu(contextMenu)
 
