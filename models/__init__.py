@@ -5,7 +5,7 @@ from PyQt5.QtCore import (
     QAbstractTableModel , QAnimationGroup,
     QFile,QEvent, QThread, pyqtSignal ,\
     QModelIndex , QSize , QPoint , \
-    QElapsedTimer,QMargins , QRect , QRectF , 
+    QElapsedTimer,QMargins , QRect , QRectF , QEasingCurve
     )
 from PyQt5.QtGui import (
     QColor , QClipboard , QCloseEvent , QCursor , QFont , QFontMetrics,
@@ -21,7 +21,8 @@ from PyQt5.QtWidgets import (
     QScrollBar , QHeaderView , QStyledItemDelegate , QStyleOptionViewItem , QMenu ,\
     QLabel , QApplication , QVBoxLayout , QToolButton , QHBoxLayout , QTableWidgetItem,\
     QWidgetAction, QListWidget , QPushButton , QListWidgetItem , QTableWidget,\
-    QStyle , QSpacerItem , QSizePolicy , QLineEdit , QGridLayout
+    QStyle , QSpacerItem , QSizePolicy , QLineEdit , QGridLayout , QGraphicsBlurEffect ,\
+    QMessageBox
     
 )
 from PyQt5.QtMultimedia import (
@@ -41,7 +42,6 @@ from . FrameProfileUser import *
 from . SubjectTemps import *
 from . SubjectTime import *
 from . SubjectScrips import *
-
 
 from . sql import *
 from . SubjectFileName import *

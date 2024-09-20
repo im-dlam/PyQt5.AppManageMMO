@@ -1,7 +1,7 @@
 import sys , os , ctypes , threading
 from PyQt5.QtCore import QObject
 
-#######################################################################################
+
 # functions 
 from models import * 
 from widgets import *
@@ -10,7 +10,7 @@ widgets , resize  , processing_thread , msg  = None , None , None , None
 DataProcessingFill  , DataFillProcess = (None , None) , None
 ThreadCheckbox = []
 version = object
-#######################################################################################
+
 # index theo thứ tự bảng table
 
 class WindowInterface(QMainWindow):
@@ -19,127 +19,120 @@ class WindowInterface(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setAutoFillBackground(True)
-        # Apply the stylesheet
+        # APPLY THE STYLESHEET
         self.setWindowFlag(Qt.FramelessWindowHint)
-        #######################################################################################
-
         
-        # call item * 
+
+
+        # CALL ITEM * 
         global widgets , DataProcessingFill ,ThreadCheckbox, msg , index_name , DataFillProcess 
-        #######################################################################################
+        
         self.is_left_mouse_pressed , self.first_selected_item = False , None
         self.ProxyQThread , self.DataThreadLoad = None ,None
         
-        self.Thread ,self.ThreadKill , self.CheckButtonStart , self.checkmyaccount   = {} , None , True , None
+        self.Thread ,self.ThreadBrowser_ , self.CheckButtonStart , self.checkmyaccount   = {} , None , True , None
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
 
-        #######################################################################################
+        
 
 
-        #######################################################################################
-        # Hiển thị trong centralwidget của app
+        
+        # HIỂN THỊ TRONG CENTRALWIDGET CỦA APP
         widgets , msg = self.ui , Notification(self.ui.centralwidget)
-        Functions.ShadowFrameConditional(self, widgets.bgApp,QColor(200,200,200,250)) # bóng app
         self.setWindowTitle("BeSyn - Quản Lý Đa Nền Tảng Tài Khoản")
-        #######################################################################################
+        
 
 
-        #######################################################################################
-        # Tự động dịch chuyển thanh thông báo phù hợp khi phóng to , thu nhỏ ứng dụng
+        
+        # TỰ ĐỘNG DỊCH CHUYỂN THANH THÔNG BÁO PHÙ HỢP KHI PHÓNG TO , THU NHỎ ỨNG DỤNG
         self.resizeEvent_ = self._on_resize
-        #######################################################################################
-        # button list array
+        
+        # BUTTON LIST ARRAY
 
         self.buttons_ = ObjectTemp.TempsButtonTextWidgets(self , widgets)
         self.buttons_icons = ObjectTemp.TempsButtonIconsWidgets(self , widgets)
         
-        #######################################################################################
+        
         self.buttons_tools = ObjectTemp.TempsButtonToolsWidgets(self , widgets)
             
         FrameRightClick(widgets,self)
 
-        #######################################################################################
-        # thêm nút cho table widget
-        widgets.TableManage.setHorizontalHeader(CustomHeaderHorizontal(self))
+        
+        # THÊM NÚT CHO TABLE WIDGET
+        widgets.TableManage.setHorizontalHeader(CustomHeaderHorizontal(widgets))
             
-        #######################################################################################
+        
         """
-            Mouse resize
+            MOUSE RESIZE
         """
         self.RemoveWindowFlags()
 
-        #######################################################################################
-        # Replace central widget with the custom one
-        # widgets.centralwidget.setStyleSheet(central_script.format(10))
         
-        # Subject connect các button
+        
+        # SUBJECT CONNECT CÁC BUTTON
         self.SubjectConnectButton()
     
-        #######################################################################################
-        # Load các lệnh về Ui_Functions
+        
+        # LOAD CÁC LỆNH VỀ UI_FUNCTIONS
 
         self.SubjectFunctions()
 
 
-        #######################################################################################
-        # custom shadow frame
+    
 
-        #######################################################################################
-        # Tạo HeaderHorizontal
+        
+        # TẠO HEADERHORIZONTAL
         self.SubjectSetupTableManage()
 
 
-        #######################################################################################
-        # turn off focus
+        
+        # TURN OFF FOCUS
         QTableTools.remove_focus(self, widgets.TableManage)
 
-        # Tự đồng tạo danh mục mặc định và load item lên combobox danh mục
+        # TỰ ĐỒNG TẠO DANH MỤC MẶC ĐỊNH VÀ LOAD ITEM LÊN COMBOBOX DANH MỤC
         self.SQLProcessing()
 
-        #######################################################################################/
-        # Tạo cột tiêu đề nằm ngang | 14 cột
+        
         
 
-        #######################################################################################
-        # custom scroll TableManage
-        # widgets.TableManage.setHorizontalHeaderItem()
-        # CustomScrollBar : thêm hiệu ứng thanh cuộn cho các tablewidget
+        
+        # CUSTOMSCROLLBAR : THÊM HIỆU ỨNG THANH CUỘN CHO CÁC TABLEWIDGET
         widgets.TableManage.setVerticalScrollBar(CustomScrollBar(widgets.TableManage, Qt.Vertical))
         widgets.TableManage.setHorizontalScrollBar(CustomScrollBar(widgets.TableManage, Qt.Horizontal))
 
 
 
-        #######################################################################################
-        # phần này tạo button có hình đại diện , thêm hiệu ứng đăng xuất , thông tin profile tóm tắt
+        
+        # PHẦN NÀY TẠO BUTTON CÓ HÌNH ĐẠI DIỆN , THÊM HIỆU ỨNG ĐĂNG XUẤT , THÔNG TIN PROFILE TÓM TẮT
         self.MenuButtonProfileUser()
 
 
-        #######################################################################################
-        # thêm model cho table widget
+        
+        # THÊM MODEL CHO TABLE WIDGET
         self.SubjectAutoLoadData()
 
 
-        #######################################################################################
-        # mô phỏng chế độ kéo dãn cho các cột
+        
+        # MÔ PHỎNG CHẾ ĐỘ KÉO DÃN CHO CÁC CỘT
         self.InteractiveHeader()
 
 
-        #######################################################################################
-        # Tạo icons hiển thị con trỏ kéo dãn màn hình
+        
+        # TẠO ICONS HIỂN THỊ CON TRỎ KÉO DÃN MÀN HÌNH
         self.EdgeGripShort()
-        #######################################################################################
-        # search
+        
+        # SEARCH
         self.lastSearchTime = QElapsedTimer()
-        self.lastSearchTime.start()  # Khởi động bộ đếm thời gian
+        self.lastSearchTime.start()  # KHỞI ĐỘNG BỘ ĐẾM THỜI GIAN
         widgets.line_search.textChanged.connect(self.search)
 
 
-        #######################################################################################
-        # Load dữ liệu
+        
+        # LOAD DỮ LIỆU
         self.ComboboxFileActivedConnect()
 
 
-        #######################################################################################
+        
         widgets.ComboboxFile.activated.connect(self.ComboboxFileActivedConnect)
 
         widgets.TableManage.selectionModel().selectionChanged.connect(self.MouseClickCheckBox)
@@ -148,17 +141,16 @@ class WindowInterface(QMainWindow):
 
         widgets.TableManage.cellClicked.connect(self.CheckBoxCount)
 
-        #######################################################################################
+        
 
         widgets.TableManage.cellDoubleClicked.connect(lambda row , column,widgets=widgets:QTableTools.CopyColumnContentDoubleClick(self , widgets , row , column))
         self.show()
 
-        # cap nhat
         widgets.btn_category.clicked.connect(self.CustomFile)
 
-        #######################################################################################
+        
         # END 
-        #######################################################################################
+        
 
 
 
@@ -169,7 +161,7 @@ class WindowInterface(QMainWindow):
         widgets.btn_category.setMenu(None)
 
 
-    # lấy các uid đã checked
+    # LẤY CÁC UID ĐÃ CHECKED
     def GetAccountChecked(self):
         obj = []
         for i in range(widgets.TableManage.rowCount()):
@@ -192,10 +184,9 @@ class WindowInterface(QMainWindow):
             self.ToolsShowButton()
             widgets.btn_run.setText("RUN ({})".format(str(total)))
         
-        # widgets.label_running.setText(f"{total}")
         widgets.label_select.setText(f"({str(total)})")
-    #######################################################################################
-    # đổi trạng thái checkbox khi người dùng nhấn SHIFT để chọn các dòng
+    
+    # ĐỔI TRẠNG THÁI CHECKBOX KHI NGƯỜI DÙNG NHẤN SHIFT ĐỂ CHỌN CÁC DÒNG
     def ShiftAutoCheckbox(self, row, column ):
         if QApplication.keyboardModifiers() == Qt.ShiftModifier:
             if self.first_selected_item is not None:
@@ -203,18 +194,18 @@ class WindowInterface(QMainWindow):
                 widgets.TableManage.clearSelection()
                 for r in range(min(first_row, row), max(first_row, row) + 1):
                     for c in range(min(first_col, column), max(first_col, column) + 1):
-                        #######################################################################################
+                        
                         # r : rows 
                         item = widgets.TableManage.item(r, 0)
-                        #######################################################################################
+                        
                         # set Checked
                         item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
                         item.setCheckState(Qt.Checked)
         else:
             self.first_selected_item = (row, column)
 
-    #######################################################################################
-    # click frame auto set checked
+    
+    # CLICK FRAME AUTO SET CHECKED
     def MouseClickCheckBox(self , index):
 
         for obj in index.indexes():
@@ -224,29 +215,29 @@ class WindowInterface(QMainWindow):
                 item.setCheckState(Qt.Checked)
 
     def SubjectFunctions(self):
-        #######################################################################################
-        # toggle checked auto refresh
-        # toggle button text , icons 
+        
+        # TOGGLE CHECKED AUTO REFRESH
+        # TOGGLE BUTTON TEXT , ICONS 
 
-        # chuyển đổi css cho các nút ở menu
-        Functions.SwitchButtonCssChecked(self ,self.buttons_) # button text
+        # CHUYỂN ĐỔI CSS CHO CÁC NÚT Ở MENU
+        Functions.SwitchButtonCssChecked(self ,self.buttons_) # BUTTON TEXT
 
-        #######################################################################################
+        
         # các nút icons khi ẩn menu
-        Functions.SwitchButtonToolsCssChecked(self ,self.buttons_icons) # button icons
+        Functions.SwitchButtonToolsCssChecked(self ,self.buttons_icons) # BUTTON ICONS
 
-        #######################################################################################
-        # các nút tools ở home
+        
+        # CÁC NÚT TOOLS Ở HOME
         Functions.SwitchButtonToolsCssChecked(self ,self.buttons_tools)
 
         # Functions.ButtonPlaySound(self , self.buttons_tools)
-        #######################################################################################
-        # xử lý tự đổi trạng thái khi người dùng click vào ô frame chứa checkbox
+        
+        # XỬ LÝ TỰ ĐỔI TRẠNG THÁI KHI NGƯỜI DÙNG CLICK VÀO Ô FRAME CHỨA CHECKBOX
         Functions.AutoSwitchCheckboxStatus(self , widgets)
 
-        #######################################################################################
-        # customs css cho btn_profile ở task top
-        # sound opening
+        
+        # CUSTOMS CSS CHO BTN_PROFILE Ở TASK TOP
+        # SOUND OPENING
         Functions.OpenSoundApp(self)
 
         Functions.ShadowFrameConditional(self, widgets.frame_taskbar,QColor(0,10,10,100))
@@ -262,12 +253,12 @@ class WindowInterface(QMainWindow):
 
         QTableTools.SubjectHiddenColumn(self , widgets)
 
-        #######################################################################################
-        # giới hạn chiều rộng của cột
+        
+        # GIỚI HẠN CHIỀU RỘNG CỦA CỘT
         QTableTools.SetColumnWidthTableWidget(self , widgets)
 
 
-    # ẩn icons search , hiện frame search
+    # ẨN ICONS SEARCH , HIỆN FRAME SEARCH
     def ShowFrameSearch(self):
         widgets.frame_search.setMaximumSize(250,35)
         widgets.btn_search_icons.hide()
@@ -275,19 +266,45 @@ class WindowInterface(QMainWindow):
         widgets.line_search.clear()
         widgets.frame_search.setMaximumSize(0,35)
         widgets.btn_search_icons.show()
-    # check tài khoản
+    # CHECK TÀI KHOẢN
     def CheckAccount(self):
         self.checkmyaccount = CheckFacebook(self.GetAccountChecked())
         self.checkmyaccount.signal.connect(self.BrowserUpdate)
         self.checkmyaccount.start()
-    #######################################################################################
-    # Subject connect các button
+    
+# XÓA TÀI KHOẢN
+    def show_confirmation(self):
+        window_widgets , window_ui = Ui_Connect.show_ui(self , Ui_NotifiRemove)
+        window_ui.show()
+        window_widgets.btn_no.clicked.connect(lambda:window_ui.close())
+        window_widgets.btn_yes.clicked.connect(lambda:window_ui.close())
+        window_widgets.btn_yes.clicked.connect(self.RemoveAccount)
+        window_widgets.btn_yes.clicked.connect(lambda: self.RemoveWindowFlags())
+        window_widgets.btn_no.clicked.connect(lambda: self.RemoveWindowFlags())
+    def RemoveAccount(self):
 
+        itemRemove = []
+        row = 0
+        while row <= widgets.TableManage.rowCount():
+            item = widgets.TableManage.item(row, 0)
+            # Kiểm tra nếu item không phải là None trước khi gọi checkState()
+            if item is not None and item.checkState() is not None and item.checkState() == 2:
+                itemRemove.append(widgets.TableManage.item(row , 2).text())
+                widgets.TableManage.removeRow(row)
+            else:
+                row += 1
+    
+
+        # self.ComboboxFileActivedConnect()
+        print(itemRemove)
+
+
+    # SUBJECT CONNECT CÁC BUTTON
     def SubjectConnectButton(self):
         
-        # hiển thị danh sách folder khi nhấn 
+        # HIỂN THỊ DANH SÁCH FOLDER KHI NHẤN 
 
-        
+        widgets.btn_delete.clicked.connect(self.show_confirmation)
 
         widgets.btn_unchecked.clicked.connect(lambda:QTableTools.UnCheckbox(self , widgets))
         widgets.btn_unchecked.clicked.connect(self.ToolsHideButton)
@@ -297,7 +314,7 @@ class WindowInterface(QMainWindow):
         widgets.btn_search_icons.clicked.connect(self.ShowFrameSearch)
         widgets.btn_search_hide.clicked.connect(self.HideFrameSearch)
 
-        # ẩn các nút
+        # ẨN CÁC NÚT
         self.ToolsHideButton()
 
         widgets.ComboboxFile.setStyle(NoFocusProxyStyle(widgets.ComboboxFile.style()))
@@ -309,28 +326,29 @@ class WindowInterface(QMainWindow):
                     widgets.FrameID_Proxy1,widgets.FrameID_Proxy2,widgets.FrameID_ContentChatGpt,
                     widgets.FrameID_ChromeHeadless]
         Functions.AnimatedToggleButton(self , FrameID)
-        #######################################################################################
+        
         widgets.btn_hide.clicked.connect(lambda: Functions.AnimationSwitchMenu(self, widgets))
         widgets.btn_hide_icons.clicked.connect(lambda: Functions.AnimationSwitchMenu(self, widgets))
-        #######################################################################################
+        
 
+        
         widgets.btn_maximum.clicked.connect(lambda: Functions.ResizeMode(self, widgets))
         widgets.btn_minimum.clicked.connect(lambda: self.showMinimized())
 
         widgets.btn_close.clicked.connect(lambda: self.close())
 
-        #######################################################################################
-        # Functions button clicked connect
+        
+        # FUNCTIONS BUTTON CLICKED CONNECT
 
         widgets.btn_add.clicked.connect(self.window_additem)
         widgets.btn_proxy.clicked.connect(self.window_proxies)
 
-        #######################################################################################
-        # load lại dữ liệu
+        
+        # LOAD LẠI DỮ LIỆU
         widgets.btn_refresh.clicked.connect(self.ComboboxFileActivedConnect)
 
-        #######################################################################################
-        # cài dặt kịch bản
+        
+        # CÀI DẶT KỊCH BẢN
         widgets.btn_plan_tool.clicked.connect(self.WidgetFrameScheme)
         widgets.btn_plan_tool_icons.clicked.connect(self.WidgetFrameScheme)
 
@@ -339,23 +357,23 @@ class WindowInterface(QMainWindow):
         widgets.btn_all_icons.clicked.connect(self.SwapWidgetFrameHome)
 
 
-        # cài đặt chung
+        # CÀI ĐẶT CHUNG
         widgets.btn_setting.clicked.connect(self.WidgetFrameSetting)
         widgets.btn_setting_icons.clicked.connect(self.WidgetFrameSetting)
 
-        # chuyển đổi back giữa các frame
+        # CHUYỂN ĐỔI BACK GIỮA CÁC FRAME
         self.SwapWidgetFrameHome()
         widgets.btn_back.clicked.connect(self.SwapWidgetFrameHome)
         widgets.btn_back_2.clicked.connect(self.SwapWidgetFrameHome)
 
-        #######################################################################################
-        # lưu cài đặt và hiển yhij thông báo thành công
+        
+        # LƯU CÀI ĐẶT VÀ HIỂN YHIJ THÔNG BÁO THÀNH CÔNG
         widgets.btn_settingSave.clicked.connect(self.ProcessConfigSetting)
         widgets.btn_settingSave.clicked.connect(self.SubjectUpdateProxy)
-        # chạy
+        # CHẠY
         widgets.btn_run.clicked.connect(self.startRun)
         widgets.btn_stop.clicked.connect(self.stopRun)
-    #######################################################################################
+    
 
 
     def emitThreadStop(self,infoID):
@@ -365,31 +383,31 @@ class WindowInterface(QMainWindow):
             return
     def BrowserThreadStop(self):
 
-        self.ThreadKill = BrowserKill({'Thread':self.Thread,'ThreadCheckbox':ThreadCheckbox})
-        if not self.ThreadKill.isRunning():
-            self.ThreadKill.signal.connect(self.emitThreadStop)
-            self.ThreadKill.start()
+        self.ThreadBrowser_ = BrowserKill({'Thread':self.Thread,'ThreadCheckbox':ThreadCheckbox})
+        if not self.ThreadBrowser_.isRunning():
+            self.ThreadBrowser_.signal.connect(self.emitThreadStop)
+            self.ThreadBrowser_.start()
     def stopRun(self):
         self.KillBrowserBeta()
-        self.BrowserThreadStop() # out Thread
+        self.BrowserThreadStop() # OUT THREAD
     def startRun(self):
         
-        self.timerStart = []  # Lưu trữ các timer
+        self.timerStart = []  # LƯU TRỮ CÁC TIMER
         self.width_sort , self.height_sort , self.y_position = 350 , 400 , 0
 
-        # Danh sách các UID đã chọn
+        # DANH SÁCH CÁC UID ĐÃ CHỌN
         for i in range(widgets.TableManage.rowCount()):
             checkbox = widgets.TableManage.item(i, 0)
             if checkbox.checkState() == 2:
                 ThreadCheckbox.append(widgets.TableManage.item(i, 2).text())
 
-        self.timerIndex = 0  # Khởi tạo chỉ số để theo dõi
+        self.timerIndex = 0  # KHỞI TẠO CHỈ SỐ ĐỂ THEO DÕI
 
-        # Nếu có item được chọn, bắt đầu chạy timer
+        # NẾU CÓ ITEM ĐƯỢC CHỌN, BẮT ĐẦU CHẠY TIMER
         if ThreadCheckbox:
             self.timer = QTimer()
             self.timer.timeout.connect(self.runNextThread)
-            self.timer.start(1000)  # Chạy mỗi 1 giây
+            self.timer.start(1000)  # CHẠY MỖI 1 GIÂY
         
         self.CheckButtonStart = False
     def runNextThread(self):
@@ -398,29 +416,29 @@ class WindowInterface(QMainWindow):
             self.RunBroswerThread(self.timerIndex, infoID)
             self.timerIndex += 1
         else:
-            self.timer.stop()  # Dừng timer khi đã chạy hết các hàm
+            self.timer.stop()  # DỪNG TIMER KHI ĐÃ CHẠY HẾT CÁC HÀM
     
 
 
     def BrowserUpdate(self,obj):
 
         infoID = obj['uid']
-        if obj['code'] != 99:
+        if obj['code'] is not 99:
             obj['msg'] = keys[obj['code']]
 
         for row in range(widgets.TableManage.rowCount()):
             if widgets.TableManage.item(row , 2).text() == infoID:
                 obj.update({'row':row})
-                # Cập nhật tình trạng tài khoản
+                # CẬP NHẬT TÌNH TRẠNG TÀI KHOẢN
                 if obj['code'] == 828281030927956:
                     QTableTools.ChangeAccount(self , widgets , obj , 0)
                 elif obj['code'] == 200:
                     QTableTools.ChangeAccount(self , widgets , obj , 1)
                 elif obj['code'] == 300:
                     QTableTools.ChangeAccount(self , widgets , obj , 0)
-            
-
-                # hiển thị msg lên dữ liệu
+                elif obj['code'] == 20032006:
+                    SQL(obj["SQL"]).SQLUpdateDataFromKey(obj)
+                # HIỂN THỊ MSG LÊN DỮ LIỆU
                 color =  QColor(255,255,255)
                 item_category = QTableTools.SubjectItemsText(
                             self, text=str(obj['msg']), color=color, size_font=8)
@@ -430,8 +448,8 @@ class WindowInterface(QMainWindow):
 
         # get wight , height 
         user32 = ctypes.windll.user32
-        width = user32.GetSystemMetrics(0)  # Chiều rộng của màn hình
-        height = user32.GetSystemMetrics(1)  # Chiều cao của màn hình
+        width = user32.GetSystemMetrics(0)  # CHIỀU RỘNG CỦA MÀN HÌNH
+        height = user32.GetSystemMetrics(1)  # CHIỀU CAO CỦA MÀN HÌNH
 
         max_width =  int(width / 350)
         max_height =  int(height / 400) - 1
@@ -444,9 +462,8 @@ class WindowInterface(QMainWindow):
         self.Thread[infoID] = Browser(obj)
         self.Thread[infoID].signal.connect(self.BrowserUpdate)
         self.Thread[infoID].start()
-    # chuyển đổi frame màn hình của stack widget
-    # Màn hình quản lý 
-    #######################################################################################
+    # CHUYỂN ĐỔI FRAME MÀN HÌNH CỦA STACK WIDGET
+    
 
 
     def SwapWidgetFrameHome(self):
@@ -454,8 +471,8 @@ class WindowInterface(QMainWindow):
     
 
 
-    #######################################################################################
-    # Màn hình kịch bản
+    
+    # MÀN HÌNH KỊCH BẢN
     def WidgetFrameScheme(self):
         widgets.stackedWidget.setCurrentWidget(widgets.PlanPage)
 
@@ -463,46 +480,46 @@ class WindowInterface(QMainWindow):
 
 
 
-    #######################################################################################
-    # Màn hình cài đặt chung
+    
+    # MÀN HÌNH CÀI ĐẶT CHUNG
     def WidgetFrameSetting(self):
         ShowConfig().Config(widgets)
         widgets.stackedWidget.setCurrentWidget(widgets.SettingPage)
 
 
 
-    #######################################################################################
-    # Xóa thanh tiêu đề và xử lý di chuyển
+    
+    # XÓA THANH TIÊU ĐỀ VÀ XỬ LÝ DI CHUYỂN
     def RemoveWindowFlags(self):
 
-        #######################################################################################
-        # màu nền của giao diện chính về ban đầu
-        #######################################################################################
+        
+        # MÀU NỀN CỦA GIAO DIỆN CHÍNH VỀ BAN ĐẦU
+        
 
         self.setAttribute(Qt.WA_TranslucentBackground) 
 
-        #######################################################################################
-        # xử lý di chuyển ứng dụng
+        
+        # XỬ LÝ DI CHUYỂN ỨNG DỤNG
         self.resize = Resize(self)
 
 
 
-    #######################################################################################
-    # Tự đồng tạo danh mục mặc định và load item lên combobox danh mục
+    
+    # TỰ ĐỒNG TẠO DANH MỤC MẶC ĐỊNH VÀ LOAD ITEM LÊN COMBOBOX DANH MỤC
     def SQLProcessing(self):
-        #######################################################################################
+        
         # SQL
-        # tạo thư mục mặc định
+        # TẠO THƯ MỤC MẶC ĐỊNH
         SubjectSQL.CreateTableNew(self, name= "ALL",widgets=widgets)
 
-        #######################################################################################
+        
         SubjectProcessFile.LoadNameTabelSQL(self , widgets)        
 
-        #######################################################################################
+        
     
 
-    #######################################################################################
-    # phần này tạo button có hình đại diện , thêm hiệu ứng đăng xuất , thông tin profile tóm tắt
+    
+    # PHẦN NÀY TẠO BUTTON CÓ HÌNH ĐẠI DIỆN , THÊM HIỆU ỨNG ĐĂNG XUẤT , THÔNG TIN PROFILE TÓM TẮT
 
     def MenuButtonProfileUser(self):
         # Functions.set_icons(self , widgets)
@@ -531,10 +548,9 @@ class WindowInterface(QMainWindow):
         widgets.btn_profile.setMenu(contextMenu)
 
     
-    #######################################################################################
+    
 
-    ######################################################################################
-    # Căn chỉnh màn hình phụ ở chính giữa giao diện APP
+    # CĂN CHỈNH MÀN HÌNH PHỤ Ở CHÍNH GIỮA GIAO DIỆN APP
     def center(self , widgets_ui):
         # Lấy kích thước của màn hình chính
         screen = QApplication.primaryScreen()
@@ -550,57 +566,53 @@ class WindowInterface(QMainWindow):
         # Di chuyển cửa sổ đến vị trí tính toán
         widgets_ui.move(x, y)
 
-    #######################################################################################
-    # Màn Hình Thêm Dữ Liệu
+    
+    # MÀN HÌNH THÊM DỮ LIỆU
     def window_additem(self):
         # code sql/300
         
+        self.start_blur()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  'Facebook'
         # NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
 
 
-        #######################################################################################
-        # Call Functions Connect UI
-        # Chức năng hiển thị GUI thêm dữ liệu tài khoản
-        # Call Sub from Functions Show UI Clone
+        
+        # CALL FUNCTIONS CONNECT UI
+        # CHỨC NĂNG HIỂN THỊ GUI THÊM DỮ LIỆU TÀI KHOẢN
+        # CALL SUB FROM FUNCTIONS SHOW UI CLONE
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
-        window_widgets.tabWidget.tabBar().setTabEnabled(1, False)
+        window_widgets.tabWidget.removeTab(1)
         window_widgets.tabWidget.setCurrentIndex(0)
 
-        #######################################################################################
+        
         # căn giữa
         self.center(windows_ui)
 
-        #######################################################################################
-        # toggle frame, button to shadow
-        # chỉnh sửa làm bóng các frame
-        Functions.ShadowFrameConditional(self , window_widgets.label , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.frame_3 , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(0,0,0,150))
-        Functions.ShadowFrameConditional(self , window_widgets.frame_8 , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.frame_5 , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.item_close , QColor(0,0,10,40))
-        Functions.ShadowFrameConditional(self , window_widgets.item_add , QColor(0,0,10,60))
+        
+        # TOGGLE FRAME, BUTTON TO SHADOW
+        # CHỈNH SỬA LÀM BÓNG CÁC FRAME
 
-        #######################################################################################
+        
 
 
-        #######################################################################################
-        # Xử lý thao tác click Button trong giao diện chính
+        
+        # XỬ LÝ THAO TÁC CLICK BUTTON TRONG GIAO DIỆN CHÍNH
         self.SubjectDataProcessingQThread = SubjectDataProcessing(window_widgets)
         self.SubjectDataProcessingQThread.signal.connect(self.signalSubjectDataProcessing)
         window_widgets.plain_item.textChanged.connect(self.startSubjectDataProcessing)
 
         window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
+        window_widgets.item_add.clicked.connect(lambda : self.reset_blur())
         window_widgets.item_close.clicked.connect(lambda : windows_ui.close())
+        window_widgets.item_close.clicked.connect(lambda : self.reset_blur())
         window_widgets.item_close.clicked.connect(lambda: self.RemoveWindowFlags())
 
         # Thêm Text và Xóa để hiện Placehoder
         window_widgets.plain_item.setPlaceholderText("Nhập tài khoản ...")
         window_widgets.plain_item.setPlainText("...")
         window_widgets.plain_item.clear()
-        #######################################################################################
+        
         # add list folder
         items = SubjectSQL.GetSQLTable(self) # Lấy danh sách tên trong cơ sở dữ liệu
         items.remove("ALL")
@@ -615,7 +627,7 @@ class WindowInterface(QMainWindow):
 
         # Remove blur effect when window is closed
 
-    #######################################################################################
+    
     # chạy QThread xử lý định dạng dữ liệu và gán cho DataProcessingFill
     def startSubjectDataProcessing(self):
         if not self.SubjectDataProcessingQThread.isRunning():
@@ -624,11 +636,11 @@ class WindowInterface(QMainWindow):
         global DataProcessingFill 
         DataProcessingFill = data
 
-    #######################################################################################
+    
     # phần này xử lý dữ liệu nhập , dùng QThread tránh GUI Lag
     def SubjectDataProcessingConfirm(self , window_widgets , window_ui):
         global DataProcessingFill , processing_thread
-        #######################################################################################
+        
         # list functions combox item
         # code 200
         self.RemoveWindowFlags()
@@ -647,28 +659,28 @@ class WindowInterface(QMainWindow):
         for widgets_c in _widgets:
             textCurrent.append(widgets_c.currentText())
         
-        #######################################################################################
+        
         # xử lý dữ liệu và gửi tới hàm on_processing
         
         processing_thread = ProcessingThread(window_widgets , DataProcessingFill , textCurrent)
 
-        #######################################################################################
+        
         # truyền dữ liệu tới OnProcessingFinished() khi hoàn thành xong task và show lên table
         processing_thread.processing_finished.connect(self.OnProcessingDataFinished)
         processing_thread.start()
 
-        #######################################################################################
+        
         # đòng cửa sổ nhập
         window_ui.close()
 
 
-    #######################################################################################
+    
     # xóa các dữ liệu hiển thị và thêm dữ liệu ở mục chỉ định
     def ComboboxFileActivedConnect(self):
         global DataFillProcess
         
         widgets.TableManage.clear()
-        #######################################################################################
+        
         # Config lại headerhorizontal 
         self.SubjectSetupTableManage()
         self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
@@ -685,21 +697,21 @@ class WindowInterface(QMainWindow):
         Functions.UpdateLabelTotalAccount(self , widgets , len(DataFillProcess))
 
     
-    #######################################################################################
+    
     # Dữ liệu ở hàm SubjectDataProcessingConfirm() chạy QThread xong sẽ truyền tới hàm này
-    #######################################################################################
+    
     def OnProcessingDataFinished(self , res : dict, widgets_ : object):
         global DataFillProcess
-        #######################################################################################
+        
         # gán dữ liệu đã xử lý để gửi tới hàm thêm dữ liệu
         DataFillProcess = res
         self.maxTotal =  len(DataFillProcess)
         Functions.UpdateLabelTotalAccount(self , widgets , len(DataFillProcess))
-        #######################################################################################
+        
         # insert dữ liệu vào table
         self.SubjectOnProcessinginsertDataFinished = SubjectOnProcessingDataFinished(widgets, self.NameCategory , DataFillProcess)
         self.startOnProcessingDataFinished()
-        #######################################################################################
+        
         # lấy 500 dữ liệu đầu tiên và hiển thị , tránh lag gui
         # self._GetDataThread = GetDataThread(widgets, self.NameCategory , self.maxTotal)
         # self._GetDataThread.signal.connect(self.signalOnProcessingDataFinished)
@@ -709,15 +721,15 @@ class WindowInterface(QMainWindow):
 
                                 #       , Ui_main , [{},{} ...]      , ["","" ...]
 
-    #######################################################################################
+    
     # lấy dữ liệu xử lý định dạng phù hợp để truyền tới add item vào QTabel
-    #######################################################################################
+    
     def signalOnProcessingDataFinished(self , data : list):
         global DataFillProcess 
         DataFillProcess = data
         # self.ProcessingQThreadDataItemsCondition(DataFillProcess)
         self.ComboboxFileActivedConnect()
-        #######################################################################################
+        
         # cập nhật thông số tài khoản
 
         if len(DataFillProcess) == self.maxTotal:
@@ -725,9 +737,9 @@ class WindowInterface(QMainWindow):
         else:
             msg.SendMsg(("Đang load dữ liệu !",                1))
 
-    #######################################################################################
+    
     # QThread tránh lỗi isrunning
-    #######################################################################################
+    
     def starGetDataThread(self):
         if not self._GetDataThread.isRunning():
             self._GetDataThread.start()
@@ -736,15 +748,14 @@ class WindowInterface(QMainWindow):
         if not self.SubjectOnProcessinginsertDataFinished.isRunning():
             self.SubjectOnProcessinginsertDataFinished.start()
 
-    #######################################################################################
+    
     # Gui hiển thị dữ liệu nhập Proxy . dùng Tabwidget và chuyển đổi sang index : 1
-    #######################################################################################
+    
     def window_proxies(self):
-        #######################################################################################
         
+        self.start_blur()
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
-        window_widgets.tabWidget.tabBar().setTabEnabled(0, False)
-        Functions.ShadowFrameConditional(self , window_widgets.frameMain , QColor(0,0,0,150))
+        window_widgets.tabWidget.removeTab(0)
         window_widgets.tabWidget.setCurrentIndex(1)
         self.center(windows_ui)
 
@@ -754,12 +765,15 @@ class WindowInterface(QMainWindow):
         # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
         # Call Functions Connect UI
         self.item_CheckProxy_Change  =  False 
-        #######################################################################################
+        
         # Call Sub from Functions Show UI Clone PROXIES
         # window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
         window_widgets.item_closeProxy.clicked.connect(lambda : windows_ui.close())
         window_widgets.item_closeProxy.clicked.connect(lambda: self.RemoveWindowFlags())
-        #######################################################################################
+
+        window_widgets.item_closeProxy.clicked.connect(lambda : self.reset_blur())
+        window_widgets.item_import.clicked.connect(lambda : self.reset_blur())
+        
         # hiện holder
 
         window_widgets.plain_Proxy.setPlaceholderText("Nhập Proxy ...")
@@ -776,7 +790,7 @@ class WindowInterface(QMainWindow):
         proxy_list = json.loads(open(your_dir_config,"r",encoding="utf-8").read())["proxy"]["list"]
         proxy_text = "\n".join(proxy_list) if isinstance(proxy_list, list) else proxy_list
         window_widgets.plain_Proxy.setPlainText(proxy_text)
-        #######################################################################################
+        
         # run , check script
 
     def ProxyClear(self , window_widgets):
@@ -804,7 +818,7 @@ class WindowInterface(QMainWindow):
         if self.proxyPlainText != "":
             msg.SendMsg(("Thêm Proxy Thành Công !",1))
 
-    #######################################################################################
+    
     # phần này xử lý di chuyển chuột và kéo dãn màn hình ứng dụng , hiện tại chưa xử lý thêm
     def resizeEvent(self, event):
         super().resizeEvent(event)
@@ -816,7 +830,7 @@ class WindowInterface(QMainWindow):
         self.top_grip.setGeometry(0, 0, rect.width(), grip_width)
         self.bottom_grip.setGeometry(0, rect.height() - grip_width, rect.width(), grip_width)
 
-    #######################################################################################
+    
     # phần điều kiện chuột tự di chuyển
     def mousePressEvent(self, event):
         # Check if the mouse press is within the frameID widget
@@ -836,51 +850,57 @@ class WindowInterface(QMainWindow):
         self.resize.mouseMoveEvent(event)
 
     
-    #######################################################################################
+    
     # hiệu ứng làm tròn viền
-    def paintEvent(self, event):
-        painter = QPainter(widgets.frame_main)
-        path = QPainterPath()
-        if self.isMaximized():
-            #######################################################################################
-            # full màn và cạnh nhọn
-            #######################################################################################
-            path.addRoundedRect(0,0, self.width() , self.height() , 0, 0)
+    # def paintEvent(self, event):
+    #     painter = QPainter(widgets.frame_main)
+    #     path = QPainterPath()
+    #     if self.isMaximized():
+    #         
+    #         # full màn và cạnh nhọn
+    #         
+    #         path.addRoundedRect(0,0, self.width() , self.height() , 0, 0)
 
-        else:
-            #######################################################################################
-            # cạnh tròn
-            #######################################################################################
-            path.addRoundedRect(0,0, self.width() , self.height(), 10, 10)
+    #     else:
+    #         
+    #         # cạnh tròn
+    #         
+    #         path.addRoundedRect(0,0, self.width() , self.height(), 10, 10)
 
 
-        #######################################################################################
-        # hiển thị viền app
-        #######################################################################################
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.fillPath(path, QBrush(QColor(38, 49, 98)))
-        painter.setPen(QColor(94,112,167))
-        painter.drawPath(path)
-    #######################################################################################
+    #     
+    #     # hiển thị viền app
+    #     
+    #     painter.setRenderHint(QPainter.Antialiasing, True)
+    #     painter.fillPath(path, QBrush(QColor(38, 49, 98)))
+    #     painter.setPen(QColor(94,112,167))
+    #     painter.drawPath(path)
+    
 
-    #######################################################################################
-    # hiệu ứng thông báo tin nhắn
+    
+    # HIỆU ỨNG LÀM MỜ
+    def start_blur(self):
+        self.ModeEffect = QGraphicsBlurEffect()
+        self.ModeEffect.setBlurRadius(3)  # Độ mờ của hiệu ứng
+        widgets.frame_main.setGraphicsEffect(self.ModeEffect)  # Áp dụng hiệu ứng mờ
 
-    #######################################################################################
+    def reset_blur(self):
+        widgets.frame_main.setGraphicsEffect(None)  # Gỡ bỏ hiệu ứng mờ
+    
     # hiển thị ở góc màn hình ứng dụng
     def _on_resize(self, event):
         msg.move_notification()
         QMainWindow.resizeEvent(self, event)
-    #######################################################################################
+    
     # hiển thị 500 dòng dữ liệu 
     def ProcessingQThreadDataItemsCondition(self , data : dict):
-        #######################################################################################
+        
         # xử lý 500 dữ liệu và hiển thị với QThread
         self.thread = DataGenerator(self.total_items, self.batch_size, self.current_batch , data)
         self.thread.data_signal.connect(self.SubjectShowLoadData)
         self.thread.start()
 
-        #######################################################################################
+        
         # thông báo hiển thị
 
     def ProcessConfigSetting(self):
@@ -890,35 +910,35 @@ class WindowInterface(QMainWindow):
             msg.SendMsg(("Cập nhật thành công !",1))
         else:
             msg.SendMsg(("Không thể cập nhật !",0))
-    #######################################################################################
+    
     # thêm dữ liệu từ mảng vào bảng
     # [{}...]
     def SubjectShowLoadData(self, data):
 
-        #######################################################################################
+        
         # Vô hiệu hóa chế độ chọn và thiết lập chế độ chọn theo hàng
         # Tắt Selection các dòng trong Qtable
-        #######################################################################################
+        
         
         self.DataThreadLoad = LoadNewData(widgets,data)
 
         if not self.DataThreadLoad.isRunning():
             self.DataThreadLoad.start()
-        #######################################################################################
+        
         # Tăng giá trị biến đếm batch hiện tại
         # giá trị này tính số lượng số trang đã load 
         # {page} =  current_bacth * total_show 
-        #######################################################################################
+        
         self.current_batch += 1
 
 
-        #######################################################################################        
+                
         # thêm hiệu ứng selection line
-        #######################################################################################
+        
         QTableTools.AddSelectionItems(self , widgets)
     
 
-    #######################################################################################/
+    
     def ToolsHideButton(self):
         listButton  = [widgets.btn_run , widgets.btn_stop, widgets.btn_delete ,\
                         widgets.btn_CheckAccount,widgets.btn_export\
@@ -935,17 +955,17 @@ class WindowInterface(QMainWindow):
 
         for btn in listButton:
             btn.show()
-    # check cuộn xuống 100 dòng sẽ load thêm
+    # CHECK CUỘN XUỐNG 100 DÒNG SẼ LOAD THÊM
     def SubjectAutoLoadData(self):
         scrollbar = widgets.TableManage.verticalScrollBar()
         scrollbar.valueChanged.connect(lambda :QTableTools.HandleScroll(self,scrollbar,DataFillProcess))
         header = widgets.TableManage.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Stretch)
 
-    #######################################################################################
+    
     # search trực tiếp trên TableWidget , chưa xử lý nhiều
     # Bug : search quá nhanh sẽ đơ app và lỗi isrunning chưa xử lý gì thêm / code : 191
-    #######################################################################################
+    
     def search(self):
          # Kiểm tra nếu thời gian từ lần tìm kiếm trước đó ít hơn 500ms
         if self.lastSearchTime.elapsed() < 500:
@@ -960,7 +980,7 @@ class WindowInterface(QMainWindow):
         self.lastSearchTime.restart() # reset lại time đếm
     
 
-    #######################################################################################
+    
     # 2 hàm này hạn chế Bug / 191
     def startprocessingSearch(self):
         if not self.processingSearch.isRunning():
@@ -977,20 +997,20 @@ class WindowInterface(QMainWindow):
     def closeEvent(self, event):
         self.stopprocessingSearch()
         event.accept()
-    #######################################################################################
+    
 
 
     
 
-    #######################################################################################
+    
 
 
-    #######################################################################################
+    
     # Custom các frame
     def CustomShadowFrameApp(self):
-        #######################################################################################
+        
         # shadow effect frame_manage_tool , ... frame as 
-        #######################################################################################
+        
         Functions.ShadowFrameConditional(self , widgets.scrollArea_manage , QColor(1, 1, 1, 20))
 
         Functions.ShadowFrameConditional(self , widgets.frame_manage_main , QColor(1, 1, 1, 80))
@@ -1003,12 +1023,12 @@ class WindowInterface(QMainWindow):
 
         Functions.ShadowFrameConditional(self , widgets.frame_tool_two , QColor(0, 0, 10, 50))
     # END
-    #######################################################################################
+    
 
 
     # Đóng Browser
 
-    def threadKillBrowserBeta(self):
+    def ThreadBrowser_BrowserBeta(self):
         for proc in process_iter(['pid', 'name']):
             try:
                 # Nếu tên tiến trình là 'chrome.exe' (Windows) hoặc 'chrome' (macOS/Linux)
@@ -1018,11 +1038,11 @@ class WindowInterface(QMainWindow):
             except:
                 pass
     def KillBrowserBeta(self):
-        threading.Thread(target=(self.threadKillBrowserBeta),args=()).start()
-    ###########################################################################################
+        threading.Thread(target=(self.ThreadBrowser_BrowserBeta),args=()).start()
+    ####
     # phần này tạo icons khi di chuyển
     def EdgeGripShort(self):
-        #######################################################################################
+        
         # tạo icon kéo dãn khi di chuột gần mép
         self.left_grip = EdgeGrip(widgets.centralwidget, Qt.LeftEdge)
         self.right_grip = EdgeGrip(widgets.centralwidget, Qt.RightEdge)
@@ -1030,131 +1050,13 @@ class WindowInterface(QMainWindow):
         self.bottom_grip = EdgeGrip(widgets.centralwidget, Qt.BottomEdge)
     
 
-    #######################################################################################
+    
     # mô phỏng kéo dài cho các cột
-    #######################################################################################
+    
     def InteractiveHeader(self):
         header = widgets.TableManage.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Interactive)
 
-class LoadNewData(QThread):
-    def __init__(self,widgets,data) :
-        super(LoadNewData,self).__init__()
-        self.widgets = widgets
-        self.data =  data
-    def run(self):
-        self.widgets.TableManage.setSelectionMode(QTableWidget.NoSelection)
-        widgets.TableManage.setSelectionBehavior(QTableWidget.SelectRows)
-        
-        # Xác định chỉ số cột cho 'message' và 'c_user'
-        message_column_index = index_name.get("message", -1)
-        c_user_column_index = index_name.get("c_user", -1)
-
-        #######################################################################################
-        # Thiết lập delegate cho cột 'message' và 'c_user'
-        if message_column_index != -1:
-
-            self.widgets.TableManage.setItemDelegateForColumn(message_column_index, RoundedBorderDelegate(self,color=QColor(70, 200, 245), bold=1))
-
-        if c_user_column_index != -1:
-            self.widgets.TableManage.setItemDelegateForColumn(c_user_column_index, RoundedBorderDelegate(self,color=QColor(0, 204, 204), bold=1))
-
-        # END
-        #######################################################################################
-        # Thêm dữ liệu vào bảng
-
-        for row_data in self.data:
-            try:
-
-
-                #######################################################################################
-                # Lấy vị trí hàng hiện tại và chèn hàng mới
-                #######################################################################################
-                row_position = self.widgets.TableManage.rowCount()
-                self.widgets.TableManage.insertRow(row_position)
-
-
-                #######################################################################################
-                # Thêm item checkbox vào cột đầu tiên
-                #######################################################################################
-                self.widgets.TableManage.setItem(row_position, 0, QTableTools.CheckboxNew(self))
-
-                #######################################################################################
-                # Thêm item số hàng vào cột thứ hai
-                #######################################################################################
-                item_count = QTableTools.SubjectItemsText(
-                    self, text=str(row_position + 1), color=QColor(255,255,255), size_font=8)
-                self.widgets.TableManage.setItem(row_position, 1, item_count)
-
-
-                #######################################################################################
-                # Thiết lập chiều cao hàng
-                #######################################################################################
-                self.widgets.TableManage.setRowHeight(row_position, 40)
-
-
-                #######################################################################################
-                # Thêm các item dữ liệu vào các cột tương ứng
-                #######################################################################################
-                for temp_name, value in row_data.items():
-                    try:
-
-                        #######################################################################################
-                        # Xác định màu sắc dựa trên tên cột
-                        #######################################################################################
-                        color = QColor(20, 57, 39)  # Màu mặc định
-                        if temp_name == "message":
-                            value = time_lastest(value)
-                            color = QColor(255,255,255)
-                        elif temp_name == "c_user":
-                            color = QColor(92, 0, 230)
-                        else:
-                            color =  QColor(255,255,255)
-
-
-                        # END
-                        #######################################################################################
-
-                        #######################################################################################
-                        # Tạo item với màu sắc và kích thước font đã chỉ định
-                        #######################################################################################
-                        if temp_name == "work":
-                            typeAccount = 'Facebook'.lower()
-                            # typeAccount = self.widgets.ComboBoxTypeAccount.currentText().lower()
-                            value = str(len(json.loads(open("./models/json/config.json","r",encoding="utf-8").read())["account.work"][typeAccount])) + " Actions !"
-                        elif temp_name == "proxy":
-                            if ":" not in  value:
-                                value = "Local IP"
-                        elif temp_name == "status":
-                            if value == "Unknown":
-                                color =  QColor(250,250,250)
-                            elif value == "LIVE":
-                                color =  QColor(64, 191, 128)
-                            else:
-                                color = QColor(255, 84, 135)
-                        item_category = QTableTools.SubjectItemsText(
-                            self, text=str(value), color=color, size_font=8)
-                        
-                        # Thêm item vào bảng ở vị trí hàng và cột tương ứng
-                        if temp_name == "status":
-                            if value == "Unknown":
-                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24.png"))
-                            elif value == "LIVE":
-                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_live.png"))
-                            else:
-                                
-                                item_category.setIcon(QIcon(r".\icons\png\icons8-dot-24_red.png"))
-                        elif temp_name == "work":
-                            item_category.setIcon(QIcon(r".\icons\png\icons8-thunder-24.png"))
-                        self.widgets.TableManage.setItem(row_position, index_name[temp_name], item_category)
-
-                    except KeyError:
-                        # Bỏ qua nếu không tìm thấy chỉ số cột
-                        continue
-
-            except Exception as e:
-                # In ra thông báo lỗi nếu có
-                print(f"Error adding row data: {e}")
 
 class BrowserKill(QThread):
     signal = pyqtSignal(object)
@@ -1177,17 +1079,17 @@ class BrowserKill(QThread):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running
-    #######################################################################################
+    
     # Làm nét HD cho các hình ảnh trong APP
-    #######################################################################################
+    
     app.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 
-    #######################################################################################
+    
     # Tự chỉnh checkbox trong QTable căn chính giữa
-    #######################################################################################
+    
     checkbox_style = CheckBoxStyle(app.style())
 
-    #######################################################################################
+    
     
     app.setWindowIcon(QIcon("./icons/logo/icons.png"))
 
@@ -1197,6 +1099,5 @@ if __name__ == "__main__":
 
 
 
-#######################################################################################
+
 # BỊ CRUSH BƠ RÒI
-#######################################################################################

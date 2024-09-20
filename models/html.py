@@ -43,5 +43,6 @@ keys = {
         -1 : 'Khởi động trình duyệt .',
         200 : 'Account LIVE',
         300 : 'Account DIE',
-        7749: 'Authentication No Code !'
+        7749: 'Authentication No Code !',
+        20032006:'Đăng nhập thành công !'
     }

@@ -14,12 +14,14 @@ from time import sleep
 from models import *
 import os , sys , shutil
 
-DEPOS_TEMP , QHD = () ,  0
+DEPOS_TEMP , QHD , NAME = () ,  0 , str()
 
 class Facebook:
-    def __init__(self, driver: WebDriver):
+    def __init__(self, driver: WebDriver , signal : pyqtSignal , report: dict):
         global DEPOS_TEMP , QHD
+        self.signal =  signal
         self.driver = driver
+        self.report = report
         (stt ,
         c_user ,
         password ,
@@ -71,13 +73,21 @@ class Facebook:
         sleep(float(random.randrange(4,10)/5))
 
 
-        
+
+    def convert_cookie_to_str(self , cookies_for_dict): 
+        cookies = "".join(["{name}={value};".format(name=dict_['name'],value=dict_['value']) for dict_ in cookies_for_dict])
+        return cookies
     def verify_login(self):
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, "//*[@class='MAWOembedIframe']"))
             )
-            return 1
+
+            cookies_for_dict = self.driver.get_cookies()
+            self.report.update({'code':20032006,'content':self.convert_cookie_to_str(cookies_for_dict),'id':self.report['uid'],'key':'cookie'})
+            self.signal.emit(self.report)
+
+            return True
         except:
             return 0
 
@@ -85,8 +95,10 @@ class Facebook:
         try:
             for _ in range(2):
                 self.driver.implicitly_wait(10)
-                element_nofi = self.driver.find_element(By.XPATH, "(//*[@aria-label='Notifications'])[1]")
+                element_nofi = self.driver.find_element(By.XPATH, '//*[@href="/notifications/"]')
                 if element_nofi.is_displayed():
+                    self.report.update({'code':99,'msg':'click button Notifications'})
+                    self.signal.emit(self.report)
                     element_nofi.click()
                     sleep(2)
         except Exception as e:
@@ -97,7 +109,8 @@ class Facebook:
             for loop in range(2):
                 self.driver.implicitly_wait(10)
                 element_nofi = self.driver.find_element(By.XPATH,"(//*[@aria-label='Messenger'])[1]")
-
+                self.report.update({'code':99,'msg':'click button Messenger'})
+                self.signal.emit(self.report)
                 self.arguments_click(element_nofi)
                 sleep(3)
         except Exception as error:
@@ -114,8 +127,9 @@ class Facebook:
 
     def CommentRead(self):
         try:
+            self.report.update({'code':99,'msg':'click button Comment'})
+            self.signal.emit(self.report)
             element_comment = self.driver.find_element(By.XPATH,'//span[text()="Comment"]')
-
             self.arguments_click(element_comment)
 
             self.SeeMorePosts()
@@ -128,12 +142,11 @@ class Facebook:
         self.driver.implicitly_wait(10)
         try:
             element_commentButton = self.driver.find_element(By.XPATH,"//*[@aria-label='Close']")
-            # self.driver.execute_script('arguments[0].click();',element_commentButton)
-
-        
             self.arguments_click(element_commentButton)
+            self.report.update({'code':99,'msg':'close frame content'})
+            self.signal.emit(self.report)
         except Exception as error:
-            print("closeButtonElement",error)
+            pass
         
     def ActionReactions(self):
         keyID = {
@@ -148,8 +161,9 @@ class Facebook:
 
 
         try:
+            self.report.update({'msg':f'{keyID[idRandom]} Bài viết','code':99})
+            self.signal.emit(self.report)
             element_textLike =  self.driver.find_element(By.XPATH,'//span[text()="Like"]')
-
             ActionChains(self.driver).click_and_hold(element_textLike).perform() # giữ chuột
             
             sleep(1)
@@ -167,7 +181,6 @@ class Facebook:
         while datetime.now() <= timeWork:
             loop_add += 1
 
-
             # ti le likex
             if check:
                 ifp = random.choice(person)
@@ -176,10 +189,11 @@ class Facebook:
             # thuc hien hanh dong
             if loop_add % ifp == 0:
                 self.ActionReactions()
+
                 self.CommentRead()
 
                 try:
-                    random.choice([self.Messengers , self.Notifications ] + [None] * 5)()
+                    random.choice([self.Messengers , self.Notifications ])()
                 except Exception as error:
                     print("FeedisHome" ,error)
 
@@ -236,7 +250,7 @@ class Facebook:
 
                 self.WaitByXpath('//input[@dir="ltr"]')
 
-                current_otp = Authentication(self.code) if self.code != "" else ""
+                current_otp = Authentication(self.code) if self.code is not str() else str()
                 self.arguments_scroll(2)
                 for charOTP in current_otp:
                     elm_auth = self.driver.find_element(By.XPATH,'//input[@dir="ltr"]')
@@ -324,7 +338,7 @@ class Browser(QThread):
         return self._config
     
     def getDataFromSQL(self):
-        global DEPOS_TEMP
+        global DEPOS_TEMP , NAMESQL
 
         nameSQL =  SubjectSQL.GetSQLTable(self)    
         for name in nameSQL:
@@ -332,7 +346,7 @@ class Browser(QThread):
             depos = SQL(name).GetDataFromUID(self.obj['uid'])
             if depos != []:
                 self.report.update({'SQL':name})
-                DEPOS_TEMP = depos[0]
+                DEPOS_TEMP , NAMESQL= depos[0], name
 
     def randomCardName(self):
         listCard = ["ANGLE (NVIDIA GeForce RTX 4090 Direct3D12 vs_6_0 ps_6_0, D3D12)",
@@ -360,11 +374,11 @@ class Browser(QThread):
         except Exception as error:
             print(error)
             self.driver.quit()
-            self.stop()
-    def ProfileProcess(self):
+            self.stop(self.obj['uid'])
+    def ProfileProcess(self , uid):
         # Xóa thư mục Cache để giảm kích thước profile
         try:
-            cache_dir = os.path.join(self.logging_dir, 'Default/Cache')
+            cache_dir = os.path.join(format(your_dir.joinpath('browser/profile/{}'.format(uid))), 'Default/Cache')
             if os.path.exists(cache_dir):
                 shutil.rmtree(cache_dir)
             
@@ -382,9 +396,9 @@ class Browser(QThread):
 
         self.signal.emit(self.report)
         
-        self.logging_dir  , _ = format(your_dir.joinpath('browser/profile/{}'.format(self.obj['uid']))) , self.ProfileProcess()
+        self.logging_dir  , _ = format(your_dir.joinpath('browser/profile/{}'.format(self.obj['uid']))) , self.ProfileProcess(self.obj['uid'])
 
-        
+
         if self.isRunning():
             profile = profiles.Windows() # or .Android
             profile['cdp'].update({
@@ -469,8 +483,9 @@ class Browser(QThread):
             except Exception as error:
                 print(error)
                 return
+        
             self.getDataFromSQL()
-            tools = Facebook(self.driver)
+            tools = Facebook(self.driver , self.signal , self.report)
             keysMsg = tools.Login()
             tools.FeedisHome()
             self.report.update({'code':keysMsg})
@@ -478,16 +493,20 @@ class Browser(QThread):
 
     
     def stop(self):
-
         self.report.update({'code':99,'msg':'close...'})
+        self.signal.emit(self.report)
         try:
             self.driver.quit()
         except Exception:
             print("error")
 
-        self.ProfileProcess()
+        self.ProfileProcess(self.report['uid'])
 
         self.report.update({'code':99,'msg':''})
+
+        time_out =  datetime.now().strftime("(%d/%m-%H:%M) Đã tương tác xong .")
+        self.report.update({'code':99, 'msg':time_out})
+        self.signal.emit(self.report)
         self.terminate()
         self.quit()
 

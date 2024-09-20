@@ -7,7 +7,7 @@ headers = ['','#', 'UID', 'Trạng thái', 'Kịch Bản', 'Proxy', 'Tin nhắn'
                 'Security key', 'QR Code', 'Cookie', 'API Key', 'Email', 'Key Email', 
                 'User Agent', 'Hoạt động']
 
-
+from . app import Ui_HeaderView
 # ///////////////////////////////////////
 # xử lý dữ liệu
 class DataGenerator(QThread):
@@ -141,13 +141,13 @@ class QTableTools(WindowInterface):
 
         widgets.TableManage.horizontalHeader().setStretchLastSection(True)
         # Thay thế tiêu đề cột đầu tiên bằng một widget tùy chỉnh có checkbox
-        header_widget = HeaderCheckboxWidget('')  # Tiêu đề trống cho checkbox
+        header_widget = HeaderCheckboxWidget(widgets)  # Tiêu đề trống cho checkbox
         header_view = widgets.TableManage.horizontalHeader()
 
         # Option 2: Manually setting geometry
         header_widget.setParent(header_view)
         # ///////////////////////////////////////
-        header_widget.setGeometry(4.3, -2, 43, 50)  # tọa độ checkbox căn giữa
+        header_widget.setGeometry(0, -2, 43, 50)  # tọa độ checkbox căn giữa
 
         # Cập nhật tiêu đề cho các cột còn lại
         for i, text in enumerate(headers, start=0):
@@ -250,34 +250,73 @@ class ColorDelegate(QStyledItemDelegate):
 # //////////////////////////////
 # tạo ô checkbox cho tablewidget
 class HeaderCheckboxWidget(QWidget):
-    def __init__(self, label, parent=None):
+    def __init__(self, widgets, parent=None):
         super().__init__(parent)
+        self.widgets = widgets
         layout = QHBoxLayout()
         self.checkbox = QCheckBox()
-        self.checkbox.stateChanged.connect(self.__all__checkbox)
-        self.label = QLabel(label)
-        # /////////////////////
-        # chỉnh màu cho cùng với màu của các header
-        # phần còn lại các cột khác ở trong css TableManage
+        self.checkbox.stateChanged.connect(self.__all__checkbox)  # Kết nối sự kiện khi checkbox thay đổi trạng thái
+        
+        # Chỉnh màu cho cùng màu với header
         self.setStyleSheet("""               
             background-color: rgb(38, 49, 98);
             border-radius:5px;
                            """)
         layout.addWidget(self.checkbox)
-        layout.addWidget(self.label)
         layout.setAlignment(Qt.AlignCenter)
         self.setLayout(layout)
         self.setFixedHeight(31)  # Đặt chiều cao cố định cho widget header
-
+        self.widgets.btn_unchecked.clicked.connect(self.resetCheckbox)
+    
+    def resetCheckbox(self):
+        self.checkbox.setChecked(False)
     def setCheckState(self, state):
         self.checkbox.setCheckState(state)
+    def ToolsHideButton(self):
+        listButton  = [self.widgets.btn_run , self.widgets.btn_stop, self.widgets.btn_delete ,\
+                        self.widgets.btn_CheckAccount,self.widgets.btn_export\
+                            ,self.widgets.btn_killBrowser,self.widgets.btn_unchecked,\
+                                self.widgets.btn_CheckProxy]
 
-    def checkState(self):
-        return self.checkbox.checkState()
-    
+        for btn in listButton:
+            btn.hide()
+    def ToolsShowButton(self):
+        listButton  = [self.widgets.btn_run , self.widgets.btn_stop, self.widgets.btn_delete ,\
+                        self.widgets.btn_CheckAccount,self.widgets.btn_export\
+                            ,self.widgets.btn_killBrowser,self.widgets.btn_unchecked\
+                            ,self.widgets.btn_CheckProxy]
+
+        for btn in listButton:
+            btn.show()
+    def CheckBoxCount(self,total):
+        if total == 0:
+            self.ToolsHideButton()
+        else:
+            self.ToolsShowButton()
+            self.widgets.btn_run.setText("RUN ({})".format(str(total)))
+        
+        # widgets.label_running.setText(f"{total}")
+        self.widgets.label_select.setText(f"({str(total)})")
     def __all__checkbox(self):
-        print("ok")
-    
+        total = 0
+        # Kiểm tra trạng thái của checkbox trong header
+        if self.checkbox.checkState() == Qt.Checked:
+            # Chọn tất cả các checkbox trong bảng
+            for row in range(self.widgets.TableManage.rowCount()):
+                item = self.widgets.TableManage.item(row, 0)
+                if item:
+                    item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)  # Kích hoạt checkbox
+                    item.setCheckState(Qt.Checked)  # Set trạng thái của checkbox là Checked
+                    total += 1
+        else:
+            # Bỏ chọn tất cả các checkbox
+            for row in range(self.widgets.TableManage.rowCount()):
+                item = self.widgets.TableManage.item(row, 0)
+                if item:
+                    item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)  # Kích hoạt checkbox
+                    item.setCheckState(Qt.Unchecked)  # Set trạng thái của checkbox là Unchecked
+        
+        self.CheckBoxCount(total)
 
 
 class RoundedBorderDelegate(QStyledItemDelegate):
@@ -369,49 +408,31 @@ class CustomMenu(QMenu):
 
 
 class CustomHeaderHorizontal(QHeaderView):
-    def __init__(self, parent=None):
-        super(CustomHeaderHorizontal, self).__init__(Qt.Horizontal, parent)
+    def __init__(self, widgets):
+        super(CustomHeaderHorizontal, self).__init__(Qt.Horizontal)
+        self.widgets = widgets
         
-        # Create a QToolButton for the menu
+        # Tạo nút menu
         self.menu_button = QToolButton(self)
-        self.menu_button.setIcon(QIcon('./icons/png/icons8-menu-67.png'))  # Path to your menu icon
+        self.menu_button.setIcon(QIcon('./icons/png/icons8-menu-67.png'))  # Đường dẫn đến biểu tượng menu
         self.menu_button.setPopupMode(QToolButton.InstantPopup)
-
-        # Set the button to have a transparent background
         self.menu_button.setStyleSheet("background: transparent; border: none;")
+        self.menu_button.setGeometry(10, 5, 30, 30)  # Điều chỉnh kích thước và vị trí
+        self.menu_button.clicked.connect(self.showHeaderView)
 
-        # Create a QMenu and add actions
-        contextMenu = CustomMenu(self)
-        font = QFont("blood",8)
-        font.setBold(True)
-        contextMenu.setFont(font)
-        types = contextMenu.addAction("Loại tài khoản", self.option1)
-        icon = QIcon()
-        icon.addPixmap(QPixmap(":/icons/png/icons8-low-connection-24.png"), QIcon.Normal, QIcon.Off)
-        types.setIcon(icon)
-        contextMenu.addAction("Chỉnh sửa", self.option2)
-        contextMenu.setMinimumWidth(130)
-        contextMenu.setMaximumWidth(150)
-        self.menu_button.setMenu(contextMenu)
-
-        # Set button position and size
-        self.menu_button.setGeometry(10, 5, 30, 30)  # Adjust as needed
-
-    def option1(self):
-        print("Option 1 selected")
-
-    def option2(self):
-        print("Option 2 selected")
+    def showHeaderView(self):
+        window_widgets, windows_ui = Ui_Connect.show_ui(self, Ui_HeaderView)
+        # Functions.ShadowFrameConditional(self, window_widgets.frame_5, QColor(0, 0, 10, 150))
+        windows_ui.show()
+        window_widgets.btn_close.clicked.connect(lambda: windows_ui.close())
 
     def resizeEvent(self, event):
         super(CustomHeaderHorizontal, self).resizeEvent(event)
-        # Adjust the button position if needed
         self.menu_button.move(self.width() - self.menu_button.width() - 5, (self.height() - self.menu_button.height()) // 2)
 
     def paintSection(self, painter, rect, logicalIndex):
         painter.save()
-        painter.fillRect(rect, QColor(200, 200, 200))  # Adjust the color as needed
+        painter.fillRect(rect, QColor(200, 200, 200))  # Điều chỉnh màu sắc
         painter.setPen(Qt.NoPen)
         painter.restore()
         super(CustomHeaderHorizontal, self).paintSection(painter, rect, logicalIndex)
-

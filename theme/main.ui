@@ -9462,7 +9462,7 @@ color: rgb(203, 215, 255);</string>
                            <widget class="QFrame" name="frame_43">
                             <property name="minimumSize">
                              <size>
-                              <width>110</width>
+                              <width>120</width>
                               <height>0</height>
                              </size>
                             </property>

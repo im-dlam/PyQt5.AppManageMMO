@@ -150,7 +150,7 @@ class Functions(WindowInterface):
     # //////////////////////////////////
     # ShadowFrameConditional : functions \ nhận tham số : Object , QColor để làm hiệu ứng bóng mờ , thêm sinh động cho ứng dụng
     def ShadowFrameConditional(self , widgest_value , color):
-        set_effect =  QGraphicsDropShadowEffect(self)
+        set_effect =  QGraphicsDropShadowEffect(blurRadius=5, xOffset=10, yOffset=10)
         set_effect.setBlurRadius(17)
         set_effect.setOffset(0,0)
         set_effect.setColor(color)

@@ -4215,7 +4215,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.addWidget(self.frame_36)
         self.horizontalLayout_32.addWidget(self.frame_42)
         self.frame_43 = QtWidgets.QFrame(self.frame_status_manage)
-        self.frame_43.setMinimumSize(QtCore.QSize(110, 0))
+        self.frame_43.setMinimumSize(QtCore.QSize(120, 0))
         self.frame_43.setMaximumSize(QtCore.QSize(110, 16777215))
         self.frame_43.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_43.setFrameShadow(QtWidgets.QFrame.Raised)
