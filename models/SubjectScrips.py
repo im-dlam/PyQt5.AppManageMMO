@@ -120,14 +120,14 @@ QMenu::item {
     padding: 10px 24px; /* Đệm cho các mục menu */
     color: #d0d4db; /* Màu chữ cho các mục menu */
     border-radius: 3px; /* Làm tròn viền cho các mục menu */
-    height: 10px; /* Chiều cao của item */
+    height: 6px; /* Chiều cao của item */
     font-family: bold;
 }
 
 QMenu::item:selected {
     background-color: rgb(65,84,133); /* Màu nền khi mục được chọn */
     color: #d0d4db;
-    height: 10px; /* Chiều cao của item khi được chọn */
+    height: 6px; /* Chiều cao của item khi được chọn */
     border-radius: 2px; /* Làm tròn viền cho menu */
     padding: 10px 24px; /* Đệm cho các mục menu */
     font-family: bold;

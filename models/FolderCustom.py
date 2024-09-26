@@ -1,5 +1,19 @@
 from main import *
 from models import *
+class CustomMenuStyle(QProxyStyle):
+    def pixelMetric(self, metric, option=None, widget=None):
+        if metric == QStyle.PM_SubMenuOverlap:
+            return 10  # Adjust this value to control the distance
+        return super().pixelMetric(metric, option, widget)
+class CustomMenuProfile(QMenu):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        # Tắt bóng của QMenu
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.setStyleSheet(QMenuRighClick)
 class FolderItemWidget(QWidget):
     def __init__(self, folder_name,widgets, parent=None):
         super().__init__(parent)
@@ -40,27 +54,29 @@ class FolderItemWidget(QWidget):
         self.options_menu = QMenu()
         self.options_menu.setStyleSheet("""
             QMenu {
+    padding-left:5px;
+    padding-right:5px;
+    padding-top:3px;
+    padding-bottom:3px;
     background-color:#242e5d;
     border: 0.5px solid rgb(65,84,133); /* Đường viền cho menu */
     border-radius: 4px; /* Làm tròn viền cho menu */
     color: #d0d4db;
     font-family: bold;
 }
-
 QMenu::item {
-    padding: 10px 24px; /* Đệm cho các mục menu */
-    color: #d0d4db; /* Màu chữ cho các mục menu */
-    border-radius: 3px; /* Làm tròn viền cho các mục menu */
-    height: 7px; /* Chiều cao của item */
-    font-family: bold;
-}
+        min-height: 12px;  /* Adjust the height of each menu item */
+        min-width: 100px;  /* Adjust the width of each menu item */
+        padding: 5px;     /* Add padding around the text */
+        color: #d0d4db; /* Màu chữ cho các mục menu */
+        border-radius: 3px; /* Làm tròn viền cho các mục menu */
+        font-family: bold;
+    }
 
 QMenu::item:selected {
     background-color: rgb(65,84,133); /* Màu nền khi mục được chọn */
     color: #d0d4db;
-    height: 7px; /* Chiều cao của item khi được chọn */
     border-radius: 2px; /* Làm tròn viền cho menu */
-    padding: 10px 24px; /* Đệm cho các mục menu */
     font-family: bold;
 
 }
@@ -68,10 +84,10 @@ QAction#ActionOtherCopy {
     color: #520066; /* Màu chữ đỏ cho action "Thêm..." */
         }
 QMenu::separator {
-    height: 0.5px;
-    background: #526296;
-    margin: 2px 0px 2px 0px;
-}
+        height: 1px;
+        background: #526296;
+        margin: 1px 0px 1px 0px;
+    }
 
 QAction {
     color: #1d2783;
@@ -85,13 +101,35 @@ QMenu::icon {
     margin-left: 15px;  
 }
         """)
-        
+        MenuShow = QMenu("Send to", self)
+        MenuShow.addAction("ALL")
+        MenuShow.setStyleSheet("""
+    QMenu::item {
+        min-height: 12px;  /* Adjust the height of each menu item */
+        min-width: 100px;  /* Adjust the width of each menu item */
+        padding: 5px;     /* Add padding around the text */
+    }
+
+    QMenu::separator {
+        height: 2px;
+        background: #526296;
+        margin: 5px 0;     /* Add spacing above and below separators */
+    }
+""")
+        # Add the sub-menu to the options menu
+        self.options_menu.addMenu(MenuShow)
+        # RENAME FOLDER
+        rename_action = self.options_menu.addAction("Rename")
+        rename_action.triggered.connect(self.delete_folder_qlist)
         # Add a delete action to the menu
-        delete_action = self.options_menu.addAction("Delete")
+        self.options_menu.addSeparator()
+        delete_action = self.options_menu.addAction("DELETE")
         delete_action.triggered.connect(self.delete_folder_qlist)
+
 
         # Connect the options button to show the menu
         self.options_button.setMenu(self.options_menu)
+        self.options_menu.setStyle(CustomMenuStyle())
     def delete_folder_qlist(self):
 
         # Get the QListWidget that contains this item

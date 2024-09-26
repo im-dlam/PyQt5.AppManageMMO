@@ -5,12 +5,13 @@ from PyQt5.QtCore import (
     QAbstractTableModel , QAnimationGroup,
     QFile,QEvent, QThread, pyqtSignal ,\
     QModelIndex , QSize , QPoint , \
-    QElapsedTimer,QMargins , QRect , QRectF , QEasingCurve
+    QElapsedTimer,QMargins , QRectF , QEasingCurve , QPropertyAnimation,\
+    QRect
     )
 from PyQt5.QtGui import (
     QColor , QClipboard , QCloseEvent , QCursor , QFont , QFontMetrics,
     QDrag , QIcon , QMovie , QMouseEvent , QPainter , QPixmap , QPainterPath,
-    QBrush , QPalette , QRegion , QPen , 
+    QBrush , QPalette , QRegion , QPen 
     
     
 )
@@ -50,7 +51,7 @@ from . SubjectRighClick import *
 from . html  import *
 from . SubjectQThread import *
 from . Pyotp import *
-
+from . AnimationButton import *
 # import selenium
 
 from selenium.webdriver.common.by import By

@@ -486,7 +486,7 @@ border:none;
                         </property>
                         <property name="icon">
                          <iconset resource="../icons/icons.qrc">
-                          <normaloff>:/icons/png/icons8-test-account-24.png</normaloff>:/icons/png/icons8-test-account-24.png</iconset>
+                          <normaloff>:/icons/png/icons8-account-24.png</normaloff>:/icons/png/icons8-account-24.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
@@ -8883,6 +8883,9 @@ background-color: rgb(108, 213, 194);
                                  <height>16777215</height>
                                 </size>
                                </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
                                <property name="styleSheet">
                                 <string notr="true">
 
@@ -9238,7 +9241,7 @@ border-radius:5px;
                                 </size>
                                </property>
                                <property name="styleSheet">
-                                <string notr="true">image: url(:/icons/png/icons8-account-24.png);</string>
+                                <string notr="true">image: url(:/icons/png/icons8-user-tag-48.png);</string>
                                </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>

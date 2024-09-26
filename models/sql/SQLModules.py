@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-
+import pathlib
 class SQL:
     def __init__(self , name):
 
@@ -94,7 +94,50 @@ class SQL:
     def SQLDeleteTable(self):
         self.cursor.execute(f"DROP TABLE IF EXISTS '{self.name}'")
         self._close()
-    
+    def SQLRemoveAccount(self, uid):
+        your_dir  = pathlib.Path.cwd()
+        with open(f'{your_dir}/models/bin/facebook.bin', 'a',encoding='utf-8') as file:
+            # Lấy danh sách tất cả các bảng, bỏ qua bảng 'ALL'
+            self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            tables = [table[0] for table in self.cursor.fetchall()]
+            
+            if 'ALL' in tables:
+                tables.remove('ALL')
+            
+            # Duyệt qua từng bảng
+            for table in tables:
+                try:
+                    # Kiểm tra xem bảng có cột 'c_user' hay không
+                    self.cursor.execute(f"PRAGMA table_info({table})")
+                    columns = [column[1] for column in self.cursor.fetchall()]
+                    
+                    if 'c_user' in columns:
+                        # Lấy các hàng cần xóa
+                        select_cmd = f"SELECT * FROM {table} WHERE c_user = ?"
+                        self.cursor.execute(select_cmd, (uid,))
+                        rows = self.cursor.fetchall()
+                        
+                        # Lưu dữ liệu vào file
+                        for row in rows:
+                            # Lưu dữ liệu theo định dạng column1|column2|...
+                            row_data = '|'.join(map(str, row))  # Chuyển từng giá trị trong hàng thành chuỗi
+                            file.write(f"{row_data}\n")
+                        
+                        # Xóa dữ liệu sau khi lưu
+                        delete_cmd = f"DELETE FROM {table} WHERE c_user = ?"
+                        self.cursor.execute(delete_cmd, (uid,))
+                        print(f"Deleted rows in table {table} where c_user = {uid}")
+                    else:
+                        print(f"Skipping table {table} - column 'c_user' does not exist.")
+                
+                except Exception as e:
+                    print(f"Skipping table {table} due to error: {e}")
+        
+        # Lưu thay đổi vào cơ sở dữ liệu
+        self.connect.commit()
+
+        
+        # Lưu các thay đổi vào cơ sở dữ liệu
     def GetDataFromUID(self, uid):
         return self.cursor.execute(f"SELECT * FROM {self.name} WHERE c_user = ?", (uid,)).fetchall()
     def SQLUpdateDataFromKey(self,temp_:hash):

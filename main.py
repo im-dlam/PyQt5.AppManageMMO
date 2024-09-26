@@ -31,7 +31,7 @@ class WindowInterface(QMainWindow):
         self.ProxyQThread , self.DataThreadLoad = None ,None
         
         self.Thread ,self.ThreadBrowser_ , self.CheckButtonStart , self.checkmyaccount   = {} , None , True , None
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 10000 , 0
 
         
 
@@ -109,7 +109,7 @@ class WindowInterface(QMainWindow):
 
         
         # THÊM MODEL CHO TABLE WIDGET
-        self.SubjectAutoLoadData()
+        # self.SubjectAutoLoadData()
 
 
         
@@ -285,6 +285,7 @@ class WindowInterface(QMainWindow):
 
         itemRemove = []
         row = 0
+        # XÓA HIỂN THỊ TRONG BẢNG TABLE
         while row <= widgets.TableManage.rowCount():
             item = widgets.TableManage.item(row, 0)
             # Kiểm tra nếu item không phải là None trước khi gọi checkState()
@@ -295,8 +296,12 @@ class WindowInterface(QMainWindow):
                 row += 1
     
 
-        # self.ComboboxFileActivedConnect()
-        print(itemRemove)
+
+        for IDRemove in itemRemove:
+            SQL("").SQLRemoveAccount(IDRemove)
+
+        self.ComboboxFileActivedConnect()
+        msg.SendMsg((f"Xóa thành công {len(itemRemove)} tài khoản !", 1))
 
 
     # SUBJECT CONNECT CÁC BUTTON
@@ -317,6 +322,18 @@ class WindowInterface(QMainWindow):
         # ẨN CÁC NÚT
         self.ToolsHideButton()
 
+        ButtonEffects(
+            button=widgets.btn_export,
+            normal_icon=r".\icons\png\icons8-export-25.png",
+            hover_icon=r".\icons\png\icons8-export-25_green.png",
+            size =QSize(16,16)
+        )
+        ButtonEffects(
+            button=widgets.btn_profile,
+            normal_icon=r".\icons\png\icons8-account-24.png",
+            hover_icon=r".\icons\png\icons8-account-24_green.png",
+            size =QSize(25,25)
+        )
         widgets.ComboboxFile.setStyle(NoFocusProxyStyle(widgets.ComboboxFile.style()))
 
         Functions.ShadowFrameConditional(self,widgets.SettingPage,QColor(0,10,10,100))
@@ -679,11 +696,13 @@ class WindowInterface(QMainWindow):
     def ComboboxFileActivedConnect(self):
         global DataFillProcess
         
+
+        self.ToolsHideButton()
         widgets.TableManage.clear()
         
         # Config lại headerhorizontal 
         self.SubjectSetupTableManage()
-        self.total_items, self.batch_size, self.current_batch = int(1e7) , 100 , 0
+        self.total_items, self.batch_size, self.current_batch = int(1e7) , 10000 , 0
         if widgets.ComboboxFile.currentText() == "ALL":
             ListName = SubjectSQL.GetSQLTable(self)
         else:
@@ -896,9 +915,9 @@ class WindowInterface(QMainWindow):
     def ProcessingQThreadDataItemsCondition(self , data : dict):
         
         # xử lý 500 dữ liệu và hiển thị với QThread
-        self.thread = DataGenerator(self.total_items, self.batch_size, self.current_batch , data)
-        self.thread.data_signal.connect(self.SubjectShowLoadData)
-        self.thread.start()
+        self.thread_show = DataGenerator(self.total_items, self.batch_size, self.current_batch , data)
+        self.thread_show.data_signal.connect(self.SubjectShowLoadData)
+        self.thread_show.start()
 
         
         # thông báo hiển thị
@@ -935,7 +954,7 @@ class WindowInterface(QMainWindow):
                 
         # thêm hiệu ứng selection line
         
-        QTableTools.AddSelectionItems(self , widgets)
+        # QTableTools.AddSelectionItems(self , widgets)
     
 
     
@@ -968,7 +987,7 @@ class WindowInterface(QMainWindow):
     
     def search(self):
          # Kiểm tra nếu thời gian từ lần tìm kiếm trước đó ít hơn 500ms
-        if self.lastSearchTime.elapsed() < 500:
+        if self.lastSearchTime.elapsed() < 1000:
             print("time searh limit")
             return  # Không thực hiện tìm kiếm nếu chưa đủ thời gian chờ
         
@@ -1080,9 +1099,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running
     
-    # Làm nét HD cho các hình ảnh trong APP
     
-    app.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 
     
     # Tự chỉnh checkbox trong QTable căn chính giữa

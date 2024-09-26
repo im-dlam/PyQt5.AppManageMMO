@@ -72,7 +72,19 @@ class Facebook:
     def TimeWait():
         sleep(float(random.randrange(4,10)/5))
 
-
+    # KIỂM THỬ PHẦN TỬ TRÁNH BÁO LỖI
+    def find_element(self , by : By , value: str):
+        for _ in range(10):
+            try:
+                _driver_ = self.driver.find_element(by , value)
+                return _driver_
+            except Exception as error :
+                print("_"*50)
+                print(f"/ {value} ")
+                print(f"/ {error} ")
+                print("_"*50)
+                continue
+        
 
     def convert_cookie_to_str(self , cookies_for_dict): 
         cookies = "".join(["{name}={value};".format(name=dict_['name'],value=dict_['value']) for dict_ in cookies_for_dict])
@@ -95,8 +107,8 @@ class Facebook:
         try:
             for _ in range(2):
                 self.driver.implicitly_wait(10)
-                element_nofi = self.driver.find_element(By.XPATH, '//*[@href="/notifications/"]')
-                if element_nofi.is_displayed():
+                element_nofi = self.find_element(By.XPATH, '//*[@href="/notifications/"]')
+                if element_nofi is not None:
                     self.report.update({'code':99,'msg':'click button Notifications'})
                     self.signal.emit(self.report)
                     element_nofi.click()
@@ -105,49 +117,39 @@ class Facebook:
             print(e)
     
     def Messengers(self):
-        try:
-            for loop in range(2):
-                self.driver.implicitly_wait(10)
-                element_nofi = self.driver.find_element(By.XPATH,"(//*[@aria-label='Messenger'])[1]")
+        for _ in range(2):
+            self.driver.implicitly_wait(10)
+            element_nofi = self.find_element(By.XPATH,"(//*[@aria-label='Messenger'])[1]")
+            if element_nofi is not None:
                 self.report.update({'code':99,'msg':'click button Messenger'})
                 self.signal.emit(self.report)
                 self.arguments_click(element_nofi)
                 sleep(3)
-        except Exception as error:
-            print(error)
     
     def SeeMorePosts(self):
-        try:
-            element_show_more = self.driver.find_element(By.XPATH,'//div[text()="See more"]')
-
+        element_show_more = self.find_element(By.XPATH,'//div[text()="See more"]')
+        if element_show_more is not None:
             self.arguments_click(element_show_more)
-        except Exception as error:
-            print(error)
 
 
     def CommentRead(self):
-        try:
+        element_comment = self.find_element(By.XPATH,'//span[text()="Comment"]')
+        if element_comment is not None:
             self.report.update({'code':99,'msg':'click button Comment'})
             self.signal.emit(self.report)
-            element_comment = self.driver.find_element(By.XPATH,'//span[text()="Comment"]')
             self.arguments_click(element_comment)
-
             self.SeeMorePosts()
             self.closeButtonElement()
-        except Exception as error:
-            print("CommentRead" , error)
 
     
     def closeButtonElement(self):
         self.driver.implicitly_wait(10)
-        try:
-            element_commentButton = self.driver.find_element(By.XPATH,"//*[@aria-label='Close']")
+        element_commentButton = self.find_element(By.XPATH,"//*[@aria-label='Close']")
+        if element_commentButton is not None:
             self.arguments_click(element_commentButton)
             self.report.update({'code':99,'msg':'close frame content'})
             self.signal.emit(self.report)
-        except Exception as error:
-            pass
-        
+    
     def ActionReactions(self):
         keyID = {
             0 : 'Like',
@@ -157,13 +159,10 @@ class Facebook:
         }
         idRandom = random.choice([0,30,60,90])
         self.driver.implicitly_wait(10)
-
-
-
-        try:
+        element_textLike =  self.find_element(By.XPATH,'//span[text()="Like"]')
+        if element_textLike is not None:
             self.report.update({'msg':f'{keyID[idRandom]} Bài viết','code':99})
             self.signal.emit(self.report)
-            element_textLike =  self.driver.find_element(By.XPATH,'//span[text()="Like"]')
             ActionChains(self.driver).click_and_hold(element_textLike).perform() # giữ chuột
             
             sleep(1)
@@ -171,16 +170,18 @@ class Facebook:
             ActionChains(self.driver).move_to_element_with_offset(element_textLike,idRandom,-30).click().perform()
 
             return keyID[idRandom]
-        except Exception as error:
-            print("ActionReactions",error)
-    
+    def AntiSpam(self):
+        _driver = self.find_element(By.XPATH,'//*[@aria-label="Dismiss"]')
+        if _driver:
+            _driver.click()
+
     def FeedisHome(self):
         person , check , ifp = [4,8,12,16,18,22] , 0 , 4
         timeWork =  datetime.now() + timedelta(minutes=self.config['config']['id.TimeWorking'])
         x_position_scroll , loop_add = 0 , 0
+        self.AccountsChangeLanguage()
         while datetime.now() <= timeWork:
             loop_add += 1
-
             # ti le likex
             if check:
                 ifp = random.choice(person)
@@ -188,6 +189,7 @@ class Facebook:
 
             # thuc hien hanh dong
             if loop_add % ifp == 0:
+                self.AntiSpam()
                 self.ActionReactions()
 
                 self.CommentRead()
@@ -208,7 +210,65 @@ class Facebook:
             self.TimeWriting()
 
             continue
+    def cookies_to_string(self, cookies : str):
+        return "".join(["{}={};".format(parse['name'],parse['value']) for parse in cookies])
 
+    # ĐỔI NGÔN NGỮ BẰNG API
+    def AccountsChangeLanguage(self):
+        driver_ = self.find_element(By.XPATH,'(//*[@id="facebook"])')
+        if driver_:
+            self.driver.implicitly_wait(10)
+            user_agent , cookies_browser   =  self.driver.execute_script('return navigator.userAgent;') , self.driver.get_cookies()
+            
+            cookies_after_convert , _dtsg =  self.cookies_to_string(cookies_browser) , self.driver.page_source.split(',{"token":"')[1].split('"}')[0]
+            lang_browser = driver_.get_attribute('lang')
+            if lang_browser != "en":
+                script = f"""
+                var headers = {{
+                    'accept': '*/*',
+                    'accept-language': 'en-US;',
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'cookie': '{cookies_after_convert}',
+                    'dnt': '1',
+                    'origin': 'https://www.facebook.com',
+                    'referer': 'https://www.facebook.com',
+                    'sec-ch-ua-platform': '"Windows"',
+                    'user-agent': '{user_agent}',
+                    'x-fb-lsd': 'UEIdUKYqlMER2LxiAXtnJt'
+                }};
+
+                var dataString = 'av={self.c_user}&__aaid=0&__user={self.c_user}&__a=1&__req=15&__hs=19992.HYP%3Acomet_plat_default_pkg.2.1..2.1&dpr=1&__ccg=EXCELLENT&__rev=1016820347&__s=3tkocp%3Afj77or%3A4im4cc&__hsi=7418865971727892589&__dyn=7AzHK4HwBgDx-5Q1hyoyEqxd4Ag5S3G2O5U4e2C3-4UKewSAx-bwNw9G2Saxa0DU6u3y4o27wxg3Qwb-q7oc81xoswMwto88422y11wBz822weS4oaEnxO0Bo4O2-2l2UtwxwhU31w9O1lwlE-U2exi4UaEW4UmwsoqBwJK14xm1HzEjUlwhEe88o4qum7-2K0-obXCwLyESE2KwkQ0z8c84u2ubwHwNxe6Uak2-1vwxyo6O1FwgUjwOwWwjHDzUiwRK6E4-mEbUaU&__csr=iNI4keNk8fdkuBRsL7czFvdWblRQSysTFqtRnilaQOKAl5G9KqECHCFUDAjhqgzBogJuuKCaAjGcBzbKVFbALIx4cGaiABBBAz8GcLBQ4agFa5pFFUlVF8C9zF9uuaV-bzqGcK5UR5zoqyAbxFeWyokDCHDG5euV8OqVem9gVCjzEhDxuEGfyd7zoy4FEC26mXwDxGfG59-fUB1y6UF2oghUXGmAGxiqfAKUGeFGfyUWewFw8C6oGeKq4U4WawyyEOmuES9gyexG8yEb8G3iUKElwQUS2G4U-54eG8wJG5EdEc81Y80Pq0hOpa2fw2lE1n9FEbE5G0ZpoNyU4WqUkzU6m0oqbwSwhHiggximm0C8dU3RxK2aew1jm1dw3mO01hC0g9yAEKzo6e1-gnxna0Y80riw76wQw0kcax91kn402PU3pw3cU0ggg0WS440MFErw2i80B61Zw0xkx20u2fwvE0Gy11oS2p0Fzy01eVwi812o1H82Kw14Wu0j-0QE720lP8IU1e80N60478gw9h38apFEwxu5E0ZK0xm09QwMw2JE9o6d060w5mwCUa4pjwb-065E0mMy8Gp01eS4EZ1l0Fzy04jw2pogwf60-41ewuu4o2Gw&__comet_req=1&fb_dtsg={_dtsg}&jazoest=25479&lsd=UEIdUKYqlMER2LxiAXtnJt&__spin_r=1016820347&__spin_b=trunk&__spin_t=1727339339&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=useCometLocaleSelectorLanguageChangeMutation&variables=%7B%22locale%22%3A%22en_US%22%2C%22referrer%22%3A%22WWW_COMET_NAVBAR%22%2C%22fallback_locale%22%3Anull%7D&server_timestamps=true&doc_id=6451777188273168';
+
+                fetch('https://www.facebook.com/api/graphql/', {{
+                    method: 'POST',
+                    headers: headers,
+                    body: dataString,
+                    credentials: 'include' // Important for using cookies in the request
+                }})
+                    .then(response => response.text())
+                    .then(body => console.log(body))
+                    .catch(error => console.error(error));
+                """
+                fetch = self.driver.execute_script(script)
+                for _ in range(2):
+                    self.driver.refresh()
+                    sleep(1)
+
+
+    # SEND CODE QR 
+    def AutoSendQRCode(self):
+        self.otp_qr_convert = Authentication(self.code) if self.code is not str() else str()
+        self.arguments_scroll(2)
+        for charOTP in self.otp_qr_convert:
+            elm_auth = self.find_element(By.XPATH,'//input[@dir="ltr"]')
+            if elm_auth is not None:
+                elm_auth.send_keys(charOTP)
+                self.TimeWriting()
+        
+        elm_auth.send_keys(Keys.ENTER)
+
+        self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Wait Load
+        self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án Trust Device
     # Login với UID-PASSWORD
     def Login(self):
         if self.verify_login(): return # đã login
@@ -216,14 +276,14 @@ class Facebook:
         if self.WaitByID("email"):
             # nhập username
             for charUser in self.c_user:
-                elm_username = self.driver.find_element(By.ID,"email")
+                elm_username = self.find_element(By.ID,"email")
                 elm_username.send_keys(charUser)
                 
                 self.TimeWriting()
             
             # nhập password
             for charPassword in self.password:
-                elm_password = self.driver.find_element(By.ID , "pass")
+                elm_password = self.find_element(By.ID , "pass")
                 elm_password.send_keys(charPassword)
                 self.TimeWriting()
 
@@ -232,36 +292,34 @@ class Facebook:
                 return 256281040558 # Kết quả mật khẩu không khớp
             elif "828281030927956" in self.driver.current_url:
                 return 828281030927956 # Tài khoản bị khóa 
-            
+            # <input dir="ltr" autocomplete="off" aria-invalid="false" id=":r5:" class="x1i10hfl xggy1nq x1s07b3s x1a2a7pz xjbqb8w x1v8p93f xogb00i x16stqrj x1ftr3km x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 xzsf02u x1vr9vpq x1iyjqo2 x1y44fgy x10d0gm4 x1fhayk4 x16wdlz0 x3cjxhe x8182xy xwrv7xz xeuugli xlyipyv x1hcrkkg xfvqz1d x12vv892 x163jz68 xpp3fsf xvr60a6 x1sfh74k x53uk0m x185fvkj x1p97g3g xmtqnhx x11ig0mb x1quw8ve xx0ingd x361rvq x10emqs4 xs8nzd4 x1fzehxr" type="text" value="" tabindex="0">
             elif "two_step_verification" in self.driver.current_url:
-                # Next two_factor
-                self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[1]")
-                self.driver.implicitly_wait(3)
-                # Chọn xác minh 2FA
 
-                self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]')
+                if self.WaitByXpath('(//*[@dir="ltr" and @id=":r5:" and @value=""])'):
+                    self.AutoSendQRCode() # TỰ ĐỘNG ĐIỀN QR CODE NẾU KHÔNG CÓ PHƯƠNG THỨC CHỜ THÔNG BÁO !
+                else:
+                    # CÓ PHƯƠNG THỨC DUYỆT THÔNG BÁO 
+                    self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[1]")
+                    self.driver.implicitly_wait(3)
+                    # Chọn xác minh 2FA
 
-                self.arguments_scroll(2)
-                self.arguments_click('(//*[@dir="auto"])[2]') # click vào Text
+                    self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]')
 
-                self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án 2FA
-                # Xác nhận phương án
-                self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[5]")
+                    self.arguments_scroll(2)
+                    self.arguments_click('(//*[@dir="auto"])[2]') # click vào Text
 
-                self.WaitByXpath('//input[@dir="ltr"]')
+                    self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án 2FA
+                    # Xác nhận phương án
+                    self.arguments_click("(//*[@role='none' and @data-visualcompletion='ignore'])[5]")
 
-                current_otp = Authentication(self.code) if self.code is not str() else str()
-                self.arguments_scroll(2)
-                for charOTP in current_otp:
-                    elm_auth = self.driver.find_element(By.XPATH,'//input[@dir="ltr"]')
-                    elm_auth.send_keys(charOTP)
-                    self.TimeWriting()
-                elm_auth.send_keys(Keys.ENTER)
+                    self.WaitByXpath('//input[@dir="ltr"]')
 
-                self.WaitByXpath('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Wait Load
-                self.arguments_click('(//*[@role="none" and @data-visualcompletion="ignore"])[4]') # Chọn Phương án Trust Device
+                    # TỰ ĐỘNG ĐIỀN QR CODE KHI ĐÃ CHỌN QR THÔNG BÁO
 
-                if current_otp == '': return 7749
+                    self.AutoSendQRCode()
+
+
+                if self.otp_qr_convert == '': return 7749
                 elif "828281030927956" in self.driver.current_url:
                     return 828281030927956 # Tài khoản bị khóa 
                 
@@ -290,7 +348,7 @@ class Facebook:
         self.TimeWait()
         self.driver.execute_script(
             "arguments[0].click();",
-            self.driver.find_element(By.XPATH,xpath_elm)) # click try Another
+            self.find_element(By.XPATH,xpath_elm)) # click try Another
 
     def WaitByID(self,value):
         self.driver.implicitly_wait(10)

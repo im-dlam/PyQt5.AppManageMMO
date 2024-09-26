@@ -22,14 +22,12 @@ class DataGenerator(QThread):
     def run(self):
         start_index = self.current_batch * self.batch_size
 
-        print("SATRT :",start_index)
         end_index = min(start_index + self.batch_size, self.total_items)
         data_batch = []
         for i in range(start_index, end_index):
 
-            if len(data_batch) == 100:break
-            try:
-                data_batch.append(self.data[i])
+            if len(data_batch) == 10000:break
+            try:data_batch.append(self.data[i])
             except:break
         self.data_signal.emit(data_batch)
           
@@ -361,7 +359,7 @@ class RoundedBorderDelegate(QStyledItemDelegate):
         rect_width = min(rect_width, option.rect.width())
 
         # Define the rectangle for the rounded border
-        rect = QRect(rect_x, rect_y, rect_width, rect_height)
+        rect = QRect(int(rect_x), int(rect_y), rect_width, rect_height)
 
         # Draw the rounded rectangle
         painter.setRenderHint(QPainter.Antialiasing)

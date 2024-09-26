@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
 "                    QPushButton::menu-indicator { image: none; }")
         self.btn_profile.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-test-account-24.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/png/icons8-account-24.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_profile.setIcon(icon)
         self.btn_profile.setIconSize(QtCore.QSize(25, 25))
         self.btn_profile.setCheckable(True)
@@ -3989,6 +3989,7 @@ class Ui_MainWindow(object):
         self.btn_search_icons = QtWidgets.QPushButton(self.frame_26)
         self.btn_search_icons.setMinimumSize(QtCore.QSize(30, 25))
         self.btn_search_icons.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.btn_search_icons.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_search_icons.setStyleSheet("\n"
 "\n"
 "QPushButton:hover{\n"
@@ -4126,7 +4127,7 @@ class Ui_MainWindow(object):
         self.frame_37.setMaximumSize(QtCore.QSize(12, 20))
         self.frame_37.setSizeIncrement(QtCore.QSize(0, 200))
         self.frame_37.setBaseSize(QtCore.QSize(0, 0))
-        self.frame_37.setStyleSheet("image: url(:/icons/png/icons8-account-24.png);")
+        self.frame_37.setStyleSheet("image: url(:/icons/png/icons8-user-tag-48.png);")
         self.frame_37.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_37.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_37.setObjectName("frame_37")

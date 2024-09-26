@@ -5,6 +5,11 @@ from models.sql.SQLModules import *
 import os 
 widgets , window_widgets , msg = None , None , None
 contextMenu = None
+class CustomMenuStyle(QProxyStyle):
+    def pixelMetric(self, metric, option=None, widget=None):
+        if metric == QStyle.PM_SubMenuOverlap:
+            return 10  # Adjust this value to control the distance
+        return super().pixelMetric(metric, option, widget)
 class CustomMenu(QMenu):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -13,7 +18,57 @@ class CustomMenu(QMenu):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
     def showEvent(self, event):
         super().showEvent(event)
-        self.setStyleSheet(QMenuProfile)
+        self.setStyleSheet("""
+
+QMenu {
+    padding-left:5px;
+    padding-right:5px;
+    padding-top:3px;
+    padding-bottom:3px;
+    background-color:#242e5d;
+    border: 0.5px solid rgb(65,84,133); /* Đường viền cho menu */
+    border-radius: 5px; /* Làm tròn viền cho menu */
+    color: #d0d4db;
+    font-family: bold;
+}
+QMenu::item {
+        min-height: 12px;  /* Adjust the height of each menu item */
+        min-width: 100px;  /* Adjust the width of each menu item */
+        padding: 5px;     /* Add padding around the text */
+        color: #d0d4db; /* Màu chữ cho các mục menu */
+        border-radius: 3px; /* Làm tròn viền cho các mục menu */
+        font-family: bold;
+    }
+
+QMenu::item:selected {
+    background-color: rgb(65,84,133); /* Màu nền khi mục được chọn */
+    color: #d0d4db;
+    border-radius: 2px; /* Làm tròn viền cho menu */
+    font-family: bold;
+
+}
+QAction#ActionOtherCopy {
+    color: #520066; /* Màu chữ đỏ cho action "Thêm..." */
+        }
+QMenu::separator {
+        height: 1px;
+        background: #526296;
+        margin: 1px 3px 1px 3px;
+                           
+    }
+
+QAction {
+    color: #1d2783;
+}
+
+QAction:hover {
+    background-color: #5a5a5a;
+}
+
+QMenu::icon {
+    margin-left: 15px;  
+}
+""")
 
 class CustomMenuProfile(QMenu):
     def __init__(self, parent=None):
@@ -23,7 +78,7 @@ class CustomMenuProfile(QMenu):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
     def showEvent(self, event):
         super().showEvent(event)
-        self.setStyleSheet(QMenuRighClick)
+        self.setStyleSheet(QMenuProfile)
 class FrameRightClick(QFrame):
     def __init__(self, widgets_, parent=None):
         super().__init__(parent)
@@ -42,59 +97,31 @@ class FrameRightClick(QFrame):
         global contextMenu , widgets
         your_dir = os.getcwd() + "/icons/png"
         contextMenu = CustomMenu(self)
+        contextMenu.setStyle(CustomMenuStyle())
 
         # //////////////////////////
         # Khỏi chạy tài khoản
         self.NewActionQMenu(
-            dir=f"{your_dir}/icons8-run-command-26.png",
-            text="Run Now",
+            dir=f"",
+            text="Giải Checkpoint 956",
             subject=self.SubjectNewFolder
             )
-        
-        # //////////////////////////
-        contextMenu.addSeparator()
-        # //////////////////////////
-
-        font = QFont("Montserrat",7)
-        font.setBold(True)
-        # //////////////////////////
-        # Menu hiển thị con
-        MenuShow =  CustomMenu(self)
-        MenuShow.setTitle("Hiển thị")
-        MenuShow.setIcon(QIcon(f"{your_dir}/icons8-eye-24.png"))
-        MenuShow.addAction("Live")
-        MenuShow.addAction("Die")
-        MenuShow.setStyleSheet(QMenuRighClick)
-        MenuShow.setFont(font)
-        contextMenu.addMenu(MenuShow)
-        # ///////////////////////////////////////
-        contextMenu.addSeparator()
-
-
-        # //////////////////////////
-        # Menu coppy . delete
-        MenuShow =  CustomMenu(self)
-        MenuShow.setTitle("Copy")
-        MenuShow.setIcon(QIcon(f"{your_dir}/icons8-copy-48.png"))
-        MenuShow.addAction("UID")
-        MenuShow.addAction("Password")
-        MenuShow.addAction("UID|PassWord|2FA")
-        MenuShow.addAction("Cookie")
-        MenuShow.addAction("Token")
-        MenuShow.addAction("Thêm ...")
-        MenuShow.setStyleSheet(QMenuRighClick)
-        MenuShow.setFont(font)
-        contextMenu.addMenu(MenuShow)
-
-        # ///////////////////////////
         self.NewActionQMenu(
-            dir=f"{your_dir}/icons8-close-26.png",
-            text="Xóa Tài khoản này",
+            dir=f"",
+            text="Giải Checkpoint 282",
             subject=self.SubjectNewFolder
             )
-        font = QFont("Montserrat",8)
-        font.setBold(True)
-        contextMenu.setFont(font)
+        # //////////////////////////
+        contextMenu.addSeparator()
+
+        self.NewActionQMenu(
+            dir=f"",
+            text="Mở Browser",
+            subject=self.SubjectNewFolder
+            )
+        # //////////////////////////
+
+
         contextMenu.setMinimumWidth(250)
         contextMenu.setMaximumWidth(250)
         contextMenu.exec_(widgets.TableManage.mapToGlobal(position))
