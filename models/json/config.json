@@ -14,7 +14,7 @@
         "instagram": []
     },
     "config": {
-        "id.TimeWorking": 5,
+        "id.TimeWorking": 1,
         "id.Loop": 1,
         "id.Profile": true,
         "id.Backup": true,

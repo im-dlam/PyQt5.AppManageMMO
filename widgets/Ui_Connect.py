@@ -1,33 +1,7 @@
 from main import *
 from PyQt5.QtWidgets import QMainWindow
-import sys , io
+import sys , io , ctypes
 from models import *
-class CustomWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setAttribute(Qt.WA_TranslucentBackground)
-
-    # cần phải chỉnh centralwidget các layout horizon lùi về 1
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        path = QPainterPath()
-
-
-        #######################################################################################
-        # hiển thị viền app
-        #######################################################################################
-        path.addRoundedRect(0, 0, self.width(), self.height(), 8, 8)
-        painter.setRenderHint(QPainter.Antialiasing, True)
-        painter.fillPath(path, QBrush(QColor(102, 102, 255,100)))
-        painter.setPen(QColor(102, 102, 255,200))
-        painter.drawPath(path)
-
-    def create_rounded_rect_mask(self, rect, radius):
-        path = QPainterPath()
-        rect_f = QRectF(rect)  # Chuyển đổi QRect sang QRectF
-        path.addRoundedRect(rect_f, radius, radius)
-        region = QRegion(path.toFillPolygon().toPolygon())
-        return region
 
 
     
@@ -38,7 +12,7 @@ class Ui_Connect(QMainWindow):
         self.widgets = None
 
     def show_ui(self, Ui):
-        self.windows = CustomWindow()
+        self.windows = QMainWindow()
         self.widgets = Ui()
         self.widgets.setupUi(self.windows)
 
@@ -48,11 +22,11 @@ class Ui_Connect(QMainWindow):
         #############################################################
         # tắt thao tác trên giao diện chính
         self.windows.setWindowModality(Qt.ApplicationModal)
-        self.resize = Resize(self.windows)
-        self.windows.mousePressEvent = self.mousePressEvent  # Override mousePressEvent
-        self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
-        self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
-        self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 5))  # Call create_rounded_rect_mask
+        # self.resize = Resize(self.windows)
+        # self.windows.mousePressEvent = self.mousePressEvent  # Override mousePressEvent
+        # self.windows.mouseReleaseEvent = self.mouseReleaseEvent  # Override mouseReleaseEvent
+        # self.windows.mouseMoveEvent = self.mouseMoveEvent  # Override mouseMoveEvent
+        # self.windows.setMask(self.windows.create_rounded_rect_mask(self.windows.rect(), 5))  # Call create_rounded_rect_mask
         #############################################################
         # Tạo ShadowWindow và thiết lập vị trí, kích thước
 

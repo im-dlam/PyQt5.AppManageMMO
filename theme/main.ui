@@ -65,12 +65,10 @@
       <property name="styleSheet">
        <string notr="true">QFrame#bgApp{
 border-radius:7px;
-border:2px solid #29356a;
 
 }
 QFrame#frame_main{
 background-color:#263162;
-border-radius:7px;
 }</string>
       </property>
       <property name="frameShape">
@@ -136,13 +134,13 @@ background-color:#263162;
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>30</height>
+              <height>0</height>
              </size>
             </property>
             <property name="cursor">
@@ -928,7 +926,7 @@ QTableWidget {
                         <x>0</x>
                         <y>0</y>
                         <width>200</width>
-                        <height>687</height>
+                        <height>721</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
@@ -2483,7 +2481,7 @@ QTableWidget {
                         <x>0</x>
                         <y>0</y>
                         <width>100</width>
-                        <height>687</height>
+                        <height>721</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
@@ -4016,7 +4014,7 @@ color: rgb(255, 255, 255);
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1055</width>
+                         <width>1249</width>
                          <height>1348</height>
                         </rect>
                        </property>
@@ -10288,8 +10286,8 @@ padding-bottom:5px;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1248</width>
-                         <height>579</height>
+                         <width>1252</width>
+                         <height>613</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -10805,8 +10803,8 @@ border-radius:5px;
                               <rect>
                                <x>0</x>
                                <y>0</y>
-                               <width>139</width>
-                               <height>57</height>
+                               <width>1252</width>
+                               <height>693</height>
                               </rect>
                              </property>
                              <layout class="QVBoxLayout" name="verticalLayout_23">

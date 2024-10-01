@@ -7,23 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>462</width>
-    <height>617</height>
+    <height>590</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>394</width>
-    <height>617</height>
+    <width>462</width>
+    <height>590</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
+    <width>462</width>
     <height>617</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Views Custom</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -55,16 +55,16 @@ color:#ffffff;
      <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QFrame" name="frame_5">
@@ -82,10 +82,10 @@ background-color: rgb(38, 49, 98);
       <widget class="QFrame" name="frame_2">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>50</y>
+         <x>260</x>
+         <y>20</y>
          <width>196</width>
-         <height>531</height>
+         <height>521</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -96,7 +96,7 @@ background-color: rgb(38, 49, 98);
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QCheckBox" name="checkBox_10">
+         <widget class="QCheckBox" name="A_ALL">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -116,7 +116,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_11">
+         <widget class="QCheckBox" name="ALL_LIVE">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -135,7 +135,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_12">
+         <widget class="QCheckBox" name="A_DIE">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -154,7 +154,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_13">
+         <widget class="QCheckBox" name="A_CPPHONE">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -173,7 +173,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_21">
+         <widget class="QCheckBox" name="A_CPXMDT">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -192,7 +192,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_22">
+         <widget class="QCheckBox" name="A_CP956">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -211,7 +211,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_14">
+         <widget class="QCheckBox" name="A_CP282">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -230,7 +230,7 @@ background-color: rgb(38, 49, 98);
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_23">
+         <widget class="QCheckBox" name="A_CPOTHER">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -279,7 +279,7 @@ background-color: rgb(38, 49, 98);
             <number>0</number>
            </property>
            <item>
-            <widget class="QCheckBox" name="checkBox_24">
+            <widget class="QCheckBox" name="OTHER">
              <property name="maximumSize">
               <size>
                <width>25</width>
@@ -304,7 +304,7 @@ background-color: rgb(38, 49, 98);
             </widget>
            </item>
            <item alignment="Qt::AlignLeft">
-            <widget class="QComboBox" name="ComboboxFile">
+            <widget class="QComboBox" name="TEXT_OTHER">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -413,10 +413,10 @@ QComboBox{
       <widget class="QFrame" name="frame">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>50</y>
+         <x>20</x>
+         <y>20</y>
          <width>171</width>
-         <height>541</height>
+         <height>531</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -427,7 +427,7 @@ QComboBox{
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="UID">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -447,7 +447,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_2">
+         <widget class="QCheckBox" name="PASSWORD">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -466,7 +466,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_3">
+         <widget class="QCheckBox" name="CODE">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -483,7 +483,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_4">
+         <widget class="QCheckBox" name="COOKIE">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -500,7 +500,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_5">
+         <widget class="QCheckBox" name="TOKEN">
           <property name="font">
            <font>
             <family>MesloLGMDZ Nerd Font Mono</family>
@@ -517,7 +517,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_7">
+         <widget class="QCheckBox" name="EMAIL">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -534,7 +534,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_8">
+         <widget class="QCheckBox" name="PEMAIL">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -551,7 +551,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_9">
+         <widget class="QCheckBox" name="USERAGENT">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -568,7 +568,7 @@ QComboBox{
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_6">
+         <widget class="QCheckBox" name="PROXY">
           <property name="font">
            <font>
             <family>MesloLGS Nerd Font</family>
@@ -592,8 +592,8 @@ QComboBox{
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>30</y>
+         <x>260</x>
+         <y>20</y>
          <width>161</width>
          <height>20</height>
         </rect>
@@ -619,7 +619,7 @@ border-bottom:1px solid #a27de1;
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>30</y>
+         <y>20</y>
          <width>131</width>
          <height>20</height>
         </rect>
@@ -639,47 +639,6 @@ border-bottom:1px solid #a27de1;
        </property>
        <property name="text">
         <string>Bảng hiển thị</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btn_close">
-       <property name="geometry">
-        <rect>
-         <x>435</x>
-         <y>5</y>
-         <width>20</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: rgb(38, 49, 98);
-border:none;
-border-radius:3px;
-}
-QPushButton:hover{
-background-color: rgb(222, 61, 98);
-border:none;
-border-radius:3px;
-}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../icons/icons.qrc">
-         <normaloff>:/icons/png/icons8-close-30.png</normaloff>:/icons/png/icons8-close-30.png</iconset>
        </property>
       </widget>
      </widget>

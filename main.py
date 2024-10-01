@@ -1,6 +1,6 @@
 import sys , os , ctypes , threading
 from PyQt5.QtCore import QObject
-
+import ctypes
 
 # functions 
 from models import * 
@@ -18,9 +18,9 @@ class WindowInterface(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setAutoFillBackground(True)
+        # self.setAutoFillBackground(True)
         # APPLY THE STYLESHEET
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        # self.setWindowFlag(Qt.FramelessWindowHint)
         
 
 
@@ -304,6 +304,8 @@ class WindowInterface(QMainWindow):
         msg.SendMsg((f"Xóa thành công {len(itemRemove)} tài khoản !", 1))
 
 
+
+
     # SUBJECT CONNECT CÁC BUTTON
     def SubjectConnectButton(self):
         
@@ -440,8 +442,11 @@ class WindowInterface(QMainWindow):
     def BrowserUpdate(self,obj):
 
         infoID = obj['uid']
-        if obj['code'] is not 99:
-            obj['msg'] = keys[obj['code']]
+        if obj['code'] != 99:
+            try:
+                obj['msg'] = keys[obj['code']]
+            except:
+                obj['msg'] = ''
 
         for row in range(widgets.TableManage.rowCount()):
             if widgets.TableManage.item(row , 2).text() == infoID:
@@ -454,7 +459,21 @@ class WindowInterface(QMainWindow):
                 elif obj['code'] == 300:
                     QTableTools.ChangeAccount(self , widgets , obj , 0)
                 elif obj['code'] == 20032006:
-                    SQL(obj["SQL"]).SQLUpdateDataFromKey(obj)
+                    try:
+                        color =  QColor(255,255,255)
+                        if obj['key'] == 'message':
+                            content =  time_lastest(obj['content'])
+                        else:
+                            content = obj['content'] 
+                        item_category = QTableTools.SubjectItemsText(
+                                    self, text=content, color=color, size_font=8)
+                        widgets.TableManage.setItem(row, index_name[obj['key']], item_category)
+                    except:pass
+                    try:
+                        SQL(obj["SQL"]).SQLUpdateDataFromKey(obj)
+                    except Exception as error:
+                        print(error)
+                
                 # HIỂN THỊ MSG LÊN DỮ LIỆU
                 color =  QColor(255,255,255)
                 item_category = QTableTools.SubjectItemsText(
@@ -468,7 +487,7 @@ class WindowInterface(QMainWindow):
         width = user32.GetSystemMetrics(0)  # CHIỀU RỘNG CỦA MÀN HÌNH
         height = user32.GetSystemMetrics(1)  # CHIỀU CAO CỦA MÀN HÌNH
 
-        max_width =  int(width / 350)
+        max_width =  int(width / 400)
         max_height =  int(height / 400) - 1
         
         x_position = (number % max_width) * self.width_sort
@@ -583,12 +602,16 @@ class WindowInterface(QMainWindow):
         # Di chuyển cửa sổ đến vị trí tính toán
         widgets_ui.move(x, y)
 
-    
+        # Hàm để kích hoạt Dark Mode cho title bar
+    def enable_dark_title_bar(self,hwnd):
+        DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+        windll = ctypes.windll
+        value = ctypes.c_int(1)
+        windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ctypes.byref(value), ctypes.sizeof(value))
     # MÀN HÌNH THÊM DỮ LIỆU
     def window_additem(self):
         # code sql/300
         
-        self.start_blur()
         Namecategory =  widgets.ComboboxFile.currentText()
         NameaccountType =  'Facebook'
         # NameaccountType =  widgets.ComboBoxTypeAccount.currentText()
@@ -607,10 +630,6 @@ class WindowInterface(QMainWindow):
         self.center(windows_ui)
 
         
-        # TOGGLE FRAME, BUTTON TO SHADOW
-        # CHỈNH SỬA LÀM BÓNG CÁC FRAME
-
-        
 
 
         
@@ -620,10 +639,7 @@ class WindowInterface(QMainWindow):
         window_widgets.plain_item.textChanged.connect(self.startSubjectDataProcessing)
 
         window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
-        window_widgets.item_add.clicked.connect(lambda : self.reset_blur())
         window_widgets.item_close.clicked.connect(lambda : windows_ui.close())
-        window_widgets.item_close.clicked.connect(lambda : self.reset_blur())
-        window_widgets.item_close.clicked.connect(lambda: self.RemoveWindowFlags())
 
         # Thêm Text và Xóa để hiện Placehoder
         window_widgets.plain_item.setPlaceholderText("Nhập tài khoản ...")
@@ -638,11 +654,11 @@ class WindowInterface(QMainWindow):
 
         window_widgets.combo_account.setCurrentText(NameaccountType)
         window_widgets.combo_ua.setCurrentText("Windows")
+        windows_ui.setWindowFlags(self.windowFlags() & ~Qt.WindowMinMaxButtonsHint)
 
-        # Apply blur effect before showing the window
         windows_ui.show()
-
-        # Remove blur effect when window is closed
+        hwnd = ctypes.windll.user32.GetForegroundWindow()
+        self.enable_dark_title_bar(hwnd)
 
     
     # chạy QThread xử lý định dạng dữ liệu và gán cho DataProcessingFill
@@ -772,26 +788,19 @@ class WindowInterface(QMainWindow):
     
     def window_proxies(self):
         
-        self.start_blur()
         window_widgets , windows_ui = Ui_Connect.show_ui(self, Ui_TabWidget)
         window_widgets.tabWidget.removeTab(0)
         window_widgets.tabWidget.setCurrentIndex(1)
         self.center(windows_ui)
 
 
-        # widgets.tabWidget.widget(0).hide()
-        # window_widgets -> Object : sử dụng để gọi các frame , button ...
-        # window_ui      -> OBject : sử dụng để close , show , công dụng như hàm self.show()
-        # Call Functions Connect UI
+
         self.item_CheckProxy_Change  =  False 
         
         # Call Sub from Functions Show UI Clone PROXIES
-        # window_widgets.item_add.clicked.connect(lambda : self.SubjectDataProcessingConfirm(window_widgets , windows_ui))
         window_widgets.item_closeProxy.clicked.connect(lambda : windows_ui.close())
         window_widgets.item_closeProxy.clicked.connect(lambda: self.RemoveWindowFlags())
 
-        window_widgets.item_closeProxy.clicked.connect(lambda : self.reset_blur())
-        window_widgets.item_import.clicked.connect(lambda : self.reset_blur())
         
         # hiện holder
 
@@ -809,7 +818,10 @@ class WindowInterface(QMainWindow):
         proxy_list = json.loads(open(your_dir_config,"r",encoding="utf-8").read())["proxy"]["list"]
         proxy_text = "\n".join(proxy_list) if isinstance(proxy_list, list) else proxy_list
         window_widgets.plain_Proxy.setPlainText(proxy_text)
-        
+        hwnd = ctypes.windll.user32.GetForegroundWindow()
+        self.enable_dark_title_bar(hwnd)
+        windows_ui.setWindowFlags(self.windowFlags() & ~Qt.WindowMinMaxButtonsHint)
+        windows_ui.show()
         # run , check script
 
     def ProxyClear(self , window_widgets):
@@ -1094,14 +1106,22 @@ class BrowserKill(QThread):
             threading.Thread(target=(self.close),args=(infoID,)).start()
 
 
-    
+
+
+
+# Hàm để kích hoạt Dark Mode cho title bar
+def enable_dark_title_bar(hwnd):
+    DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+    windll = ctypes.windll
+    value = ctypes.c_int(1)
+    windll.dwmapi.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ctypes.byref(value), ctypes.sizeof(value))
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False) # fix QThread destroyed is running
     
     
 
-    
+    # CHANGE COLOR TITLE BAR
     # Tự chỉnh checkbox trong QTable căn chính giữa
     
     checkbox_style = CheckBoxStyle(app.style())
@@ -1109,8 +1129,11 @@ if __name__ == "__main__":
     
     
     app.setWindowIcon(QIcon("./icons/logo/icons.png"))
-
     window = WindowInterface()
+    hwnd = ctypes.windll.user32.GetForegroundWindow()
+    enable_dark_title_bar(hwnd)
+
+    # Đặt màu sắc title bar sang màu #232d5a
     sys.exit(app.exec_())
 
 

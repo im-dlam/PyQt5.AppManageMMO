@@ -6,7 +6,7 @@ from PyQt5.QtCore import (
     QFile,QEvent, QThread, pyqtSignal ,\
     QModelIndex , QSize , QPoint , \
     QElapsedTimer,QMargins , QRectF , QEasingCurve , QPropertyAnimation,\
-    QRect
+    QRect , Q_ARG , QMetaObject
     )
 from PyQt5.QtGui import (
     QColor , QClipboard , QCloseEvent , QCursor , QFont , QFontMetrics,
@@ -36,20 +36,20 @@ from . Config import *
 # call models
 from . Ui_Functions import *
 from . SubjectTools import *
-from . SubjectNotifications import *
-from . SubjectQtables import *
+from .Notifications import *
+from .WidgetTable import *
 from . QListWidget import *
 from . FrameProfileUser import *
 from . SubjectTemps import *
-from . SubjectTime import *
+from .TimeLoads import *
 from . SubjectScrips import *
 
 from . sql import *
-from . SubjectFileName import *
-from . SubjectRighClick import *
+from .FileName import *
+from .MenuRightCLick import *
 
 from . html  import *
-from . SubjectQThread import *
+from .ThreadFunc import *
 from . Pyotp import *
 from . AnimationButton import *
 # import selenium
@@ -59,7 +59,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-from . SubjectAutoBrowser import *
+from .AutoBrowser import *
 from . FolderCustom import *
 
 from psutil import process_iter 
